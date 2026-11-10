@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #03050a;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  overscroll-behavior: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Phase 5 — accessibility: a single, app-wide keyboard-focus indicator,
+   tuned to read clearly against the dark/cyan palette, so every button,
+   link, and input gets a visible focus ring without needing a
+   focus-visible utility class repeated on each one individually. */
+:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 2px;
+}
+
