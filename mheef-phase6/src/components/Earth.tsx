@@ -2,13 +2,12 @@ import { useLoader } from '@react-three/fiber';
 import { useMemo } from 'react';
 import * as THREE from 'three';
 
-// Known gotcha: these are fetched by the user's browser at runtime, not by
-// this build step, so they need a CORS-friendly host. threejs.org's example
-// assets serve permissive CORS headers and are commonly used for this exact
-// purpose. If you swap to self-hosted textures, drop them in /public/textures
-// and reference them as '/textures/...' instead.
-const EARTH_COLOR_MAP_URL = 'https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg';
-const EARTH_NORMAL_MAP_URL = 'https://threejs.org/examples/textures/planets/earth_normal_2048.jpg';
+// Phase 7: textures are self-hosted under /public/textures (copied from the
+// three.js r164 example assets), so the globe has no third-party runtime
+// dependency. BASE_URL keeps the paths valid under a GitHub Pages sub-path.
+export const TEXTURE_BASE = `${import.meta.env.BASE_URL}textures/`;
+const EARTH_COLOR_MAP_URL = `${TEXTURE_BASE}earth_atmos_2048.jpg`;
+const EARTH_NORMAL_MAP_URL = `${TEXTURE_BASE}earth_normal_2048.jpg`;
 
 export const EARTH_RADIUS = 2;
 
@@ -95,7 +94,7 @@ function useOceanRoughnessMap(colorMap: THREE.Texture): THREE.CanvasTexture {
       // meant as a general-purpose classifier — same spirit as Marker.tsx's
       // hand-tuned pulse constants.
       const isOcean = b > r + 12 && b > g + 4 && b > 40;
-      const roughness = isOcean ? 90 : 235; // low = shinier highlight, high = matte
+      const roughness = isOcean ? 150 : 235; // low = shinier highlight, high = matte
       data[i] = roughness;
       data[i + 1] = roughness;
       data[i + 2] = roughness;

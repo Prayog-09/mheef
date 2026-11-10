@@ -2,7 +2,7 @@ import type { Facility } from '../types/facility';
 
 /**
  * Master dataset — Phase 2. 20 flagship HEP facilities across all major
- * categories. Uncertain facts are marked // [verify].
+ * categories.
  *
  * Phase 3: side panel looks up any Facility by selectedFacilityId from here.
  * Phase 4: derive filter chip values from the topics arrays below.
@@ -284,7 +284,8 @@ export const facilities: readonly Facility[] = [
     ],
     keyResults: [
       { year: 1968, discovery: "Solar Neutrino Deficit (Homestake)", description: "Davis's chlorine experiment measured only ~1/3 of the predicted solar neutrino flux, posing the solar neutrino problem that ultimately proved neutrino oscillation and mass. Nobel Prize in Physics 2002." },
-      { year: 2023, discovery: "World-Leading WIMP Dark Matter Limits (LZ)", description: "LZ set the most stringent upper limits on the WIMP-nucleon spin-independent cross section for WIMP masses above ~9 GeV/c2, constraining large regions of supersymmetric dark matter parameter space." }, // [verify: best LZ published result year]
+      { year: 2023, discovery: "World-Leading WIMP Dark Matter Limits (LZ)", description: "LZ's first result, from 60 live days of data, set the most stringent upper limits on the WIMP-nucleon spin-independent cross section for WIMP masses above ~9 GeV/c2, constraining large regions of supersymmetric dark matter parameter space." },
+      { year: 2025, discovery: "LZ 4.2 Tonne-Year Dark Matter Search", description: "Combining 280 live days of data, LZ found no excess over expected backgrounds and excluded spin-independent WIMP-nucleon cross sections down to 2.2 x 10^-48 cm2 at a WIMP mass of 40 GeV/c2 (Physical Review Letters 135, 011802)." },
     ],
     importantPeople: [
       { name: "Raymond Davis Jr.", contribution: "Built and operated the Homestake solar neutrino experiment (1965-2002), creating the solar neutrino problem; Nobel Prize in Physics 2002." },
@@ -340,16 +341,17 @@ export const facilities: readonly Facility[] = [
     lat: 22.118,
     lng: 112.518,
     founded: 2015,
-    status: 'active', // [verify: JUNO entered commissioning 2024-2025]
+    status: 'active',
     overview: "The Jiangmen Underground Neutrino Observatory (JUNO) in Guangdong Province, China, is the world's largest liquid-scintillator neutrino detector — a 20,000-tonne sphere at 700 m depth instrumented with over 17,000 large photomultiplier tubes. Its primary goals are to determine the neutrino mass ordering (normal vs. inverted hierarchy) and to measure the oscillation parameters sin2-theta-12 and Delta-m2-21 to sub-percent precision, using reactor antineutrinos from nearby nuclear power plants.",
     history: [
       { year: 2012, event: "JUNO proposed at the Institute of High Energy Physics, Beijing, building on the success of the Daya Bay theta-13 measurement." },
       { year: 2015, event: "Construction of the JUNO underground experimental hall begins near Kaiping, Jiangmen, Guangdong." },
       { year: 2021, event: "Installation of the 20-inch and 3-inch photomultiplier tube systems begins; a novel dual-calorimetry design improves energy resolution." },
-      { year: 2024, event: "JUNO begins filling its 20,000-tonne acrylic sphere with liquid scintillator; commissioning underway." }, // [verify]
+      { year: 2025, event: "With the detector filled with 20,000 tonnes of liquid scintillator, JUNO begins data taking on 26 August 2025; first results on the solar oscillation parameters follow in November." },
+      { year: 2026, event: "JUNO's first reactor-neutrino oscillation measurement is published in Nature." },
     ],
     experiments: [
-      { id: 'juno-main', name: 'JUNO Main Detector', description: "20,000-tonne liquid-scintillator sphere designed to determine the neutrino mass ordering and measure oscillation parameters using reactor antineutrinos from two nearby nuclear power complexes.", topics: ['neutrinos'], startYear: 2024 }, // [verify start year]
+      { id: 'juno-main', name: 'JUNO Main Detector', description: "20,000-tonne liquid-scintillator sphere designed to determine the neutrino mass ordering and measure oscillation parameters using reactor antineutrinos from two nearby nuclear power complexes.", topics: ['neutrinos'], startYear: 2025 },
     ],
     keyResults: [],
     importantPeople: [
@@ -387,7 +389,7 @@ export const facilities: readonly Facility[] = [
       { name: "Kam-Biu Luk", contribution: "Co-spokesperson of Daya Bay (UC Berkeley / LBNL); led the US contribution and statistical analysis strategy." },
     ],
     readMore: [
-      { label: "Daya Bay at IHEP", url: "http://dayabay.ihep.ac.cn" }, // [verify URL]
+      { label: "Daya Bay 2012 result (Physical Review Letters)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" },
     ],
   },
 
@@ -438,9 +440,8 @@ export const facilities: readonly Facility[] = [
     overview: "The Cherenkov Telescope Array Observatory (CTAO) will be the world's largest and most sensitive ground-based gamma-ray observatory, with two sites: CTA-North at La Palma, Canary Islands, and CTA-South near ESO's Paranal Observatory in Chile. The full array of ~70 imaging atmospheric Cherenkov telescopes in three size classes will cover 20 GeV to 300 TeV with order-of-magnitude improvements in sensitivity over current instruments, enabling studies of dark matter annihilation, cosmic-ray origin, AGN jets, and pulsar wind nebulae.",
     history: [
       { year: 2010, event: "CTA concept formally developed by an international consortium; the multi-telescope multi-size-class architecture is defined." },
-      { year: 2019, event: "CTAO ERIC (European Research Infrastructure Consortium) legal entity established, headquartered in Bologna, Italy." },
       { year: 2021, event: "LST-1 prototype Large-Sized Telescope at La Palma begins regular observations as a CTA precursor instrument." },
-      { year: 2023, event: "Production of CTA-North array telescopes (LST-2 through LST-4) underway; CTA-South site preparation ongoing at Paranal." }, // [verify]
+      { year: 2025, event: "The European Commission establishes the CTAO as a European Research Infrastructure Consortium (CTAO ERIC) on 7 January 2025, with Italy as host state; three further Large-Sized Telescopes (LST-2 to LST-4) are under construction at La Palma." },
     ],
     experiments: [
       { id: 'cta-north', name: 'CTA-North (La Palma)', description: "Northern array at La Palma optimised for lower-energy gamma-rays (20 GeV-1 TeV); targets AGN jets, dark matter, and transient sources including gamma-ray bursts.", topics: ['cosmic-rays', 'dark-matter'] },
@@ -547,7 +548,6 @@ export const facilities: readonly Facility[] = [
     keyResults: [],
     importantPeople: [
       { name: "Takaaki Kajita", contribution: "Principal investigator of KAGRA; also Nobel Prize in Physics 2015 for the discovery of atmospheric neutrino oscillations at Super-Kamiokande." },
-      { name: "Kazuoki Kuroda", contribution: "Founding proposer of LCGT/KAGRA and pioneer of cryogenic mirror technology for gravitational-wave detection." }, // [verify]
     ],
     readMore: [
       { label: "KAGRA Official Site", url: "https://gwcenter.icrr.u-tokyo.ac.jp" },
@@ -569,18 +569,17 @@ export const facilities: readonly Facility[] = [
       { year: 2008, event: "DOE approves FRIB as a major scientific user facility at Michigan State University, successor to the National Superconducting Cyclotron Laboratory (NSCL)." },
       { year: 2014, event: "FRIB construction begins; the superconducting linac tunnel is excavated on the MSU campus in East Lansing." },
       { year: 2022, event: "FRIB opens to user experiments on 2 May 2022; first uranium beams reach over 200 MeV/u, setting a world record for beam power with that ion." },
-      { year: 2023, event: "FRIB user experiments publish first measurements of exotic nuclei near the neutron drip line, extending the nuclear chart to new territories." },
+      { year: 2026, event: "The GRETA gamma-ray tracking array, shipped from Berkeley Lab in 2025, completes its commissioning run at FRIB." },
     ],
     experiments: [
-      { id: 'frib-greta', name: 'GRETA', description: "Gamma-Ray Energy Tracking Array — a 4-pi germanium detector that tracks gamma-ray photons from nuclear reactions, enabling in-beam spectroscopy of rare isotopes at FRIB.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2023 }, // [verify GRETA commissioning date]
+      { id: 'frib-greta', name: 'GRETA', description: "Gamma-Ray Energy Tracking Array — a 4-pi germanium detector that tracks gamma-ray photons from nuclear reactions, enabling in-beam spectroscopy of rare isotopes at FRIB.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2026 },
       { id: 'frib-mona', name: 'MoNA-LISA', description: "Modular Neutron Array and Large-area multi-Institutional Scintillator Array; measures neutrons from rare isotope decays near the drip line to probe nuclear structure and halo nuclei.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2022 },
     ],
     keyResults: [
-      { year: 2022, discovery: "New Isotopes on First Day of Operations", description: "Within days of opening, FRIB produced and identified previously unobserved neutron-rich isotopes, demonstrating its power to extend the nuclear chart." },
-      { year: 2023, discovery: "Neutron Drip-Line Measurements in Neutron-Rich Nuclei", description: "FRIB experiments measured binding energies and decay properties of highly neutron-rich isotopes, probing the edges of nuclear stability and testing ab initio nuclear structure calculations." }, // [verify specifics]
+      { year: 2022, discovery: "First Half-Life Measurements at FRIB", description: "FRIB's first experiment fragmented a calcium-48 beam and measured, for the first time, the half-lives of five neutron-rich isotopes of magnesium, aluminium, silicon and phosphorus near N=28, finding evidence that the Z=14 subshell closure erodes there (Physical Review Letters 129, 212501)." },
     ],
     importantPeople: [
-      { name: "Konrad Gelbke", contribution: "First director of FRIB and its predecessor NSCL; led the multi-decade effort to secure approval and funding for FRIB at Michigan State." },
+      { name: "Konrad Gelbke", contribution: "Long-serving director of the National Superconducting Cyclotron Laboratory, FRIB's predecessor; led Michigan State's successful effort to host FRIB." },
       { name: "Brad Sherrill", contribution: "FRIB scientific director; expert in rare-isotope beam production and nuclear astrophysics measurements." },
     ],
     readMore: [
@@ -644,11 +643,10 @@ export const facilities: readonly Facility[] = [
       { id: 'triumf-griffin', name: 'GRIFFIN', description: "Gamma-Ray Infrastructure For Fundamental Investigations of Nuclei; 16-detector HPGe array at ISAC for decay spectroscopy of neutron-rich rare isotopes, mapping nuclear structure across the chart of nuclides.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2014 },
     ],
     keyResults: [
-      { year: 2013, discovery: "Precision Mass Measurements of Light Exotic Nuclei", description: "TITAN's Penning trap measured masses of neutron-rich helium and lithium isotopes with parts-per-billion precision, enabling stringent tests of ab initio nuclear theory and charge-radius calculations." }, // [verify year/details]
-      { year: 2019, discovery: "Shell Structure Evolution in Neutron-Rich Isotopes", description: "GRIFFIN spectroscopy at TRIUMF observed unexpected collectivity and shell-structure evolution in neutron-rich nuclei below the Z=28 shell closure, challenging established nuclear shell-model predictions." }, // [verify]
+      { year: 2008, discovery: "Penning-Trap Masses of Halo Nuclei", description: "TITAN made the first Penning-trap mass measurements of the halo nuclei helium-8 and lithium-11. Lithium-11, with a half-life of 8.8 ms, was the shortest-lived nuclide ever measured in a Penning trap, and its two-neutron separation energy became seven times more precise (Physical Review Letters 101, 012501 and 202501)." },
     ],
     importantPeople: [
-      { name: "Erich Vogt", contribution: "Founding scientific director of TRIUMF; his advocacy and vision established Canada's national accelerator centre." }, // [verify role]
+      { name: "Erich Vogt", contribution: "Co-founder of TRIUMF and its director from 1981 to 1994; oversaw its growth into an international user facility." },
       { name: "Jens Dilling", contribution: "Head of TRIUMF's nuclear physics programme and PI of the TITAN precision mass measurement project." },
     ],
     readMore: [
@@ -685,7 +683,7 @@ export const facilities: readonly Facility[] = [
     ],
     importantPeople: [
       { name: "Bjorn Wiik", contribution: "DESY director (1993-1999) and HERA project leader; a driving force behind Hamburg's position as a world centre for accelerator-based physics." },
-      { name: "Gunter Wolf", contribution: "Led the TASSO experiment at PETRA and made key contributions to the three-jet analysis that established the gluon discovery." }, // [verify]
+      { name: "G\u00fcnter Wolf", contribution: "Spokesperson of the TASSO experiment at PETRA, who presented its three-jet evidence for the gluon in 1979; shared the 1995 European Physical Society High Energy and Particle Physics Prize for that work." },
     ],
     readMore: [
       { label: "DESY Official Site", url: "https://www.desy.de" },

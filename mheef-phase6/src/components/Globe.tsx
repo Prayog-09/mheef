@@ -1,7 +1,7 @@
-import { Component, Suspense, useCallback, useEffect, useMemo, useRef } from 'react';
+import { Component, Suspense, useCallback, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Stars } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import * as THREE from 'three';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
@@ -16,137 +16,15 @@ import { facilities } from '../data/facilities';
 import { latLngToVector3 } from '../utils/geo';
 import { facilityMatchesFilters } from '../utils/filters';
 
-// ─── MilkyWaySky ────────────────────────────────────────────────────────────
+// ─── StarField ──────────────────────────────────────────────────────────────
 
-// Phase 6 — 360° Milky Way-style sky background, replacing drei's <Stars>
-// particle field.
-//
-// CORRECTION (post-deploy): this originally hot-linked a NASA SVS star map
-// JPG over HTTPS, set as scene.background via THREE.TextureLoader. NASA
-// media is genuinely public domain and the file is genuinely real, but the
-// build sandbox this was written in has its network egress allowlisted to
-// package registries only — there was no way to actually confirm
-// svs.gsfc.nasa.gov sends the Access-Control-Allow-Origin header WebGL
-// texture loading needs. It doesn't (or at least didn't reliably): the
-// load failed in the browser, and because useLoader() throws a real
-// rejection (not just a Suspense-style "still loading") with no error
-// boundary above it in the tree, that one failed network request crashed
-// the entire Canvas to a blank black screen — not a graceful "sky missing"
-// degradation, the whole scene.
-//
-// Rather than re-guess at a different external host and risk the same
-// failure mode again, this now paints a stylized starfield + galactic-band
-// procedurally onto a <canvas> — the exact same reasoning Clouds.tsx
-// already uses one file over: zero network dependency, zero CORS surface,
-// zero bytes added to the texture budget. It's not a real astrophotograph
-// the way the NASA map was, but it's a much safer default for something
-// the whole app's visibility depends on. If you want the literal NASA
-// image back, self-host it under /public/textures (same fallback this
-// project's other texture comments already point to) so it's served from
-// your own origin instead of a third-party host of unknown CORS policy.
-const MILKY_WAY_WIDTH = 2048;
-const MILKY_WAY_HEIGHT = 1024;
-
-/** Same tiny deterministic PRNG as Clouds.tsx, separately seeded — keeps the
- *  generated sky stable across reloads without sharing state with clouds. */
-function createSkyRng(seed: number) {
-  let state = seed % 2147483647;
-  if (state <= 0) state += 2147483646;
-  return () => {
-    state = (state * 16807) % 2147483647;
-    return (state - 1) / 2147483646;
-  };
-}
-
-function paintMilkyWayCanvas(canvas: HTMLCanvasElement) {
-  canvas.width = MILKY_WAY_WIDTH;
-  canvas.height = MILKY_WAY_HEIGHT;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-
-  ctx.fillStyle = '#02030a';
-  ctx.fillRect(0, 0, MILKY_WAY_WIDTH, MILKY_WAY_HEIGHT);
-
-  const rng = createSkyRng(20260630);
-
-  // Galactic-plane band: a soft horizontal glow, brightest at vertical
-  // center and fading toward the poles, with mottled dust-colored clumps
-  // breaking up the gradient so it doesn't read as a flat stripe.
-  const bandCenterY = MILKY_WAY_HEIGHT * 0.52;
-  const bandHalfHeight = MILKY_WAY_HEIGHT * 0.16;
-  const bandGradient = ctx.createLinearGradient(
-    0,
-    bandCenterY - bandHalfHeight * 2,
-    0,
-    bandCenterY + bandHalfHeight * 2
-  );
-  bandGradient.addColorStop(0, 'rgba(120, 140, 200, 0)');
-  bandGradient.addColorStop(0.5, 'rgba(150, 160, 210, 0.16)');
-  bandGradient.addColorStop(1, 'rgba(120, 140, 200, 0)');
-  ctx.fillStyle = bandGradient;
-  ctx.fillRect(0, bandCenterY - bandHalfHeight * 2, MILKY_WAY_WIDTH, bandHalfHeight * 4);
-
-  for (let i = 0; i < 700; i++) {
-    const x = rng() * MILKY_WAY_WIDTH;
-    const y = bandCenterY + (rng() - 0.5) * bandHalfHeight * 2.4;
-    const r = 10 + rng() * 36;
-    const alpha = 0.02 + rng() * 0.05;
-    ctx.fillStyle = `rgba(200, 190, 170, ${alpha})`;
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  // Stars: denser inside the band, sparser outside — a handful of larger,
-  // brighter points stand in for naked-eye-bright foreground stars against
-  // a much larger field of faint background ones.
-  const starCount = 5000;
-  for (let i = 0; i < starCount; i++) {
-    const x = rng() * MILKY_WAY_WIDTH;
-    const y = rng() * MILKY_WAY_HEIGHT;
-    const distFromBand = Math.abs(y - bandCenterY) / bandHalfHeight;
-    if (distFromBand > 1.5 && rng() > 0.3) continue; // thin out the field away from the band
-
-    const brightness = rng();
-    const size = brightness > 0.97 ? 1.6 : brightness > 0.85 ? 1.1 : 0.6;
-    const alpha = 0.25 + brightness * 0.75;
-    const tint = 200 + Math.round(rng() * 55); // slight blue/white variance
-    ctx.fillStyle = `rgba(${tint}, ${tint}, 255, ${alpha})`;
-    ctx.beginPath();
-    ctx.arc(x, y, size, 0, Math.PI * 2);
-    ctx.fill();
-  }
-}
-
-function useMilkyWayTexture(): THREE.CanvasTexture {
-  return useMemo(() => {
-    const canvas = document.createElement('canvas');
-    paintMilkyWayCanvas(canvas);
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.mapping = THREE.EquirectangularReflectionMapping;
-    texture.colorSpace = THREE.SRGBColorSpace;
-    texture.wrapS = THREE.RepeatWrapping;
-    texture.needsUpdate = true;
-    return texture;
-  }, []);
-}
-
-function MilkyWaySky() {
-  const texture = useMilkyWayTexture();
-  const { scene } = useThree();
-
-  useEffect(() => {
-    scene.background = texture;
-    return () => {
-      texture.dispose();
-      // Restore the solid fallback color (set eagerly below, outside
-      // Suspense) rather than leaving scene.background pointed at a
-      // texture that's about to be disposed.
-      scene.background = new THREE.Color('#03050a');
-    };
-  }, [texture, scene]);
-
-  return null;
+// Phase 7: the Phase 6 sky was a 2048px equirectangular canvas used as
+// scene.background. At this camera's field of view only a few hundred of
+// those pixels fill the screen, so its stars and dust clumps rendered as
+// large blurred discs. Point-sprite stars stay sharp at any zoom and need
+// no texture at all.
+function StarField() {
+  return <Stars radius={90} depth={50} count={4500} factor={3.2} saturation={0} fade speed={0} />;
 }
 
 // ─── SceneErrorBoundary ─────────────────────────────────────────────────────
@@ -178,13 +56,21 @@ class SceneErrorBoundary extends Component<{ children: ReactNode }, { hasError: 
 
 // ─── CameraRig ────────────────────────────────────────────────────────────────
 
-// Phase 6 bug fix: the overview position/target the camera flies back to
-// once a facility's side panel closes. Module-level and never mutated
-// (only ever `.clone()`d into a fresh flightRef target below), so it's
-// safe to share across renders/instances — same reasoning as Marker.tsx's
-// COLOR_ACTIVE/COLOR_DIM constants.
-const DEFAULT_CAMERA_POSITION = new THREE.Vector3(0, 0, 5.5);
+// Phase 7: the overview distance depends on the viewport's aspect ratio.
+// A fixed distance of 5.5 fits the globe in a landscape window but lets it
+// overflow a portrait phone screen, where the horizontal field of view is
+// the narrow one. FRAMED_RADIUS includes the atmosphere halo plus a margin.
+const CAMERA_FOV = 45;
+const MIN_OVERVIEW_DISTANCE = 5.5;
+const FRAMED_RADIUS = EARTH_RADIUS * 1.18;
 const DEFAULT_CAMERA_TARGET = new THREE.Vector3(0, 0, 0);
+
+function overviewDistanceFor(aspect: number): number {
+  const halfVertical = THREE.MathUtils.degToRad(CAMERA_FOV / 2);
+  const halfHorizontal = Math.atan(Math.tan(halfVertical) * aspect);
+  const fitDistance = FRAMED_RADIUS / Math.sin(Math.min(halfVertical, halfHorizontal));
+  return Math.max(MIN_OVERVIEW_DISTANCE, fitDistance);
+}
 
 /**
  * Owns OrbitControls and animates the camera toward a selected facility.
@@ -193,10 +79,20 @@ const DEFAULT_CAMERA_TARGET = new THREE.Vector3(0, 0, 0);
  * fly-to without this component changing.
  */
 function CameraRig() {
-  const { camera } = useThree();
+  const { camera, size } = useThree();
+  const overviewDistance = overviewDistanceFor(size.width / size.height);
   const controlsRef = useRef<OrbitControlsImpl>(null);
   const selectedFacilityId = useGlobeStore((s) => s.selectedFacilityId);
   const flightRef = useRef<{ targetPos: THREE.Vector3; targetLook: THREE.Vector3 } | null>(null);
+  const hasFramedRef = useRef(false);
+
+  // First frame: place the camera at the fitted overview distance directly,
+  // so a phone doesn't open zoomed-in and then visibly pull back.
+  useLayoutEffect(() => {
+    if (hasFramedRef.current) return;
+    hasFramedRef.current = true;
+    camera.position.set(0, 0, overviewDistance);
+  }, [camera, overviewDistance]);
 
   useEffect(() => {
     // Phase 6 bug fix: the original version of this effect only set a
@@ -220,7 +116,10 @@ function CameraRig() {
       };
     } else {
       flightRef.current = {
-        targetPos: DEFAULT_CAMERA_POSITION.clone(),
+        // Fly back along the camera's current direction rather than to a
+        // fixed point, so closing a panel or rotating a phone doesn't swing
+        // the globe round to the prime meridian.
+        targetPos: camera.position.clone().setLength(overviewDistance),
         targetLook: DEFAULT_CAMERA_TARGET.clone(),
       };
     }
@@ -228,7 +127,7 @@ function CameraRig() {
     if (controlsRef.current) {
       controlsRef.current.autoRotate = false;
     }
-  }, [selectedFacilityId]);
+  }, [selectedFacilityId, overviewDistance, camera]);
 
   useFrame(() => {
     const controls = controlsRef.current;
@@ -253,7 +152,7 @@ function CameraRig() {
       autoRotate
       autoRotateSpeed={0.4}
       minDistance={2.6}
-      maxDistance={9}
+      maxDistance={overviewDistance * 1.6}
       rotateSpeed={0.5}
       zoomSpeed={0.6}
     />
@@ -330,10 +229,8 @@ export default function Globe() {
         </ul>
       </nav>
 
-      <Canvas camera={{ position: [0, 0, 5.5], fov: 45 }}>
-        {/* Eager fallback — overwritten the instant MilkyWaySky's effect
-            runs (which is synchronous now, not a network fetch), but keeps
-            the very first frame non-black and is also what SceneErrorBoundary
+      <Canvas camera={{ position: [0, 0, MIN_OVERVIEW_DISTANCE], fov: CAMERA_FOV }}>
+        {/* Deep-space background colour; also what SceneErrorBoundary
             leaves visible if Earth/Atmosphere/Clouds fail to render. */}
         <color attach="background" args={['#03050a']} />
         {/* Phase 6: nudged up from 0.5 so the unlit hemisphere reads as
@@ -347,9 +244,10 @@ export default function Globe() {
             <Earth />
             <Atmosphere />
             <Clouds />
-            <MilkyWaySky />
           </Suspense>
         </SceneErrorBoundary>
+
+        <StarField />
 
         {markers.map(({ facility, position }) => {
           // Phase 4: resolve each marker's visual state from the filter set.

@@ -2,19 +2,18 @@ import { useMemo } from 'react';
 import * as THREE from 'three';
 import { EARTH_RADIUS } from './Earth';
 
-// Phase 6 — two-layer fake-scattering atmosphere.
+// Phase 7 — atmosphere rewrite.
 //
-// Still not a physically-based atmosphere model (explicitly out of
-// scope for this phase) — just two of the original's fresnel rim-glow
-// passes layered at different scales/colors/falloff rates so the limb
-// reads as having depth instead of one flat glow:
-//   - "haze" layer — denser, warm-tinted, closer to the surface. A
-//     loose stand-in for Mie scattering (larger aerosol/dust particles
-//     scatter most wavelengths fairly evenly, with a warm bias).
-//   - "sky" layer — softer, blue-shifted, sits farther out and fades
-//     out faster as you move away from the grazing limb. A stand-in
-//     for Rayleigh scattering (small air molecules scatter blue
-//     wavelengths preferentially — why the sky reads blue at all).
+// The Phase 6 version drew two back-face shells whose alpha was
+// `rimBias - dot(normal, viewDir)`. On a back face that dot product is
+// always negative, so the expression clamped to 1 across the whole visible
+// shell and the "glow" rendered as a solid opaque ring. Two layers now,
+// each with a falloff that is correct for the faces it draws:
+//   - halo  — back faces of a slightly larger shell. Brightest where the
+//     shell meets Earth's silhouette, fading to exactly zero at the
+//     shell's own outer edge, so there is no hard rim.
+//   - limb  — front faces just above the surface. A thin blue fresnel
+//     haze that brightens toward the edge of the disc.
 const vertexShader = /* glsl */ `
   varying vec3 vNormal;
   varying vec3 vViewPosition;
@@ -27,50 +26,65 @@ const vertexShader = /* glsl */ `
   }
 `;
 
-// rimBias/rimPower shape the falloff curve (lower power = broader and
-// denser, higher power = narrower and faster-fading); `intensity` caps
-// each layer's peak opacity so additive blending lets them combine
-// instead of each one trying to be the brightest thing on screen.
-const fragmentShader = /* glsl */ `
+// `facing` is |dot(normal, viewDir)|: 0 at the shell's silhouette, rising
+// toward its centre. The halo normalises it by `limbFacing` — the value it
+// reaches where the shell passes behind Earth's edge — so the visible band
+// always spans 0..1 whatever the shell's scale.
+const haloFragmentShader = /* glsl */ `
   varying vec3 vNormal;
   varying vec3 vViewPosition;
   uniform vec3 glowColor;
-  uniform float rimBias;
-  uniform float rimPower;
+  uniform float limbFacing;
+  uniform float falloff;
   uniform float intensity;
 
   void main() {
     vec3 viewDir = normalize(-vViewPosition);
-    float rim = pow(clamp(rimBias - dot(vNormal, viewDir), 0.0, 1.0), rimPower);
-    gl_FragColor = vec4(glowColor, clamp(rim * intensity, 0.0, 1.0));
+    float facing = abs(dot(normalize(vNormal), viewDir));
+    float glow = pow(clamp(facing / limbFacing, 0.0, 1.0), falloff);
+    gl_FragColor = vec4(glowColor, glow * intensity);
   }
 `;
 
-interface AtmosphereLayerProps {
-  scale: number;
-  color: string;
-  rimBias: number;
-  rimPower: number;
-  intensity: number;
-}
+const limbFragmentShader = /* glsl */ `
+  varying vec3 vNormal;
+  varying vec3 vViewPosition;
+  uniform vec3 glowColor;
+  uniform float falloff;
+  uniform float intensity;
 
-function AtmosphereLayer({ scale, color, rimBias, rimPower, intensity }: AtmosphereLayerProps) {
+  void main() {
+    vec3 viewDir = normalize(-vViewPosition);
+    float facing = clamp(dot(normalize(vNormal), viewDir), 0.0, 1.0);
+    // The smoothstep fades the haze out over the last sliver of the disc;
+    // without it the grazing edge stacks with the halo into a hard bright
+    // line that the bloom pass then exaggerates.
+    float haze = pow(1.0 - facing, falloff) * smoothstep(0.0, 0.3, facing);
+    gl_FragColor = vec4(glowColor, haze * intensity);
+  }
+`;
+
+const HALO_SCALE = 1.12;
+const LIMB_SCALE = 1.012;
+
+function Halo() {
   const uniforms = useMemo(
     () => ({
-      glowColor: { value: new THREE.Color(color) },
-      rimBias: { value: rimBias },
-      rimPower: { value: rimPower },
-      intensity: { value: intensity },
+      glowColor: { value: new THREE.Color('#4da3ff') },
+      // Facing value where a shell of this scale crosses Earth's silhouette.
+      limbFacing: { value: Math.sqrt(1 - 1 / (HALO_SCALE * HALO_SCALE)) },
+      falloff: { value: 2.6 },
+      intensity: { value: 0.42 },
     }),
-    [color, rimBias, rimPower, intensity]
+    []
   );
 
   return (
-    <mesh scale={scale}>
+    <mesh scale={HALO_SCALE}>
       <sphereGeometry args={[EARTH_RADIUS, 64, 64]} />
       <shaderMaterial
         vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
+        fragmentShader={haloFragmentShader}
         uniforms={uniforms}
         transparent
         blending={THREE.AdditiveBlending}
@@ -81,16 +95,37 @@ function AtmosphereLayer({ scale, color, rimBias, rimPower, intensity }: Atmosph
   );
 }
 
+function Limb() {
+  const uniforms = useMemo(
+    () => ({
+      glowColor: { value: new THREE.Color('#6fb8ff') },
+      falloff: { value: 3.2 },
+      intensity: { value: 0.5 },
+    }),
+    []
+  );
+
+  return (
+    <mesh scale={LIMB_SCALE}>
+      <sphereGeometry args={[EARTH_RADIUS, 64, 64]} />
+      <shaderMaterial
+        vertexShader={vertexShader}
+        fragmentShader={limbFragmentShader}
+        uniforms={uniforms}
+        transparent
+        blending={THREE.AdditiveBlending}
+        side={THREE.FrontSide}
+        depthWrite={false}
+      />
+    </mesh>
+  );
+}
+
 export default function Atmosphere() {
   return (
     <>
-      {/* Inner haze — Mie stand-in: denser, warm-tinted, broad falloff
-          (low rimPower) so it reads across more of the limb. */}
-      <AtmosphereLayer scale={1.05} color="#ffd9a8" rimBias={0.55} rimPower={2.2} intensity={0.55} />
-      {/* Outer sky — Rayleigh stand-in: softer, blue-shifted, sits
-          farther out and fades faster (higher rimPower) right at the
-          grazing edge instead of spreading broadly like the haze. */}
-      <AtmosphereLayer scale={1.16} color="#5fc9ff" rimBias={0.7} rimPower={4.2} intensity={0.95} />
+      <Limb />
+      <Halo />
     </>
   );
 }

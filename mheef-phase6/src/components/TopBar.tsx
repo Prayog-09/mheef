@@ -6,6 +6,11 @@ import { searchFacilities } from '../utils/search';
 import type { Facility } from '../types/facility';
 import SearchDropdown from './SearchDropdown';
 
+// Capped at 6 results — enough to be useful, short enough to avoid the
+// dropdown covering the globe.
+const MAX_RESULTS = 6;
+const RESULT_ID_PREFIX = 'facility-search-option-';
+
 export default function TopBar() {
   const searchQuery = useGlobeStore((s) => s.searchQuery);
   const setSearchQuery = useGlobeStore((s) => s.setSearchQuery);
@@ -13,6 +18,9 @@ export default function TopBar() {
 
   const [results, setResults] = useState<Facility[]>([]);
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  // Index of the keyboard-highlighted result. Resets to the best match on
+  // every new query, so Enter always opens the top result by default.
+  const [activeIndex, setActiveIndex] = useState(0);
   // containerRef used for the click-outside listener so the dropdown closes
   // when the user clicks back onto the globe.
   const containerRef = useRef<HTMLDivElement>(null);
@@ -22,8 +30,9 @@ export default function TopBar() {
   // prevents the AnimatePresence exit from re-triggering unnecessarily).
   useEffect(() => {
     if (searchQuery.trim().length >= 2) {
-      const found = searchFacilities(searchQuery);
+      const found = searchFacilities(searchQuery).slice(0, MAX_RESULTS);
       setResults(found);
+      setActiveIndex(0);
       setDropdownVisible(found.length > 0);
     } else {
       setResults([]);
@@ -48,8 +57,24 @@ export default function TopBar() {
   }, [setSearchQuery]);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Escape') handleClear();
-    // Phase 5 adds arrow-key navigation through the dropdown results.
+    if (e.key === 'Escape') {
+      handleClear();
+      return;
+    }
+    if (results.length === 0) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setDropdownVisible(true);
+      setActiveIndex((i) => (i + 1) % results.length);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setDropdownVisible(true);
+      setActiveIndex((i) => (i - 1 + results.length) % results.length);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSelect(results[activeIndex] ?? results[0]);
+    }
   };
 
   // Close the dropdown when the user clicks anywhere outside the search
@@ -65,12 +90,12 @@ export default function TopBar() {
   }, []);
 
   return (
-    <header className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between px-6 py-5">
+    <header className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-4 px-6 py-5">
       <h1 className="pointer-events-auto select-none text-sm font-semibold uppercase tracking-[0.28em] text-white/90">
         MHEEF
       </h1>
 
-      <div className="pointer-events-auto relative w-72" ref={containerRef}>
+      <div className="pointer-events-auto relative w-56 sm:w-72" ref={containerRef}>
         <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-accent-300/60" aria-hidden="true" />
         <input
           type="text"
@@ -83,9 +108,15 @@ export default function TopBar() {
           }}
           onKeyDown={handleKeyDown}
           placeholder="Search facilities…"
+          role="combobox"
           aria-label="Search facilities"
           aria-haspopup="listbox"
           aria-expanded={dropdownVisible}
+          aria-controls="facility-search-results"
+          aria-autocomplete="list"
+          aria-activedescendant={
+            dropdownVisible && results.length > 0 ? `${RESULT_ID_PREFIX}${activeIndex}` : undefined
+          }
           className="w-full rounded-full border border-accent-400/20 bg-black/40 py-2 pl-9 pr-9 text-sm text-white/80 placeholder:text-white/30 backdrop-blur-md transition-colors focus:border-accent-400/50 focus:outline-none focus:ring-1 focus:ring-accent-400/40"
         />
         {searchQuery && (
@@ -101,6 +132,9 @@ export default function TopBar() {
           results={results}
           onSelect={handleSelect}
           isVisible={dropdownVisible}
+          activeIndex={activeIndex}
+          onActiveIndexChange={setActiveIndex}
+          optionIdPrefix={RESULT_ID_PREFIX}
         />
       </div>
     </header>

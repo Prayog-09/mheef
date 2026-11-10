@@ -101,17 +101,17 @@ mheef/
 
 ## Known gotchas
 
-- **Earth textures are fetched at runtime** from `threejs.org`'s example
-  asset CDN, not bundled. If that host ever becomes unavailable, swap the
-  URLs in `Earth.tsx` for self-hosted files under `/public/textures/`.
+- **Earth textures are self-hosted** under `public/textures/` (colour,
+  normal and cloud maps from the three.js r164 example assets), and the
+  Inter font is bundled via `@fontsource-variable/inter`. The site makes
+  no third-party requests at runtime.
 - **Texture seam**: if you swap the color/normal map for a different
   source image, the antimeridian may land in a slightly different spot on
   the new texture's UVs — see the comment in `utils/geo.ts` before
   adjusting marker positions to compensate.
-- The main JS bundle is dominated by Three.js/react-three-fiber (~340 kB
-  gzipped) — expected for any WebGL globe and out of scope for this pass;
-  the Phase 5 code-splitting targeted the side-panel tabs specifically,
-  which now load as separate chunks.
+- Three.js/react-three-fiber dominate the JavaScript (~245 kB gzipped).
+  They live in a separate `Globe` chunk that loads lazily, so the title,
+  search and filters appear before the 3D scene has downloaded.
 
 ## Future extensions
 
