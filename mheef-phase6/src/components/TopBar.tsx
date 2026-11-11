@@ -96,8 +96,10 @@ export default function TopBar() {
     return () => document.removeEventListener('mousedown', onMouseDown);
   }, []);
 
+  // The header's gradient keeps the title readable over bright imagery
+  // (ice, desert).
   return (
-    <header className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-4 px-6 py-5">
+    <header className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-4 bg-gradient-to-b from-black/60 to-transparent px-6 pb-8 pt-5">
       <div className="pointer-events-auto flex shrink-0 items-baseline gap-4 sm:gap-5">
         <h1 className="select-none text-sm font-semibold uppercase tracking-[0.28em] text-white/90">
           MHEEF

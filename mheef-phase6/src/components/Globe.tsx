@@ -98,6 +98,15 @@ const VIEW_LIMITS = {
   ion: { facilityHeight: 12_000, minZoom: 400 },
   blueMarble: { facilityHeight: 1_100_000, minZoom: 150_000 },
 } as const;
+// Aerial imagery breaks down at the poles (the map projection it is cut
+// from has no data there), so polar facilities such as IceCube are always
+// viewed from Blue Marble height.
+const POLAR_LATITUDE = 84;
+
+function facilityViewHeight(facility: FacilityStub, ionReady: boolean): number {
+  const useIon = ionReady && Math.abs(facility.lat) < POLAR_LATITUDE;
+  return (useIon ? VIEW_LIMITS.ion : VIEW_LIMITS.blueMarble).facilityHeight;
+}
 // Idle rotation: resumes after a pause, only from far out, never while a
 // facility is open.
 const AUTO_ROTATE_DEG_PER_SEC = 2;
@@ -290,7 +299,7 @@ export default function Globe() {
               destination: Cartesian3.fromDegrees(
                 selected.lng,
                 selected.lat,
-                VIEW_LIMITS.ion.facilityHeight
+                facilityViewHeight(selected, true)
               ),
               duration: 2,
             });
@@ -450,8 +459,11 @@ export default function Globe() {
     if (selectedFacilityId) {
       const facility = facilities.find((f) => f.id === selectedFacilityId);
       if (!facility) return;
-      const limits = ionReadyRef.current ? VIEW_LIMITS.ion : VIEW_LIMITS.blueMarble;
-      destination = Cartesian3.fromDegrees(facility.lng, facility.lat, limits.facilityHeight);
+      destination = Cartesian3.fromDegrees(
+        facility.lng,
+        facility.lat,
+        facilityViewHeight(facility, ionReadyRef.current)
+      );
     } else {
       // Nothing to fly back from on first load.
       if (!hasFlownRef.current) return;
