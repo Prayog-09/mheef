@@ -1,216 +1,465 @@
-import { Component, Suspense, useCallback, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
-import type { ReactNode } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Stars } from '@react-three/drei';
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import * as THREE from 'three';
-import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
-import Earth, { EARTH_RADIUS } from './Earth';
-import Atmosphere from './Atmosphere';
-import Clouds from './Clouds';
-import Marker from './Marker';
-import type { MarkerHighlightState } from './Marker';
+import '../cesiumBase';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Cartesian2,
+  Cartesian3,
+  Color,
+  DistanceDisplayCondition,
+  Entity,
+  GeographicTilingScheme,
+  HeightReference,
+  ImageryLayer,
+  Ion,
+  IonImageryProvider,
+  LabelStyle,
+  Math as CesiumMath,
+  NearFarScalar,
+  PerspectiveFrustum,
+  Rectangle,
+  ScreenSpaceEventHandler,
+  ScreenSpaceEventType,
+  Terrain,
+  TileMapServiceImageryProvider,
+  UrlTemplateImageryProvider,
+  VerticalOrigin,
+  Viewer,
+  buildModuleUrl,
+  defined,
+} from 'cesium';
+import 'cesium/Build/Cesium/Widgets/widgets.css';
 import { useGlobeStore } from '../store/useGlobeStore';
-import type { FacilityStub } from '../types/facility';
+import type { Facility, FacilityStub } from '../types/facility';
 import { facilities } from '../data/facilities';
-import { latLngToVector3 } from '../utils/geo';
 import { facilityMatchesFilters } from '../utils/filters';
 
-// ─── StarField ──────────────────────────────────────────────────────────────
+// Phase 8 — the globe is now CesiumJS rather than a hand-built three.js
+// sphere. Cesium streams map tiles and loads more detail as the camera
+// approaches, so a visitor can go from the whole Earth down to a single
+// laboratory site instead of zooming into one fixed, blurry texture.
+//
+// Imagery is layered, bottom to top:
+//   1. Natural Earth II — a small texture bundled with Cesium. Always
+//      present, so there is an Earth even offline or if NASA is unreachable.
+//   2. NASA Blue Marble (via the GIBS tile service) — public domain, no
+//      account or key. The default look, sharp to about 500 m per pixel.
+//   3. Cesium ion aerial imagery plus 3D terrain — only when a token is
+//      configured, and only shown once the camera is close enough to
+//      need it, which also keeps ion usage down.
 
-// Phase 7: the Phase 6 sky was a 2048px equirectangular canvas used as
-// scene.background. At this camera's field of view only a few hundred of
-// those pixels fill the screen, so its stars and dust clumps rendered as
-// large blurred discs. Point-sprite stars stay sharp at any zoom and need
-// no texture at all.
-function StarField() {
-  return <Stars radius={90} depth={50} count={4500} factor={3.2} saturation={0} fade speed={0} />;
-}
+const ION_TOKEN = import.meta.env.VITE_CESIUM_ION_TOKEN?.trim() ?? '';
+const HAS_ION = ION_TOKEN.length > 0;
 
-// ─── SceneErrorBoundary ─────────────────────────────────────────────────────
+// ─── Imagery ──────────────────────────────────────────────────────────────────
 
-// Phase 6 hardening, added after the NASA-texture incident above: a single
-// failed/blocked async resource inside the Suspense block below (a texture
-// load, a CORS-tainted canvas readback, anything) used to take the entire
-// Canvas down to a blank black screen with no on-screen indication of why,
-// because nothing upstream was catching the thrown error. This is a plain
-// React error boundary — works the same way inside r3f's Canvas as it does
-// in a normal DOM tree — so a future bad texture URL degrades to "the globe
-// mesh is missing" instead of "the whole page is black."
-class SceneErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
-  state = { hasError: false };
-
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: unknown) {
-    console.error('Globe scene failed to render one of its Suspense children:', error);
-  }
-
-  render() {
-    if (this.state.hasError) return null;
-    return this.props.children;
-  }
-}
-
-// ─── CameraRig ────────────────────────────────────────────────────────────────
-
-// Phase 7: the overview distance depends on the viewport's aspect ratio.
-// A fixed distance of 5.5 fits the globe in a landscape window but lets it
-// overflow a portrait phone screen, where the horizontal field of view is
-// the narrow one. FRAMED_RADIUS includes the atmosphere halo plus a margin.
-const CAMERA_FOV = 45;
-const MIN_OVERVIEW_DISTANCE = 5.5;
-const FRAMED_RADIUS = EARTH_RADIUS * 1.18;
-const DEFAULT_CAMERA_TARGET = new THREE.Vector3(0, 0, 0);
-
-function overviewDistanceFor(aspect: number): number {
-  const halfVertical = THREE.MathUtils.degToRad(CAMERA_FOV / 2);
-  const halfHorizontal = Math.atan(Math.tan(halfVertical) * aspect);
-  const fitDistance = FRAMED_RADIUS / Math.sin(Math.min(halfVertical, halfHorizontal));
-  return Math.max(MIN_OVERVIEW_DISTANCE, fitDistance);
-}
+const BLUE_MARBLE_URL =
+  'https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/BlueMarble_ShadedRelief_Bathymetry/default/500m/{z}/{y}/{x}.jpeg';
+const BLUE_MARBLE_MAX_LEVEL = 7;
 
 /**
- * Owns OrbitControls and animates the camera toward a selected facility.
- * Reads `selectedFacilityId` from the Zustand store rather than props, so
- * Phase 3's side-panel and Phase 4's search dropdown can trigger the same
- * fly-to without this component changing.
+ * GIBS geographic tiles are not the usual 180°-wide squares: each level-0
+ * tile is 288° across, in a 2×1 grid anchored at (-180°, 90°), so the grid
+ * overhangs the globe to the east and south. Describing that whole
+ * 576°×288° grid as the tiling scheme's rectangle makes every level a
+ * plain quadtree again; the provider's own rectangle (the real world
+ * extent) then stops Cesium requesting the overhanging tiles.
  */
-function CameraRig() {
-  const { camera, size } = useThree();
-  const overviewDistance = overviewDistanceFor(size.width / size.height);
-  const controlsRef = useRef<OrbitControlsImpl>(null);
-  const selectedFacilityId = useGlobeStore((s) => s.selectedFacilityId);
-  const flightRef = useRef<{ targetPos: THREE.Vector3; targetLook: THREE.Vector3 } | null>(null);
-  const hasFramedRef = useRef(false);
+function createBlueMarbleProvider(): UrlTemplateImageryProvider {
+  return new UrlTemplateImageryProvider({
+    url: BLUE_MARBLE_URL,
+    tilingScheme: new GeographicTilingScheme({
+      rectangle: Rectangle.fromDegrees(-180, 90 - 288, -180 + 576, 90),
+      numberOfLevelZeroTilesX: 2,
+      numberOfLevelZeroTilesY: 1,
+    }),
+    rectangle: Rectangle.MAX_VALUE,
+    tileWidth: 512,
+    tileHeight: 512,
+    maximumLevel: BLUE_MARBLE_MAX_LEVEL,
+    credit: 'Imagery: NASA Blue Marble (GIBS)',
+  });
+}
 
-  // First frame: place the camera at the fitted overview distance directly,
-  // so a phone doesn't open zoomed-in and then visibly pull back.
-  useLayoutEffect(() => {
-    if (hasFramedRef.current) return;
-    hasFramedRef.current = true;
-    camera.position.set(0, 0, overviewDistance);
-  }, [camera, overviewDistance]);
+// Camera heights (metres) between which ion imagery fades in over Blue Marble.
+const ION_FADE_START = 2_500_000;
+const ION_FADE_END = 900_000;
 
-  useEffect(() => {
-    // Phase 6 bug fix: the original version of this effect only set a
-    // flight target when `selectedFacilityId` was truthy and returned
-    // early otherwise — so `controls.target` was never moved back to
-    // the globe's center when the panel closed. autoRotate and manual
-    // drag would then orbit around the last-selected facility's stale
-    // surface point forever (the "frozen, then snaps back" feeling).
-    // Both branches below now go through the exact same lerp-based
-    // flightRef/useFrame machinery — just toward a different target —
-    // so "fly back to overview" is the same animation in reverse, not
-    // a separate instant-snap special case.
-    if (selectedFacilityId) {
-      const facility = facilities.find((f) => f.id === selectedFacilityId);
-      if (!facility) return;
+// ─── Camera ───────────────────────────────────────────────────────────────────
 
-      const surfacePos = latLngToVector3(facility.lat, facility.lng, EARTH_RADIUS);
-      flightRef.current = {
-        targetPos: surfacePos.clone().multiplyScalar(1.9),
-        targetLook: surfacePos,
-      };
-    } else {
-      flightRef.current = {
-        // Fly back along the camera's current direction rather than to a
-        // fixed point, so closing a panel or rotating a phone doesn't swing
-        // the globe round to the prime meridian.
-        targetPos: camera.position.clone().setLength(overviewDistance),
-        targetLook: DEFAULT_CAMERA_TARGET.clone(),
-      };
-    }
+const EARTH_RADIUS_M = 6_378_137;
+// Start over Europe and Africa, where the facility density is highest.
+const INITIAL_LONGITUDE = 15;
+const INITIAL_LATITUDE = 25;
+// How close a selected facility is viewed: site scale with ion imagery,
+// regional scale when only 500 m Blue Marble is available.
+const FACILITY_VIEW_HEIGHT = HAS_ION ? 12_000 : 1_100_000;
+const MIN_ZOOM_DISTANCE = HAS_ION ? 400 : 150_000;
+// Idle rotation: resumes after a pause, only from far out, never while a
+// facility is open.
+const AUTO_ROTATE_DEG_PER_SEC = 2;
+const AUTO_ROTATE_RESUME_MS = 6000;
+const AUTO_ROTATE_MIN_HEIGHT = 6_000_000;
 
-    if (controlsRef.current) {
-      controlsRef.current.autoRotate = false;
-    }
-  }, [selectedFacilityId, overviewDistance, camera]);
+/**
+ * Camera height at which the whole globe (plus a margin for the atmosphere)
+ * fits the canvas. Cesium applies its field of view to the canvas's longer
+ * side, so the shorter side is the constraint — this is what keeps the
+ * globe on screen on a portrait phone.
+ */
+function overviewHeightFor(viewer: Viewer): number {
+  const { clientWidth: width, clientHeight: height } = viewer.canvas;
+  const frustum = viewer.camera.frustum;
+  const fov =
+    frustum instanceof PerspectiveFrustum && defined(frustum.fov)
+      ? frustum.fov
+      : CesiumMath.toRadians(60);
+  const shortOverLong = Math.min(width, height) / Math.max(width, height, 1);
+  const halfShort = Math.atan(Math.tan(fov / 2) * (shortOverLong || 1));
+  return (EARTH_RADIUS_M * 1.12) / Math.sin(halfShort) - EARTH_RADIUS_M;
+}
 
-  useFrame(() => {
-    const controls = controlsRef.current;
-    const flight = flightRef.current;
-    if (!flight || !controls) return;
+// ─── Markers ──────────────────────────────────────────────────────────────────
 
-    camera.position.lerp(flight.targetPos, 0.06);
-    controls.target.lerp(flight.targetLook, 0.06);
-    controls.update();
+type MarkerHighlightState = 'normal' | 'match' | 'dim';
 
-    if (camera.position.distanceTo(flight.targetPos) < 0.01) {
-      flightRef.current = null;
-      controls.autoRotate = true;
-    }
+const MARKER_COLOR = Color.fromCssColorString('#22d3ee');
+const MARKER_DIM_COLOR = Color.fromCssColorString('#3d6670').withAlpha(0.35);
+const MARKER_OUTLINE = Color.WHITE.withAlpha(0.75);
+const HALO_COLOR = MARKER_COLOR.withAlpha(0.28);
+const HALO_MATCH_COLOR = MARKER_COLOR.withAlpha(0.45);
+// Names appear on their own once the camera is this close (metres);
+// further out they show on hover only, so the overview stays uncluttered.
+const LABEL_VISIBLE_WITHIN = new DistanceDisplayCondition(0, 3_000_000);
+// Keep markers visible over 3D terrain when viewed from nearby.
+const MARKER_DEPTH_TEST_DISTANCE = 1_500_000;
+
+interface MarkerEntities {
+  core: Entity;
+  halo: Entity;
+}
+
+function createMarker(viewer: Viewer, facility: FacilityStub): MarkerEntities {
+  const position = Cartesian3.fromDegrees(facility.lng, facility.lat);
+
+  const halo = viewer.entities.add({
+    position,
+    point: {
+      pixelSize: 24,
+      color: HALO_COLOR,
+      heightReference: HeightReference.CLAMP_TO_GROUND,
+      disableDepthTestDistance: MARKER_DEPTH_TEST_DISTANCE,
+    },
   });
 
-  return (
-    <OrbitControls
-      ref={controlsRef}
-      enableDamping
-      dampingFactor={0.08}
-      autoRotate
-      autoRotateSpeed={0.4}
-      minDistance={2.6}
-      maxDistance={overviewDistance * 1.6}
-      rotateSpeed={0.5}
-      zoomSpeed={0.6}
-    />
-  );
+  const core = viewer.entities.add({
+    position,
+    point: {
+      pixelSize: 9,
+      color: MARKER_COLOR,
+      outlineColor: MARKER_OUTLINE,
+      outlineWidth: 1.5,
+      heightReference: HeightReference.CLAMP_TO_GROUND,
+      disableDepthTestDistance: MARKER_DEPTH_TEST_DISTANCE,
+    },
+    label: {
+      text: facility.name,
+      font: '600 13px "Inter Variable", Inter, sans-serif',
+      fillColor: Color.WHITE,
+      style: LabelStyle.FILL,
+      showBackground: true,
+      backgroundColor: Color.BLACK.withAlpha(0.72),
+      backgroundPadding: new Cartesian2(8, 5),
+      verticalOrigin: VerticalOrigin.BOTTOM,
+      pixelOffset: new Cartesian2(0, -14),
+      heightReference: HeightReference.CLAMP_TO_GROUND,
+      disableDepthTestDistance: MARKER_DEPTH_TEST_DISTANCE,
+      distanceDisplayCondition: LABEL_VISIBLE_WITHIN,
+      scaleByDistance: new NearFarScalar(2_000, 1.1, 3_000_000, 0.85),
+    },
+  });
+
+  return { core, halo };
 }
 
 // ─── Globe ────────────────────────────────────────────────────────────────────
 
 export default function Globe() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const creditsRef = useRef<HTMLDivElement>(null);
+  const viewerRef = useRef<Viewer | null>(null);
+  const markersRef = useRef(new Map<string, MarkerEntities>());
+  const isFlyingRef = useRef(false);
+  const [failed, setFailed] = useState(false);
+
+  const selectedFacilityId = useGlobeStore((s) => s.selectedFacilityId);
   const setSelectedFacilityId = useGlobeStore((s) => s.setSelectedFacilityId);
-  // Phase 4: read active filters so we can dim/highlight markers below.
   const activeFilters = useGlobeStore((s) => s.activeFilters);
 
-  // Marker positions are stable — the dataset is static, so no deps needed.
-  const markers = useMemo(
-    () =>
-      facilities.map((facility) => ({
-        facility,
-        position: latLngToVector3(facility.lat, facility.lng, EARTH_RADIUS * 1.002),
-      })),
-    []
-  );
+  // The viewer's event handlers are registered once, so they read the
+  // current selection through a ref rather than a stale closure.
+  const selectedIdRef = useRef(selectedFacilityId);
+  selectedIdRef.current = selectedFacilityId;
 
-  // Phase 4: compute the set of facility IDs that pass the current filters.
-  // null  → no filters active, every marker renders as 'normal'.
-  // Set   → filters active; markers in the set are 'match', others 'dim'.
+  // null → no filters active, every marker renders as 'normal'.
+  // Set  → filters active; markers in the set are 'match', others 'dim'.
   const matchingIds = useMemo<Set<string> | null>(() => {
     if (activeFilters.topics.length === 0 && activeFilters.statuses.length === 0) {
       return null;
     }
     const set = new Set<string>();
     for (const facility of facilities) {
-      if (facilityMatchesFilters(facility, activeFilters)) {
-        set.add(facility.id);
-      }
+      if (facilityMatchesFilters(facility, activeFilters)) set.add(facility.id);
     }
     return set;
   }, [activeFilters]);
 
-  // Phase 5: useCallback so this reference is stable across re-renders —
-  // otherwise every Globe re-render (e.g. a filter toggle) would hand all
-  // 20 memoized Markers a "new" onSelect prop and defeat the memo() below.
   const handleSelect = useCallback(
-    (facility: FacilityStub) => {
-      setSelectedFacilityId(facility.id);
-    },
+    (facility: FacilityStub) => setSelectedFacilityId(facility.id),
     [setSelectedFacilityId]
   );
 
+  // ── Create the viewer once ──
+  useEffect(() => {
+    const container = containerRef.current;
+    const credits = creditsRef.current;
+    if (!container || !credits) return;
+
+    let viewer: Viewer;
+    try {
+      if (HAS_ION) Ion.defaultAccessToken = ION_TOKEN;
+
+      viewer = new Viewer(container, {
+        baseLayer: ImageryLayer.fromProviderAsync(
+          TileMapServiceImageryProvider.fromUrl(buildModuleUrl('Assets/Textures/NaturalEarthII'))
+        ),
+        terrain: HAS_ION ? Terrain.fromWorldTerrain() : undefined,
+        creditContainer: credits,
+        animation: false,
+        timeline: false,
+        baseLayerPicker: false,
+        geocoder: false,
+        homeButton: false,
+        sceneModePicker: false,
+        navigationHelpButton: false,
+        fullscreenButton: false,
+        infoBox: false,
+        selectionIndicator: false,
+      });
+    } catch (error) {
+      // Most often: WebGL is unavailable or blocked on this device.
+      console.error('Globe failed to start:', error);
+      setFailed(true);
+      return;
+    }
+    viewerRef.current = viewer;
+    // Dev only: lets the viewer be inspected from the browser console.
+    if (import.meta.env.DEV) (window as unknown as { __mheefViewer?: Viewer }).__mheefViewer = viewer;
+
+    const { scene, camera } = viewer;
+    // An atlas, not a simulation: the whole Earth stays evenly lit.
+    scene.globe.enableLighting = false;
+    scene.globe.baseColor = Color.fromCssColorString('#0b1a2e');
+    if (scene.sun) scene.sun.show = false;
+    if (scene.moon) scene.moon.show = false;
+    scene.screenSpaceCameraController.minimumZoomDistance = MIN_ZOOM_DISTANCE;
+
+    viewer.imageryLayers.addImageryProvider(createBlueMarbleProvider());
+
+    let ionLayer: ImageryLayer | null = null;
+    if (HAS_ION) {
+      // Asset 2 is ion's global aerial imagery.
+      IonImageryProvider.fromAssetId(2)
+        .then((provider) => {
+          if (viewer.isDestroyed()) return;
+          ionLayer = viewer.imageryLayers.addImageryProvider(provider);
+          ionLayer.show = false;
+        })
+        .catch((error) => {
+          console.warn('Cesium ion imagery unavailable; staying on NASA Blue Marble.', error);
+        });
+    }
+
+    const markers = markersRef.current;
+    const facilityByEntity = new Map<Entity, Facility>();
+    for (const facility of facilities) {
+      const marker = createMarker(viewer, facility);
+      markers.set(facility.id, marker);
+      facilityByEntity.set(marker.core, facility);
+      facilityByEntity.set(marker.halo, facility);
+    }
+    const facilityAt = (windowPosition: Cartesian2): Facility | undefined => {
+      const picked = scene.pick(windowPosition);
+      return picked && picked.id instanceof Entity ? facilityByEntity.get(picked.id) : undefined;
+    };
+
+    // ── Framing ──
+    const applyOverviewLimits = () => {
+      scene.screenSpaceCameraController.maximumZoomDistance = overviewHeightFor(viewer) * 1.6;
+    };
+    applyOverviewLimits();
+    camera.setView({
+      destination: Cartesian3.fromDegrees(
+        INITIAL_LONGITUDE,
+        INITIAL_LATITUDE,
+        overviewHeightFor(viewer)
+      ),
+    });
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (viewer.isDestroyed()) return;
+      applyOverviewLimits();
+      // Re-frame the overview when the window changes shape (e.g. a phone
+      // rotating), but leave a zoomed-in or selected view alone.
+      const { longitude, latitude, height } = camera.positionCartographic;
+      if (!selectedIdRef.current && !isFlyingRef.current && height > AUTO_ROTATE_MIN_HEIGHT) {
+        camera.setView({
+          destination: Cartesian3.fromRadians(longitude, latitude, overviewHeightFor(viewer)),
+        });
+      }
+    });
+    resizeObserver.observe(container);
+
+    // ── Pointer interaction ──
+    let lastInteraction = 0;
+    let pointerDown = false;
+    const markInteraction = () => {
+      lastInteraction = performance.now();
+    };
+    const onPointerDown = () => {
+      pointerDown = true;
+      markInteraction();
+    };
+    const onPointerUp = () => {
+      pointerDown = false;
+      markInteraction();
+    };
+    viewer.canvas.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('pointerup', onPointerUp);
+    viewer.canvas.addEventListener('wheel', markInteraction, { passive: true });
+
+    const handler = new ScreenSpaceEventHandler(viewer.canvas);
+    // Double-click would otherwise lock the camera onto the clicked entity.
+    viewer.screenSpaceEventHandler.removeInputAction(ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
+
+    handler.setInputAction((event: ScreenSpaceEventHandler.PositionedEvent) => {
+      const facility = facilityAt(event.position);
+      if (facility) handleSelect(facility);
+    }, ScreenSpaceEventType.LEFT_CLICK);
+
+    let hovered: Facility | undefined;
+    const setLabelPinned = (facility: Facility, pinned: boolean) => {
+      const label = markers.get(facility.id)?.core.label;
+      if (!label) return;
+      // A pinned label ignores the distance condition, so hovering a
+      // marker names it even from the full-globe view.
+      label.distanceDisplayCondition = (pinned ? undefined : LABEL_VISIBLE_WITHIN) as never;
+    };
+    handler.setInputAction((event: ScreenSpaceEventHandler.MotionEvent) => {
+      const facility = facilityAt(event.endPosition);
+      if (facility === hovered) return;
+      if (hovered) setLabelPinned(hovered, false);
+      if (facility) setLabelPinned(facility, true);
+      hovered = facility;
+      viewer.canvas.style.cursor = facility ? 'pointer' : '';
+    }, ScreenSpaceEventType.MOUSE_MOVE);
+
+    // ── Per-frame: idle rotation and the ion imagery cross-fade ──
+    let lastTick = performance.now();
+    const removeTick = scene.preUpdate.addEventListener(() => {
+      const now = performance.now();
+      const deltaSeconds = Math.min((now - lastTick) / 1000, 0.1);
+      lastTick = now;
+      const height = camera.positionCartographic.height;
+
+      if (ionLayer) {
+        const alpha = CesiumMath.clamp(
+          (ION_FADE_START - height) / (ION_FADE_START - ION_FADE_END),
+          0,
+          1
+        );
+        ionLayer.show = alpha > 0;
+        ionLayer.alpha = alpha;
+      }
+
+      const idle =
+        !pointerDown &&
+        !isFlyingRef.current &&
+        !selectedIdRef.current &&
+        height > AUTO_ROTATE_MIN_HEIGHT &&
+        now - lastInteraction > AUTO_ROTATE_RESUME_MS;
+      if (idle) {
+        camera.rotate(
+          Cartesian3.UNIT_Z,
+          CesiumMath.toRadians(AUTO_ROTATE_DEG_PER_SEC) * deltaSeconds
+        );
+      }
+    });
+
+    return () => {
+      removeTick();
+      resizeObserver.disconnect();
+      handler.destroy();
+      viewer.canvas.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('pointerup', onPointerUp);
+      viewer.canvas.removeEventListener('wheel', markInteraction);
+      markers.clear();
+      viewerRef.current = null;
+      viewer.destroy();
+    };
+  }, [handleSelect]);
+
+  // ── Fly to the selected facility, or back out to the overview ──
+  const hasFlownRef = useRef(false);
+  useEffect(() => {
+    const viewer = viewerRef.current;
+    if (!viewer) return;
+    const { camera } = viewer;
+
+    let destination: Cartesian3;
+    if (selectedFacilityId) {
+      const facility = facilities.find((f) => f.id === selectedFacilityId);
+      if (!facility) return;
+      destination = Cartesian3.fromDegrees(facility.lng, facility.lat, FACILITY_VIEW_HEIGHT);
+    } else {
+      // Nothing to fly back from on first load.
+      if (!hasFlownRef.current) return;
+      // Pull straight back from wherever the camera is, rather than
+      // swinging round to a fixed home position.
+      const { longitude, latitude } = camera.positionCartographic;
+      destination = Cartesian3.fromRadians(longitude, latitude, overviewHeightFor(viewer));
+    }
+
+    hasFlownRef.current = true;
+    isFlyingRef.current = true;
+    const done = () => {
+      isFlyingRef.current = false;
+    };
+    camera.flyTo({ destination, duration: 2.6, complete: done, cancel: done });
+  }, [selectedFacilityId]);
+
+  // ── Filter highlight ──
+  useEffect(() => {
+    for (const [id, { core, halo }] of markersRef.current) {
+      const state: MarkerHighlightState =
+        matchingIds === null ? 'normal' : matchingIds.has(id) ? 'match' : 'dim';
+      if (!core.point || !halo.point) continue;
+
+      core.point.color = (state === 'dim' ? MARKER_DIM_COLOR : MARKER_COLOR) as never;
+      core.point.outlineWidth = (state === 'dim' ? 0 : 1.5) as never;
+      core.point.pixelSize = (state === 'match' ? 11 : 9) as never;
+      halo.show = state !== 'dim';
+      halo.point.color = (state === 'match' ? HALO_MATCH_COLOR : HALO_COLOR) as never;
+      halo.point.pixelSize = (state === 'match' ? 30 : 24) as never;
+    }
+  }, [matchingIds]);
+
   return (
     <div className="absolute inset-0">
-      {/* Phase 5 — accessibility: the globe is a WebGL canvas, so it has no
-          native keyboard or screen-reader path to "click a marker." This
-          list mirrors every facility as a real, focusable button so
-          keyboard and screen-reader users can open the same side panel a
-          mouse click on a marker opens. Visually hidden until a list item
-          receives focus (e.g. via Tab), so it doesn't clutter the sighted,
-          mouse-driven experience. */}
+      {/* Accessibility: the globe is a WebGL canvas, so it has no native
+          keyboard or screen-reader path to "click a marker." This list
+          mirrors every facility as a real, focusable button so keyboard
+          and screen-reader users can open the same side panel a mouse
+          click on a marker opens. Visually hidden until a list item
+          receives focus (e.g. via Tab). */}
       <nav
         aria-label="Facilities"
         className="sr-only focus-within:not-sr-only focus-within:absolute focus-within:left-4 focus-within:top-20 focus-within:z-30 focus-within:max-h-[60vh] focus-within:w-64 focus-within:overflow-y-auto focus-within:rounded-lg focus-within:border focus-within:border-accent-400/30 focus-within:bg-black/90 focus-within:p-2 focus-within:backdrop-blur-md"
@@ -229,65 +478,22 @@ export default function Globe() {
         </ul>
       </nav>
 
-      <Canvas camera={{ position: [0, 0, MIN_OVERVIEW_DISTANCE], fov: CAMERA_FOV }}>
-        {/* Deep-space background colour; also what SceneErrorBoundary
-            leaves visible if Earth/Atmosphere/Clouds fail to render. */}
-        <color attach="background" args={['#03050a']} />
-        {/* Phase 6: nudged up from 0.5 so the unlit hemisphere reads as
-            "night side," not pure black — same reasoning Earth's day/night
-            terminator gets from real Earth photography. */}
-        <ambientLight intensity={0.65} />
-        <directionalLight position={[5, 3, 5]} intensity={1.4} />
+      <div ref={containerRef} className="globe-canvas absolute inset-0" aria-hidden="true" />
 
-        <SceneErrorBoundary>
-          <Suspense fallback={null}>
-            <Earth />
-            <Atmosphere />
-            <Clouds />
-          </Suspense>
-        </SceneErrorBoundary>
+      {failed && (
+        <div
+          className="absolute inset-0 flex items-center justify-center px-8 text-center"
+          role="alert"
+        >
+          <p className="max-w-sm text-sm leading-relaxed text-white/60">
+            The 3D globe could not start on this device. You can still find every facility with the
+            search box above.
+          </p>
+        </div>
+      )}
 
-        <StarField />
-
-        {markers.map(({ facility, position }) => {
-          // Phase 4: resolve each marker's visual state from the filter set.
-          const highlightState: MarkerHighlightState =
-            matchingIds === null
-              ? 'normal'
-              : matchingIds.has(facility.id)
-              ? 'match'
-              : 'dim';
-
-          return (
-            <Marker
-              key={facility.id}
-              facility={facility}
-              position={position}
-              onSelect={handleSelect}
-              highlightState={highlightState}
-            />
-          );
-        })}
-
-        <CameraRig />
-
-        {/* Phase 6: bloom pass — tuned to catch only emissive/bright
-            elements (currently just marker cores/halos, which render
-            full-bright cyan via MeshBasicMaterial). luminanceThreshold is
-            set high enough that Earth's lit hemisphere — even with the
-            new ocean specular highlights — stays under it; only pixels
-            close to full brightness (markers, and later any "active"
-            facility) cross over and bleed light into their neighbors. */}
-        <EffectComposer>
-          <Bloom
-            mipmapBlur
-            luminanceThreshold={0.82}
-            luminanceSmoothing={0.25}
-            intensity={0.65}
-            radius={0.55}
-          />
-        </EffectComposer>
-      </Canvas>
+      {/* Imagery attribution, required by the data providers. */}
+      <div ref={creditsRef} className="globe-credits" />
     </div>
   );
 }

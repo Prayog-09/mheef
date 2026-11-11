@@ -61,6 +61,15 @@ export default function TopBar() {
       handleClear();
       return;
     }
+    if (e.key === 'Enter') {
+      // Search again from the input's current text rather than trusting
+      // `results`, which lags a render behind fast typing.
+      const current = searchFacilities(e.currentTarget.value).slice(0, MAX_RESULTS);
+      if (current.length === 0) return;
+      e.preventDefault();
+      handleSelect(current[activeIndex] ?? current[0]);
+      return;
+    }
     if (results.length === 0) return;
 
     if (e.key === 'ArrowDown') {
@@ -71,9 +80,6 @@ export default function TopBar() {
       e.preventDefault();
       setDropdownVisible(true);
       setActiveIndex((i) => (i - 1 + results.length) % results.length);
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      handleSelect(results[activeIndex] ?? results[0]);
     }
   };
 

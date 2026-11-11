@@ -16,7 +16,7 @@ pulses, no bounce.
 | Layer | Choice |
 |---|---|
 | Framework | React 18 + TypeScript + Vite |
-| 3D globe | react-three-fiber + drei (Three.js under the hood) |
+| 3D globe | CesiumJS, with NASA Blue Marble imagery (GIBS) and optional Cesium ion imagery and terrain |
 | Styling | Tailwind CSS |
 | Motion | Framer Motion |
 | State | Zustand (selected facility, search query, active filters) |
@@ -38,8 +38,22 @@ npm run build      # type-checks (tsc -b) then builds a production bundle to dis
 npm run preview    # serves the production build locally
 ```
 
-No environment variables or API keys are required — all facility data is
-bundled at build time from local TypeScript files.
+No API key is required: by default the globe uses NASA Blue Marble
+imagery, which is public domain and needs no account.
+
+### Optional: Cesium ion imagery and terrain
+
+With a Cesium ion access token, zooming in switches from Blue Marble to
+high-resolution aerial imagery and 3D terrain, so a facility can be viewed
+at site scale.
+
+1. Create a token at <https://ion.cesium.com/tokens> with only the
+   `assets:read` scope. Under "Allowed URLs", restrict it to the site's
+   address — the token is visible to anyone who loads the page.
+2. Locally: copy `.env.example` to `.env.local` and paste the token in.
+3. For the published site: store it as a GitHub repository variable named
+   `CESIUM_ION_TOKEN` (Settings → Secrets and variables → Actions →
+   Variables), then re-run the deploy workflow.
 
 ## Folder structure
 
@@ -60,11 +74,8 @@ mheef/
     ├── vite-env.d.ts
     │
     ├── components/
-    │   ├── Atmosphere.tsx          # Fresnel/rim-light glow shell around the Earth mesh
-    │   ├── Earth.tsx                # Textured sphere + EARTH_RADIUS constant
     │   ├── FilterPanel.tsx          # Topic/status filter chips — inline panel (desktop), modal (mobile)
-    │   ├── Globe.tsx                # Canvas, lighting, stars, marker list, camera rig, a11y facility list
-    │   ├── Marker.tsx                # Per-facility glowing/pulsing marker + hover tooltip
+    │   ├── Globe.tsx                # Cesium viewer, imagery layers, markers, camera, a11y facility list
     │   ├── SearchDropdown.tsx       # Fuzzy-search result list under the TopBar input
     │   ├── StatusBadge.tsx          # Active / Historic / Planned pill
     │   ├── TopBar.tsx                # Title + search input, wired to Fuse.js
@@ -95,23 +106,26 @@ mheef/
     │
     └── utils/
         ├── filters.ts                # facilityMatchesFilters — OR within a group, AND across groups
-        ├── geo.ts                    # lat/lng → Vector3 on the sphere
         └── search.ts                 # Fuse.js singleton over the facility dataset
 ```
 
 ## Known gotchas
 
-- **Earth textures are self-hosted** under `public/textures/` (colour,
-  normal and cloud maps from the three.js r164 example assets), and the
-  Inter font is bundled via `@fontsource-variable/inter`. The site makes
-  no third-party requests at runtime.
-- **Texture seam**: if you swap the color/normal map for a different
-  source image, the antimeridian may land in a slightly different spot on
-  the new texture's UVs — see the comment in `utils/geo.ts` before
-  adjusting marker positions to compensate.
-- Three.js/react-three-fiber dominate the JavaScript (~245 kB gzipped).
-  They live in a separate `Globe` chunk that loads lazily, so the title,
-  search and filters appear before the 3D scene has downloaded.
+- **Cesium's runtime files** (web workers, sky box, widget styles) are
+  copied from `node_modules/cesium` into `public/cesium` by
+  `scripts/copy-cesium.mjs`, which runs automatically before `npm run dev`
+  and `npm run build`. That folder is generated and not committed.
+- **Blue Marble tiles are streamed** from NASA's GIBS service, so the
+  detailed imagery needs a network connection. A low-resolution Natural
+  Earth texture bundled with Cesium is always drawn underneath, so the
+  globe still appears offline.
+- **GIBS uses an unusual tile grid** (288°-wide level-0 tiles). See the
+  comment on `createBlueMarbleProvider` in `Globe.tsx` before changing the
+  imagery source.
+- **Bundle size**: CesiumJS is about 1.1 MB gzipped. It lives in the
+  lazily loaded `Globe` chunk, so the title, search and filters appear
+  before the globe has downloaded.
+- The Inter font is bundled via `@fontsource-variable/inter`.
 
 ## Future extensions
 

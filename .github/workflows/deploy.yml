@@ -29,6 +29,10 @@ jobs:
           cache-dependency-path: mheef-phase6/package-lock.json
       - run: npm ci
       - run: npm run build
+        env:
+          # Optional. Set as a repository variable to enable Cesium ion
+          # imagery and terrain; without it the site uses NASA Blue Marble.
+          VITE_CESIUM_ION_TOKEN: ${{ vars.CESIUM_ION_TOKEN }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
