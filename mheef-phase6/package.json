@@ -6,13 +6,16 @@
   "scripts": {
     "copy-cesium": "node scripts/copy-cesium.mjs",
     "predev": "npm run copy-cesium",
-    "dev": "vite",
+    "dev": "astro dev",
     "prebuild": "npm run copy-cesium",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/react": "^7.1.8",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/inter": "^5.3.0",
+    "astro": "^7.4.11",
     "cesium": "^1.147.0",
     "framer-motion": "^11.2.0",
     "fuse.js": "^6.6.2",
@@ -24,11 +27,9 @@
   "devDependencies": {
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.10"
+    "typescript": "^5.4.5"
   }
 }

@@ -15,7 +15,7 @@ pulses, no bounce.
 
 | Layer | Choice |
 |---|---|
-| Framework | React 18 + TypeScript + Vite |
+| Framework | Astro (static pages) with React 18 + TypeScript for the interactive globe |
 | 3D globe | CesiumJS, with NASA Blue Marble imagery (GIBS) and optional Cesium ion imagery and terrain |
 | Styling | Tailwind CSS |
 | Motion | Framer Motion |
@@ -28,13 +28,13 @@ pulses, no bounce.
 
 ```bash
 npm install
-npm run dev       # starts the Vite dev server, prints a localhost URL
+npm run dev       # starts the Astro dev server at http://localhost:4321/mheef/
 ```
 
 Other scripts:
 
 ```bash
-npm run build      # type-checks (tsc -b) then builds a production bundle to dist/
+npm run build      # builds the static site to dist/
 npm run preview    # serves the production build locally
 ```
 
@@ -50,63 +50,63 @@ at site scale.
 1. Create a token at <https://ion.cesium.com/tokens> with only the
    `assets:read` scope. Under "Allowed URLs", restrict it to the site's
    address — the token is visible to anyone who loads the page.
-2. Locally: copy `.env.example` to `.env.local` and paste the token in.
+2. Locally: copy `.env.example` to `.env.local` and paste the token in
+   (the variable is `PUBLIC_CESIUM_ION_TOKEN`).
 3. For the published site: store it as a GitHub repository variable named
    `CESIUM_ION_TOKEN` (Settings → Secrets and variables → Actions →
    Variables), then re-run the deploy workflow.
 
+## Pages
+
+| Address | What it is |
+|---|---|
+| `/` | The interactive globe. `/?facility=cern` opens it on a facility. |
+| `/facilities/` | A list of every facility |
+| `/facilities/<id>/` | One static page per facility, generated from the dataset |
+
+Facility pages are plain HTML built from `src/data/facilities.ts`, so they
+load without the globe, can be linked to and are indexable by search
+engines. Adding a facility to the dataset adds its page automatically.
+
 ## Folder structure
 
 ```
-mheef/
-├── index.html
-├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-├── tsconfig.json
-├── tsconfig.node.json
-├── vite.config.ts
+mheef-phase6/
+├── astro.config.mjs                 # Site address, base path, integrations
+├── scripts/copy-cesium.mjs          # Copies Cesium's runtime files into public/
 │
 └── src/
-    ├── App.tsx
+    ├── App.tsx                      # The globe app (React), mounted on the home page
+    ├── cesiumBase.ts                # Tells Cesium where its runtime files live
     ├── index.css
-    ├── main.tsx
-    ├── vite-env.d.ts
+    │
+    ├── layouts/
+    │   └── Base.astro               # <head>, site header and footer
+    │
+    ├── pages/
+    │   ├── index.astro              # Globe
+    │   ├── 404.astro
+    │   └── facilities/
+    │       ├── index.astro          # All facilities
+    │       └── [id].astro           # One page per facility
     │
     ├── components/
-    │   ├── FilterPanel.tsx          # Topic/status filter chips — inline panel (desktop), modal (mobile)
-    │   ├── Globe.tsx                # Cesium viewer, imagery layers, markers, camera, a11y facility list
-    │   ├── SearchDropdown.tsx       # Fuzzy-search result list under the TopBar input
+    │   ├── FilterPanel.tsx          # Topic/status filter chips
+    │   ├── Globe.tsx                # Cesium viewer, imagery layers, markers, camera
+    │   ├── SearchDropdown.tsx       # Fuzzy-search result list
     │   ├── StatusBadge.tsx          # Active / Historic / Planned pill
-    │   ├── TopBar.tsx                # Title + search input, wired to Fuse.js
-    │   │
-    │   └── SidePanel/
-    │       ├── SidePanel.tsx        # Slide-in (desktop) / bottom-sheet (mobile) container, focus trap
-    │       ├── SidePanelHeader.tsx  # Name, status, country, founded year, coordinates
-    │       ├── TabBar.tsx           # Roving-tabindex tab list with arrow-key navigation
-    │       └── tabs/
-    │           ├── OverviewTab.tsx
-    │           ├── HistoryTab.tsx
-    │           ├── ExperimentsTab.tsx
-    │           ├── KeyResultsTab.tsx
-    │           ├── ImportantPeopleTab.tsx
-    │           └── ReadMoreTab.tsx
+    │   ├── TopBar.tsx               # Title, link to all facilities, search
+    │   └── SidePanel/               # Slide-in facility panel and its tabs
     │
-    ├── data/
-    │   └── facilities.ts            # 20 flagship facilities, fully typed
-    │
-    ├── hooks/
-    │   └── useMediaQuery.ts         # Responsive breakpoint hook (Phase 5)
-    │
-    ├── store/
-    │   └── useGlobeStore.ts         # Zustand: selection, search query, active filters
-    │
-    ├── types/
-    │   └── facility.ts              # Facility / Experiment / KeyResult / Scientist / topic types
-    │
+    ├── data/facilities.ts           # The dataset
+    ├── hooks/useMediaQuery.ts
+    ├── store/useGlobeStore.ts       # Zustand: selection, search query, filters
+    ├── types/facility.ts
     └── utils/
-        ├── filters.ts                # facilityMatchesFilters — OR within a group, AND across groups
-        └── search.ts                 # Fuse.js singleton over the facility dataset
+        ├── facility.ts              # Shared formatting and status styles
+        ├── filters.ts               # Filter matching
+        ├── paths.ts                 # Base-path-aware internal links
+        └── search.ts                # Fuse.js index
 ```
 
 ## Known gotchas
@@ -115,6 +115,10 @@ mheef/
   copied from `node_modules/cesium` into `public/cesium` by
   `scripts/copy-cesium.mjs`, which runs automatically before `npm run dev`
   and `npm run build`. That folder is generated and not committed.
+- **The site lives under `/mheef`** on GitHub Pages. Internal links must
+  go through `withBase()` in `src/utils/paths.ts`; a plain `/facilities/…`
+  link would break. For a custom domain, change `site` and `base` in
+  `astro.config.mjs`.
 - **Blue Marble tiles are streamed** from NASA's GIBS service, so the
   detailed imagery needs a network connection. A low-resolution Natural
   Earth texture bundled with Cesium is always drawn underneath, so the

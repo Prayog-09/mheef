@@ -5,6 +5,7 @@ import { useGlobeStore } from '../store/useGlobeStore';
 import { searchFacilities } from '../utils/search';
 import type { Facility } from '../types/facility';
 import SearchDropdown from './SearchDropdown';
+import { withBase } from '../utils/paths';
 
 // Capped at 6 results — enough to be useful, short enough to avoid the
 // dropdown covering the globe.
@@ -97,11 +98,19 @@ export default function TopBar() {
 
   return (
     <header className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-4 px-6 py-5">
-      <h1 className="pointer-events-auto select-none text-sm font-semibold uppercase tracking-[0.28em] text-white/90">
-        MHEEF
-      </h1>
+      <div className="pointer-events-auto flex shrink-0 items-baseline gap-4 sm:gap-5">
+        <h1 className="select-none text-sm font-semibold uppercase tracking-[0.28em] text-white/90">
+          MHEEF
+        </h1>
+        <a
+          href={withBase('/facilities/')}
+          className="whitespace-nowrap text-xs font-medium text-white/60 transition-colors hover:text-white"
+        >
+          All facilities
+        </a>
+      </div>
 
-      <div className="pointer-events-auto relative w-56 sm:w-72" ref={containerRef}>
+      <div className="pointer-events-auto relative min-w-0 flex-1 sm:w-72 sm:flex-none" ref={containerRef}>
         <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-accent-300/60" aria-hidden="true" />
         <input
           type="text"

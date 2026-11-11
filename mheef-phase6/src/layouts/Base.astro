@@ -1,0 +1,89 @@
+---
+import '@fontsource-variable/inter';
+import '../index.css';
+import { withBase } from '../utils/paths';
+
+interface Props {
+  /** Page name; the site name is appended automatically. */
+  title?: string;
+  description?: string;
+  /** The globe page fills the viewport and brings its own header. */
+  fullScreen?: boolean;
+}
+
+const SITE_NAME = 'MHEEF — Mapping High Energy Experimental Facilities';
+const DEFAULT_DESCRIPTION =
+  "An interactive atlas of the world's high-energy physics laboratories: colliders, underground laboratories, neutrino telescopes, cosmic-ray observatories and gravitational-wave detectors.";
+
+const { title, description = DEFAULT_DESCRIPTION, fullScreen = false } = Astro.props;
+const pageTitle = title ? `${title} · MHEEF` : SITE_NAME;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const navLinks = [
+  { href: withBase('/'), label: 'Globe' },
+  { href: withBase('/facilities/'), label: 'Facilities' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="MHEEF" />
+    <meta name="theme-color" content="#03050a" />
+    <link rel="sitemap" href={withBase('/sitemap-index.xml')} />
+  </head>
+  <body class="bg-space-950 text-white antialiased">
+    {
+      fullScreen ? (
+        <slot />
+      ) : (
+        <div class="flex min-h-screen flex-col">
+          <header class="border-b border-white/10">
+            <div class="mx-auto flex w-full max-w-4xl items-center justify-between px-6 py-5">
+              <a
+                href={withBase('/')}
+                class="text-sm font-semibold uppercase tracking-[0.28em] text-white/90 transition-colors hover:text-white"
+              >
+                MHEEF
+              </a>
+              <nav aria-label="Site" class="flex items-center gap-6 text-sm">
+                {navLinks.map((link) => (
+                  <a href={link.href} class="text-white/60 transition-colors hover:text-white">
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </header>
+
+          <main class="mx-auto w-full max-w-4xl flex-1 px-6 py-10">
+            <slot />
+          </main>
+
+          <footer class="border-t border-white/10">
+            <div class="mx-auto w-full max-w-4xl px-6 py-6 text-xs leading-relaxed text-white/45">
+              <p>
+                MHEEF — Mapping High Energy Experimental Facilities. An early version: some entries
+                are still being reviewed, and corrections are welcome through the
+                <a
+                  href="https://github.com/Prayog-09/mheef/issues"
+                  class="text-white/70 underline decoration-white/30 underline-offset-2 hover:text-white"
+                  >project's issue tracker</a
+                >.
+              </p>
+            </div>
+          </footer>
+        </div>
+      )
+    }
+  </body>
+</html>

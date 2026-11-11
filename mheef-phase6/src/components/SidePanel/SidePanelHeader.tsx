@@ -1,6 +1,7 @@
-import { MapPin } from 'lucide-react';
+import { ArrowUpRight, MapPin } from 'lucide-react';
 import type { Facility } from '../../types/facility';
 import StatusBadge from '../StatusBadge';
+import { facilityPagePath } from '../../utils/paths';
 
 interface SidePanelHeaderProps {
   facility: Facility;
@@ -32,6 +33,14 @@ export default function SidePanelHeader({ facility }: SidePanelHeaderProps) {
             {facility.lat.toFixed(2)}°, {facility.lng.toFixed(2)}°
           </span>
         </div>
+
+        <a
+          href={facilityPagePath(facility.id)}
+          className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-accent-300 transition-colors hover:text-white"
+        >
+          Open full page
+          <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+        </a>
       </div>
     </div>
   );

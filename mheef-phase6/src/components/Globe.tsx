@@ -46,7 +46,7 @@ import { facilityMatchesFilters } from '../utils/filters';
 //      configured, and only shown once the camera is close enough to
 //      need it, which also keeps ion usage down.
 
-const ION_TOKEN = import.meta.env.VITE_CESIUM_ION_TOKEN?.trim() ?? '';
+const ION_TOKEN = import.meta.env.PUBLIC_CESIUM_ION_TOKEN?.trim() ?? '';
 const HAS_ION = ION_TOKEN.length > 0;
 
 // ─── Imagery ──────────────────────────────────────────────────────────────────
@@ -282,6 +282,19 @@ export default function Globe() {
           ionLayer.show = false;
           ionReadyRef.current = true;
           scene.screenSpaceCameraController.minimumZoomDistance = VIEW_LIMITS.ion.minZoom;
+          // A facility opened before ion finished loading (e.g. from a
+          // shared link) was framed at Blue Marble height; move in now.
+          const selected = facilities.find((f) => f.id === selectedIdRef.current);
+          if (selected) {
+            camera.flyTo({
+              destination: Cartesian3.fromDegrees(
+                selected.lng,
+                selected.lat,
+                VIEW_LIMITS.ion.facilityHeight
+              ),
+              duration: 2,
+            });
+          }
         })
         .catch((error) => {
           console.warn('Cesium ion imagery unavailable; staying on NASA Blue Marble.', error);

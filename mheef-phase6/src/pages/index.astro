@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import App from '../App';
+import { facilities } from '../data/facilities';
+import { facilityPagePath, withBase } from '../utils/paths';
+---
+
+<Base fullScreen>
+  {/* The globe needs WebGL and the browser's window, so it renders on the
+      client only. */}
+  <App client:only="react" />
+
+  {/* Without JavaScript the globe can't run; the facility pages are plain
+      HTML, so point there instead of leaving a blank screen. */}
+  <noscript>
+    <div class="mx-auto max-w-2xl px-6 py-16">
+      <h1 class="text-2xl font-semibold">MHEEF — Mapping High Energy Experimental Facilities</h1>
+      <p class="mt-4 text-sm leading-relaxed text-white/70">
+        The interactive globe needs JavaScript. Every facility also has its own page:
+      </p>
+      <ul class="mt-6 space-y-2 text-sm">
+        {
+          facilities.map((facility) => (
+            <li>
+              <a class="text-accent-300 underline" href={facilityPagePath(facility.id)}>
+                {facility.name}
+              </a>
+              <span class="text-white/50"> — {facility.country}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-6 text-sm">
+        <a class="text-accent-300 underline" href={withBase('/facilities/')}>Browse all facilities</a>
+      </p>
+    </div>
+  </noscript>
+</Base>

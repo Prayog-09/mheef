@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+import { facilities } from '../../data/facilities';
+import { PHYSICS_TOPIC_LABELS } from '../../types/facility';
+import { STATUS_LABELS, STATUS_STYLES, facilityTopics } from '../../utils/facility';
+import { facilityPagePath, withBase } from '../../utils/paths';
+
+const sorted = [...facilities].sort((a, b) => a.name.localeCompare(b.name));
+const countries = new Set(facilities.flatMap((f) => f.country.split(' / ')));
+---
+
+<Base
+  title="All facilities"
+  description={`Browse all ${facilities.length} high-energy physics facilities in the MHEEF atlas, with their location, status, founding year and research topics.`}
+>
+  <h1 class="text-3xl font-semibold tracking-tight">Facilities</h1>
+  <p class="mt-3 max-w-2xl text-sm leading-relaxed text-white/65">
+    {facilities.length} laboratories and observatories in {countries.size} countries and territories.
+    Each has its own page with an overview, history, experiments, key results and people — or{' '}
+    <a href={withBase('/')} class="text-accent-300 underline decoration-accent-300/40 underline-offset-2 hover:text-white">explore them on the globe</a>.
+  </p>
+
+  <ul class="mt-10 divide-y divide-white/10 border-y border-white/10">
+    {
+      sorted.map((facility) => (
+        <li>
+          <a
+            href={facilityPagePath(facility.id)}
+            class="group grid gap-x-6 gap-y-2 py-5 transition-colors hover:bg-white/[0.03] sm:grid-cols-[minmax(0,1fr)_auto] sm:px-3"
+          >
+            <div class="min-w-0">
+              <h2 class="text-base font-semibold text-white group-hover:text-accent-300">
+                {facility.name}
+              </h2>
+              <p class="mt-1 text-xs text-white/50">
+                {facility.country} · Founded {facility.founded}
+              </p>
+              <p class="mt-2 text-xs leading-relaxed text-white/45">
+                {facilityTopics(facility).map((topic) => PHYSICS_TOPIC_LABELS[topic]).join(' · ')}
+              </p>
+            </div>
+            <div class="sm:pt-0.5">
+              <span
+                class={`inline-block rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${STATUS_STYLES[facility.status]}`}
+              >
+                {STATUS_LABELS[facility.status]}
+              </span>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

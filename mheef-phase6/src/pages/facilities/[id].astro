@@ -1,0 +1,251 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import { facilities } from '../../data/facilities';
+import { PHYSICS_TOPIC_LABELS, type Facility } from '../../types/facility';
+import {
+  STATUS_LABELS,
+  STATUS_STYLES,
+  facilityTopics,
+  formatCoordinates,
+  formatYears,
+} from '../../utils/facility';
+import { facilityGlobePath, facilityPagePath, withBase } from '../../utils/paths';
+
+// One static page per facility, generated at build time from the dataset.
+export const getStaticPaths = (() =>
+  facilities.map((facility) => ({
+    params: { id: facility.id },
+    props: { facility },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  facility: Facility;
+}
+
+const { facility } = Astro.props;
+const topics = facilityTopics(facility);
+// The dataset's timelines are not all stored in date order.
+const history = [...facility.history].sort((a, b) => a.year - b.year);
+const keyResults = [...facility.keyResults].sort((a, b) => a.year - b.year);
+
+const sorted = [...facilities].sort((a, b) => a.name.localeCompare(b.name));
+const position = sorted.findIndex((f) => f.id === facility.id);
+const previous = sorted[position - 1];
+const next = sorted[position + 1];
+
+// First sentence of the overview, for search results and link previews.
+const description = facility.overview.match(/^.*?[.!?](?=\s|$)/)?.[0] ?? facility.overview;
+
+const facts = [
+  { label: 'Location', value: facility.country },
+  { label: 'Founded', value: String(facility.founded) },
+  { label: 'Status', value: STATUS_LABELS[facility.status] },
+  { label: 'Coordinates', value: formatCoordinates(facility.lat, facility.lng) },
+];
+
+const sections = [
+  { id: 'history', label: 'History', show: history.length > 0 },
+  { id: 'experiments', label: 'Experiments', show: facility.experiments.length > 0 },
+  { id: 'key-results', label: 'Key results', show: keyResults.length > 0 },
+  { id: 'people', label: 'People', show: facility.importantPeople.length > 0 },
+  { id: 'read-more', label: 'Further reading', show: facility.readMore.length > 0 },
+].filter((section) => section.show);
+
+const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-accent-300';
+---
+
+<Base title={facility.name} description={description}>
+  <nav aria-label="Breadcrumb" class="text-xs text-white/45">
+    <a href={withBase('/facilities/')} class="transition-colors hover:text-white">Facilities</a>
+    <span aria-hidden="true" class="mx-1.5">/</span>
+    <span class="text-white/70">{facility.name}</span>
+  </nav>
+
+  <article>
+    <header class="mt-4">
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-3">
+        <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">{facility.name}</h1>
+        <span
+          class={`rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${STATUS_STYLES[facility.status]}`}
+        >
+          {STATUS_LABELS[facility.status]}
+        </span>
+      </div>
+
+      <p class="mt-5 max-w-3xl text-base leading-relaxed text-white/75">{facility.overview}</p>
+
+      <a
+        href={facilityGlobePath(facility.id)}
+        class="mt-6 inline-flex items-center gap-2 rounded-full border border-accent-400/40 bg-accent-400/10 px-4 py-2 text-sm font-medium text-accent-300 transition-colors hover:border-accent-400/70 hover:text-white"
+      >
+        View on the globe
+        <span aria-hidden="true">→</span>
+      </a>
+    </header>
+
+    <dl class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {
+        facts.map((fact) => (
+          <div class="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3">
+            <dt class="text-[10px] uppercase tracking-wide text-white/50">{fact.label}</dt>
+            <dd class="mt-1 text-sm font-medium text-white/90">{fact.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    {
+      topics.length > 0 && (
+        <ul aria-label="Research topics" class="mt-5 flex flex-wrap gap-2">
+          {topics.map((topic) => (
+            <li class="rounded-full border border-white/15 px-3 py-1 text-xs text-white/65">
+              {PHYSICS_TOPIC_LABELS[topic]}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      sections.length > 1 && (
+        <nav aria-label="On this page" class="mt-10 flex flex-wrap gap-x-5 gap-y-2 border-y border-white/10 py-3 text-xs">
+          {sections.map((section) => (
+            <a href={`#${section.id}`} class="text-white/55 transition-colors hover:text-white">
+              {section.label}
+            </a>
+          ))}
+        </nav>
+      )
+    }
+
+    {
+      history.length > 0 && (
+        <section aria-labelledby="history" class="mt-12">
+          <h2 id="history" class={sectionHeading}>History</h2>
+          <ol class="mt-5 space-y-5 border-l border-white/15 pl-6">
+            {history.map((entry) => (
+              <li class="relative">
+                <span aria-hidden="true" class="absolute -left-[29px] top-1.5 h-2 w-2 rounded-full bg-accent-400" />
+                <p class="font-mono text-sm font-semibold text-white">{entry.year}</p>
+                <p class="mt-1 max-w-3xl text-sm leading-relaxed text-white/70">{entry.event}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
+
+    {
+      facility.experiments.length > 0 && (
+        <section aria-labelledby="experiments" class="mt-12">
+          <h2 id="experiments" class={sectionHeading}>Experiments</h2>
+          <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+            {facility.experiments.map((experiment) => (
+              <li class="rounded-lg border border-white/10 bg-white/[0.03] p-5">
+                <div class="flex items-baseline justify-between gap-3">
+                  <h3 class="text-base font-semibold text-white">{experiment.name}</h3>
+                  <span class="shrink-0 font-mono text-xs text-white/45">
+                    {formatYears(experiment.startYear, experiment.endYear)}
+                  </span>
+                </div>
+                <p class="mt-2 text-sm leading-relaxed text-white/65">{experiment.description}</p>
+                <p class="mt-3 text-xs text-white/45">
+                  {experiment.topics.map((topic) => PHYSICS_TOPIC_LABELS[topic]).join(' · ')}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      keyResults.length > 0 && (
+        <section aria-labelledby="key-results" class="mt-12">
+          <h2 id="key-results" class={sectionHeading}>Key results</h2>
+          <ul class="mt-5 space-y-6">
+            {keyResults.map((result) => (
+              <li class="grid gap-x-6 gap-y-1 sm:grid-cols-[4rem_minmax(0,1fr)]">
+                <p class="font-mono text-sm font-semibold text-accent-300">{result.year}</p>
+                <div>
+                  <h3 class="text-base font-semibold text-white">{result.discovery}</h3>
+                  <p class="mt-1 max-w-3xl text-sm leading-relaxed text-white/70">
+                    {result.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      facility.importantPeople.length > 0 && (
+        <section aria-labelledby="people" class="mt-12">
+          <h2 id="people" class={sectionHeading}>People</h2>
+          <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+            {facility.importantPeople.map((person) => (
+              <li class="rounded-lg border border-white/10 bg-white/[0.03] p-5">
+                <h3 class="text-sm font-semibold text-white">{person.name}</h3>
+                <p class="mt-1.5 text-sm leading-relaxed text-white/65">{person.contribution}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      facility.readMore.length > 0 && (
+        <section aria-labelledby="read-more" class="mt-12">
+          <h2 id="read-more" class={sectionHeading}>Further reading</h2>
+          <ul class="mt-5 space-y-2">
+            {facility.readMore.map((link) => (
+              <li>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-sm text-white/80 underline decoration-white/25 underline-offset-4 transition-colors hover:text-accent-300"
+                >
+                  {link.label}
+                  <span aria-hidden="true"> ↗</span>
+                  <span class="sr-only"> (opens in a new tab)</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+
+  <nav aria-label="More facilities" class="mt-16 grid gap-3 border-t border-white/10 pt-6 text-sm sm:grid-cols-2">
+    <div>
+      {
+        previous && (
+          <a href={facilityPagePath(previous.id)} class="group block">
+            <span class="text-xs text-white/45">← Previous</span>
+            <span class="mt-1 block font-medium text-white/85 group-hover:text-accent-300">
+              {previous.name}
+            </span>
+          </a>
+        )
+      }
+    </div>
+    <div class="sm:text-right">
+      {
+        next && (
+          <a href={facilityPagePath(next.id)} class="group block">
+            <span class="text-xs text-white/45">Next →</span>
+            <span class="mt-1 block font-medium text-white/85 group-hover:text-accent-300">
+              {next.name}
+            </span>
+          </a>
+        )
+      }
+    </div>
+  </nav>
+</Base>
