@@ -101,7 +101,7 @@ const VIEW_LIMITS = {
 // Aerial imagery breaks down at the poles (the map projection it is cut
 // from has no data there), so it is clipped to this latitude and polar
 // facilities such as IceCube are always viewed from Blue Marble height.
-const POLAR_LATITUDE = 84;
+const POLAR_LATITUDE = 80;
 
 function facilityViewHeight(facility: FacilityStub, ionReady: boolean): number {
   const useIon = ionReady && Math.abs(facility.lat) < POLAR_LATITUDE;
