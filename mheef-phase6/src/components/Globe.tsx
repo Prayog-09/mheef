@@ -99,8 +99,8 @@ const VIEW_LIMITS = {
   blueMarble: { facilityHeight: 1_100_000, minZoom: 150_000 },
 } as const;
 // Aerial imagery breaks down at the poles (the map projection it is cut
-// from has no data there), so polar facilities such as IceCube are always
-// viewed from Blue Marble height.
+// from has no data there), so it is clipped to this latitude and polar
+// facilities such as IceCube are always viewed from Blue Marble height.
 const POLAR_LATITUDE = 84;
 
 function facilityViewHeight(facility: FacilityStub, ionReady: boolean): number {
@@ -287,8 +287,14 @@ export default function Globe() {
       IonImageryProvider.fromAssetId(2)
         .then((provider) => {
           if (viewer.isDestroyed()) return;
-          ionLayer = viewer.imageryLayers.addImageryProvider(provider);
-          ionLayer.show = false;
+          // Clipped short of the poles: beyond its coverage the aerial
+          // imagery's edge pixels smear all the way to the pole, hiding
+          // Blue Marble's proper polar imagery underneath.
+          ionLayer = new ImageryLayer(provider, {
+            rectangle: Rectangle.fromDegrees(-180, -POLAR_LATITUDE, 180, POLAR_LATITUDE),
+            show: false,
+          });
+          viewer.imageryLayers.add(ionLayer);
           ionReadyRef.current = true;
           scene.screenSpaceCameraController.minimumZoomDistance = VIEW_LIMITS.ion.minZoom;
           // A facility opened before ion finished loading (e.g. from a
