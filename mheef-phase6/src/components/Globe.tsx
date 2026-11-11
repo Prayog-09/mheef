@@ -18,12 +18,12 @@ import {
   Rectangle,
   ScreenSpaceEventHandler,
   ScreenSpaceEventType,
-  Terrain,
   TileMapServiceImageryProvider,
   UrlTemplateImageryProvider,
   VerticalOrigin,
   Viewer,
   buildModuleUrl,
+  createWorldTerrainAsync,
   defined,
 } from 'cesium';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
@@ -89,10 +89,15 @@ const EARTH_RADIUS_M = 6_378_137;
 // Start over Europe and Africa, where the facility density is highest.
 const INITIAL_LONGITUDE = 15;
 const INITIAL_LATITUDE = 25;
-// How close a selected facility is viewed: site scale with ion imagery,
-// regional scale when only 500 m Blue Marble is available.
-const FACILITY_VIEW_HEIGHT = HAS_ION ? 12_000 : 1_100_000;
-const MIN_ZOOM_DISTANCE = HAS_ION ? 400 : 150_000;
+// How close a selected facility is viewed, and how close the camera may
+// go: site scale once ion imagery has actually loaded, regional scale
+// while only 500 m Blue Marble is available. Keyed on ion having loaded,
+// not on a token merely being configured, so a rejected or expired token
+// can never fly the camera down to imagery that isn't there.
+const VIEW_LIMITS = {
+  ion: { facilityHeight: 12_000, minZoom: 400 },
+  blueMarble: { facilityHeight: 1_100_000, minZoom: 150_000 },
+} as const;
 // Idle rotation: resumes after a pause, only from far out, never while a
 // facility is open.
 const AUTO_ROTATE_DEG_PER_SEC = 2;
@@ -188,6 +193,7 @@ export default function Globe() {
   const viewerRef = useRef<Viewer | null>(null);
   const markersRef = useRef(new Map<string, MarkerEntities>());
   const isFlyingRef = useRef(false);
+  const ionReadyRef = useRef(false);
   const [failed, setFailed] = useState(false);
 
   const selectedFacilityId = useGlobeStore((s) => s.selectedFacilityId);
@@ -231,7 +237,6 @@ export default function Globe() {
         baseLayer: ImageryLayer.fromProviderAsync(
           TileMapServiceImageryProvider.fromUrl(buildModuleUrl('Assets/Textures/NaturalEarthII'))
         ),
-        terrain: HAS_ION ? Terrain.fromWorldTerrain() : undefined,
         creditContainer: credits,
         animation: false,
         timeline: false,
@@ -260,10 +265,13 @@ export default function Globe() {
     scene.globe.baseColor = Color.fromCssColorString('#0b1a2e');
     if (scene.sun) scene.sun.show = false;
     if (scene.moon) scene.moon.show = false;
-    scene.screenSpaceCameraController.minimumZoomDistance = MIN_ZOOM_DISTANCE;
+    scene.screenSpaceCameraController.minimumZoomDistance = VIEW_LIMITS.blueMarble.minZoom;
 
     viewer.imageryLayers.addImageryProvider(createBlueMarbleProvider());
 
+    // Ion imagery and terrain are added only after they load. Until then,
+    // and for good if the token is rejected, the globe is exactly the
+    // Blue Marble globe a token-less build shows.
     let ionLayer: ImageryLayer | null = null;
     if (HAS_ION) {
       // Asset 2 is ion's global aerial imagery.
@@ -272,9 +280,19 @@ export default function Globe() {
           if (viewer.isDestroyed()) return;
           ionLayer = viewer.imageryLayers.addImageryProvider(provider);
           ionLayer.show = false;
+          ionReadyRef.current = true;
+          scene.screenSpaceCameraController.minimumZoomDistance = VIEW_LIMITS.ion.minZoom;
         })
         .catch((error) => {
           console.warn('Cesium ion imagery unavailable; staying on NASA Blue Marble.', error);
+        });
+
+      createWorldTerrainAsync()
+        .then((terrainProvider) => {
+          if (!viewer.isDestroyed()) viewer.terrainProvider = terrainProvider;
+        })
+        .catch((error) => {
+          console.warn('Cesium ion terrain unavailable; the globe stays smooth.', error);
         });
     }
 
@@ -403,6 +421,7 @@ export default function Globe() {
       viewer.canvas.removeEventListener('wheel', markInteraction);
       markers.clear();
       viewerRef.current = null;
+      ionReadyRef.current = false;
       viewer.destroy();
     };
   }, [handleSelect]);
@@ -418,7 +437,8 @@ export default function Globe() {
     if (selectedFacilityId) {
       const facility = facilities.find((f) => f.id === selectedFacilityId);
       if (!facility) return;
-      destination = Cartesian3.fromDegrees(facility.lng, facility.lat, FACILITY_VIEW_HEIGHT);
+      const limits = ionReadyRef.current ? VIEW_LIMITS.ion : VIEW_LIMITS.blueMarble;
+      destination = Cartesian3.fromDegrees(facility.lng, facility.lat, limits.facilityHeight);
     } else {
       // Nothing to fly back from on first load.
       if (!hasFlownRef.current) return;
