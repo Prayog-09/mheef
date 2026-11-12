@@ -72,7 +72,7 @@ export const facilities: readonly Facility[] = [
     experiments: [
       { id: 'fermilab-cdf', name: 'CDF', description: "Collider Detector at Fermilab; co-discovered the top quark at the Tevatron proton-antiproton collider in 1995 and made precision electroweak measurements.", topics: ['qcd', 'electroweak'], startYear: 1985, endYear: 2011, sources: [{ label: "CERN Courier: Farewell to the Tevatron", url: "https://cerncourier.com/a/farewell-to-the-tevatron/" }, { label: "CDF Collaboration, Phys. Rev. Lett. 74, 2626 (1995)", url: "https://doi.org/10.1103/PhysRevLett.74.2626" }] },
       { id: 'fermilab-d0', name: 'DZero', description: "Second Tevatron multipurpose detector; independently co-discovered the top quark and set world-leading constraints on the W-boson mass.", topics: ['qcd', 'electroweak'], startYear: 1992, endYear: 2011, sources: [{ label: "CERN Courier: Farewell to the Tevatron", url: "https://cerncourier.com/a/farewell-to-the-tevatron/" }, { label: "D0 Collaboration, Phys. Rev. Lett. 74, 2632 (1995)", url: "https://doi.org/10.1103/PhysRevLett.74.2632" }] },
-      { id: 'fermilab-nova', name: 'NOvA', description: "NuMI Off-Axis neutrino Appearance experiment measuring oscillation parameters and the CP-violating phase delta on an 810-km baseline from Fermilab to Minnesota.", topics: ['neutrinos'], startYear: 2014 },
+      { id: 'fermilab-nova', name: 'NOvA', description: "NuMI Off-Axis neutrino Appearance experiment measuring oscillation parameters and the CP-violating phase delta on an 810-km baseline from Fermilab to Minnesota.", topics: ['neutrinos'], startYear: 2014, sources: [{ label: "NOvA Collaboration, Phys. Rev. Lett. 116, 151806 (2016)", url: "https://doi.org/10.1103/PhysRevLett.116.151806" }] },
       { id: 'fermilab-mu2e', name: 'Mu2e', description: "Searches for charged-lepton-flavour-violating muon-to-electron conversion in the field of a nucleus — a signal of physics beyond the Standard Model with sensitivity four orders of magnitude beyond previous limits.", topics: ['electroweak'], sources: [{ label: "Mu2e Run I sensitivity projections (arXiv:2210.11380)", url: "https://arxiv.org/abs/2210.11380" }] },
     ],
     keyResults: [
@@ -111,7 +111,7 @@ export const facilities: readonly Facility[] = [
     ],
     experiments: [
       { id: 'bnl-star', name: 'STAR', description: "Solenoidal Tracker at RHIC; studies the quark-gluon plasma using large-acceptance charged-particle tracking and calorimetry across a wide range of collision energies.", topics: ['heavy-ions', 'qcd'], startYear: 2000, endYear: 2026, sources: [{ label: "Brookhaven: RHIC Wraps up Final Collisions (2026)", url: "https://www.bnl.gov/newsroom/news.php?a=222794" }, { label: "STAR Collaboration, Nucl. Phys. A 757, 102 (2005)", url: "https://doi.org/10.1016/j.nuclphysa.2005.03.085" }] },
-      { id: 'bnl-phenix', name: 'PHENIX', description: "Pioneering RHIC detector measuring photons, leptons, and hadrons in heavy-ion collisions; key to establishing the perfect-liquid interpretation of the QGP.", topics: ['heavy-ions', 'qcd'], startYear: 2000, endYear: 2016 },
+      { id: 'bnl-phenix', name: 'PHENIX', description: "Pioneering RHIC detector measuring photons, leptons, and hadrons in heavy-ion collisions; key to establishing the perfect-liquid interpretation of the QGP.", topics: ['heavy-ions', 'qcd'], startYear: 2000, endYear: 2016, sources: [{ label: "PHENIX: Concept and history", url: "https://www.phenix.bnl.gov/experiment/concept.html" }, { label: "PHENIX detector overview, Nucl. Instrum. Meth. A 499, 469 (2003)", url: "https://doi.org/10.1016/S0168-9002(02)01950-2" }] },
     ],
     keyResults: [
       { year: 1974, discovery: "J/psi Meson Discovery", description: "Simultaneous discovery at BNL and SLAC of the J/psi meson, revealing the charm quark and inaugurating the November Revolution in particle physics. Nobel Prize in Physics 1976.", sources: [{ label: "Nobel Prize in Physics 1976", url: "https://www.nobelprize.org/prizes/physics/1976/summary/" }] },
@@ -196,8 +196,8 @@ export const facilities: readonly Facility[] = [
       { year: 2014, discovery: "First Direct Detection of Solar pp Neutrinos", description: "BOREXINO made the world's first direct, real-time measurement of neutrinos from the pp fusion reaction, the dominant energy source of the Sun, confirming Standard Solar Model predictions.", sources: [{ label: "Borexino Collaboration, Nature 512, 383 (2014)", url: "https://doi.org/10.1038/nature13702" }] },
     ],
     importantPeople: [
-      { name: "Elena Aprile", contribution: "Founder and PI of the XENON experiment series at Gran Sasso; pioneered dual-phase liquid-xenon technology for dark matter detection." },
-      { name: "Gianpaolo Bellini", contribution: "Led the BOREXINO experiment for decades; key architect of the solar neutrino spectroscopy programme that achieved the pp neutrino measurement." },
+      { name: "Elena Aprile", contribution: "Founder and spokesperson of the XENON collaboration, which she set up in 2002; pioneered dual-phase liquid-xenon technology for dark matter detection.", sources: [{ label: "Columbia University: Physicist leading the hunt for dark matter wins Berkeley Prize", url: "https://science.fas.columbia.edu/news/physicist-leading-the-hunt-for-dark-matter-wins-berkeley-prize" }] },
+      { name: "Gianpaolo Bellini", contribution: "One of the founders of BOREXINO, which he conceived and led from 1990; key architect of the solar neutrino spectroscopy programme that achieved the pp neutrino measurement.", sources: [{ label: "University of Milan: Pontecorvo Prize 2016 to Bellini (in Italian)", url: "https://unimi.it/sites/default/files/comunicati_stampa/images/Premio_Pontecorvo2016_a_Bellini.pdf" }] },
     ],
     readMore: [
       { label: "LNGS Official Site", url: "https://www.lngs.infn.it" },
@@ -219,7 +219,7 @@ export const facilities: readonly Facility[] = [
       { year: 1999, event: "SNO detector begins operations, using 1,000 tonnes of heavy water to separately detect charged-current and neutral-current neutrino interactions.", sources: [{ label: "The Sudbury Neutrino Observatory, Nucl. Instrum. Meth. A 449, 172 (2000)", url: "https://doi.org/10.1016/S0168-9002(99)01469-2" }] },
       { year: 2001, event: "SNO charged-current result shows the solar electron-neutrino flux is one-third the Standard Solar Model prediction, hinting strongly at flavour change.", sources: [{ label: "SNO Collaboration, Phys. Rev. Lett. 87, 071301 (2001)", url: "https://doi.org/10.1103/PhysRevLett.87.071301" }] },
       { year: 2002, event: "SNO neutral-current measurement proves the total active neutrino flux matches solar model predictions, establishing that solar electron-neutrinos oscillate into other flavours. Nobel Prize 2015.", sources: [{ label: "Nobel Prize in Physics 2015", url: "https://www.nobelprize.org/prizes/physics/2015/summary/" }] },
-      { year: 2012, event: "SNOLAB officially opens as an expanded underground facility, adding new experimental halls adjacent to the original SNO cavity." },
+      { year: 2012, event: "SNOLAB officially opens as an expanded underground facility, adding new experimental halls adjacent to the original SNO cavity.", sources: [{ label: "Symmetry: Scientists celebrate completion of underground physics laboratory (2012)", url: "https://www.symmetrymagazine.org/breaking/2012/05/17/scientists-celebrate-completion-of-underground-physics-laboratory" }] },
       { year: 2021, event: "SNO+ finishes filling its acrylic vessel with about 780 tonnes of liquid scintillator; loading it with tellurium for the neutrinoless double-beta decay search is planned as a later phase.", sources: [{ label: "The SNO+ Journey to neutrinoless double-beta decay (arXiv:2403.19351)", url: "https://arxiv.org/abs/2403.19351" }] },
     ],
     experiments: [
@@ -231,7 +231,7 @@ export const facilities: readonly Facility[] = [
     ],
     importantPeople: [
       { name: "Arthur McDonald", contribution: "Director of the SNO collaboration; his team's neutral-current measurement definitively resolved the solar neutrino problem. Nobel Prize in Physics 2015.", sources: [{ label: "Nobel Prize in Physics 2015", url: "https://www.nobelprize.org/prizes/physics/2015/summary/" }] },
-      { name: "Hamish Robertson", contribution: "Co-spokesperson of SNO; expert in neutrino mass measurement and a founding architect of the heavy-water detector concept." },
+      { name: "Hamish Robertson", contribution: "US co-spokesman of SNO and its scientific director in 2003-04; an expert in neutrino mass measurement.", sources: [{ label: "R. G. H. Robertson: curriculum vitae (University of Washington)", url: "https://faculty.washington.edu/rghr/hr_cv4.pdf" }] },
     ],
     readMore: [
       { label: "SNOLAB Official Site", url: "https://www.snolab.ca" },
@@ -289,8 +289,8 @@ export const facilities: readonly Facility[] = [
     history: [
       { year: 1965, event: "Raymond Davis Jr. starts building the chlorine radiochemical solar-neutrino experiment deep in the Homestake Mine, with 615 tonnes of perchloroethylene as its target.", sources: [{ label: "Davis, Harmer and Hoffman, Phys. Rev. Lett. 20, 1205 (1968)", url: "https://doi.org/10.1103/PhysRevLett.20.1205" }] },
       { year: 1968, event: "Davis reports far fewer solar neutrinos than predicted \u2014 the beginning of the solar neutrino problem that took three decades to resolve.", sources: [{ label: "Davis, Harmer and Hoffman, Phys. Rev. Lett. 20, 1205 (1968)", url: "https://doi.org/10.1103/PhysRevLett.20.1205" }] },
-      { year: 2002, event: "Homestake Mine closes after more than a century of gold production; plans form to convert it into a dedicated underground science facility." },
-      { year: 2006, event: "Barrick Gold donates the mine to the state of South Dakota and T. Denny Sanford pledges $70 million, allowing a laboratory to be developed at the 4,850-ft level; it begins operating as a dedicated science facility in 2007." },
+      { year: 2002, event: "Homestake Mine closes after more than a century of gold production; plans form to convert it into a dedicated underground science facility.", sources: [{ label: "Sanford Lab: Our story", url: "https://sanfordlab.org/our-story" }] },
+      { year: 2006, event: "Barrick Gold donates the mine and, in 2006, T. Denny Sanford pledges $70 million; the laboratory is created the following year and its 4,850-ft level is dedicated in 2009.", sources: [{ label: "Sanford Lab: Our story", url: "https://sanfordlab.org/our-story" }] },
       { year: 2022, event: "LUX-ZEPLIN (LZ) completes its first science run, setting the world's most stringent upper limits on the spin-independent WIMP-nucleon cross section.", sources: [{ label: "LZ Collaboration, Phys. Rev. Lett. 131, 041002 (2023)", url: "https://doi.org/10.1103/PhysRevLett.131.041002" }] },
     ],
     experiments: [
@@ -342,7 +342,7 @@ export const facilities: readonly Facility[] = [
     ],
     importantPeople: [
       { name: "Francis Halzen", contribution: "Principal investigator and chief scientific architect of IceCube; built the scientific case for deep-ice neutrino detection over three decades.", sources: [{ label: "WIPAC: Francis Halzen", url: "https://wipac.wisc.edu/people/faculty/francis-halzen" }] },
-      { name: "Albrecht Karle", contribution: "IceCube co-investigator who led key aspects of detector calibration and the astrophysical neutrino analyses." },
+      { name: "Albrecht Karle", contribution: "IceCube associate director for science and instrumentation and principal investigator of the IceCube Upgrade project.", sources: [{ label: "WIPAC: Albrecht Karle", url: "https://wipac.wisc.edu/people/faculty/albrecht-karle" }] },
     ],
     readMore: [
       { label: "IceCube Official Site", url: "https://icecube.wisc.edu" },
@@ -362,9 +362,9 @@ export const facilities: readonly Facility[] = [
     status: 'active',
     overview: "The Jiangmen Underground Neutrino Observatory (JUNO) in Guangdong Province, China, is the world's largest liquid-scintillator neutrino detector — a 20,000-tonne sphere at 700 m depth instrumented with over 17,000 large photomultiplier tubes. Its primary goals are to determine the neutrino mass ordering (normal vs. inverted hierarchy) and to measure the oscillation parameters sin2-theta-12 and Delta-m2-21 to sub-percent precision, using reactor antineutrinos from nearby nuclear power plants.",
     history: [
-      { year: 2013, event: "JUNO, first proposed in 2008 as a successor to Daya Bay, receives approval; it builds on the success of the Daya Bay theta-13 measurement." },
+      { year: 2013, event: "JUNO, first proposed in 2008, has its funding approved by the Chinese Academy of Sciences and the Guangdong provincial government; it builds on the success of the Daya Bay theta-13 measurement.", sources: [{ label: "GSI: JUNO delivers first physics results (2025)", url: "https://www.gsi.de/en/start/news/details/2025/11/19/juno-experiment-first-data" }] },
       { year: 2015, event: "A ground-breaking ceremony on 10 January 2015 starts construction of the JUNO underground laboratory near Kaiping, Jiangmen, Guangdong.", sources: [{ label: "CERN Courier: Ground-breaking for China's new neutrino observatory", url: "https://cerncourier.com/a/ground-breaking-for-chinas-new-neutrino-observatory/" }] },
-      { year: 2021, event: "Installation of the 20-inch and 3-inch photomultiplier tube systems begins; a novel dual-calorimetry design improves energy resolution." },
+      { year: 2021, event: "Detector installation begins; more than 20,000 large and 25,000 small photomultiplier tubes give a dual-calorimetry design that improves energy resolution. Installation finishes in December 2024.", sources: [{ label: "GSI: JUNO delivers first physics results (2025)", url: "https://www.gsi.de/en/start/news/details/2025/11/19/juno-experiment-first-data" }, { label: "JUNO physics and detector, Prog. Part. Nucl. Phys. 123, 103927 (2022)", url: "https://doi.org/10.1016/j.ppnp.2021.103927" }] },
       { year: 2025, event: "With the detector filled with 20,000 tonnes of liquid scintillator, JUNO begins data taking on 26 August 2025; first results on the solar oscillation parameters follow in November.", sources: [{ label: "GSI: JUNO delivers first physics results", url: "https://www.gsi.de/en/start/news/details/2025/11/19/juno-experiment-first-data" }] },
       { year: 2026, event: "JUNO's first reactor-neutrino oscillation measurement is published in Nature.", sources: [{ label: "IHEP: first JUNO physics result published in Nature", url: "https://english.ihep.cas.cn/nw/han/y26/202606/t20260610_1161472.html" }] },
     ],
@@ -373,8 +373,8 @@ export const facilities: readonly Facility[] = [
     ],
     keyResults: [],
     importantPeople: [
-      { name: "Yifang Wang", contribution: "Director of IHEP Beijing and founding proposer of JUNO; also chief scientist of the Daya Bay experiment." },
-      { name: "Jun Cao", contribution: "JUNO technical coordinator; previously led analysis in the Daya Bay experiment that first measured theta-13." },
+      { name: "Yifang Wang", contribution: "JUNO project manager and spokesperson; director of IHEP Beijing from 2011 to 2024 and earlier a leader of the Daya Bay experiment.", sources: [{ label: "GSI: JUNO delivers first physics results (2025)", url: "https://www.gsi.de/en/start/news/details/2025/11/19/juno-experiment-first-data" }] },
+      { name: "Jun Cao", contribution: "JUNO deputy spokesperson and, since October 2024, director of IHEP; previously a leading member of the Daya Bay experiment that first measured theta-13.", sources: [{ label: "GSI: JUNO delivers first physics results (2025)", url: "https://www.gsi.de/en/start/news/details/2025/11/19/juno-experiment-first-data" }] },
     ],
     readMore: [
       { label: "JUNO Official Site", url: "https://juno.ihep.ac.cn" },
@@ -405,7 +405,7 @@ export const facilities: readonly Facility[] = [
       { year: 2012, discovery: "First Precise Measurement of theta-13", description: "Daya Bay was the first experiment to measure the neutrino mixing angle theta-13 with >5 sigma significance, finding it unexpectedly large (sin2(2*theta-13) = 0.092), enabling the design of experiments to measure the neutrino CP-violating phase delta-CP.", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 108, 171803 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" }] },
     ],
     importantPeople: [
-      { name: "Yifang Wang", contribution: "Chief scientist of the Daya Bay experiment and director of IHEP Beijing; architect of the multi-detector near/far baseline strategy." },
+      { name: "Yifang Wang", contribution: "Chief scientist of the Daya Bay experiment and director of IHEP Beijing from 2011 to 2024; architect of the multi-detector near/far baseline strategy." },
       { name: "Kam-Biu Luk", contribution: "Co-spokesperson of Daya Bay (UC Berkeley / LBNL); led the US contribution and statistical analysis strategy." },
     ],
     readMore: [
@@ -467,13 +467,13 @@ export const facilities: readonly Facility[] = [
       { year: 2025, event: "The European Commission establishes the CTAO as a European Research Infrastructure Consortium (CTAO ERIC) on 7 January 2025, with Italy as host state; three further Large-Sized Telescopes (LST-2 to LST-4) are under construction at La Palma.", sources: [{ label: "Commission Implementing Decision (EU) 2025/7", url: "https://eur-lex.europa.eu/eli/dec_impl/2025/7/oj/eng" }] },
     ],
     experiments: [
-      { id: 'cta-north', name: 'CTA-North (La Palma)', description: "Northern array on La Palma, built around Large- and Medium-Sized Telescopes and focused on the low and middle energies from about 20 GeV; targets AGN jets, dark matter, and transient sources including gamma-ray bursts.", topics: ['cosmic-rays', 'dark-matter'] },
-      { id: 'cta-south', name: 'CTA-South (Paranal)', description: "Southern array at Paranal, which adds Small-Sized Telescopes sensitive up to 300 TeV; surveys the southern sky including the Galactic Centre and supernova remnants.", topics: ['cosmic-rays', 'dark-matter'] },
+      { id: 'cta-north', name: 'CTA-North (La Palma)', description: "Northern array on La Palma, built around Large- and Medium-Sized Telescopes and focused on the low and middle energies from about 20 GeV; targets AGN jets, dark matter, and transient sources including gamma-ray bursts.", topics: ['cosmic-rays', 'dark-matter'], sources: [{ label: "Science with the Cherenkov Telescope Array (2018)", url: "https://doi.org/10.1142/10986" }] },
+      { id: 'cta-south', name: 'CTA-South (Paranal)', description: "Southern array at Paranal, which adds Small-Sized Telescopes sensitive up to 300 TeV; surveys the southern sky including the Galactic Centre and supernova remnants.", topics: ['cosmic-rays', 'dark-matter'], sources: [{ label: "Science with the Cherenkov Telescope Array (2018)", url: "https://doi.org/10.1142/10986" }] },
     ],
     keyResults: [],
     importantPeople: [
-      { name: "Werner Hofmann", contribution: "Former spokesperson of H.E.S.S. and a key scientific architect of the CTA telescope array concept and science case." },
-      { name: "Jim Hinton", contribution: "CTAO science lead and expert in very-high-energy gamma-ray astrophysics and the origin of Galactic cosmic rays." },
+      { name: "Werner Hofmann", contribution: "Spokesperson of the H.E.S.S. collaboration (2000-2012) and of the CTA collaboration (2010-2024); a key scientific architect of the array concept and science case.", sources: [{ label: "MPIK: Werner Hofmann, curriculum vitae", url: "https://www.mpi-hd.mpg.de/hfm/wh/CV2_Werner_Hofmann.htm" }] },
+      { name: "Jim Hinton", contribution: "Director at the Max Planck Institute for Nuclear Physics in Heidelberg, member of the CTAO Council and chair of the Small-Sized Telescope camera board; an expert in very-high-energy gamma-ray astrophysics.", sources: [{ label: "MPIK: Jim Hinton", url: "https://www.mpi-hd.mpg.de/mpi/en/forschung/abteilungen-und-gruppen/nichtthermische-astrophysik/mitglieder/jim-hinton" }] },
     ],
     readMore: [
       { label: "CTAO Official Site", url: "https://www.ctao.org" },
@@ -568,7 +568,7 @@ export const facilities: readonly Facility[] = [
       { year: 2012, event: "Tunnel excavation begins inside the Kamioka mine, sharing the mountain with the Super-Kamiokande detector.", sources: [{ label: "KAGRA Collaboration, Nature Astronomy 3, 35 (2019)", url: "https://doi.org/10.1038/s41550-018-0658-y" }] },
       { year: 2019, event: "Installation of the KAGRA interferometer is largely completed in spring 2019 and commissioning begins.", sources: [{ label: "Overview of KAGRA (arXiv:2009.09305)", url: "https://arxiv.org/abs/2009.09305" }] },
       { year: 2020, event: "KAGRA makes its first observing run in April 2020, jointly with GEO600 in Germany (O3GK), after LIGO and Virgo had suspended their O3 run.", sources: [{ label: "Overview of KAGRA (arXiv:2009.09305)", url: "https://arxiv.org/abs/2009.09305" }] },
-      { year: 2023, event: "KAGRA joins the O4 observing run for one month from 24 May 2023; work continues towards its design sensitivity." },
+      { year: 2023, event: "KAGRA joins the O4 observing run for four weeks, ending on 21 June 2023, then returns to commissioning to improve its sensitivity.", sources: [{ label: "ICRR: Update on KAGRA's O4 observing run (2023)", url: "https://gwcenter.icrr.u-tokyo.ac.jp/en/archives/1820" }] },
     ],
     experiments: [
       { id: 'kagra-det', name: 'KAGRA Interferometer', description: "3-km cryogenic underground Fabry-Perot Michelson interferometer using sapphire test masses at 20 K, targeting improved sensitivity below 100 Hz compared to room-temperature detectors.", topics: ['gravitational-waves'], startYear: 2019, sources: [{ label: "KAGRA Collaboration, Nature Astronomy 3, 35 (2019)", url: "https://doi.org/10.1038/s41550-018-0658-y" }] },
@@ -603,14 +603,14 @@ export const facilities: readonly Facility[] = [
     ],
     experiments: [
       { id: 'frib-greta', name: 'GRETA', description: "Gamma-Ray Energy Tracking Array — a 4-pi germanium detector that tracks gamma-ray photons from nuclear reactions, enabling in-beam spectroscopy of rare isotopes at FRIB.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2026, sources: [{ label: "Berkeley Lab: GRETA comes online", url: "https://newscenter.lbl.gov/2026/07/28/greta-comes-online-for-a-new-era-of-nuclear-science/" }] },
-      { id: 'frib-mona', name: 'MoNA-LISA', description: "Modular Neutron Array and Large-area multi-Institutional Scintillator Array; measures neutrons from rare isotope decays near the drip line to probe nuclear structure and halo nuclei.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2022 },
+      { id: 'frib-mona', name: 'MoNA-LISA', description: "Modular Neutron Array and Large-area multi-Institutional Scintillator Array; detects neutrons emitted by neutron-unbound nuclei at and beyond the drip line to probe nuclear structure.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2022, sources: [{ label: "MoNA: The first 25 years (arXiv:2502.14612)", url: "https://arxiv.org/abs/2502.14612" }] },
     ],
     keyResults: [
       { year: 2022, discovery: "First Half-Life Measurements at FRIB", description: "FRIB's first experiment fragmented a calcium-48 beam and measured, for the first time, the half-lives of five neutron-rich isotopes of magnesium, aluminium, silicon and phosphorus near N=28, finding evidence that the Z=14 subshell closure erodes there (Physical Review Letters 129, 212501).", sources: [{ label: "Crawford et al., Phys. Rev. Lett. 129, 212501 (2022)", url: "https://doi.org/10.1103/PhysRevLett.129.212501" }] },
     ],
     importantPeople: [
-      { name: "Konrad Gelbke", contribution: "Long-serving director of the National Superconducting Cyclotron Laboratory, FRIB's predecessor; led Michigan State's successful effort to host FRIB." },
-      { name: "Brad Sherrill", contribution: "FRIB scientific director; expert in rare-isotope beam production and nuclear astrophysics measurements." },
+      { name: "Konrad Gelbke", contribution: "Director of the National Superconducting Cyclotron Laboratory, FRIB's predecessor, from 1992 to 2015, including during Michigan State's successful bid to host FRIB.", sources: [{ label: "MSU Spartan magazine: The Quest for FRIB (2022)", url: "https://spartan.msu.edu/spartan-story-hub/magazines/fall-2022/into-the-unknown-the-quest-for-frib" }] },
+      { name: "Brad Sherrill", contribution: "FRIB scientific director and director of NSCL from 2015 to 2022; an expert in rare-isotope beam production.", sources: [{ label: "MSU Spartan magazine: The Quest for FRIB (2022)", url: "https://spartan.msu.edu/spartan-story-hub/magazines/fall-2022/into-the-unknown-the-quest-for-frib" }] },
     ],
     readMore: [
       { label: "FRIB Official Site", url: "https://frib.msu.edu" },
@@ -636,9 +636,9 @@ export const facilities: readonly Facility[] = [
       { year: 2017, event: "Ground is broken for FAIR on the GSI campus; the new SIS100 synchrotron will be its central accelerator.", sources: [{ label: "GSI and FAIR timeline", url: "https://www.gsi.de/en/about_us/history" }] },
     ],
     experiments: [
-      { id: 'gsi-hades', name: 'HADES', description: "High Acceptance Di-Electron Spectrometer at GSI; studies dense hadronic matter and strangeness production in heavy-ion collisions, relevant to neutron star interior physics.", topics: ['heavy-ions', 'qcd'], startYear: 1997 },
-      { id: 'fair-cbm', name: 'CBM (FAIR)', description: "Compressed Baryonic Matter experiment at FAIR; will study the QCD phase diagram at the highest net baryon densities achievable in a laboratory, mapping the nuclear matter phase transition.", topics: ['heavy-ions', 'qcd', 'nuclear-structure'] },
-      { id: 'fair-panda', name: 'PANDA (FAIR)', description: "Proton-ANtiproton annihilations at DArmstadt; uses stored antiproton beams to study charmonium spectroscopy, gluonic excitations (hybrids and glueballs), and hypernuclei.", topics: ['qcd', 'nuclear-structure'] },
+      { id: 'gsi-hades', name: 'HADES', description: "High Acceptance Di-Electron Spectrometer at GSI; studies dense hadronic matter and strangeness production in heavy-ion collisions, relevant to neutron star interior physics.", topics: ['heavy-ions', 'qcd'], startYear: 2002, sources: [{ label: "The HADES Collaboration, Eur. Phys. J. A 41, 243 (2009)", url: "https://doi.org/10.1140/epja/i2009-10807-5" }] },
+      { id: 'fair-cbm', name: 'CBM (FAIR)', description: "Compressed Baryonic Matter experiment at FAIR; will study the QCD phase diagram at the highest net baryon densities achievable in a laboratory, mapping the nuclear matter phase transition.", topics: ['heavy-ions', 'qcd', 'nuclear-structure'], sources: [{ label: "CBM Collaboration, Eur. Phys. J. A 53, 60 (2017)", url: "https://doi.org/10.1140/epja/i2017-12248-y" }] },
+      { id: 'fair-panda', name: 'PANDA (FAIR)', description: "Proton-ANtiproton annihilations at DArmstadt; uses stored antiproton beams to study charmonium spectroscopy, gluonic excitations (hybrids and glueballs), and hypernuclei.", topics: ['qcd', 'nuclear-structure'], sources: [{ label: "FAIR: Experiments", url: "https://fair-center.eu/user/experiments" }] },
     ],
     keyResults: [
       { year: 1984, discovery: "Super-Heavy Element 108 (Hassium)", description: "GSI synthesised element 108, Hassium (Hs), at the time the heaviest known element, confirming that the periodic table extends well beyond uranium and approaching the predicted island of stability.", sources: [{ label: "Münzenberg et al., Z. Phys. A 317, 235 (1984)", url: "https://doi.org/10.1007/BF01421260" }] },
@@ -665,11 +665,11 @@ export const facilities: readonly Facility[] = [
     status: 'active',
     overview: "TRIUMF at the University of British Columbia in Vancouver is Canada's particle accelerator centre. Its 520-MeV H-minus cyclotron — one of the world's largest — drives the ISAC radioactive ion beam facility, producing rare isotopes for nuclear physics, nuclear astrophysics, and medical isotope production. TRIUMF is a world leader in precision mass measurements of short-lived nuclei, gamma-ray spectroscopy of neutron-rich isotopes, and isotopes for cancer therapy. The ARIEL electron linac, commissioned in 2022, triples rare-isotope production capacity.",
     history: [
-      { year: 1968, event: "TRIUMF founded by UBC, Simon Fraser University, and the University of Victoria, with construction of a sector-focused cyclotron." },
-      { year: 1974, event: "TRIUMF 500 MeV cyclotron begins operations, delivering high-intensity proton beams for meson physics and nuclear science." },
-      { year: 1995, event: "ISAC radioactive ion beam facility opens, extending TRIUMF's reach into nuclear astrophysics and precision Standard Model tests." },
-      { year: 2010, event: "ISAC-II superconducting linear accelerator begins operations, post-accelerating radioactive beams to Coulomb-barrier energies for nuclear reaction measurements." },
-      { year: 2022, event: "ARIEL (Advanced Rare IsotopE Laboratory) electron linac produces first rare isotope beams via photofission, adding a second rare-isotope production route alongside the cyclotron." },
+      { year: 1968, event: "TRIUMF, planned by the University of British Columbia, Simon Fraser University, and the University of Victoria, receives federal funding in April 1968 and construction of its cyclotron begins.", sources: [{ label: "CERN Courier: Tales of TRIUMF", url: "https://cerncourier.com/a/tales-of-triumf/" }] },
+      { year: 1974, event: "Protons are first extracted from the TRIUMF 500 MeV cyclotron on 15 December 1974; it goes on to deliver high-intensity beams for meson physics and nuclear science.", sources: [{ label: "CERN Courier: Tales of TRIUMF", url: "https://cerncourier.com/a/tales-of-triumf/" }, { label: "The TRIUMF 500 MeV cyclotron, Hyperfine Interact. 225, 9 (2014)", url: "https://doi.org/10.1007/s10751-013-0878-6" }] },
+      { year: 1998, event: "ISAC, approved in 1995, delivers its first radioactive ion beam, extending TRIUMF's reach into nuclear astrophysics and precision Standard Model tests." },
+      { year: 2006, event: "The ISAC-II superconducting linear accelerator delivers its first beam in 2006, post-accelerating radioactive ions for nuclear reaction measurements; it reaches its design voltage in 2010." },
+      { year: 2014, event: "The first stage of the superconducting electron linac for ARIEL (Advanced Rare IsotopE Laboratory) is commissioned; ARIEL is being built to add new rare-isotope production routes alongside the cyclotron." },
     ],
     experiments: [
       { id: 'triumf-titan', name: 'TITAN', description: "TRIUMF's Ion Trap for Atomic and Nuclear science; precision Penning and Ebit trap system measuring atomic masses of short-lived exotic nuclei with high precision.", topics: ['rare-isotopes', 'nuclear-structure'], startYear: 2003, sources: [{ label: "Dilling et al., Int. J. Mass Spectrom. 251, 198 (2006)", url: "https://doi.org/10.1016/j.ijms.2006.01.044" }] },
@@ -703,9 +703,9 @@ export const facilities: readonly Facility[] = [
     history: [
       { year: 1959, event: "DESY founded on 18 December 1959 as West Germany's national electron accelerator centre; construction of its first electron synchrotron begins in Hamburg-Bahrenfeld.", sources: [{ label: "Lightsources.org: 60 years of DESY", url: "https://lightsources.org/2019/12/18/60-years-of-desy-from-hamburg-particle-accelerator-to-global-research-centre/" }] },
       { year: 1979, event: "Four experiments (JADE, MARK-J, PLUTO, TASSO) at the PETRA collider simultaneously observe three-jet events in e+e- annihilation — the first direct evidence for the gluon.", sources: [{ label: "TASSO Collaboration, Phys. Lett. B 86, 243 (1979)", url: "https://doi.org/10.1016/0370-2693(79)90830-X" }] },
-      { year: 1992, event: "HERA, the world's only electron-proton collider (27.5 GeV electrons on 820-920 GeV protons), begins operations with H1 and ZEUS detectors." },
-      { year: 2007, event: "HERA completes fifteen years of e-p physics; PETRA is converted to PETRA III, the world's most brilliant storage-ring X-ray source at its energy." },
-      { year: 2017, event: "European XFEL, the world's most powerful X-ray free-electron laser producing up to 27,000 ultra-bright pulses per second, opens at the DESY campus." },
+      { year: 1992, event: "HERA, the world's only electron-proton collider (27.5 GeV electrons on 820-920 GeV protons), begins operations with H1 and ZEUS detectors.", sources: [{ label: "Collider Physics at HERA (arXiv:0805.3334)", url: "https://arxiv.org/abs/0805.3334" }] },
+      { year: 2007, event: "HERA completes fifteen years of e-p physics; PETRA is converted to PETRA III, the world's most brilliant storage-ring X-ray source at its energy.", sources: [{ label: "Collider Physics at HERA (arXiv:0805.3334)", url: "https://arxiv.org/abs/0805.3334" }] },
+      { year: 2017, event: "European XFEL, a superconducting X-ray free-electron laser able to produce up to 27,000 pulses per second, is inaugurated on 1 September 2017; its tunnel runs from the DESY campus to Schenefeld.", sources: [{ label: "Nature Photonics 11, 609 (2017): European XFEL inauguration", url: "https://doi.org/10.1038/s41566-017-0025-z" }, { label: "Decking et al., Nature Photonics 14, 391 (2020)", url: "https://doi.org/10.1038/s41566-020-0607-z" }] },
     ],
     experiments: [
       { id: 'desy-tasso', name: 'TASSO at PETRA', description: "Two-Arm Spectrometer Solenoid; one of four PETRA experiments that observed the first three-jet gluon events in e+e- annihilation in 1979, providing direct evidence for QCD.", topics: ['qcd'], startYear: 1979, endYear: 1986, sources: [{ label: "TASSO Collaboration, Phys. Lett. B 86, 243 (1979)", url: "https://doi.org/10.1016/0370-2693(79)90830-X" }] },
