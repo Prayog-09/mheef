@@ -150,6 +150,16 @@ export interface TimelineEntry {
   sources?: SourceRef[];
 }
 
+/**
+ * One headline figure about a facility or its main machine — a size, an
+ * energy, a depth. Unlike other facts, a specification must cite a source.
+ */
+export interface FacilitySpec {
+  label: string;
+  value: string;
+  sources: SourceRef[];
+}
+
 export interface ReadMoreLink {
   label: string;
   url: string;
@@ -175,6 +185,8 @@ export interface Facility extends FacilityStub {
   reviewed?: string;
   status: FacilityStatus;
   overview: string;
+  /** Sourced key figures, shown as a table. */
+  specs?: FacilitySpec[];
   history: TimelineEntry[];
   experiments: Experiment[];
   keyResults: KeyResult[];

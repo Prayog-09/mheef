@@ -30,6 +30,8 @@ const topics = facilityTopics(facility);
 const history = [...facility.history].sort((a, b) => a.year - b.year);
 const keyResults = [...facility.keyResults].sort((a, b) => a.year - b.year);
 
+const specs = facility.specs ?? [];
+
 const sorted = [...facilities].sort((a, b) => a.name.localeCompare(b.name));
 const position = sorted.findIndex((f) => f.id === facility.id);
 const previous = sorted[position - 1];
@@ -46,6 +48,7 @@ const facts = [
 ];
 
 const sections = [
+  { id: 'key-figures', label: 'Key figures', show: specs.length > 0 },
   { id: 'history', label: 'History', show: history.length > 0 },
   { id: 'experiments', label: 'Experiments', show: facility.experiments.length > 0 },
   { id: 'key-results', label: 'Key results', show: keyResults.length > 0 },
@@ -143,6 +146,25 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
             </a>
           ))}
         </nav>
+      )
+    }
+
+    {
+      specs.length > 0 && (
+        <section aria-labelledby="key-figures" class="mt-12">
+          <h2 id="key-figures" class={sectionHeading}>Key figures</h2>
+          <dl class="mt-5 divide-y divide-white/10 border-y border-white/10">
+            {specs.map((spec) => (
+              <div class="grid gap-x-6 gap-y-1 py-3 sm:grid-cols-[14rem_minmax(0,1fr)]">
+                <dt class="text-sm text-white/55">{spec.label}</dt>
+                <dd>
+                  <p class="text-sm font-medium text-white/90">{spec.value}</p>
+                  <SourceLinks sources={spec.sources} />
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
       )
     }
 

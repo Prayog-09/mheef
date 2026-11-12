@@ -22,6 +22,13 @@ export const facilities: readonly Facility[] = [
     founded: 1954,
     status: 'active',
     overview: "The European Organization for Nuclear Research (CERN), founded in 1954, operates the world's largest and most powerful particle accelerator complex on the Franco-Swiss border near Geneva. Its 27-kilometre Large Hadron Collider (LHC) accelerates protons to 99.9999991% the speed of light and collides them at four interaction points where ATLAS, CMS, ALICE, and LHCb record the debris. CERN is also the birthplace of the World Wide Web (1989) and a model of global scientific collaboration, involving over 17,000 scientists from more than 100 countries.",
+    specs: [
+      { label: "LHC circumference", value: "26,659 m", sources: [{ label: "CERN: The Large Hadron Collider", url: "https://home.cern/science/accelerators/large-hadron-collider" }] },
+      { label: "LHC tunnel depth", value: "100 m underground", sources: [{ label: "CERN: The Large Hadron Collider", url: "https://home.cern/science/accelerators/large-hadron-collider" }] },
+      { label: "Proton collision energy", value: "13.6 TeV", sources: [{ label: "CERN: The Large Hadron Collider", url: "https://home.cern/science/accelerators/large-hadron-collider" }] },
+      { label: "LHC magnets", value: "9,593, of which 1,232 are dipoles", sources: [{ label: "CERN: The Large Hadron Collider", url: "https://home.cern/science/accelerators/large-hadron-collider" }] },
+      { label: "Dipole operating temperature", value: "1.9 K", sources: [{ label: "CERN: The Large Hadron Collider", url: "https://home.cern/science/accelerators/large-hadron-collider" }] },
+    ],
     history: [
       { year: 1954, event: "CERN founded by 12 European member states, establishing Geneva as the world's leading centre for particle physics.", sources: [{ label: "CERN: Our history", url: "https://home.cern/about/who-we-are/our-history" }] },
       { year: 1983, event: "UA1 and UA2 experiments at the SPS collider discover the W\u00b1 and Z\u2070 bosons, confirming electroweak unification. Carlo Rubbia and Simon van der Meer awarded the Nobel Prize in 1984.", sources: [{ label: "Nobel Prize in Physics 1984", url: "https://www.nobelprize.org/prizes/physics/1984/summary/" }] },
@@ -62,6 +69,11 @@ export const facilities: readonly Facility[] = [
     founded: 1967,
     status: 'active',
     overview: "Fermi National Accelerator Laboratory in Batavia, Illinois was home to the Tevatron (1983-2011), the world's highest-energy proton-antiproton collider before the LHC. Its CDF and DZero experiments discovered the top quark in 1995. Today Fermilab leads the US neutrino programme with the NOvA long-baseline experiment and the Short-Baseline Neutrino (SBN) programme, and is building the Deep Underground Neutrino Experiment (DUNE) — a 1,300-km baseline beam to SURF in South Dakota.",
+    specs: [
+      { label: "Tevatron peak beam energy", value: "980 GeV", sources: [{ label: "CERN Courier: Farewell to the Tevatron", url: "https://cerncourier.com/a/farewell-to-the-tevatron/" }] },
+      { label: "Tevatron operation", value: "1983 to 2011", sources: [{ label: "CERN Courier: Farewell to the Tevatron", url: "https://cerncourier.com/a/farewell-to-the-tevatron/" }] },
+      { label: "NOvA baseline", value: "810 km", sources: [{ label: "NOvA Collaboration, Phys. Rev. Lett. 116, 151806 (2016)", url: "https://doi.org/10.1103/PhysRevLett.116.151806" }] },
+    ],
     history: [
       { year: 1967, event: "National Accelerator Laboratory founded with Robert Wilson as its first director; ground is broken for the first accelerator stage in December 1968.", sources: [{ label: "A Brief History of Fermilab (Fermilab History and Archives)", url: "https://history.fnal.gov/documents/A_Brief_History_of_Fermilab.pdf" }] },
       { year: 1977, event: "Leon Lederman's team discovers the Upsilon (Y) meson at the 400-GeV main ring, providing the first evidence for the bottom quark.", sources: [{ label: "Herb et al., Phys. Rev. Lett. 39, 252 (1977)", url: "https://doi.org/10.1103/PhysRevLett.39.252" }] },
@@ -101,6 +113,12 @@ export const facilities: readonly Facility[] = [
     founded: 1947,
     status: 'active',
     overview: "Brookhaven National Laboratory on Long Island, New York, has been a world leader in nuclear and particle physics since 1947. Its Relativistic Heavy Ion Collider (RHIC), which ran from 2000 until its final collisions in February 2026, collided gold nuclei at near-light speed to produce quark-gluon plasma — the state of matter that existed microseconds after the Big Bang. In 2005 the four RHIC experiments announced that this plasma behaves as a near-perfect liquid with extraordinarily low viscosity, transforming our understanding of nuclear matter.",
+    specs: [
+      { label: "RHIC ring circumference", value: "2.4 miles (about 3.9 km)", sources: [{ label: "Brookhaven: The RHIC accelerator complex", url: "https://www.bnl.gov/rhic/complex.php" }] },
+      { label: "RHIC rings", value: "Two, with beams circulating in opposite directions", sources: [{ label: "Brookhaven: The RHIC accelerator complex", url: "https://www.bnl.gov/rhic/complex.php" }] },
+      { label: "Ion speed at full energy", value: "99.995% of the speed of light", sources: [{ label: "Brookhaven: The RHIC accelerator complex", url: "https://www.bnl.gov/rhic/complex.php" }] },
+      { label: "RHIC operation", value: "25 runs, 2000 to 2026", sources: [{ label: "Brookhaven: RHIC Wraps up Final Collisions (2026)", url: "https://www.bnl.gov/newsroom/news.php?a=222794" }] },
+    ],
     history: [
       { year: 1947, event: "Brookhaven National Laboratory established by the US Atomic Energy Commission, operated by a consortium of northeastern universities.", sources: [{ label: "Brookhaven: Beginnings", url: "https://www.bnl.gov/75/beginnings.php" }] },
       { year: 1964, event: "The Omega-minus baryon is discovered at BNL's Alternating Gradient Synchrotron (AGS), confirming Gell-Mann's quark model and the SU(3) symmetry of hadrons.", sources: [{ label: "Barnes et al., Phys. Rev. Lett. 12, 204 (1964)", url: "https://doi.org/10.1103/PhysRevLett.12.204" }] },
@@ -141,6 +159,11 @@ export const facilities: readonly Facility[] = [
     founded: 1971,
     status: 'active',
     overview: "The High Energy Accelerator Research Organization (KEK) in Tsukuba, Japan operates SuperKEKB — an asymmetric-energy electron-positron collider designed to produce B mesons near their pair-production threshold. The Belle II detector, collecting data since 2019, aims to accumulate 50 times the dataset of its predecessor Belle to search for CP violation, rare decays, and dark-sector particles with unprecedented precision.",
+    specs: [
+      { label: "KEKB data delivered", value: "More than 1 ab⁻¹", sources: [{ label: "The Belle II Physics Book, PTEP 2019, 123C01", url: "https://doi.org/10.1093/ptep/ptz106" }] },
+      { label: "SuperKEKB design luminosity", value: "40 times that of KEKB", sources: [{ label: "The Belle II Physics Book, PTEP 2019, 123C01", url: "https://doi.org/10.1093/ptep/ptz106" }] },
+      { label: "Belle II target data set", value: "50 ab⁻¹", sources: [{ label: "The Belle II Physics Book, PTEP 2019, 123C01", url: "https://doi.org/10.1093/ptep/ptz106" }] },
+    ],
     history: [
       { year: 1971, event: "KEK founded as Japan's national high-energy physics laboratory in Tsukuba Science City.", sources: [{ label: "KEK: History", url: "https://www.kek.jp/en/about/history" }] },
       { year: 1999, event: "Belle experiment begins data-taking in June 1999 at the asymmetric KEKB collider, which stored its first beams in 1998; it is designed to measure CP violation in B-meson decays.", sources: [{ label: "KEK: History", url: "https://www.kek.jp/en/about/history" }] },
@@ -179,6 +202,13 @@ export const facilities: readonly Facility[] = [
     founded: 1987,
     status: 'active',
     overview: "The Laboratori Nazionali del Gran Sasso (LNGS) beneath the Apennine Mountains in central Italy is the world's largest underground research laboratory, with three experimental halls at 1,400 m rock overburden. Its extreme shielding from cosmic-ray muons makes it ideal for rare-event searches including neutrinoless double-beta decay, WIMP dark matter detection, solar neutrino spectroscopy, and neutrino oscillation studies using beams sent from CERN 730 km away.",
+    specs: [
+      { label: "Rock overburden", value: "1,400 m", sources: [{ label: "LNGS: Overview", url: "https://www.lngs.infn.it/en/lngs-overview" }] },
+      { label: "Cosmic-ray flux", value: "Reduced a million times by the rock", sources: [{ label: "LNGS: Overview", url: "https://www.lngs.infn.it/en/lngs-overview" }] },
+      { label: "Experimental halls", value: "Three, each 100 m long, 20 m wide and 18 m high", sources: [{ label: "LNGS: Overview", url: "https://www.lngs.infn.it/en/lngs-overview" }] },
+      { label: "Underground volume", value: "About 180,000 m³", sources: [{ label: "LNGS: Overview", url: "https://www.lngs.infn.it/en/lngs-overview" }] },
+      { label: "XENONnT active target", value: "5.9 tonnes of liquid xenon", sources: [{ label: "The XENONnT dark matter experiment, Eur. Phys. J. C 84, 784 (2024)", url: "https://doi.org/10.1140/epjc/s10052-024-12982-5" }] },
+    ],
     history: [
       { year: 1982, event: "Construction of the underground laboratory is approved and begins beside the Gran Sasso motorway tunnel, following a proposal by INFN president Antonino Zichichi.", sources: [{ label: "Nature 485, 435 (2012): Gran Sasso feature", url: "https://doi.org/10.1038/485435a" }] },
       { year: 1987, event: "Excavation of the underground halls is completed and the laboratory is ready for its first experiments; it is the largest underground laboratory for astroparticle physics.", sources: [{ label: "Nature 485, 435 (2012): Gran Sasso feature", url: "https://doi.org/10.1038/485435a" }] },
@@ -215,6 +245,10 @@ export const facilities: readonly Facility[] = [
     founded: 2004,
     status: 'active',
     overview: "SNOLAB, located 2 km underground in the Creighton nickel mine near Sudbury, Ontario, is the world's deepest clean-room laboratory. Its predecessor, the Sudbury Neutrino Observatory (SNO), resolved the 30-year solar neutrino problem in 2002 by proving that electron neutrinos produced in the Sun oscillate into other flavours. SNOLAB now hosts experiments searching for dark matter (DEAP-3600, NEWS-G) and neutrinoless double-beta decay (SNO+).",
+    specs: [
+      { label: "Depth", value: "2 km", sources: [{ label: "SNOLAB: About", url: "https://www.snolab.ca/about/about-snolab/" }] },
+      { label: "Underground clean space", value: "5,000 m²", sources: [{ label: "SNOLAB: About", url: "https://www.snolab.ca/about/about-snolab/" }] },
+    ],
     history: [
       { year: 1999, event: "SNO detector begins operations, using 1,000 tonnes of heavy water to separately detect charged-current and neutral-current neutrino interactions.", sources: [{ label: "The Sudbury Neutrino Observatory, Nucl. Instrum. Meth. A 449, 172 (2000)", url: "https://doi.org/10.1016/S0168-9002(99)01469-2" }] },
       { year: 2001, event: "SNO charged-current result shows the solar electron-neutrino flux is one-third the Standard Solar Model prediction, hinting strongly at flavour change.", sources: [{ label: "SNO Collaboration, Phys. Rev. Lett. 87, 071301 (2001)", url: "https://doi.org/10.1103/PhysRevLett.87.071301" }] },
@@ -249,6 +283,12 @@ export const facilities: readonly Facility[] = [
     founded: 1983,
     status: 'active',
     overview: "Japan's Kamioka Observatory, housed beneath Mount Ikeno in Gifu Prefecture, is one of the most productive underground laboratories in the world. Its flagship detector Super-Kamiokande — a 50,000-tonne water Cherenkov cylinder — detected the first neutrinos from an extragalactic supernova (1987A), discovered atmospheric neutrino oscillations in 1998, and sets world-leading limits on the proton lifetime. The successor Hyper-Kamiokande, a 260,000-tonne detector, is currently under construction nearby.",
+    specs: [
+      { label: "Rock overburden", value: "1,000 m", sources: [{ label: "Super-Kamiokande: The detector", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/sk/about/detector/" }] },
+      { label: "Super-Kamiokande tank", value: "39.3 m in diameter, 41.4 m high", sources: [{ label: "Super-Kamiokande: The detector", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/sk/about/detector/" }] },
+      { label: "Water mass", value: "50,000 tonnes", sources: [{ label: "Super-Kamiokande: The detector", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/sk/about/detector/" }] },
+      { label: "Photomultiplier tubes", value: "11,129 inner (20-inch) and 1,885 outer (8-inch)", sources: [{ label: "Super-Kamiokande: The detector", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/sk/about/detector/" }] },
+    ],
     history: [
       { year: 1983, event: "Kamiokande detector begins operations under Mount Ikeno, designed primarily to search for proton decay predicted by Grand Unified Theories.", sources: [{ label: "Super-Kamiokande: Research history", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/sk/about/history" }] },
       { year: 1987, event: "Kamiokande-II detects 11 neutrinos from Supernova 1987A in the Large Magellanic Cloud — the first detection of neutrinos from any extragalactic source. Nobel Prize 2002.", sources: [{ label: "Nobel Prize in Physics 2002", url: "https://www.nobelprize.org/prizes/physics/2002/summary/" }] },
@@ -286,6 +326,10 @@ export const facilities: readonly Facility[] = [
     founded: 2006,
     status: 'active',
     overview: "The Sanford Underground Research Facility (SURF) occupies the former Homestake Gold Mine in Lead, South Dakota, at a depth of 1,478 m. Its predecessor, the Homestake experiment begun in 1965, was the first to detect solar neutrinos and created the solar neutrino problem that drove 30 years of physics. Today SURF houses LUX-ZEPLIN (LZ) — a 10-tonne dual-phase liquid-xenon detector that holds the world record for WIMP dark matter sensitivity.",
+    specs: [
+      { label: "Main laboratory level", value: "4,850 ft (about 1,480 m) underground", sources: [{ label: "Sanford Lab: Our story", url: "https://sanfordlab.org/our-story" }] },
+      { label: "LZ location", value: "Davis Cavern, 4,850-ft level", sources: [{ label: "The LUX-ZEPLIN (LZ) experiment, Nucl. Instrum. Meth. A 953, 163047 (2020)", url: "https://doi.org/10.1016/j.nima.2019.163047" }] },
+    ],
     history: [
       { year: 1965, event: "Raymond Davis Jr. starts building the chlorine radiochemical solar-neutrino experiment deep in the Homestake Mine, with 615 tonnes of perchloroethylene as its target.", sources: [{ label: "Davis, Harmer and Hoffman, Phys. Rev. Lett. 20, 1205 (1968)", url: "https://doi.org/10.1103/PhysRevLett.20.1205" }] },
       { year: 1968, event: "Davis reports far fewer solar neutrinos than predicted \u2014 the beginning of the solar neutrino problem that took three decades to resolve.", sources: [{ label: "Davis, Harmer and Hoffman, Phys. Rev. Lett. 20, 1205 (1968)", url: "https://doi.org/10.1103/PhysRevLett.20.1205" }] },
@@ -325,6 +369,12 @@ export const facilities: readonly Facility[] = [
     founded: 2010,
     status: 'active',
     overview: "The IceCube Neutrino Observatory at the geographic South Pole instruments a cubic kilometre of Antarctic ice between 1.5 and 2.5 km depth with 5,160 Digital Optical Modules on 86 vertical strings. It detects Cherenkov light from secondary particles produced when high-energy neutrinos interact in the ice — the world's largest neutrino telescope. IceCube opened the field of high-energy neutrino astronomy with its 2013 astrophysical neutrino detection, and in 2022 identified NGC 1068 as a cosmic neutrino source.",
+    specs: [
+      { label: "Instrumented volume", value: "One cubic kilometre of ice", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },
+      { label: "Strings", value: "86", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },
+      { label: "Digital optical modules", value: "5,160", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },
+      { label: "DeepCore energy threshold", value: "About 10 GeV", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },
+    ],
     history: [
       { year: 1993, event: "The first AMANDA (Antarctic Muon And Neutrino Detector Array) strings are deployed at the South Pole in the 1993-94 season, a proof of concept for deep-ice neutrino detection.", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },
       { year: 2004, event: "IceCube drilling and DOM deployment begins, expanding on AMANDA infrastructure.", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },
@@ -361,6 +411,11 @@ export const facilities: readonly Facility[] = [
     founded: 2015,
     status: 'active',
     overview: "The Jiangmen Underground Neutrino Observatory (JUNO) in Guangdong Province, China, is the world's largest liquid-scintillator neutrino detector — a 20,000-tonne sphere at 700 m depth instrumented with over 17,000 large photomultiplier tubes. Its primary goals are to determine the neutrino mass ordering (normal vs. inverted hierarchy) and to measure the oscillation parameters sin2-theta-12 and Delta-m2-21 to sub-percent precision, using reactor antineutrinos from nearby nuclear power plants.",
+    specs: [
+      { label: "Liquid scintillator mass", value: "20,000 tonnes", sources: [{ label: "Neutrino physics with JUNO, J. Phys. G 43, 030401 (2016)", url: "https://doi.org/10.1088/0954-3899/43/3/030401" }] },
+      { label: "Reactor baseline", value: "53 km", sources: [{ label: "Neutrino physics with JUNO, J. Phys. G 43, 030401 (2016)", url: "https://doi.org/10.1088/0954-3899/43/3/030401" }] },
+      { label: "Photomultiplier tubes", value: "More than 20,000 large and 25,000 small", sources: [{ label: "GSI: JUNO delivers first physics results (2025)", url: "https://www.gsi.de/en/start/news/details/2025/11/19/juno-experiment-first-data" }] },
+    ],
     history: [
       { year: 2013, event: "JUNO, first proposed in 2008, has its funding approved by the Chinese Academy of Sciences and the Guangdong provincial government; it builds on the success of the Daya Bay theta-13 measurement.", sources: [{ label: "GSI: JUNO delivers first physics results (2025)", url: "https://www.gsi.de/en/start/news/details/2025/11/19/juno-experiment-first-data" }] },
       { year: 2015, event: "A ground-breaking ceremony on 10 January 2015 starts construction of the JUNO underground laboratory near Kaiping, Jiangmen, Guangdong.", sources: [{ label: "CERN Courier: Ground-breaking for China's new neutrino observatory", url: "https://cerncourier.com/a/ground-breaking-for-chinas-new-neutrino-observatory/" }] },
@@ -392,6 +447,12 @@ export const facilities: readonly Facility[] = [
     founded: 2011,
     status: 'historic',
     overview: "The Daya Bay Reactor Neutrino Experiment operated from 2011 to 2020 near nuclear power plants in Guangdong, China. Using eight gadolinium-doped liquid-scintillator detectors across three underground halls at baselines of 360-1860 m from the reactors, Daya Bay made the world's most precise measurement of the mixing angle theta-13 — a critical parameter for future experiments seeking to measure the neutrino CP-violating phase delta-CP.",
+    specs: [
+      { label: "Reactors", value: "Six, each of 2.9 GW thermal power", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 108, 171803 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" }] },
+      { label: "Hall baselines", value: "470 m and 576 m (near), 1,648 m (far)", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 108, 171803 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" }] },
+      { label: "Data set", value: "3,158 days; 5.55 million antineutrino candidates", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 130, 161802 (2023)", url: "https://doi.org/10.1103/PhysRevLett.130.161802" }] },
+      { label: "Final sin² 2θ₁₃", value: "0.0851 ± 0.0024", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 130, 161802 (2023)", url: "https://doi.org/10.1103/PhysRevLett.130.161802" }] },
+    ],
     history: [
       { year: 2011, event: "Daya Bay begins operations with the first set of antineutrino detectors installed in underground experimental halls.", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 108, 171803 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" }] },
       { year: 2012, event: "Daya Bay announces the first precise measurement of theta-13, finding sin2(2*theta-13) = 0.092 at more than 5 sigma — the world's first observation of non-zero theta-13.", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 108, 171803 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" }] },
@@ -425,6 +486,11 @@ export const facilities: readonly Facility[] = [
     founded: 2008,
     status: 'active',
     overview: "The Pierre Auger Observatory in Mendoza Province, Argentina, covers 3,000 km2 of the Pampa Amarilla with 1,660 water-Cherenkov surface detectors and 27 fluorescence telescopes — the world's largest cosmic-ray detector. It measures ultra-high-energy cosmic rays (UHECRs) above 10^18 eV, addressing the mystery of the origin, nature, and maximum energy of cosmic rays. The ongoing AugerPrime upgrade adds scintillators and radio antennas for improved composition sensitivity.",
+    specs: [
+      { label: "Array area", value: "3,000 km²", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },
+      { label: "Surface detectors", value: "1,660", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },
+      { label: "Fluorescence telescopes", value: "27", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },
+    ],
     history: [
       { year: 1992, event: "Pierre Auger Observatory proposed by James Cronin (U. Chicago) and Alan Watson (U. Leeds) to resolve the origin and spectrum of ultra-high-energy cosmic rays.", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },
       { year: 2004, event: "First physics results are reported from more than 100 surface detector stations in the Pampa Amarilla; the hybrid technique combining surface stations with fluorescence telescopes is pioneered.", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },
@@ -461,6 +527,10 @@ export const facilities: readonly Facility[] = [
     founded: 2019,
     status: 'planned',
     overview: "The Cherenkov Telescope Array Observatory (CTAO) will be the world's largest and most sensitive ground-based gamma-ray observatory, with two sites: CTA-North at La Palma, Canary Islands, and CTA-South near ESO's Paranal Observatory in Chile. The full array of ~70 imaging atmospheric Cherenkov telescopes in three size classes will cover 20 GeV to 300 TeV with order-of-magnitude improvements in sensitivity over current instruments, enabling studies of dark matter annihilation, cosmic-ray origin, AGN jets, and pulsar wind nebulae.",
+    specs: [
+      { label: "Energy range", value: "20 GeV to 300 TeV", sources: [{ label: "Science with the Cherenkov Telescope Array (2018)", url: "https://doi.org/10.1142/10986" }] },
+      { label: "Sites", value: "La Palma (north) and Paranal (south)", sources: [{ label: "Science with the Cherenkov Telescope Array (2018)", url: "https://doi.org/10.1142/10986" }] },
+    ],
     history: [
       { year: 2010, event: "CTA concept formally developed by an international consortium; the multi-telescope multi-size-class architecture is defined." },
       { year: 2018, event: "LST-1, the prototype Large-Sized Telescope, is inaugurated on La Palma in October 2018 and goes on to serve as a pathfinder for the array." },
@@ -493,6 +563,12 @@ export const facilities: readonly Facility[] = [
     founded: 2002,
     status: 'active',
     overview: "The Laser Interferometer Gravitational-wave Observatory (LIGO) consists of two identical 4-km L-shaped interferometers — one near Hanford, Washington, and one in Livingston, Louisiana — operated by Caltech and MIT. On 14 September 2015, Advanced LIGO made the first direct detection of gravitational waves from a binary black hole merger (GW150914), opening the era of gravitational-wave astronomy. The Nobel Prize in Physics 2017 was awarded to LIGO founders Rainer Weiss, Kip Thorne, and Barry Barish.",
+    specs: [
+      { label: "Arm length", value: "4 km", sources: [{ label: "LIGO Laboratory: Facts", url: "https://www.ligo.caltech.edu/page/facts" }] },
+      { label: "Distance between the two detectors", value: "3,002 km", sources: [{ label: "LIGO Laboratory: Facts", url: "https://www.ligo.caltech.edu/page/facts" }] },
+      { label: "Vacuum volume", value: "10,000 m³", sources: [{ label: "LIGO Laboratory: Facts", url: "https://www.ligo.caltech.edu/page/facts" }] },
+      { label: "Smallest detectable change in arm length", value: "1/10,000 the width of a proton", sources: [{ label: "LIGO Laboratory: Facts", url: "https://www.ligo.caltech.edu/page/facts" }] },
+    ],
     history: [
       { year: 1992, event: "NSF selects the Hanford and Livingston sites and signs the LIGO cooperative agreement with Caltech, two years after the National Science Board approved construction.", sources: [{ label: "LIGO Laboratory: Timeline", url: "https://www.ligo.caltech.edu/page/timeline" }] },
       { year: 2002, event: "The Initial LIGO interferometers operate in coincidence for the first time, together with GEO600, beginning two decades of progressively more sensitive observing runs.", sources: [{ label: "LIGO Laboratory: Timeline", url: "https://www.ligo.caltech.edu/page/timeline" }] },
@@ -529,6 +605,9 @@ export const facilities: readonly Facility[] = [
     founded: 2007,
     status: 'active',
     overview: "The Virgo gravitational-wave detector is a 3-km L-shaped laser interferometer near Cascina, Pisa, operated by the European Gravitational Observatory (EGO) consortium. Joining the LIGO network in 2017, the addition of a third detector improved source sky localisation from ~1,000 deg2 to tens of deg2, enabling rapid electromagnetic follow-up of mergers. Advanced Virgo+ operates with frequency-dependent squeezing and improved mirror coatings.",
+    specs: [
+      { label: "Arm length", value: "3 km", sources: [{ label: "Virgo: The detector", url: "https://www.virgo-gw.eu/science/detector/" }] },
+    ],
     history: [
       { year: 1989, event: "Virgo, conceived two years earlier by Adalberto Giazotto and Alain Brillet, is formally proposed to the French CNRS and the Italian INFN.", sources: [{ label: "Virgo: History", url: "https://www.virgo-gw.eu/about/virgo-history/" }] },
       { year: 2003, event: "Virgo is inaugurated at Cascina, where construction had begun in 1997; commissioning follows.", sources: [{ label: "Virgo: History", url: "https://www.virgo-gw.eu/about/virgo-history/" }] },
@@ -563,6 +642,11 @@ export const facilities: readonly Facility[] = [
     founded: 2019,
     status: 'active',
     overview: "KAGRA (Kamioka Gravitational Wave Detector) is the first large-scale gravitational-wave detector built underground and using cryogenic sapphire mirrors cooled to 20 K. Located in the Kamioka mine in Gifu Prefecture, its 3-km interferometer is designed to reduce seismic and thermal noise below the limits of current LIGO/Virgo sensitivity. KAGRA joined the LIGO-Virgo network for O3b in 2020 and O4 in 2023, bringing the global network to three continents.",
+    specs: [
+      { label: "Arm length", value: "3 km", sources: [{ label: "KAGRA Collaboration, Nature Astronomy 3, 35 (2019)", url: "https://doi.org/10.1038/s41550-018-0658-y" }] },
+      { label: "Mirrors", value: "Sapphire, cooled to cryogenic temperature", sources: [{ label: "KAGRA Collaboration, Nature Astronomy 3, 35 (2019)", url: "https://doi.org/10.1038/s41550-018-0658-y" }] },
+      { label: "Site", value: "Underground, inside Mount Ikenoyama", sources: [{ label: "KAGRA Collaboration, Nature Astronomy 3, 35 (2019)", url: "https://doi.org/10.1038/s41550-018-0658-y" }] },
+    ],
     history: [
       { year: 2010, event: "KAGRA (originally LCGT, Large-scale Cryogenic Gravitational wave Telescope) approved by the Japanese government and MEXT.", sources: [{ label: "KAGRA Collaboration, Nature Astronomy 3, 35 (2019)", url: "https://doi.org/10.1038/s41550-018-0658-y" }] },
       { year: 2012, event: "Tunnel excavation begins inside the Kamioka mine, sharing the mountain with the Super-Kamiokande detector.", sources: [{ label: "KAGRA Collaboration, Nature Astronomy 3, 35 (2019)", url: "https://doi.org/10.1038/s41550-018-0658-y" }] },
@@ -595,6 +679,11 @@ export const facilities: readonly Facility[] = [
     founded: 2022,
     status: 'active',
     overview: "The Facility for Rare Isotope Beams (FRIB) at Michigan State University, which opened to users in May 2022, is the world's most powerful rare-isotope accelerator. A superconducting linear accelerator drives uranium and other heavy-ion beams to roughly half the speed of light and fragments them on beryllium targets to produce thousands of exotic radioactive isotopes — including those that exist only in neutron stars and supernovae. FRIB enables tests of nuclear force models near the neutron drip line and measurements critical to understanding r-process nucleosynthesis.",
+    specs: [
+      { label: "Beam power on target", value: "400 kW by design, being reached in stages", sources: [{ label: "Wei et al., FRIB status, SRF2023 proceedings (MOIAA01)", url: "https://proceedings.jacow.org/srf2023/papers/moiaa01.pdf" }] },
+      { label: "Beam energy", value: "More than 200 MeV per nucleon", sources: [{ label: "Wei et al., FRIB status, SRF2023 proceedings (MOIAA01)", url: "https://proceedings.jacow.org/srf2023/papers/moiaa01.pdf" }] },
+      { label: "Superconducting linac", value: "324 resonators in 46 cryomodules", sources: [{ label: "Wei et al., FRIB status, SRF2023 proceedings (MOIAA01)", url: "https://proceedings.jacow.org/srf2023/papers/moiaa01.pdf" }] },
+    ],
     history: [
       { year: 2008, event: "DOE selects Michigan State University on 11 December 2008 to design and establish FRIB, successor to the National Superconducting Cyclotron Laboratory (NSCL).", sources: [{ label: "NSCL: History", url: "https://nscl.msu.edu/about/history.html" }] },
       { year: 2014, event: "FRIB construction begins; the superconducting linac tunnel is excavated on the MSU campus in East Lansing." },
@@ -628,6 +717,12 @@ export const facilities: readonly Facility[] = [
     founded: 1969,
     status: 'active',
     overview: "The GSI Helmholtz Centre for Heavy Ion Research in Darmstadt operates a heavy-ion accelerator complex and is home to FAIR (Facility for Antiproton and Ion Research), currently under construction on the same campus. GSI is internationally renowned for synthesising six new super-heavy elements (Bohrium to Copernicium, Z=107-112) between 1981 and 1996, for pioneering heavy-ion cancer therapy in the 1990s, and for its HADES spectrometer studying dense hadronic matter. FAIR will collide heavy ions and antiprotons at unprecedented intensities.",
+    specs: [
+      { label: "UNILAC length", value: "120 m", sources: [{ label: "FAIR: The accelerator facility", url: "https://fair-center.eu/overview/accelerator" }] },
+      { label: "SIS18 circumference", value: "216 m", sources: [{ label: "FAIR: The accelerator facility", url: "https://fair-center.eu/overview/accelerator" }] },
+      { label: "SIS100 circumference (FAIR)", value: "1,100 m", sources: [{ label: "FAIR: The accelerator facility", url: "https://fair-center.eu/overview/accelerator" }] },
+      { label: "SIS100 ion speed", value: "Up to 99% of the speed of light", sources: [{ label: "FAIR: The accelerator facility", url: "https://fair-center.eu/overview/accelerator" }] },
+    ],
     history: [
       { year: 1969, event: "GSI founded as Germany's national heavy-ion research centre; the first experiments at its UNILAC linear accelerator follow in 1975.", sources: [{ label: "GSI and FAIR timeline", url: "https://www.gsi.de/en/about_us/history" }] },
       { year: 1981, event: "Peter Armbruster and Gottfried Munzenberg's team synthesises element 107 (Bohrium) using the velocity filter SHIP, beginning two decades of super-heavy element discovery.", sources: [{ label: "Münzenberg et al., Z. Phys. A 300, 107 (1981)", url: "https://doi.org/10.1007/BF01412623" }, { label: "GSI and FAIR timeline", url: "https://www.gsi.de/en/about_us/history" }] },
@@ -664,6 +759,9 @@ export const facilities: readonly Facility[] = [
     founded: 1968,
     status: 'active',
     overview: "TRIUMF at the University of British Columbia in Vancouver is Canada's particle accelerator centre. Its 520-MeV H-minus cyclotron — one of the world's largest — drives the ISAC radioactive ion beam facility, producing rare isotopes for nuclear physics, nuclear astrophysics, and medical isotope production. TRIUMF is a world leader in precision mass measurements of short-lived nuclei, gamma-ray spectroscopy of neutron-rich isotopes, and isotopes for cancer therapy. The ARIEL electron linac, commissioned in 2022, triples rare-isotope production capacity.",
+    specs: [
+      { label: "Cyclotron proton energy", value: "500 MeV", sources: [{ label: "CERN Courier: Tales of TRIUMF", url: "https://cerncourier.com/a/tales-of-triumf/" }] },
+    ],
     history: [
       { year: 1968, event: "TRIUMF, planned by the University of British Columbia, Simon Fraser University, and the University of Victoria, receives federal funding in April 1968 and construction of its cyclotron begins.", sources: [{ label: "CERN Courier: Tales of TRIUMF", url: "https://cerncourier.com/a/tales-of-triumf/" }] },
       { year: 1974, event: "Protons are first extracted from the TRIUMF 500 MeV cyclotron on 15 December 1974; it goes on to deliver high-intensity beams for meson physics and nuclear science.", sources: [{ label: "CERN Courier: Tales of TRIUMF", url: "https://cerncourier.com/a/tales-of-triumf/" }, { label: "The TRIUMF 500 MeV cyclotron, Hyperfine Interact. 225, 9 (2014)", url: "https://doi.org/10.1007/s10751-013-0878-6" }] },
@@ -700,6 +798,10 @@ export const facilities: readonly Facility[] = [
     founded: 1959,
     status: 'active',
     overview: "Deutsches Elektronen-Synchrotron (DESY) in Hamburg is one of the world's leading accelerator centres. Its PETRA collider hosted the 1979 discovery of the gluon — the carrier of the strong force — in three-jet events. HERA (1992-2007) was the world's only electron-proton collider, mapping proton structure in unprecedented detail. Today DESY operates PETRA III (the world's brightest medium-energy synchrotron source), FLASH (a free-electron laser), and hosts the European XFEL — the world's most powerful X-ray free-electron laser.",
+    specs: [
+      { label: "HERA operation", value: "1992 to 2007", sources: [{ label: "Collider Physics at HERA (arXiv:0805.3334)", url: "https://arxiv.org/abs/0805.3334" }] },
+      { label: "HERA centre-of-mass energy", value: "About 320 GeV", sources: [{ label: "Collider Physics at HERA (arXiv:0805.3334)", url: "https://arxiv.org/abs/0805.3334" }] },
+    ],
     history: [
       { year: 1959, event: "DESY founded on 18 December 1959 as West Germany's national electron accelerator centre; construction of its first electron synchrotron begins in Hamburg-Bahrenfeld.", sources: [{ label: "Lightsources.org: 60 years of DESY", url: "https://lightsources.org/2019/12/18/60-years-of-desy-from-hamburg-particle-accelerator-to-global-research-centre/" }] },
       { year: 1979, event: "Four experiments (JADE, MARK-J, PLUTO, TASSO) at the PETRA collider simultaneously observe three-jet events in e+e- annihilation — the first direct evidence for the gluon.", sources: [{ label: "TASSO Collaboration, Phys. Lett. B 86, 243 (1979)", url: "https://doi.org/10.1016/0370-2693(79)90830-X" }] },

@@ -44,6 +44,7 @@ function countFact(where: string, sources: SourceRef[] | undefined) {
 const facilityIds = new Set<string>();
 const experimentIds = new Set<string>();
 let reviewed = 0;
+let specCount = 0;
 
 for (const facility of facilities) {
   const at = `facility "${facility.id}"`;
@@ -66,6 +67,17 @@ for (const facility of facilities) {
     if (!valid) errors.push(`${at}: reviewed must be a date written YYYY-MM-DD`);
     else if (Date.parse(facility.reviewed) > Date.now()) errors.push(`${at}: reviewed date is in the future`);
     else reviewed += 1;
+  }
+
+  for (const spec of facility.specs ?? []) {
+    const where = `${at} specification "${spec.label}"`;
+    if (!spec.label.trim() || !spec.value.trim()) errors.push(`${where}: label and value are both required`);
+    if (!spec.sources || spec.sources.length === 0) errors.push(`${where}: a specification must cite a source`);
+    for (const source of spec.sources ?? []) {
+      if (!source.label.trim()) errors.push(`${where}: a source has no label`);
+      if (!isWebUrl(source.url)) errors.push(`${where}: source link "${source.url}" is not a web address`);
+    }
+    specCount += 1;
   }
 
   for (const entry of facility.history) {
@@ -108,6 +120,7 @@ for (const facility of facilities) {
 const percent = facts === 0 ? 0 : Math.round((sourcedFacts / facts) * 100);
 console.log(`Facility data: ${facilities.length} facilities, ${experimentIds.size} experiments.`);
 console.log(`  Facts with a source: ${sourcedFacts} of ${facts} (${percent}%).`);
+console.log(`  Sourced specifications: ${specCount}.`);
 console.log(`  Facilities reviewed: ${reviewed} of ${facilities.length}.`);
 
 if (errors.length > 0) {

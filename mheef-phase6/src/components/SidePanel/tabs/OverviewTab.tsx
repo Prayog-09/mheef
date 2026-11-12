@@ -1,4 +1,5 @@
 import type { Facility } from '../../../types/facility';
+import SourceLinks from '../../SourceLinks';
 
 interface OverviewTabProps {
   facility: Facility;
@@ -24,6 +25,28 @@ export default function OverviewTab({ facility }: OverviewTabProps) {
           </div>
         ))}
       </dl>
+
+      {facility.specs && facility.specs.length > 0 && (
+        <section aria-labelledby="panel-key-figures">
+          <h3
+            id="panel-key-figures"
+            className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-300"
+          >
+            Key figures
+          </h3>
+          <dl className="mt-2 divide-y divide-white/10 border-y border-white/10">
+            {facility.specs.map((spec) => (
+              <div key={spec.label} className="py-2.5">
+                <dt className="text-xs text-white/50">{spec.label}</dt>
+                <dd className="mt-0.5">
+                  <p className="text-sm font-medium text-white/90">{spec.value}</p>
+                  <SourceLinks sources={spec.sources} />
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
     </div>
   );
 }
