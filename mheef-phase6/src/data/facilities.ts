@@ -1,7 +1,7 @@
 import type { Facility } from '../types/facility';
 
 /**
- * Master dataset — Phase 2. 20 flagship HEP facilities across all major
+ * Master dataset. 30 HEP facilities across all major
  * categories.
  *
  * Phase 3: side panel looks up any Facility by selectedFacilityId from here.
@@ -828,4 +828,340 @@ export const facilities: readonly Facility[] = [
     ],
   },
 
+  // ─── Added in Phase 9 ─────────────────────────────────────────────────────
+
+  {
+    id: 'slac',
+    name: "SLAC",
+    fullName: "SLAC National Accelerator Laboratory",
+    type: 'accelerator-laboratory',
+    country: "United States",
+    lat: 37.419,
+    lng: -122.2046,
+    founded: 1962,
+    status: 'active',
+    overview: "SLAC National Accelerator Laboratory in Menlo Park, California, was built around a two-mile linear electron accelerator. Electron scattering experiments there revealed point-like constituents inside the proton, and its SPEAR storage ring produced the J/psi particle and the tau lepton. The laboratory later ran the BaBar experiment on matter-antimatter differences in B mesons, and today its linac drives the LCLS X-ray free-electron laser.",
+    specs: [
+      { label: "Linear accelerator length", value: "2 miles (about 3.2 km)", sources: [{ label: "SLAC: Our story", url: "https://www6.slac.stanford.edu/about/our-story" }] },
+      { label: "Nobel Prizes for work at the laboratory", value: "Four", sources: [{ label: "SLAC: Our story", url: "https://www6.slac.stanford.edu/about/our-story" }] },
+    ],
+    history: [
+      { year: 1962, event: "SLAC begins with the construction of a two-mile-long linear electron accelerator.", sources: [{ label: "SLAC: Our story", url: "https://www6.slac.stanford.edu/about/our-story" }] },
+      { year: 1969, event: "Electron-proton scattering experiments at the linac find that the proton contains point-like constituents, later identified with quarks. Jerome Friedman, Henry Kendall and Richard Taylor share the 1990 Nobel Prize.", sources: [{ label: "Bloom et al., Phys. Rev. Lett. 23, 930 (1969)", url: "https://doi.org/10.1103/PhysRevLett.23.930" }, { label: "Breidenbach et al., Phys. Rev. Lett. 23, 935 (1969)", url: "https://doi.org/10.1103/PhysRevLett.23.935" }, { label: "Nobel Prize in Physics 1990", url: "https://www.nobelprize.org/prizes/physics/1990/summary/" }] },
+      { year: 1974, event: "The Mark I detector at the SPEAR electron-positron ring discovers a narrow resonance, the J/psi, at the same time as a team at Brookhaven. Burton Richter shares the 1976 Nobel Prize.", sources: [{ label: "Augustin et al., Phys. Rev. Lett. 33, 1406 (1974)", url: "https://doi.org/10.1103/PhysRevLett.33.1406" }, { label: "Nobel Prize in Physics 1976", url: "https://www.nobelprize.org/prizes/physics/1976/summary/" }] },
+      { year: 1975, event: "Martin Perl's group reports anomalous electron-muon events at SPEAR, the first evidence for the tau lepton. Perl shares the 1995 Nobel Prize.", sources: [{ label: "Perl et al., Phys. Rev. Lett. 35, 1489 (1975)", url: "https://doi.org/10.1103/PhysRevLett.35.1489" }, { label: "Nobel Prize in Physics 1995", url: "https://www.nobelprize.org/prizes/physics/1995/summary/" }] },
+      { year: 2001, event: "The BaBar experiment observes CP violation in the decays of neutral B mesons.", sources: [{ label: "BaBar Collaboration, Phys. Rev. Lett. 87, 091801 (2001)", url: "https://doi.org/10.1103/PhysRevLett.87.091801" }] },
+      { year: 2009, event: "The Linac Coherent Light Source (LCLS), the first hard X-ray free-electron laser, produces its first laser light using the last third of the linac.", sources: [{ label: "Emma et al., Nature Photonics 4, 641 (2010)", url: "https://doi.org/10.1038/nphoton.2010.176" }] },
+    ],
+    experiments: [
+      { id: 'slac-spear', name: "SPEAR / Mark I", description: "Electron-positron storage ring and its detector, where the J/psi and the tau lepton were discovered.", topics: ['qcd', 'electroweak'], startYear: 1972, sources: [{ label: "Augustin et al., Phys. Rev. Lett. 33, 1406 (1974)", url: "https://doi.org/10.1103/PhysRevLett.33.1406" }, { label: "Perl et al., Phys. Rev. Lett. 35, 1489 (1975)", url: "https://doi.org/10.1103/PhysRevLett.35.1489" }] },
+      { id: 'slac-babar', name: "BaBar", description: "Detector at the PEP-II asymmetric electron-positron collider that measured CP violation in B-meson decays.", topics: ['b-physics', 'cp-violation'], startYear: 1999, endYear: 2008, sources: [{ label: "BaBar Collaboration, Phys. Rev. Lett. 87, 091801 (2001)", url: "https://doi.org/10.1103/PhysRevLett.87.091801" }] },
+      { id: 'slac-lcls', name: "LCLS", description: "X-ray free-electron laser driven by the SLAC linac, producing pulses at wavelengths down to about one angstrom.", topics: ['synchrotron-light'], startYear: 2009, sources: [{ label: "Emma et al., Nature Photonics 4, 641 (2010)", url: "https://doi.org/10.1038/nphoton.2010.176" }] },
+    ],
+    keyResults: [
+      { year: 1969, discovery: "Point-like Constituents of the Proton", description: "Deep inelastic electron-proton scattering showed that the proton has an internal structure of point-like particles, the experimental basis of the quark model. Nobel Prize 1990.", sources: [{ label: "Bloom et al., Phys. Rev. Lett. 23, 930 (1969)", url: "https://doi.org/10.1103/PhysRevLett.23.930" }, { label: "Breidenbach et al., Phys. Rev. Lett. 23, 935 (1969)", url: "https://doi.org/10.1103/PhysRevLett.23.935" }, { label: "Nobel Prize in Physics 1990", url: "https://www.nobelprize.org/prizes/physics/1990/summary/" }] },
+      { year: 1974, discovery: "Discovery of the J/psi", description: "A narrow resonance in electron-positron annihilation revealed the charm quark. Nobel Prize 1976.", sources: [{ label: "Augustin et al., Phys. Rev. Lett. 33, 1406 (1974)", url: "https://doi.org/10.1103/PhysRevLett.33.1406" }, { label: "Nobel Prize in Physics 1976", url: "https://www.nobelprize.org/prizes/physics/1976/summary/" }] },
+      { year: 1975, discovery: "Discovery of the Tau Lepton", description: "Events with an electron and a muon and missing energy gave the first evidence for a third charged lepton. Nobel Prize 1995.", sources: [{ label: "Perl et al., Phys. Rev. Lett. 35, 1489 (1975)", url: "https://doi.org/10.1103/PhysRevLett.35.1489" }, { label: "Nobel Prize in Physics 1995", url: "https://www.nobelprize.org/prizes/physics/1995/summary/" }] },
+    ],
+    importantPeople: [
+      { name: "Burton Richter", contribution: "Led the SPEAR experiment that discovered the J/psi; Nobel Prize in Physics 1976.", sources: [{ label: "Nobel Prize in Physics 1976", url: "https://www.nobelprize.org/prizes/physics/1976/summary/" }] },
+      { name: "Martin Perl", contribution: "Discovered the tau lepton at SPEAR; Nobel Prize in Physics 1995.", sources: [{ label: "Nobel Prize in Physics 1995", url: "https://www.nobelprize.org/prizes/physics/1995/summary/" }] },
+      { name: "Richard Taylor", contribution: "Co-led the deep inelastic scattering experiments at the linac; Nobel Prize in Physics 1990.", sources: [{ label: "Nobel Prize in Physics 1990", url: "https://www.nobelprize.org/prizes/physics/1990/summary/" }] },
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www6.slac.stanford.edu" },
+    ],
+  },
+  {
+    id: 'j-parc',
+    name: "J-PARC",
+    fullName: "Japan Proton Accelerator Research Complex",
+    type: 'accelerator-laboratory',
+    country: "Japan",
+    lat: 36.445,
+    lng: 140.606,
+    founded: 2001,
+    status: 'active',
+    overview: "J-PARC in Tokai, on Japan's Pacific coast, is a high-intensity proton accelerator complex built jointly by KEK and the Japan Atomic Energy Agency. A linac and two synchrotrons deliver protons to facilities for neutrino physics, hadron physics and materials science. Its neutrino beam is aimed at the Super-Kamiokande detector 295 km away for the T2K experiment.",
+    specs: [
+      { label: "Main Ring proton energy", value: "30 GeV", sources: [{ label: "J-PARC: History", url: "https://j-parc.jp/c/en/about/history.html" }] },
+      { label: "T2K baseline to Super-Kamiokande", value: "295 km", sources: [{ label: "The T2K experiment, Nucl. Instrum. Meth. A 659, 106 (2011)", url: "https://doi.org/10.1016/j.nima.2011.06.067" }] },
+    ],
+    history: [
+      { year: 2001, event: "KEK and the Japan Atomic Energy Agency sign a cooperative agreement in April, and construction of J-PARC starts in December.", sources: [{ label: "J-PARC: History", url: "https://j-parc.jp/c/en/about/history.html" }] },
+      { year: 2008, event: "The Main Ring reaches its initial target energy of 30 GeV in December.", sources: [{ label: "J-PARC: History", url: "https://j-parc.jp/c/en/about/history.html" }] },
+      { year: 2009, event: "The first neutrino is observed by the T2K near detector in November.", sources: [{ label: "J-PARC: History", url: "https://j-parc.jp/c/en/about/history.html" }] },
+      { year: 2011, event: "Operation is suspended after the Great East Japan Earthquake in March. T2K publishes the first indication that muon neutrinos change into electron neutrinos.", sources: [{ label: "J-PARC: History", url: "https://j-parc.jp/c/en/about/history.html" }, { label: "T2K Collaboration, Phys. Rev. Lett. 107, 041801 (2011)", url: "https://doi.org/10.1103/PhysRevLett.107.041801" }] },
+      { year: 2020, event: "T2K reports constraints on the phase that would make neutrinos and antineutrinos oscillate differently.", sources: [{ label: "T2K Collaboration, Nature 580, 339 (2020)", url: "https://doi.org/10.1038/s41586-020-2177-0" }] },
+    ],
+    experiments: [
+      { id: 'jparc-t2k', name: "T2K", description: "Tokai-to-Kamioka long-baseline experiment: a muon-neutrino beam from J-PARC is measured near its source and again at Super-Kamiokande, 295 km away, to study neutrino oscillations.", topics: ['neutrinos', 'cp-violation'], startYear: 2010, sources: [{ label: "The T2K experiment, Nucl. Instrum. Meth. A 659, 106 (2011)", url: "https://doi.org/10.1016/j.nima.2011.06.067" }] },
+    ],
+    keyResults: [
+      { year: 2014, discovery: "Observation of Electron-Neutrino Appearance", description: "T2K observed electron neutrinos appearing in a muon-neutrino beam, a direct demonstration of oscillation into a different flavour.", sources: [{ label: "T2K Collaboration, Phys. Rev. Lett. 112, 061802 (2014)", url: "https://doi.org/10.1103/PhysRevLett.112.061802" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://j-parc.jp/c/en/" },
+    ],
+  },
+  {
+    id: 'jinr',
+    name: "JINR Dubna",
+    fullName: "Joint Institute for Nuclear Research",
+    type: 'accelerator-laboratory',
+    country: "Russia",
+    lat: 56.7417,
+    lng: 37.1917,
+    founded: 1956,
+    status: 'active',
+    overview: "The Joint Institute for Nuclear Research in Dubna, north of Moscow, is an international laboratory established by a convention of eleven founding states. Its Flerov Laboratory is known for synthesising the heaviest elements of the periodic table, including flerovium and oganesson. The institute is building the NICA heavy-ion collider and takes part in the Baikal-GVD neutrino telescope in Lake Baikal.",
+    specs: [
+      { label: "Member states", value: "15", sources: [{ label: "JINR: About", url: "https://www.jinr.ru/about-en/" }] },
+      { label: "Laboratories", value: "Seven", sources: [{ label: "JINR: About", url: "https://www.jinr.ru/about-en/" }] },
+    ],
+    history: [
+      { year: 1956, event: "The convention establishing JINR is signed on 26 March 1956 by eleven founding states.", sources: [{ label: "JINR: About", url: "https://www.jinr.ru/about-en/" }] },
+      { year: 1999, event: "A Dubna-led team reports the synthesis of a superheavy nucleus of element 114, later named flerovium, by bombarding plutonium with calcium-48.", sources: [{ label: "Oganessian et al., Phys. Rev. Lett. 83, 3154 (1999)", url: "https://doi.org/10.1103/PhysRevLett.83.3154" }] },
+      { year: 2006, event: "The synthesis of isotopes of element 118, later named oganesson, is reported.", sources: [{ label: "Oganessian et al., Phys. Rev. C 74, 044602 (2006)", url: "https://doi.org/10.1103/PhysRevC.74.044602" }] },
+      { year: 2019, event: "The Superheavy Element Factory, a new cyclotron complex for synthesising new elements, begins operation.", sources: [{ label: "JINR: Superheavy elements, scientific programme and infrastructure", url: "https://www.jinr.ru/posts/superheavy-elements-scientific-programme-and-infrastructure/" }, { label: "JINR: About", url: "https://www.jinr.ru/about-en/" }] },
+    ],
+    experiments: [
+      { id: 'jinr-she', name: "Superheavy Element Factory", description: "Cyclotron complex of the Flerov Laboratory dedicated to synthesising and studying the heaviest elements.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2019, sources: [{ label: "JINR: About", url: "https://www.jinr.ru/about-en/" }, { label: "JINR: Superheavy elements, scientific programme and infrastructure", url: "https://www.jinr.ru/posts/superheavy-elements-scientific-programme-and-infrastructure/" }] },
+      { id: 'jinr-nica', name: "NICA", description: "Heavy-ion collider designed to study the properties of dense baryonic matter.", topics: ['heavy-ions', 'qcd'], sources: [{ label: "JINR: About", url: "https://www.jinr.ru/about-en/" }] },
+    ],
+    keyResults: [
+      { year: 2006, discovery: "Synthesis of Element 118 (Oganesson)", description: "Fusion of calcium-48 with californium-249 produced the heaviest element so far identified.", sources: [{ label: "Oganessian et al., Phys. Rev. C 74, 044602 (2006)", url: "https://doi.org/10.1103/PhysRevC.74.044602" }] },
+    ],
+    importantPeople: [
+      { name: "Yuri Oganessian", contribution: "Scientific leader of the Flerov Laboratory of Nuclear Reactions and lead author of the element 114 and 118 discovery papers; element 118 is named after him.", sources: [{ label: "Physics World: Russia's Joint Institute for Nuclear Research builds for the future", url: "https://physicsworld.com/a/russias-joint-institute-of-nuclear-research-builds-for-the-future/" }, { label: "Oganessian et al., Phys. Rev. C 74, 044602 (2006)", url: "https://doi.org/10.1103/PhysRevC.74.044602" }] },
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.jinr.ru/main-en/" },
+    ],
+  },
+  {
+    id: 'binp',
+    name: "BINP Novosibirsk",
+    fullName: "Budker Institute of Nuclear Physics",
+    type: 'accelerator-laboratory',
+    country: "Russia",
+    lat: 54.849,
+    lng: 83.1107,
+    founded: 1958,
+    status: 'active',
+    overview: "The Budker Institute of Nuclear Physics in Novosibirsk's Akademgorodok was founded by Gersh Budker and was one of the places where the colliding-beam method was first realised. Its early VEP-1 and VEPP-2 machines were among the world's first colliders, and Budker proposed electron cooling there. The institute runs the VEPP-4M and VEPP-2000 electron-positron colliders.",
+    specs: [
+    ],
+    history: [
+      { year: 1958, event: "The institute is founded on the basis of a laboratory headed by Gersh Budker.", sources: [{ label: "Science First Hand: Particle accelerators, microscopes of modern physics", url: "https://scfh.ru/en/papers/particle-accelerators-microscopes-of-modern-physics/" }] },
+      { year: 1964, event: "The VEP-1 electron-electron collider is built, followed by the VEPP-2 electron-positron collider in 1966.", sources: [{ label: "Science First Hand: Particle accelerators, microscopes of modern physics", url: "https://scfh.ru/en/papers/particle-accelerators-microscopes-of-modern-physics/" }] },
+      { year: 1966, event: "Budker proposes electron cooling, a method of shrinking beams of heavy particles by mixing them with a cold electron beam.", sources: [{ label: "Science First Hand: Story of electron cooling", url: "https://scfh.ru/en/papers/story-of-electron-cooling/" }] },
+    ],
+    experiments: [
+      { id: 'binp-vepp4m', name: "VEPP-4M", description: "Electron-positron collider operating at the institute.", topics: ['qcd', 'electroweak'], sources: [{ label: "Science First Hand: Particle accelerators, microscopes of modern physics", url: "https://scfh.ru/en/papers/particle-accelerators-microscopes-of-modern-physics/" }] },
+      { id: 'binp-vepp2000', name: "VEPP-2000", description: "Electron-positron collider for precise measurements of hadron production at low energies.", topics: ['qcd'], sources: [{ label: "Science First Hand: Particle accelerators, microscopes of modern physics", url: "https://scfh.ru/en/papers/particle-accelerators-microscopes-of-modern-physics/" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+      { name: "Gersh Budker", contribution: "Founder of the institute; proposed electron cooling in 1966.", sources: [{ label: "Science First Hand: Particle accelerators, microscopes of modern physics", url: "https://scfh.ru/en/papers/particle-accelerators-microscopes-of-modern-physics/" }, { label: "Science First Hand: Story of electron cooling", url: "https://scfh.ru/en/papers/story-of-electron-cooling/" }] },
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.inp.nsk.su" },
+    ],
+  },
+  {
+    id: 'frascati',
+    name: "Frascati (LNF)",
+    fullName: "INFN Laboratori Nazionali di Frascati",
+    type: 'accelerator-laboratory',
+    country: "Italy",
+    lat: 41.8236,
+    lng: 12.6736,
+    founded: 1954,
+    status: 'active',
+    overview: "The Frascati National Laboratories near Rome were founded by INFN to host Italy's first accelerator, an electron synchrotron. In 1961 Bruno Touschek's group built AdA there, the first electron-positron storage ring, the ancestor of every later collider of matter and antimatter. The larger ADONE collider followed, and the laboratory now operates the DAFNE electron-positron collider.",
+    specs: [
+    ],
+    history: [
+      { year: 1954, event: "The laboratory is founded to host a 1.1 GeV electron synchrotron, the first accelerator built in Italy.", sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }] },
+      { year: 1961, event: "AdA (Anello di Accumulazione), proposed by Bruno Touschek, starts to operate in February 1961 as the first electron-positron storage ring.", sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }, { label: "Touschek with AdA in Orsay and the first direct observation of electron-positron collisions (arXiv:1812.11847)", url: "https://arxiv.org/abs/1812.11847" }] },
+      { year: 1962, event: "AdA is moved to Orsay in France, where a more intense injector allows the first direct observation of electron-positron collisions.", sources: [{ label: "Touschek with AdA in Orsay and the first direct observation of electron-positron collisions (arXiv:1812.11847)", url: "https://arxiv.org/abs/1812.11847" }] },
+    ],
+    experiments: [
+      { id: 'lnf-ada', name: "AdA", description: "The first electron-positron storage ring, which demonstrated that beams of matter and antimatter could be stored and collided in a single ring.", topics: ['electroweak'], startYear: 1961, sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }, { label: "Touschek with AdA in Orsay and the first direct observation of electron-positron collisions (arXiv:1812.11847)", url: "https://arxiv.org/abs/1812.11847" }] },
+    ],
+    keyResults: [
+      { year: 1961, discovery: "First Electron-Positron Storage Ring", description: "AdA showed that electrons and positrons could circulate in the same ring in opposite directions, opening the way to colliders such as ADONE, SPEAR, LEP and their successors.", sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }, { label: "Touschek with AdA in Orsay and the first direct observation of electron-positron collisions (arXiv:1812.11847)", url: "https://arxiv.org/abs/1812.11847" }] },
+    ],
+    importantPeople: [
+      { name: "Bruno Touschek", contribution: "Proposed and led AdA, the first electron-positron collider.", sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }] },
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://w3.lnf.infn.it/?lang=en" },
+    ],
+  },
+  {
+    id: 'jefferson-lab',
+    name: "Jefferson Lab",
+    fullName: "Thomas Jefferson National Accelerator Facility",
+    type: 'accelerator-laboratory',
+    country: "United States",
+    lat: 37.0958,
+    lng: -76.4817,
+    founded: 1984,
+    status: 'active',
+    overview: "Jefferson Lab in Newport News, Virginia, operates CEBAF, a continuous electron beam accelerator built with superconducting radio-frequency cavities. Its beams probe how quarks and gluons build protons, neutrons and nuclei. An upgrade completed in 2017 raised the beam energy to 12 GeV and added a fourth experimental hall.",
+    specs: [
+      { label: "CEBAF beam energy", value: "12 GeV", sources: [{ label: "The Continuous Electron Beam Accelerator Facility at 12 GeV (arXiv:2408.16880)", url: "https://arxiv.org/abs/2408.16880" }] },
+      { label: "Experimental halls", value: "Four (A, B, C and D)", sources: [{ label: "The Continuous Electron Beam Accelerator Facility at 12 GeV (arXiv:2408.16880)", url: "https://arxiv.org/abs/2408.16880" }] },
+    ],
+    history: [
+      { year: 2000, event: "Polarisation-transfer measurements in Hall A show that the proton's electric and magnetic form factors fall off differently with momentum transfer.", sources: [{ label: "Jones et al., Phys. Rev. Lett. 84, 1398 (2000)", url: "https://doi.org/10.1103/PhysRevLett.84.1398" }] },
+      { year: 2017, event: "The 12 GeV upgrade of CEBAF is completed, adding Hall D.", sources: [{ label: "The Continuous Electron Beam Accelerator Facility at 12 GeV (arXiv:2408.16880)", url: "https://arxiv.org/abs/2408.16880" }] },
+      { year: 2018, event: "An analysis of CEBAF data gives the first determination of the pressure distribution inside the proton.", sources: [{ label: "Burkert, Elouadrhiri and Girod, Nature 557, 396 (2018)", url: "https://doi.org/10.1038/s41586-018-0060-z" }] },
+    ],
+    experiments: [
+      { id: 'jlab-cebaf', name: "CEBAF", description: "Continuous Electron Beam Accelerator Facility: a recirculating superconducting linac delivering electron beams of up to 12 GeV to four experimental halls.", topics: ['qcd', 'nuclear-structure'], sources: [{ label: "The Continuous Electron Beam Accelerator Facility at 12 GeV (arXiv:2408.16880)", url: "https://arxiv.org/abs/2408.16880" }] },
+    ],
+    keyResults: [
+      { year: 2018, discovery: "Pressure Distribution Inside the Proton", description: "Deeply virtual Compton scattering data revealed a strong outward pressure at the proton's centre and an inward, confining pressure towards its edge.", sources: [{ label: "Burkert, Elouadrhiri and Girod, Nature 557, 396 (2018)", url: "https://doi.org/10.1038/s41586-018-0060-z" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.jlab.org" },
+    ],
+  },
+  {
+    id: 'psi',
+    name: "PSI",
+    fullName: "Paul Scherrer Institute",
+    type: 'accelerator-laboratory',
+    country: "Switzerland",
+    lat: 47.5363,
+    lng: 8.2225,
+    founded: 1988,
+    status: 'active',
+    overview: "The Paul Scherrer Institute in Villigen is Switzerland's largest research institute for natural and engineering sciences. Its high-intensity proton accelerator supplies the world's most intense muon beams, used for precision tests of the Standard Model such as the size of the proton, the search for the decay of a muon into an electron and a photon, and the neutron's electric dipole moment.",
+    specs: [
+    ],
+    history: [
+      { year: 1988, event: "PSI is formed by merging the Federal Institute for Reactor Research (EIR) and the Swiss Institute for Nuclear Research (SIN).", sources: [{ label: "PSI: The history of PSI", url: "https://www.psi.ch/en/about/history-of-psi" }] },
+      { year: 2010, event: "Laser spectroscopy of muonic hydrogen at PSI gives a proton radius markedly smaller than earlier measurements, starting the proton radius puzzle.", sources: [{ label: "Pohl et al., Nature 466, 213 (2010)", url: "https://doi.org/10.1038/nature09250" }] },
+      { year: 2016, event: "The MEG experiment publishes its final limit on the decay of a muon into an electron and a photon.", sources: [{ label: "MEG Collaboration, Eur. Phys. J. C 76, 434 (2016)", url: "https://doi.org/10.1140/epjc/s10052-016-4271-x" }] },
+      { year: 2020, event: "The nEDM collaboration publishes its measurement of the neutron's permanent electric dipole moment using PSI's ultracold neutron source.", sources: [{ label: "nEDM Collaboration, Phys. Rev. Lett. 124, 081803 (2020)", url: "https://doi.org/10.1103/PhysRevLett.124.081803" }] },
+    ],
+    experiments: [
+      { id: 'psi-meg', name: "MEG", description: "Search for the lepton-flavour-violating decay of a positive muon into a positron and a photon.", topics: ['electroweak'], sources: [{ label: "MEG Collaboration, Eur. Phys. J. C 76, 434 (2016)", url: "https://doi.org/10.1140/epjc/s10052-016-4271-x" }] },
+      { id: 'psi-nedm', name: "nEDM", description: "Measurement of the neutron's permanent electric dipole moment with ultracold neutrons, a test of time-reversal symmetry.", topics: ['cp-violation'], sources: [{ label: "nEDM Collaboration, Phys. Rev. Lett. 124, 081803 (2020)", url: "https://doi.org/10.1103/PhysRevLett.124.081803" }] },
+    ],
+    keyResults: [
+      { year: 2010, discovery: "The Size of the Proton", description: "The Lamb shift in muonic hydrogen gave a proton charge radius several standard deviations below the accepted value.", sources: [{ label: "Pohl et al., Nature 466, 213 (2010)", url: "https://doi.org/10.1038/nature09250" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.psi.ch/en" },
+    ],
+  },
+  {
+    id: 'hess',
+    name: "H.E.S.S.",
+    fullName: "High Energy Stereoscopic System",
+    type: 'gamma-ray-observatory',
+    country: "Namibia",
+    lat: -23.2714,
+    lng: 16.5003,
+    founded: 2002,
+    status: 'active',
+    overview: "H.E.S.S. is an array of imaging atmospheric Cherenkov telescopes in the Khomas Highland of Namibia, near the Gamsberg mountain. It observes very-high-energy gamma rays by recording the faint flashes of light they cause in the atmosphere. Its name also honours Victor Hess, who received the 1936 Nobel Prize for discovering cosmic radiation. Its survey of the southern Milky Way revealed many new gamma-ray sources.",
+    specs: [
+      { label: "Altitude", value: "1,800 m", sources: [{ label: "H.E.S.S.: The High Energy Stereoscopic System (arXiv:2405.11104)", url: "https://arxiv.org/abs/2405.11104" }] },
+      { label: "Telescopes", value: "Four of 12 m and one of 28 m", sources: [{ label: "H.E.S.S.: The High Energy Stereoscopic System (arXiv:2405.11104)", url: "https://arxiv.org/abs/2405.11104" }] },
+      { label: "Energy range", value: "Tens of GeV to tens of TeV", sources: [{ label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }] },
+    ],
+    history: [
+      { year: 2002, event: "The first H.E.S.S. telescope begins operating in summer 2002.", sources: [{ label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }] },
+      { year: 2004, event: "With all four telescopes running since December 2003, the observatory is inaugurated on 28 September 2004.", sources: [{ label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }] },
+      { year: 2012, event: "The much larger fifth telescope, H.E.S.S. II, becomes operational in July 2012.", sources: [{ label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }] },
+      { year: 2016, event: "H.E.S.S. reports evidence that protons are accelerated to petaelectronvolt energies in the Galactic Centre.", sources: [{ label: "H.E.S.S. Collaboration, Nature 531, 476 (2016)", url: "https://doi.org/10.1038/nature17147" }] },
+    ],
+    experiments: [
+      { id: 'hess-array', name: "H.E.S.S. telescope array", description: "Four 12-m Cherenkov telescopes at the corners of a square with a 28-m telescope at its centre, observing gamma rays stereoscopically.", topics: ['cosmic-rays'], startYear: 2002, sources: [{ label: "H.E.S.S.: The High Energy Stereoscopic System (arXiv:2405.11104)", url: "https://arxiv.org/abs/2405.11104" }, { label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }] },
+    ],
+    keyResults: [
+      { year: 2005, discovery: "A New Population of Gamma-Ray Sources in the Milky Way", description: "A survey of the inner Galaxy found eight previously unknown sources of very-high-energy gamma rays.", sources: [{ label: "H.E.S.S. Collaboration, Science 307, 1938 (2005)", url: "https://doi.org/10.1126/science.1108643" }] },
+      { year: 2016, discovery: "Petaelectronvolt Protons in the Galactic Centre", description: "Diffuse gamma-ray emission around the Galactic Centre pointed to a source accelerating protons to PeV energies.", sources: [{ label: "H.E.S.S. Collaboration, Nature 531, 476 (2016)", url: "https://doi.org/10.1038/nature17147" }] },
+    ],
+    importantPeople: [
+      { name: "Victor Hess", contribution: "Discoverer of cosmic radiation, after whom the observatory is named; Nobel Prize in Physics 1936.", sources: [{ label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }, { label: "Nobel Prize in Physics 1936", url: "https://www.nobelprize.org/prizes/physics/1936/summary/" }] },
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.mpi-hd.mpg.de/HESS/" },
+    ],
+  },
+  {
+    id: 'grapes-3',
+    name: "GRAPES-3",
+    fullName: "Gamma Ray Astronomy PeV EnergieS phase-3",
+    type: 'cosmic-ray-observatory',
+    country: "India",
+    lat: 11.3836,
+    lng: 76.6661,
+    founded: 2000,
+    status: 'active',
+    overview: "GRAPES-3 is a cosmic-ray air-shower array at Ooty in the Nilgiri hills of southern India, run by the Tata Institute of Fundamental Research with Japanese partners. A dense array of scintillator detectors is combined with a very large muon telescope, which also lets it study solar storms and thunderclouds through their effect on cosmic-ray muons.",
+    specs: [
+      { label: "Altitude", value: "About 2,200 m", sources: [{ label: "GRAPES-3 Collaboration: Monitoring the upper atmosphere with the GRAPES-3 muon telescope (arXiv:2602.11847)", url: "https://arxiv.org/abs/2602.11847" }] },
+      { label: "Scintillator detectors", value: "400, over 25,000 m²", sources: [{ label: "GRAPES-3 Collaboration: Monitoring the upper atmosphere with the GRAPES-3 muon telescope (arXiv:2602.11847)", url: "https://arxiv.org/abs/2602.11847" }] },
+      { label: "Muon telescope area", value: "560 m²", sources: [{ label: "GRAPES-3 Collaboration: Monitoring the upper atmosphere with the GRAPES-3 muon telescope (arXiv:2602.11847)", url: "https://arxiv.org/abs/2602.11847" }] },
+    ],
+    history: [
+      { year: 2016, event: "GRAPES-3 reports a two-hour burst of cosmic-ray muons on 22 June 2015, caused by a transient weakening of Earth's magnetic shield during a geomagnetic storm.", sources: [{ label: "GRAPES-3 Collaboration, Phys. Rev. Lett. 117, 171101 (2016)", url: "https://doi.org/10.1103/PhysRevLett.117.171101" }] },
+      { year: 2019, event: "Muon imaging of a thundercloud that passed over the array in December 2014 gives an electric potential of 1.3 gigavolts.", sources: [{ label: "GRAPES-3 Collaboration, Phys. Rev. Lett. 122, 105101 (2019)", url: "https://doi.org/10.1103/PhysRevLett.122.105101" }] },
+    ],
+    experiments: [
+      { id: 'grapes3-array', name: "GRAPES-3 array and muon telescope", description: "400 plastic scintillator detectors measuring air showers, with a 560 m² tracking muon telescope built from proportional counters.", topics: ['cosmic-rays'], startYear: 2000, sources: [{ label: "GRAPES-3 Collaboration: Monitoring the upper atmosphere with the GRAPES-3 muon telescope (arXiv:2602.11847)", url: "https://arxiv.org/abs/2602.11847" }] },
+    ],
+    keyResults: [
+      { year: 2019, discovery: "A Gigavolt Thundercloud", description: "The drop in muon intensity under a thunderstorm implied a potential of 1.3 GV, about ten times larger than earlier balloon measurements.", sources: [{ label: "GRAPES-3 Collaboration, Phys. Rev. Lett. 122, 105101 (2019)", url: "https://doi.org/10.1103/PhysRevLett.122.105101" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://grapes-3.tifr.res.in" },
+    ],
+  },
+  {
+    id: 'supl',
+    name: "Stawell (SUPL)",
+    fullName: "Stawell Underground Physics Laboratory",
+    type: 'underground-laboratory',
+    country: "Australia",
+    lat: -37.06,
+    lng: 142.8,
+    founded: 2022,
+    status: 'active',
+    overview: "The Stawell Underground Physics Laboratory lies just over a kilometre underground in an active gold mine at Stawell, Victoria. It is the first deep underground laboratory in the Southern Hemisphere. Its first experiment, SABRE South, uses ultra-pure sodium iodide crystals to test a long-standing claim of a dark matter signal, with the seasons reversed relative to northern laboratories.",
+    specs: [
+      { label: "Depth", value: "1,025 m", sources: [{ label: "The SABRE South Experiment at the Stawell Underground Physics Laboratory (arXiv:2211.03016)", url: "https://arxiv.org/abs/2211.03016" }] },
+      { label: "Access", value: "By road through the mine tunnels", sources: [{ label: "The SABRE South Experiment at the Stawell Underground Physics Laboratory (arXiv:2211.03016)", url: "https://arxiv.org/abs/2211.03016" }] },
+    ],
+    history: [
+      { year: 2022, event: "Stage 1 of the laboratory is officially opened in August 2022.", sources: [{ label: "University of Melbourne: Completion of Stage 1 of SUPL (2022)", url: "https://www.unimelb.edu.au/newsroom/news/2022/august/the-global-hunt-for-dark-matter-has-arrived-in-australia-with-the-completion-of-stage-1-of-the-stawell-underground-physics-laboratory" }] },
+    ],
+    experiments: [
+      { id: 'supl-sabre', name: "SABRE South", description: "Sodium iodide dark matter detector designed to test the annual-modulation signal reported by the DAMA/LIBRA experiment at Gran Sasso.", topics: ['dark-matter'], sources: [{ label: "The SABRE South Experiment at the Stawell Underground Physics Laboratory (arXiv:2211.03016)", url: "https://arxiv.org/abs/2211.03016" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.supl.org.au" },
+    ],
+  },
 ];
