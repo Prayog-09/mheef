@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { PhysicsTopicId, FacilityStatus } from '../types/facility';
+import type { PhysicsTopicId, FacilityStatus, FacilityType } from '../types/facility';
 
 // Phase 4: ActiveFilters is the canonical shape for both the store and the
 // filter-matching utility in /src/utils/filters.ts. Topics within a group
@@ -7,9 +7,10 @@ import type { PhysicsTopicId, FacilityStatus } from '../types/facility';
 export interface ActiveFilters {
   topics: PhysicsTopicId[];
   statuses: FacilityStatus[];
+  types: FacilityType[];
 }
 
-const EMPTY_FILTERS: ActiveFilters = { topics: [], statuses: [] };
+const EMPTY_FILTERS: ActiveFilters = { topics: [], statuses: [], types: [] };
 
 interface GlobeState {
   /** Facility currently focused by camera fly-to and side panel. */
@@ -25,6 +26,7 @@ interface GlobeState {
   activeFilters: ActiveFilters;
   toggleTopicFilter: (topic: PhysicsTopicId) => void;
   toggleStatusFilter: (status: FacilityStatus) => void;
+  toggleTypeFilter: (type: FacilityType) => void;
   clearFilters: () => void;
 }
 
@@ -51,6 +53,14 @@ export const useGlobeStore = create<GlobeState>((set) => ({
         ? state.activeFilters.statuses.filter((s) => s !== status)
         : [...state.activeFilters.statuses, status];
       return { activeFilters: { ...state.activeFilters, statuses } };
+    }),
+
+  toggleTypeFilter: (type) =>
+    set((state) => {
+      const types = state.activeFilters.types.includes(type)
+        ? state.activeFilters.types.filter((t) => t !== type)
+        : [...state.activeFilters.types, type];
+      return { activeFilters: { ...state.activeFilters, types } };
     }),
 
   clearFilters: () => set({ activeFilters: EMPTY_FILTERS }),

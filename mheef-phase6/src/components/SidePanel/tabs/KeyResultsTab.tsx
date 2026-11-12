@@ -1,3 +1,4 @@
+import SourceLinks from '../../SourceLinks';
 import type { Facility } from '../../../types/facility';
 
 interface KeyResultsTabProps {
@@ -19,6 +20,7 @@ export default function KeyResultsTab({ facility }: KeyResultsTabProps) {
             <span className="shrink-0 font-mono text-[11px] text-accent-300/80">{result.year}</span>
           </div>
           <p className="mt-1.5 text-sm leading-relaxed text-white/65">{result.description}</p>
+          <SourceLinks sources={result.sources} />
         </article>
       ))}
     </div>

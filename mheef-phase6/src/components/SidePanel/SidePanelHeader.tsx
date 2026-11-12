@@ -1,5 +1,5 @@
 import { ArrowUpRight, MapPin } from 'lucide-react';
-import type { Facility } from '../../types/facility';
+import { FACILITY_TYPE_LABELS, type Facility } from '../../types/facility';
 import StatusBadge from '../StatusBadge';
 import { facilityPagePath } from '../../utils/paths';
 
@@ -22,6 +22,11 @@ export default function SidePanelHeader({ facility }: SidePanelHeaderProps) {
           <h2 className="text-lg font-semibold text-white">{facility.name}</h2>
           <StatusBadge status={facility.status} />
         </div>
+
+        <p className="mt-1 text-xs text-white/60">
+          {FACILITY_TYPE_LABELS[facility.type]}
+          {facility.fullName && ` · ${facility.fullName}`}
+        </p>
 
         <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-white/50">
           <span className="flex items-center gap-1">

@@ -1,3 +1,4 @@
+import SourceLinks from '../../SourceLinks';
 import type { Facility } from '../../../types/facility';
 
 interface HistoryTabProps {
@@ -12,6 +13,7 @@ export default function HistoryTab({ facility }: HistoryTabProps) {
           <span className="absolute -left-[25px] top-0.5 h-2.5 w-2.5 rounded-full border-2 border-space-950 bg-accent-400" />
           <span className="text-xs font-semibold text-accent-300">{entry.year}</span>
           <p className="mt-1 text-sm leading-relaxed text-white/70">{entry.event}</p>
+          <SourceLinks sources={entry.sources} />
         </li>
       ))}
     </ol>

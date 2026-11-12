@@ -68,12 +68,32 @@ Facility pages are plain HTML built from `src/data/facilities.ts`, so they
 load without the globe, can be linked to and are indexable by search
 engines. Adding a facility to the dataset adds its page automatically.
 
+## The dataset
+
+Everything on the site comes from `src/data/facilities.ts`; the shape of a
+record is defined in `src/types/facility.ts`.
+
+- Each facility has a `type` (accelerator laboratory, underground
+  laboratory, neutrino observatory and so on), which sets its marker
+  colour and drives the type filter.
+- Any history entry, experiment, key result or person can carry
+  `sources`: a list of `{ label, url }` references shown beneath it.
+  Prefer a DOI or the institution's own page.
+- `reviewed: 'YYYY-MM-DD'` records when someone working in the field last
+  checked the whole record. Leave it out until that has happened.
+
+`npm run validate` checks the dataset and runs automatically before every
+build. Structural mistakes (duplicate ids, coordinates off the globe,
+malformed links, unknown topics) fail the build. It also prints how many
+facts cite a source and how many facilities have been reviewed.
+
 ## Folder structure
 
 ```
 mheef-phase6/
 ├── astro.config.mjs                 # Site address, base path, integrations
 ├── scripts/copy-cesium.mjs          # Copies Cesium's runtime files into public/
+├── scripts/validate-data.ts         # Checks the dataset before every build
 │
 └── src/
     ├── App.tsx                      # The globe app (React), mounted on the home page

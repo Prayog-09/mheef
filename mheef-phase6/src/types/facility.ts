@@ -55,6 +55,50 @@ export const PHYSICS_TOPIC_LABELS: Record<PhysicsTopicId, string> = {
 
 export type FacilityStatus = 'active' | 'historic' | 'planned';
 
+// ─── Facility type ───────────────────────────────────────────────────────────
+
+/** What kind of installation a facility is. Drives marker colour and the type filter. */
+export type FacilityType =
+  | 'accelerator-laboratory'
+  | 'underground-laboratory'
+  | 'neutrino-observatory'
+  | 'cosmic-ray-observatory'
+  | 'gamma-ray-observatory'
+  | 'gravitational-wave-observatory'
+  | 'rare-isotope-facility';
+
+export const FACILITY_TYPE_LABELS: Record<FacilityType, string> = {
+  'accelerator-laboratory': 'Accelerator laboratory',
+  'underground-laboratory': 'Underground laboratory',
+  'neutrino-observatory': 'Neutrino observatory',
+  'cosmic-ray-observatory': 'Cosmic-ray observatory',
+  'gamma-ray-observatory': 'Gamma-ray observatory',
+  'gravitational-wave-observatory': 'Gravitational-wave observatory',
+  'rare-isotope-facility': 'Nuclear and rare-isotope facility',
+};
+
+/** Marker colour per type — chosen to stay distinct over both ocean and land imagery. */
+export const FACILITY_TYPE_COLORS: Record<FacilityType, string> = {
+  'accelerator-laboratory': '#22d3ee',
+  'underground-laboratory': '#facc15',
+  'neutrino-observatory': '#a78bfa',
+  'cosmic-ray-observatory': '#fb923c',
+  'gamma-ray-observatory': '#a3e635',
+  'gravitational-wave-observatory': '#f472b6',
+  'rare-isotope-facility': '#f1f5f9',
+};
+
+// ─── Sources ─────────────────────────────────────────────────────────────────
+
+/**
+ * A reference backing a single fact (a timeline entry, result, experiment
+ * or person). Prefer a DOI or the institution's own page.
+ */
+export interface SourceRef {
+  label: string;
+  url: string;
+}
+
 // ─── Stub (used by Globe + Marker — do not widen) ────────────────────────────
 
 /** Minimal shape used by Globe and Marker. Stable across all phases. */
@@ -84,22 +128,26 @@ export interface Experiment {
   topics: PhysicsTopicId[];
   startYear?: number;
   endYear?: number;
+  sources?: SourceRef[];
 }
 
 export interface KeyResult {
   year: number;
   discovery: string;
   description: string;
+  sources?: SourceRef[];
 }
 
 export interface Scientist {
   name: string;
   contribution: string;
+  sources?: SourceRef[];
 }
 
 export interface TimelineEntry {
   year: number;
   event: string;
+  sources?: SourceRef[];
 }
 
 export interface ReadMoreLink {
@@ -116,7 +164,15 @@ export interface ReadMoreLink {
  * changes needed to the globe layer.
  */
 export interface Facility extends FacilityStub {
+  /** Official long-form name, where it differs from the display name. */
+  fullName?: string;
+  type: FacilityType;
   founded: number;
+  /**
+   * ISO date (YYYY-MM-DD) of the last check of this whole record by someone
+   * working in the field. Absent means not yet reviewed.
+   */
+  reviewed?: string;
   status: FacilityStatus;
   overview: string;
   history: TimelineEntry[];

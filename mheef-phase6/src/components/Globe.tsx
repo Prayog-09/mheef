@@ -28,7 +28,8 @@ import {
 } from 'cesium';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 import { useGlobeStore } from '../store/useGlobeStore';
-import type { Facility, FacilityStub } from '../types/facility';
+import { FACILITY_TYPE_COLORS } from '../types/facility';
+import type { Facility, FacilityStub, FacilityType } from '../types/facility';
 import { facilities } from '../data/facilities';
 import { facilityMatchesFilters } from '../utils/filters';
 
@@ -135,11 +136,14 @@ function overviewHeightFor(viewer: Viewer): number {
 
 type MarkerHighlightState = 'normal' | 'match' | 'dim';
 
-const MARKER_COLOR = Color.fromCssColorString('#22d3ee');
+// One marker colour per facility type; the filter panel shows the key.
+const TYPE_COLORS = Object.fromEntries(
+  Object.entries(FACILITY_TYPE_COLORS).map(([type, css]) => [type, Color.fromCssColorString(css)])
+) as Record<FacilityType, Color>;
+const HALO_ALPHA = 0.28;
+const HALO_MATCH_ALPHA = 0.45;
 const MARKER_DIM_COLOR = Color.fromCssColorString('#3d6670').withAlpha(0.35);
 const MARKER_OUTLINE = Color.WHITE.withAlpha(0.75);
-const HALO_COLOR = MARKER_COLOR.withAlpha(0.28);
-const HALO_MATCH_COLOR = MARKER_COLOR.withAlpha(0.45);
 // Names appear on their own once the camera is this close (metres);
 // further out they show on hover only, so the overview stays uncluttered.
 const LABEL_VISIBLE_WITHIN = new DistanceDisplayCondition(0, 3_000_000);
@@ -151,14 +155,15 @@ interface MarkerEntities {
   halo: Entity;
 }
 
-function createMarker(viewer: Viewer, facility: FacilityStub): MarkerEntities {
+function createMarker(viewer: Viewer, facility: Facility): MarkerEntities {
   const position = Cartesian3.fromDegrees(facility.lng, facility.lat);
+  const color = TYPE_COLORS[facility.type];
 
   const halo = viewer.entities.add({
     position,
     point: {
       pixelSize: 24,
-      color: HALO_COLOR,
+      color: color.withAlpha(HALO_ALPHA),
       heightReference: HeightReference.CLAMP_TO_GROUND,
       disableDepthTestDistance: MARKER_DEPTH_TEST_DISTANCE,
     },
@@ -168,7 +173,7 @@ function createMarker(viewer: Viewer, facility: FacilityStub): MarkerEntities {
     position,
     point: {
       pixelSize: 9,
-      color: MARKER_COLOR,
+      color,
       outlineColor: MARKER_OUTLINE,
       outlineWidth: 1.5,
       heightReference: HeightReference.CLAMP_TO_GROUND,
@@ -217,7 +222,11 @@ export default function Globe() {
   // null → no filters active, every marker renders as 'normal'.
   // Set  → filters active; markers in the set are 'match', others 'dim'.
   const matchingIds = useMemo<Set<string> | null>(() => {
-    if (activeFilters.topics.length === 0 && activeFilters.statuses.length === 0) {
+    if (
+      activeFilters.topics.length === 0 &&
+      activeFilters.statuses.length === 0 &&
+      activeFilters.types.length === 0
+    ) {
       return null;
     }
     const set = new Set<string>();
@@ -489,16 +498,21 @@ export default function Globe() {
 
   // ── Filter highlight ──
   useEffect(() => {
-    for (const [id, { core, halo }] of markersRef.current) {
+    for (const facility of facilities) {
+      const marker = markersRef.current.get(facility.id);
+      if (!marker) continue;
+      const { core, halo } = marker;
+      const id = facility.id;
+      const color = TYPE_COLORS[facility.type];
       const state: MarkerHighlightState =
         matchingIds === null ? 'normal' : matchingIds.has(id) ? 'match' : 'dim';
       if (!core.point || !halo.point) continue;
 
-      core.point.color = (state === 'dim' ? MARKER_DIM_COLOR : MARKER_COLOR) as never;
+      core.point.color = (state === 'dim' ? MARKER_DIM_COLOR : color) as never;
       core.point.outlineWidth = (state === 'dim' ? 0 : 1.5) as never;
       core.point.pixelSize = (state === 'match' ? 11 : 9) as never;
       halo.show = state !== 'dim';
-      halo.point.color = (state === 'match' ? HALO_MATCH_COLOR : HALO_COLOR) as never;
+      halo.point.color = color.withAlpha(state === 'match' ? HALO_MATCH_ALPHA : HALO_ALPHA) as never;
       halo.point.pixelSize = (state === 'match' ? 30 : 24) as never;
     }
   }, [matchingIds]);

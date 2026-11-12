@@ -1,10 +1,11 @@
-import type { Facility, PhysicsTopicId, FacilityStatus } from '../types/facility';
+import type { Facility, PhysicsTopicId, FacilityStatus, FacilityType } from '../types/facility';
 
 // Re-exported so Globe.tsx can import the type alongside the function
 // without touching the store import.
 export interface ActiveFilters {
   topics: PhysicsTopicId[];
   statuses: FacilityStatus[];
+  types: FacilityType[];
 }
 
 /**
@@ -30,5 +31,7 @@ export function facilityMatchesFilters(
   const statusMatch =
     filters.statuses.length === 0 || filters.statuses.includes(facility.status);
 
-  return topicMatch && statusMatch;
+  const typeMatch = filters.types.length === 0 || filters.types.includes(facility.type);
+
+  return topicMatch && statusMatch && typeMatch;
 }

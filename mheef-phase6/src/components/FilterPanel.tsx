@@ -4,8 +4,12 @@ import { useEffect, useState } from 'react';
 import { facilities } from '../data/facilities';
 import { useGlobeStore } from '../store/useGlobeStore';
 import { useMediaQuery, MOBILE_QUERY } from '../hooks/useMediaQuery';
-import type { FacilityStatus, PhysicsTopicId } from '../types/facility';
-import { PHYSICS_TOPIC_LABELS } from '../types/facility';
+import type { FacilityStatus, FacilityType, PhysicsTopicId } from '../types/facility';
+import {
+  FACILITY_TYPE_COLORS,
+  FACILITY_TYPE_LABELS,
+  PHYSICS_TOPIC_LABELS,
+} from '../types/facility';
 
 // ---------------------------------------------------------------------------
 // Derive the topic list from the actual dataset so we never show a chip that
@@ -26,6 +30,11 @@ const USED_TOPICS: PhysicsTopicId[] = (() => {
   );
 })();
 
+// Only types that at least one facility has, in the order the labels are declared.
+const USED_TYPES = (Object.keys(FACILITY_TYPE_LABELS) as FacilityType[]).filter((type) =>
+  facilities.some((facility) => facility.type === type)
+);
+
 const STATUS_OPTIONS: Array<{ id: FacilityStatus; label: string }> = [
   { id: 'active', label: 'Active' },
   { id: 'historic', label: 'Historic' },
@@ -44,16 +53,47 @@ function chipClass(isActive: boolean): string {
 }
 
 interface FilterGroupsProps {
-  activeFilters: { topics: PhysicsTopicId[]; statuses: FacilityStatus[] };
+  activeFilters: { topics: PhysicsTopicId[]; statuses: FacilityStatus[]; types: FacilityType[] };
   onToggleTopic: (topic: PhysicsTopicId) => void;
   onToggleStatus: (status: FacilityStatus) => void;
+  onToggleType: (type: FacilityType) => void;
 }
 
 // Phase 5: the chip markup is now shared between the desktop inline panel
 // and the new mobile modal, so the two layouts can't silently drift apart.
-function FilterGroups({ activeFilters, onToggleTopic, onToggleStatus }: FilterGroupsProps) {
+function FilterGroups({
+  activeFilters,
+  onToggleTopic,
+  onToggleStatus,
+  onToggleType,
+}: FilterGroupsProps) {
   return (
     <>
+      {/* Facility Type chips — the coloured dot matches the marker colour
+          on the globe, so this group doubles as the map legend. */}
+      <div className="mb-4">
+        <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-white/45">
+          Facility Type
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {USED_TYPES.map((type) => (
+            <button
+              key={type}
+              onClick={() => onToggleType(type)}
+              aria-pressed={activeFilters.types.includes(type)}
+              className={`${chipClass(activeFilters.types.includes(type))} flex items-center gap-1.5`}
+            >
+              <span
+                aria-hidden="true"
+                className="h-2 w-2 shrink-0 rounded-full"
+                style={{ backgroundColor: FACILITY_TYPE_COLORS[type] }}
+              />
+              {FACILITY_TYPE_LABELS[type]}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Physics Topic chips */}
       <div className="mb-4">
         <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-white/45">
@@ -99,11 +139,13 @@ export default function FilterPanel() {
   const activeFilters = useGlobeStore((s) => s.activeFilters);
   const toggleTopicFilter = useGlobeStore((s) => s.toggleTopicFilter);
   const toggleStatusFilter = useGlobeStore((s) => s.toggleStatusFilter);
+  const toggleTypeFilter = useGlobeStore((s) => s.toggleTypeFilter);
   const clearFilters = useGlobeStore((s) => s.clearFilters);
   const [expanded, setExpanded] = useState(false);
   const isMobile = useMediaQuery(MOBILE_QUERY);
 
-  const totalActive = activeFilters.topics.length + activeFilters.statuses.length;
+  const totalActive =
+    activeFilters.topics.length + activeFilters.statuses.length + activeFilters.types.length;
 
   // Phase 5: Escape closes the mobile modal too. The desktop inline panel
   // has no backdrop to dismiss it with, so it relies solely on the toggle
@@ -172,7 +214,7 @@ export default function FilterPanel() {
                 role="dialog"
                 aria-modal="true"
                 aria-label="Filter facilities"
-                className="w-full max-w-sm rounded-t-2xl border border-accent-400/15 bg-space-950/95 p-5 backdrop-blur-md sm:rounded-2xl"
+                className="max-h-[85vh] w-full max-w-sm overflow-y-auto rounded-t-2xl border border-accent-400/15 bg-space-950/95 p-5 backdrop-blur-md sm:rounded-2xl"
               >
                 <div className="mb-4 flex items-center justify-between">
                   <span className="text-xs font-semibold uppercase tracking-widest text-white/50">
@@ -191,6 +233,7 @@ export default function FilterPanel() {
                   activeFilters={activeFilters}
                   onToggleTopic={toggleTopicFilter}
                   onToggleStatus={toggleStatusFilter}
+                  onToggleType={toggleTypeFilter}
                 />
 
                 {totalActive > 0 && (
@@ -223,7 +266,7 @@ export default function FilterPanel() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="pointer-events-auto w-64 rounded-xl border border-accent-400/15 bg-black/80 p-4 backdrop-blur-md"
+            className="pointer-events-auto max-h-[70vh] w-72 overflow-y-auto rounded-xl border border-accent-400/15 bg-black/80 p-4 backdrop-blur-md"
           >
             <div className="mb-3 flex items-center justify-between">
               <span className="text-[10px] font-semibold uppercase tracking-widest text-white/50">
@@ -244,6 +287,7 @@ export default function FilterPanel() {
               activeFilters={activeFilters}
               onToggleTopic={toggleTopicFilter}
               onToggleStatus={toggleStatusFilter}
+              onToggleType={toggleTypeFilter}
             />
           </motion.div>
         )}

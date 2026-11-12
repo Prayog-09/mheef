@@ -1,3 +1,4 @@
+import SourceLinks from '../../SourceLinks';
 import type { Facility } from '../../../types/facility';
 import { PHYSICS_TOPIC_LABELS } from '../../../types/facility';
 
@@ -22,6 +23,7 @@ export default function ExperimentsTab({ facility }: ExperimentsTabProps) {
               {years && <span className="shrink-0 text-[11px] text-white/40">{years}</span>}
             </div>
             <p className="mt-1.5 text-sm leading-relaxed text-white/65">{experiment.description}</p>
+            <SourceLinks sources={experiment.sources} />
             <div className="mt-3 flex flex-wrap gap-1.5">
               {experiment.topics.map((topic) => (
                 <span

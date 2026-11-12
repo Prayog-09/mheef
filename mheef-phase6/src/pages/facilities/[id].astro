@@ -2,7 +2,8 @@
 import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import { facilities } from '../../data/facilities';
-import { PHYSICS_TOPIC_LABELS, type Facility } from '../../types/facility';
+import SourceLinks from '../../components/SourceLinks';
+import { FACILITY_TYPE_LABELS, PHYSICS_TOPIC_LABELS, type Facility } from '../../types/facility';
 import {
   STATUS_LABELS,
   STATUS_STYLES,
@@ -52,6 +53,27 @@ const sections = [
   { id: 'read-more', label: 'Further reading', show: facility.readMore.length > 0 },
 ].filter((section) => section.show);
 
+// How much of this page is backed by a cited source — shown to readers so
+// they can judge it, and to make the gaps visible to contributors.
+const allFacts = [
+  ...facility.history,
+  ...facility.experiments,
+  ...facility.keyResults,
+  ...facility.importantPeople,
+];
+const sourcedCount = allFacts.filter((fact) => fact.sources && fact.sources.length > 0).length;
+const reviewedOn = facility.reviewed
+  ? new Date(`${facility.reviewed}T00:00:00Z`).toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    })
+  : null;
+const correctionUrl = `https://github.com/Prayog-09/mheef/issues/new?title=${encodeURIComponent(
+  `Correction: ${facility.name}`
+)}`;
+
 const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-accent-300';
 ---
 
@@ -72,6 +94,11 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
           {STATUS_LABELS[facility.status]}
         </span>
       </div>
+
+      <p class="mt-2 text-sm text-white/55">
+        {FACILITY_TYPE_LABELS[facility.type]}
+        {facility.fullName && ` · ${facility.fullName}`}
+      </p>
 
       <p class="mt-5 max-w-3xl text-base leading-relaxed text-white/75">{facility.overview}</p>
 
@@ -129,6 +156,7 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
                 <span aria-hidden="true" class="absolute -left-[29px] top-1.5 h-2 w-2 rounded-full bg-accent-400" />
                 <p class="font-mono text-sm font-semibold text-white">{entry.year}</p>
                 <p class="mt-1 max-w-3xl text-sm leading-relaxed text-white/70">{entry.event}</p>
+                <SourceLinks sources={entry.sources} />
               </li>
             ))}
           </ol>
@@ -153,6 +181,7 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
                 <p class="mt-3 text-xs text-white/45">
                   {experiment.topics.map((topic) => PHYSICS_TOPIC_LABELS[topic]).join(' · ')}
                 </p>
+                <SourceLinks sources={experiment.sources} />
               </li>
             ))}
           </ul>
@@ -173,6 +202,7 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
                   <p class="mt-1 max-w-3xl text-sm leading-relaxed text-white/70">
                     {result.description}
                   </p>
+                  <SourceLinks sources={result.sources} />
                 </div>
               </li>
             ))}
@@ -190,6 +220,7 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
               <li class="rounded-lg border border-white/10 bg-white/[0.03] p-5">
                 <h3 class="text-sm font-semibold text-white">{person.name}</h3>
                 <p class="mt-1.5 text-sm leading-relaxed text-white/65">{person.contribution}</p>
+                <SourceLinks sources={person.sources} />
               </li>
             ))}
           </ul>
@@ -220,6 +251,33 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
         </section>
       )
     }
+    <section aria-labelledby="about-this-page" class="mt-12 rounded-lg border border-white/10 bg-white/[0.03] p-5">
+      <h2 id="about-this-page" class={sectionHeading}>About this page</h2>
+      <dl class="mt-4 grid gap-x-8 gap-y-3 text-sm sm:grid-cols-2">
+        <div>
+          <dt class="text-xs text-white/45">Expert review</dt>
+          <dd class="mt-0.5 text-white/80">
+            {reviewedOn ? `Last reviewed ${reviewedOn}` : 'Not yet reviewed by a specialist'}
+          </dd>
+        </div>
+        <div>
+          <dt class="text-xs text-white/45">Cited sources</dt>
+          <dd class="mt-0.5 text-white/80">
+            {sourcedCount} of {allFacts.length} entries cite a source
+          </dd>
+        </div>
+      </dl>
+      <p class="mt-4 text-sm text-white/65">
+        Found an error or have a source to add?{' '}
+        <a
+          href={correctionUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-accent-300 underline decoration-accent-300/40 underline-offset-2 hover:text-white"
+          >Suggest a correction</a
+        >.
+      </p>
+    </section>
   </article>
 
   <nav aria-label="More facilities" class="mt-16 grid gap-3 border-t border-white/10 pt-6 text-sm sm:grid-cols-2">

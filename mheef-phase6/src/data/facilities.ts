@@ -14,6 +14,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'cern',
     name: 'CERN',
+    fullName: "European Organization for Nuclear Research",
+    type: 'accelerator-laboratory',
     country: 'Switzerland / France',
     lat: 46.2331,
     lng: 6.0558,
@@ -22,10 +24,10 @@ export const facilities: readonly Facility[] = [
     overview: "The European Organization for Nuclear Research (CERN), founded in 1954, operates the world's largest and most powerful particle accelerator complex on the Franco-Swiss border near Geneva. Its 27-kilometre Large Hadron Collider (LHC) accelerates protons to 99.9999991% the speed of light and collides them at four interaction points where ATLAS, CMS, ALICE, and LHCb record the debris. CERN is also the birthplace of the World Wide Web (1989) and a model of global scientific collaboration, involving over 17,000 scientists from more than 100 countries.",
     history: [
       { year: 1954, event: "CERN founded by 12 European member states, establishing Geneva as the world's leading centre for particle physics." },
-      { year: 1983, event: "UA1 and UA2 experiments at the SPS collider discover the W\u00b1 and Z\u2070 bosons, confirming electroweak unification. Carlo Rubbia and Simon van der Meer awarded the Nobel Prize in 1984." },
+      { year: 1983, event: "UA1 and UA2 experiments at the SPS collider discover the W\u00b1 and Z\u2070 bosons, confirming electroweak unification. Carlo Rubbia and Simon van der Meer awarded the Nobel Prize in 1984.", sources: [{ label: "Nobel Prize in Physics 1984", url: "https://www.nobelprize.org/prizes/physics/1984/summary/" }] },
       { year: 1989, event: "Large Electron-Positron Collider (LEP) begins operations, enabling precision electroweak measurements and establishing that exactly three light neutrino generations exist." },
       { year: 2008, event: "Large Hadron Collider (LHC) begins first beam operations at 7 TeV centre-of-mass energy, becoming the world's highest-energy collider." },
-      { year: 2012, event: "ATLAS and CMS jointly announce the observation of a Higgs boson at ~125 GeV, completing the Standard Model. Peter Higgs and Francois Englert awarded the Nobel Prize in 2013." },
+      { year: 2012, event: "ATLAS and CMS jointly announce the observation of a Higgs boson at ~125 GeV, completing the Standard Model. Peter Higgs and Francois Englert awarded the Nobel Prize in 2013.", sources: [{ label: "Nobel Prize in Physics 2013", url: "https://www.nobelprize.org/prizes/physics/2013/summary/" }] },
     ],
     experiments: [
       { id: 'cern-atlas', name: 'ATLAS', description: "General-purpose detector that co-discovered the Higgs boson; searches for supersymmetry, dark matter candidates, and extra dimensions at the LHC.", topics: ['higgs', 'dark-matter', 'qcd', 'electroweak'], startYear: 2008 },
@@ -34,11 +36,11 @@ export const facilities: readonly Facility[] = [
       { id: 'cern-lhcb', name: 'LHCb', description: "Specialised b-physics detector measuring CP violation and rare B-meson decays, probing the matter-antimatter asymmetry of the universe.", topics: ['b-physics', 'cp-violation'], startYear: 2008 },
     ],
     keyResults: [
-      { year: 1983, discovery: "W and Z Boson Discovery", description: "UA1 and UA2 at the CERN SPS provided the first direct observation of the massive W\u00b1 and Z\u2070 bosons mediating the weak nuclear force, confirming the Glashow-Salam-Weinberg electroweak theory. Nobel Prize 1984." },
-      { year: 2012, discovery: "Higgs Boson Discovery", description: "ATLAS and CMS observed a scalar boson at ~125 GeV consistent with the long-sought Higgs boson, the last missing piece of the Standard Model and the origin of particle mass. Nobel Prize 2013." },
+      { year: 1983, discovery: "W and Z Boson Discovery", description: "UA1 and UA2 at the CERN SPS provided the first direct observation of the massive W\u00b1 and Z\u2070 bosons mediating the weak nuclear force, confirming the Glashow-Salam-Weinberg electroweak theory. Nobel Prize 1984.", sources: [{ label: "Nobel Prize in Physics 1984", url: "https://www.nobelprize.org/prizes/physics/1984/summary/" }] },
+      { year: 2012, discovery: "Higgs Boson Discovery", description: "ATLAS and CMS observed a scalar boson at ~125 GeV consistent with the long-sought Higgs boson, the last missing piece of the Standard Model and the origin of particle mass. Nobel Prize 2013.", sources: [{ label: "Nobel Prize in Physics 2013", url: "https://www.nobelprize.org/prizes/physics/2013/summary/" }] },
     ],
     importantPeople: [
-      { name: "Carlo Rubbia", contribution: "Led the UA1 experiment and the discovery of the W and Z bosons; Nobel Prize in Physics 1984." },
+      { name: "Carlo Rubbia", contribution: "Led the UA1 experiment and the discovery of the W and Z bosons; Nobel Prize in Physics 1984.", sources: [{ label: "Nobel Prize in Physics 1984", url: "https://www.nobelprize.org/prizes/physics/1984/summary/" }] },
       { name: "Tim Berners-Lee", contribution: "Invented the World Wide Web at CERN in 1989 to enable global information sharing among particle physicists." },
       { name: "Fabiola Gianotti", contribution: "ATLAS spokesperson during the 2012 Higgs discovery announcement; first female Director-General of CERN (2016-present)." },
     ],
@@ -52,6 +54,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'fermilab',
     name: 'Fermilab',
+    fullName: "Fermi National Accelerator Laboratory",
+    type: 'accelerator-laboratory',
     country: 'United States',
     lat: 41.8316,
     lng: -88.2456,
@@ -77,7 +81,7 @@ export const facilities: readonly Facility[] = [
     ],
     importantPeople: [
       { name: "Robert Wilson", contribution: "Founding director of Fermilab (1967-1978); designed the laboratory and its architecture, championing the cultural value of basic science before Congress." },
-      { name: "Leon Lederman", contribution: "Fermilab director (1979-1989); led the team that discovered the bottom quark in 1977. Nobel Prize in Physics 1988 (for muon-neutrino discovery at BNL)." },
+      { name: "Leon Lederman", contribution: "Fermilab director (1979-1989); led the team that discovered the bottom quark in 1977. Nobel Prize in Physics 1988 (for muon-neutrino discovery at BNL).", sources: [{ label: "Nobel Prize in Physics 1988", url: "https://www.nobelprize.org/prizes/physics/1988/summary/" }] },
       { name: "Helen Edwards", contribution: "Chief engineer of the Tevatron; pioneered the superconducting magnet technology that made the world's first superconducting synchrotron collider possible." },
     ],
     readMore: [
@@ -89,6 +93,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'brookhaven',
     name: 'Brookhaven / RHIC',
+    fullName: "Brookhaven National Laboratory",
+    type: 'accelerator-laboratory',
     country: 'United States',
     lat: 40.8676,
     lng: -72.8776,
@@ -98,7 +104,7 @@ export const facilities: readonly Facility[] = [
     history: [
       { year: 1947, event: "Brookhaven National Laboratory established by the US Atomic Energy Commission, operated by a consortium of northeastern universities." },
       { year: 1964, event: "The Omega-minus baryon is discovered at BNL's Alternating Gradient Synchrotron (AGS), confirming Gell-Mann's quark model and the SU(3) symmetry of hadrons." },
-      { year: 1974, event: "Samuel Ting's team at BNL co-discovers the J/psi meson simultaneously with Burton Richter's group at SLAC — the November Revolution that revealed the charm quark. Nobel Prize 1976." },
+      { year: 1974, event: "Samuel Ting's team at BNL co-discovers the J/psi meson simultaneously with Burton Richter's group at SLAC — the November Revolution that revealed the charm quark. Nobel Prize 1976.", sources: [{ label: "Nobel Prize in Physics 1976", url: "https://www.nobelprize.org/prizes/physics/1976/summary/" }] },
       { year: 2000, event: "Relativistic Heavy Ion Collider (RHIC) begins operations, enabling Au+Au collisions at centre-of-mass energies up to 200 GeV per nucleon pair." },
       { year: 2005, event: "STAR, PHENIX, BRAHMS, and PHOBOS collaborations jointly announce that RHIC collisions produce a strongly-coupled quark-gluon plasma that flows like a near-perfect liquid." },
     ],
@@ -107,11 +113,11 @@ export const facilities: readonly Facility[] = [
       { id: 'bnl-phenix', name: 'PHENIX', description: "Pioneering RHIC detector measuring photons, leptons, and hadrons in heavy-ion collisions; key to establishing the perfect-liquid interpretation of the QGP.", topics: ['heavy-ions', 'qcd'], startYear: 2000, endYear: 2016 },
     ],
     keyResults: [
-      { year: 1974, discovery: "J/psi Meson Discovery", description: "Simultaneous discovery at BNL and SLAC of the J/psi meson, revealing the charm quark and inaugurating the November Revolution in particle physics. Nobel Prize in Physics 1976." },
+      { year: 1974, discovery: "J/psi Meson Discovery", description: "Simultaneous discovery at BNL and SLAC of the J/psi meson, revealing the charm quark and inaugurating the November Revolution in particle physics. Nobel Prize in Physics 1976.", sources: [{ label: "Nobel Prize in Physics 1976", url: "https://www.nobelprize.org/prizes/physics/1976/summary/" }] },
       { year: 2005, discovery: "Strongly-Coupled Quark-Gluon Plasma", description: "RHIC experiments established that the quark-gluon plasma formed in gold-gold collisions is a near-perfect liquid with a shear viscosity-to-entropy ratio close to the quantum mechanical minimum." },
     ],
     importantPeople: [
-      { name: "Samuel Ting", contribution: "Led the E598 experiment at BNL that co-discovered the J/psi meson; Nobel Prize in Physics 1976." },
+      { name: "Samuel Ting", contribution: "Led the E598 experiment at BNL that co-discovered the J/psi meson; Nobel Prize in Physics 1976.", sources: [{ label: "Nobel Prize in Physics 1976", url: "https://www.nobelprize.org/prizes/physics/1976/summary/" }] },
       { name: "Nicholas Samios", contribution: "BNL director (1982-1996); earlier co-discovered the Omega-minus baryon in 1964, confirming the quark model and SU(3) flavour symmetry." },
     ],
     readMore: [
@@ -126,6 +132,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'kek',
     name: 'KEK / Belle II',
+    fullName: "High Energy Accelerator Research Organization",
+    type: 'accelerator-laboratory',
     country: 'Japan',
     lat: 36.1512,
     lng: 140.0712,
@@ -135,7 +143,7 @@ export const facilities: readonly Facility[] = [
     history: [
       { year: 1971, event: "KEK founded as Japan's national high-energy physics laboratory in Tsukuba Science City." },
       { year: 1998, event: "Belle experiment begins data-taking at the asymmetric KEKB collider, designed to measure CP violation in B-meson decays." },
-      { year: 2001, event: "Belle and BaBar (SLAC) independently report large CP violation in B0 meson decays, confirming the Kobayashi-Maskawa mechanism. Nobel Prize 2008." },
+      { year: 2001, event: "Belle and BaBar (SLAC) independently report large CP violation in B0 meson decays, confirming the Kobayashi-Maskawa mechanism. Nobel Prize 2008.", sources: [{ label: "Nobel Prize in Physics 2008", url: "https://www.nobelprize.org/prizes/physics/2008/summary/" }] },
       { year: 2010, event: "KEKB retires after delivering over 1000 fb-1. Construction of SuperKEKB, targeting 40x higher luminosity, begins." },
       { year: 2019, event: "Belle II detector begins physics runs at SuperKEKB, targeting the world record luminosity of 6 x 10^35 cm-2 s-1." },
     ],
@@ -144,11 +152,11 @@ export const facilities: readonly Facility[] = [
       { id: 'kek-belle', name: 'Belle', description: "Predecessor B-factory experiment whose measurement of CP violation in B0 decays confirmed the Kobayashi-Maskawa quark-mixing mechanism.", topics: ['b-physics', 'cp-violation'], startYear: 1998, endYear: 2010 },
     ],
     keyResults: [
-      { year: 2001, discovery: "CP Violation in B Mesons Confirmed", description: "Belle (and BaBar at SLAC) measured large CP asymmetry in B0 decays, directly confirming the Kobayashi-Maskawa mechanism and explaining why our universe has more matter than antimatter. Nobel Prize 2008." },
+      { year: 2001, discovery: "CP Violation in B Mesons Confirmed", description: "Belle (and BaBar at SLAC) measured large CP asymmetry in B0 decays, directly confirming the Kobayashi-Maskawa mechanism and explaining why our universe has more matter than antimatter. Nobel Prize 2008.", sources: [{ label: "Nobel Prize in Physics 2008", url: "https://www.nobelprize.org/prizes/physics/2008/summary/" }] },
     ],
     importantPeople: [
-      { name: "Makoto Kobayashi", contribution: "Co-proposed the CKM quark mixing matrix in 1973, predicting a third generation of quarks from CP-violation arguments; Nobel Prize in Physics 2008." },
-      { name: "Toshihide Maskawa", contribution: "Co-proposed the CKM matrix and provided the theoretical framework confirmed by Belle and BaBar; Nobel Prize in Physics 2008." },
+      { name: "Makoto Kobayashi", contribution: "Co-proposed the CKM quark mixing matrix in 1973, predicting a third generation of quarks from CP-violation arguments; Nobel Prize in Physics 2008.", sources: [{ label: "Nobel Prize in Physics 2008", url: "https://www.nobelprize.org/prizes/physics/2008/summary/" }] },
+      { name: "Toshihide Maskawa", contribution: "Co-proposed the CKM matrix and provided the theoretical framework confirmed by Belle and BaBar; Nobel Prize in Physics 2008.", sources: [{ label: "Nobel Prize in Physics 2008", url: "https://www.nobelprize.org/prizes/physics/2008/summary/" }] },
     ],
     readMore: [
       { label: "KEK Official Site", url: "https://www.kek.jp" },
@@ -162,6 +170,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'gran-sasso',
     name: 'Gran Sasso (LNGS)',
+    fullName: "Laboratori Nazionali del Gran Sasso",
+    type: 'underground-laboratory',
     country: 'Italy',
     lat: 42.4536,
     lng: 13.576,
@@ -197,6 +207,7 @@ export const facilities: readonly Facility[] = [
   {
     id: 'snolab',
     name: 'SNOLAB',
+    type: 'underground-laboratory',
     country: 'Canada',
     lat: 46.475,
     lng: -81.201,
@@ -206,7 +217,7 @@ export const facilities: readonly Facility[] = [
     history: [
       { year: 1999, event: "SNO detector begins operations, using 1,000 tonnes of heavy water to separately detect charged-current and neutral-current neutrino interactions." },
       { year: 2001, event: "SNO charged-current result shows the solar electron-neutrino flux is one-third the Standard Solar Model prediction, hinting strongly at flavour change." },
-      { year: 2002, event: "SNO neutral-current measurement proves the total active neutrino flux matches solar model predictions, establishing that solar electron-neutrinos oscillate into other flavours. Nobel Prize 2015." },
+      { year: 2002, event: "SNO neutral-current measurement proves the total active neutrino flux matches solar model predictions, establishing that solar electron-neutrinos oscillate into other flavours. Nobel Prize 2015.", sources: [{ label: "Nobel Prize in Physics 2015", url: "https://www.nobelprize.org/prizes/physics/2015/summary/" }] },
       { year: 2012, event: "SNOLAB officially opens as an expanded underground facility, adding new experimental halls adjacent to the original SNO cavity." },
       { year: 2022, event: "SNO+ begins filling its 780-tonne acrylic vessel with tellurium-loaded liquid scintillator for neutrinoless double-beta decay searches." },
     ],
@@ -215,10 +226,10 @@ export const facilities: readonly Facility[] = [
       { id: 'snolab-deap', name: 'DEAP-3600', description: "3,600-kg liquid-argon scintillation detector searching for WIMP dark matter at the world's deepest clean-room laboratory using a single-phase technique.", topics: ['dark-matter'], startYear: 2016 },
     ],
     keyResults: [
-      { year: 2002, discovery: "Resolution of the Solar Neutrino Problem", description: "SNO's neutral-current measurement proved the total solar neutrino flux matches the Standard Solar Model — solar electron-neutrinos oscillate into other active flavours, confirming neutrino mass. Nobel Prize in Physics 2015." },
+      { year: 2002, discovery: "Resolution of the Solar Neutrino Problem", description: "SNO's neutral-current measurement proved the total solar neutrino flux matches the Standard Solar Model — solar electron-neutrinos oscillate into other active flavours, confirming neutrino mass. Nobel Prize in Physics 2015.", sources: [{ label: "Nobel Prize in Physics 2015", url: "https://www.nobelprize.org/prizes/physics/2015/summary/" }] },
     ],
     importantPeople: [
-      { name: "Arthur McDonald", contribution: "Director of the SNO collaboration; his team's neutral-current measurement definitively resolved the solar neutrino problem. Nobel Prize in Physics 2015." },
+      { name: "Arthur McDonald", contribution: "Director of the SNO collaboration; his team's neutral-current measurement definitively resolved the solar neutrino problem. Nobel Prize in Physics 2015.", sources: [{ label: "Nobel Prize in Physics 2015", url: "https://www.nobelprize.org/prizes/physics/2015/summary/" }] },
       { name: "Hamish Robertson", contribution: "Co-spokesperson of SNO; expert in neutrino mass measurement and a founding architect of the heavy-water detector concept." },
     ],
     readMore: [
@@ -230,6 +241,7 @@ export const facilities: readonly Facility[] = [
   {
     id: 'kamioka',
     name: 'Kamioka Observatory',
+    type: 'neutrino-observatory',
     country: 'Japan',
     lat: 36.4254,
     lng: 137.31,
@@ -238,9 +250,9 @@ export const facilities: readonly Facility[] = [
     overview: "Japan's Kamioka Observatory, housed beneath Mount Ikeno in Gifu Prefecture, is one of the most productive underground laboratories in the world. Its flagship detector Super-Kamiokande — a 50,000-tonne water Cherenkov cylinder — detected the first neutrinos from an extragalactic supernova (1987A), discovered atmospheric neutrino oscillations in 1998, and sets world-leading limits on the proton lifetime. The successor Hyper-Kamiokande, a 260,000-tonne detector, is currently under construction nearby.",
     history: [
       { year: 1983, event: "Kamiokande detector begins operations under Mount Ikeno, designed primarily to search for proton decay predicted by Grand Unified Theories." },
-      { year: 1987, event: "Kamiokande-II detects 11 neutrinos from Supernova 1987A in the Large Magellanic Cloud — the first detection of neutrinos from any extragalactic source. Nobel Prize 2002." },
+      { year: 1987, event: "Kamiokande-II detects 11 neutrinos from Supernova 1987A in the Large Magellanic Cloud — the first detection of neutrinos from any extragalactic source. Nobel Prize 2002.", sources: [{ label: "Nobel Prize in Physics 2002", url: "https://www.nobelprize.org/prizes/physics/2002/summary/" }] },
       { year: 1996, event: "Super-Kamiokande, a 50,000-tonne water Cherenkov detector instrumented with 11,146 photomultiplier tubes, begins operations." },
-      { year: 1998, event: "Super-Kamiokande announces compelling evidence for atmospheric muon-neutrino oscillation, proving neutrinos have non-zero mass. Nobel Prize 2015." },
+      { year: 1998, event: "Super-Kamiokande announces compelling evidence for atmospheric muon-neutrino oscillation, proving neutrinos have non-zero mass. Nobel Prize 2015.", sources: [{ label: "Nobel Prize in Physics 2015", url: "https://www.nobelprize.org/prizes/physics/2015/summary/" }] },
       { year: 2020, event: "Super-Kamiokande enters its Gd-doping phase (SK-Gd), adding gadolinium to improve neutron-capture detection for supernova relic neutrino searches." },
     ],
     experiments: [
@@ -248,12 +260,12 @@ export const facilities: readonly Facility[] = [
       { id: 'kamioka-kamland', name: 'KamLAND', description: "1-kilotonne liquid-scintillator detector at Kamioka; the first to observe reactor antineutrino disappearance with terrestrial sources, confirming neutrino oscillation parameters.", topics: ['neutrinos'], startYear: 2002 },
     ],
     keyResults: [
-      { year: 1987, discovery: "Supernova 1987A Neutrinos", description: "Kamiokande-II detected a burst of 11 neutrinos from SN 1987A, providing the first direct observation of core-collapse supernova neutrinos and confirming stellar collapse models. Masatoshi Koshiba shared the Nobel Prize 2002." },
-      { year: 1998, discovery: "Atmospheric Neutrino Oscillations", description: "Super-Kamiokande observed a zenith-angle-dependent deficit of atmospheric muon neutrinos, providing compelling evidence that neutrinos oscillate and therefore have non-zero mass. Nobel Prize 2015." },
+      { year: 1987, discovery: "Supernova 1987A Neutrinos", description: "Kamiokande-II detected a burst of 11 neutrinos from SN 1987A, providing the first direct observation of core-collapse supernova neutrinos and confirming stellar collapse models. Masatoshi Koshiba shared the Nobel Prize 2002.", sources: [{ label: "Nobel Prize in Physics 2002", url: "https://www.nobelprize.org/prizes/physics/2002/summary/" }] },
+      { year: 1998, discovery: "Atmospheric Neutrino Oscillations", description: "Super-Kamiokande observed a zenith-angle-dependent deficit of atmospheric muon neutrinos, providing compelling evidence that neutrinos oscillate and therefore have non-zero mass. Nobel Prize 2015.", sources: [{ label: "Nobel Prize in Physics 2015", url: "https://www.nobelprize.org/prizes/physics/2015/summary/" }] },
     ],
     importantPeople: [
-      { name: "Masatoshi Koshiba", contribution: "Led the Kamiokande experiment and directed the 1987A supernova neutrino detection; Nobel Prize in Physics 2002." },
-      { name: "Takaaki Kajita", contribution: "Analysed Super-Kamiokande atmospheric neutrino data, discovering the oscillation signature that proved neutrino mass; Nobel Prize in Physics 2015." },
+      { name: "Masatoshi Koshiba", contribution: "Led the Kamiokande experiment and directed the 1987A supernova neutrino detection; Nobel Prize in Physics 2002.", sources: [{ label: "Nobel Prize in Physics 2002", url: "https://www.nobelprize.org/prizes/physics/2002/summary/" }] },
+      { name: "Takaaki Kajita", contribution: "Analysed Super-Kamiokande atmospheric neutrino data, discovering the oscillation signature that proved neutrino mass; Nobel Prize in Physics 2015.", sources: [{ label: "Nobel Prize in Physics 2015", url: "https://www.nobelprize.org/prizes/physics/2015/summary/" }] },
     ],
     readMore: [
       { label: "Super-Kamiokande Site", url: "https://www-sk.icrr.u-tokyo.ac.jp" },
@@ -265,6 +277,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'surf',
     name: 'SURF / LUX-ZEPLIN',
+    fullName: "Sanford Underground Research Facility",
+    type: 'underground-laboratory',
     country: 'United States',
     lat: 44.352,
     lng: -103.771,
@@ -283,12 +297,12 @@ export const facilities: readonly Facility[] = [
       { id: 'surf-majorana', name: 'MAJORANA DEMONSTRATOR', description: "Array of enriched germanium detectors searching for neutrinoless double-beta decay of 76-Ge, probing the Majorana nature of the neutrino.", topics: ['neutrinos'], startYear: 2015, endYear: 2021 },
     ],
     keyResults: [
-      { year: 1968, discovery: "Solar Neutrino Deficit (Homestake)", description: "Davis's chlorine experiment measured only ~1/3 of the predicted solar neutrino flux, posing the solar neutrino problem that ultimately proved neutrino oscillation and mass. Nobel Prize in Physics 2002." },
+      { year: 1968, discovery: "Solar Neutrino Deficit (Homestake)", description: "Davis's chlorine experiment measured only ~1/3 of the predicted solar neutrino flux, posing the solar neutrino problem that ultimately proved neutrino oscillation and mass. Nobel Prize in Physics 2002.", sources: [{ label: "Nobel Prize in Physics 2002", url: "https://www.nobelprize.org/prizes/physics/2002/summary/" }] },
       { year: 2023, discovery: "World-Leading WIMP Dark Matter Limits (LZ)", description: "LZ's first result, from 60 live days of data, set the most stringent upper limits on the WIMP-nucleon spin-independent cross section for WIMP masses above ~9 GeV/c2, constraining large regions of supersymmetric dark matter parameter space." },
-      { year: 2025, discovery: "LZ 4.2 Tonne-Year Dark Matter Search", description: "Combining 280 live days of data, LZ found no excess over expected backgrounds and excluded spin-independent WIMP-nucleon cross sections down to 2.2 x 10^-48 cm2 at a WIMP mass of 40 GeV/c2 (Physical Review Letters 135, 011802)." },
+      { year: 2025, discovery: "LZ 4.2 Tonne-Year Dark Matter Search", description: "Combining 280 live days of data, LZ found no excess over expected backgrounds and excluded spin-independent WIMP-nucleon cross sections down to 2.2 x 10^-48 cm2 at a WIMP mass of 40 GeV/c2 (Physical Review Letters 135, 011802).", sources: [{ label: "LZ Collaboration, arXiv:2410.17036", url: "https://arxiv.org/abs/2410.17036" }] },
     ],
     importantPeople: [
-      { name: "Raymond Davis Jr.", contribution: "Built and operated the Homestake solar neutrino experiment (1965-2002), creating the solar neutrino problem; Nobel Prize in Physics 2002." },
+      { name: "Raymond Davis Jr.", contribution: "Built and operated the Homestake solar neutrino experiment (1965-2002), creating the solar neutrino problem; Nobel Prize in Physics 2002.", sources: [{ label: "Nobel Prize in Physics 2002", url: "https://www.nobelprize.org/prizes/physics/2002/summary/" }] },
       { name: "Richard Gaitskell", contribution: "Co-spokesperson of LZ and architect of the LUX and LZ liquid-xenon dark matter programme at SURF." },
     ],
     readMore: [
@@ -303,6 +317,7 @@ export const facilities: readonly Facility[] = [
   {
     id: 'icecube',
     name: 'IceCube Neutrino Observatory',
+    type: 'neutrino-observatory',
     country: 'Antarctica',
     lat: -89.9944,
     lng: -63.4536,
@@ -337,6 +352,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'juno',
     name: 'JUNO',
+    fullName: "Jiangmen Underground Neutrino Observatory",
+    type: 'neutrino-observatory',
     country: 'China',
     lat: 22.118,
     lng: 112.518,
@@ -347,8 +364,8 @@ export const facilities: readonly Facility[] = [
       { year: 2012, event: "JUNO proposed at the Institute of High Energy Physics, Beijing, building on the success of the Daya Bay theta-13 measurement." },
       { year: 2015, event: "Construction of the JUNO underground experimental hall begins near Kaiping, Jiangmen, Guangdong." },
       { year: 2021, event: "Installation of the 20-inch and 3-inch photomultiplier tube systems begins; a novel dual-calorimetry design improves energy resolution." },
-      { year: 2025, event: "With the detector filled with 20,000 tonnes of liquid scintillator, JUNO begins data taking on 26 August 2025; first results on the solar oscillation parameters follow in November." },
-      { year: 2026, event: "JUNO's first reactor-neutrino oscillation measurement is published in Nature." },
+      { year: 2025, event: "With the detector filled with 20,000 tonnes of liquid scintillator, JUNO begins data taking on 26 August 2025; first results on the solar oscillation parameters follow in November.", sources: [{ label: "GSI: JUNO delivers first physics results", url: "https://www.gsi.de/en/start/news/details/2025/11/19/juno-experiment-first-data" }] },
+      { year: 2026, event: "JUNO's first reactor-neutrino oscillation measurement is published in Nature.", sources: [{ label: "IHEP: first JUNO physics result published in Nature", url: "https://english.ihep.cas.cn/nw/han/y26/202606/t20260610_1161472.html" }] },
     ],
     experiments: [
       { id: 'juno-main', name: 'JUNO Main Detector', description: "20,000-tonne liquid-scintillator sphere designed to determine the neutrino mass ordering and measure oscillation parameters using reactor antineutrinos from two nearby nuclear power complexes.", topics: ['neutrinos'], startYear: 2025 },
@@ -366,6 +383,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'daya-bay',
     name: 'Daya Bay',
+    fullName: "Daya Bay Reactor Neutrino Experiment",
+    type: 'neutrino-observatory',
     country: 'China',
     lat: 22.5956,
     lng: 114.5378,
@@ -398,6 +417,7 @@ export const facilities: readonly Facility[] = [
   {
     id: 'pierre-auger',
     name: 'Pierre Auger Observatory',
+    type: 'cosmic-ray-observatory',
     country: 'Argentina',
     lat: -35.208,
     lng: -69.314,
@@ -420,7 +440,7 @@ export const facilities: readonly Facility[] = [
       { year: 2017, discovery: "Large-Scale Anisotropy in UHECR Arrival Directions", description: "A 5.2 sigma large-scale anisotropy above 8 EeV points towards the direction of the Virgo supercluster, providing the first statistically significant directional signal indicating the extragalactic origin of UHECRs." },
     ],
     importantPeople: [
-      { name: "James Cronin", contribution: "Co-proposed the Pierre Auger Observatory; Nobel Prize in Physics 1980 for CP violation in kaon decays, which shaped his interest in fundamental cosmic phenomena." },
+      { name: "James Cronin", contribution: "Co-proposed the Pierre Auger Observatory; Nobel Prize in Physics 1980 for CP violation in kaon decays, which shaped his interest in fundamental cosmic phenomena.", sources: [{ label: "Nobel Prize in Physics 1980", url: "https://www.nobelprize.org/prizes/physics/1980/summary/" }] },
       { name: "Alan Watson", contribution: "Co-proposed and co-led construction of the Auger Observatory; pioneer of UHECR detection using the Haverah Park array." },
     ],
     readMore: [
@@ -432,6 +452,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'cta',
     name: 'CTAO / CTA',
+    fullName: "Cherenkov Telescope Array Observatory",
+    type: 'gamma-ray-observatory',
     country: 'Spain / Chile',
     lat: 28.762,
     lng: -17.892,
@@ -441,7 +463,7 @@ export const facilities: readonly Facility[] = [
     history: [
       { year: 2010, event: "CTA concept formally developed by an international consortium; the multi-telescope multi-size-class architecture is defined." },
       { year: 2021, event: "LST-1 prototype Large-Sized Telescope at La Palma begins regular observations as a CTA precursor instrument." },
-      { year: 2025, event: "The European Commission establishes the CTAO as a European Research Infrastructure Consortium (CTAO ERIC) on 7 January 2025, with Italy as host state; three further Large-Sized Telescopes (LST-2 to LST-4) are under construction at La Palma." },
+      { year: 2025, event: "The European Commission establishes the CTAO as a European Research Infrastructure Consortium (CTAO ERIC) on 7 January 2025, with Italy as host state; three further Large-Sized Telescopes (LST-2 to LST-4) are under construction at La Palma.", sources: [{ label: "Commission Implementing Decision (EU) 2025/7", url: "https://eur-lex.europa.eu/eli/dec_impl/2025/7/oj/eng" }] },
     ],
     experiments: [
       { id: 'cta-north', name: 'CTA-North (La Palma)', description: "Northern array at La Palma optimised for lower-energy gamma-rays (20 GeV-1 TeV); targets AGN jets, dark matter, and transient sources including gamma-ray bursts.", topics: ['cosmic-rays', 'dark-matter'] },
@@ -462,6 +484,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'ligo',
     name: 'LIGO',
+    fullName: "Laser Interferometer Gravitational-Wave Observatory",
+    type: 'gravitational-wave-observatory',
     country: 'United States',
     lat: 46.455,
     lng: -119.408,
@@ -479,13 +503,13 @@ export const facilities: readonly Facility[] = [
       { id: 'ligo-aligo', name: 'Advanced LIGO (aLIGO)', description: "Two 4-km Fabry-Perot Michelson interferometers with 400-kW circulating laser power; sensitive to gravitational-wave strains around 10-23 per root Hz near 100 Hz.", topics: ['gravitational-waves'], startYear: 2015 },
     ],
     keyResults: [
-      { year: 2015, discovery: "First Detection of Gravitational Waves (GW150914)", description: "LIGO detected gravitational waves from the merger of two black holes (~30 and ~35 solar masses each), confirming a central prediction of general relativity 100 years after Einstein made it. Nobel Prize in Physics 2017." },
+      { year: 2015, discovery: "First Detection of Gravitational Waves (GW150914)", description: "LIGO detected gravitational waves from the merger of two black holes (~30 and ~35 solar masses each), confirming a central prediction of general relativity 100 years after Einstein made it. Nobel Prize in Physics 2017.", sources: [{ label: "Nobel Prize in Physics 2017", url: "https://www.nobelprize.org/prizes/physics/2017/summary/" }] },
       { year: 2017, discovery: "Binary Neutron Star Merger GW170817", description: "LIGO and Virgo observed the merger of two neutron stars along with a short gamma-ray burst and kilonova — the first multi-messenger gravitational-wave event, confirming neutron star mergers as sites of r-process nucleosynthesis and heavy element production." },
     ],
     importantPeople: [
-      { name: "Rainer Weiss", contribution: "Co-founded LIGO and invented the laser interferometer technique for gravitational-wave detection; Nobel Prize in Physics 2017." },
-      { name: "Kip Thorne", contribution: "Co-founded LIGO and developed the theoretical predictions for binary merger waveforms that enabled GW150914's identification; Nobel Prize in Physics 2017." },
-      { name: "Barry Barish", contribution: "Director of the LIGO Laboratory (1994-2005) who transformed the project into the instrument that detected gravitational waves; Nobel Prize in Physics 2017." },
+      { name: "Rainer Weiss", contribution: "Co-founded LIGO and invented the laser interferometer technique for gravitational-wave detection; Nobel Prize in Physics 2017.", sources: [{ label: "Nobel Prize in Physics 2017", url: "https://www.nobelprize.org/prizes/physics/2017/summary/" }] },
+      { name: "Kip Thorne", contribution: "Co-founded LIGO and developed the theoretical predictions for binary merger waveforms that enabled GW150914's identification; Nobel Prize in Physics 2017.", sources: [{ label: "Nobel Prize in Physics 2017", url: "https://www.nobelprize.org/prizes/physics/2017/summary/" }] },
+      { name: "Barry Barish", contribution: "Director of the LIGO Laboratory (1994-2005) who transformed the project into the instrument that detected gravitational waves; Nobel Prize in Physics 2017.", sources: [{ label: "Nobel Prize in Physics 2017", url: "https://www.nobelprize.org/prizes/physics/2017/summary/" }] },
     ],
     readMore: [
       { label: "LIGO Official Site", url: "https://www.ligo.caltech.edu" },
@@ -497,6 +521,7 @@ export const facilities: readonly Facility[] = [
   {
     id: 'virgo',
     name: 'Virgo',
+    type: 'gravitational-wave-observatory',
     country: 'Italy',
     lat: 43.631,
     lng: 10.504,
@@ -529,6 +554,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'kagra',
     name: 'KAGRA',
+    fullName: "Kamioka Gravitational Wave Detector",
+    type: 'gravitational-wave-observatory',
     country: 'Japan',
     lat: 36.411,
     lng: 137.306,
@@ -547,7 +574,7 @@ export const facilities: readonly Facility[] = [
     ],
     keyResults: [],
     importantPeople: [
-      { name: "Takaaki Kajita", contribution: "Principal investigator of KAGRA; also Nobel Prize in Physics 2015 for the discovery of atmospheric neutrino oscillations at Super-Kamiokande." },
+      { name: "Takaaki Kajita", contribution: "Principal investigator of KAGRA; also Nobel Prize in Physics 2015 for the discovery of atmospheric neutrino oscillations at Super-Kamiokande.", sources: [{ label: "Nobel Prize in Physics 2015", url: "https://www.nobelprize.org/prizes/physics/2015/summary/" }] },
     ],
     readMore: [
       { label: "KAGRA Official Site", url: "https://gwcenter.icrr.u-tokyo.ac.jp" },
@@ -559,6 +586,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'frib',
     name: 'FRIB',
+    fullName: "Facility for Rare Isotope Beams",
+    type: 'rare-isotope-facility',
     country: 'United States',
     lat: 42.727,
     lng: -84.484,
@@ -569,14 +598,14 @@ export const facilities: readonly Facility[] = [
       { year: 2008, event: "DOE approves FRIB as a major scientific user facility at Michigan State University, successor to the National Superconducting Cyclotron Laboratory (NSCL)." },
       { year: 2014, event: "FRIB construction begins; the superconducting linac tunnel is excavated on the MSU campus in East Lansing." },
       { year: 2022, event: "FRIB opens to user experiments on 2 May 2022; first uranium beams reach over 200 MeV/u, setting a world record for beam power with that ion." },
-      { year: 2026, event: "The GRETA gamma-ray tracking array, shipped from Berkeley Lab in 2025, completes its commissioning run at FRIB." },
+      { year: 2026, event: "The GRETA gamma-ray tracking array, shipped from Berkeley Lab in 2025, completes its commissioning run at FRIB.", sources: [{ label: "Berkeley Lab: GRETA comes online", url: "https://newscenter.lbl.gov/2026/07/28/greta-comes-online-for-a-new-era-of-nuclear-science/" }] },
     ],
     experiments: [
-      { id: 'frib-greta', name: 'GRETA', description: "Gamma-Ray Energy Tracking Array — a 4-pi germanium detector that tracks gamma-ray photons from nuclear reactions, enabling in-beam spectroscopy of rare isotopes at FRIB.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2026 },
+      { id: 'frib-greta', name: 'GRETA', description: "Gamma-Ray Energy Tracking Array — a 4-pi germanium detector that tracks gamma-ray photons from nuclear reactions, enabling in-beam spectroscopy of rare isotopes at FRIB.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2026, sources: [{ label: "Berkeley Lab: GRETA comes online", url: "https://newscenter.lbl.gov/2026/07/28/greta-comes-online-for-a-new-era-of-nuclear-science/" }] },
       { id: 'frib-mona', name: 'MoNA-LISA', description: "Modular Neutron Array and Large-area multi-Institutional Scintillator Array; measures neutrons from rare isotope decays near the drip line to probe nuclear structure and halo nuclei.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2022 },
     ],
     keyResults: [
-      { year: 2022, discovery: "First Half-Life Measurements at FRIB", description: "FRIB's first experiment fragmented a calcium-48 beam and measured, for the first time, the half-lives of five neutron-rich isotopes of magnesium, aluminium, silicon and phosphorus near N=28, finding evidence that the Z=14 subshell closure erodes there (Physical Review Letters 129, 212501)." },
+      { year: 2022, discovery: "First Half-Life Measurements at FRIB", description: "FRIB's first experiment fragmented a calcium-48 beam and measured, for the first time, the half-lives of five neutron-rich isotopes of magnesium, aluminium, silicon and phosphorus near N=28, finding evidence that the Z=14 subshell closure erodes there (Physical Review Letters 129, 212501).", sources: [{ label: "Crawford et al., Phys. Rev. Lett. 129, 212501 (2022)", url: "https://doi.org/10.1103/PhysRevLett.129.212501" }] },
     ],
     importantPeople: [
       { name: "Konrad Gelbke", contribution: "Long-serving director of the National Superconducting Cyclotron Laboratory, FRIB's predecessor; led Michigan State's successful effort to host FRIB." },
@@ -590,6 +619,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'gsi',
     name: 'GSI / FAIR',
+    fullName: "GSI Helmholtz Centre for Heavy Ion Research",
+    type: 'rare-isotope-facility',
     country: 'Germany',
     lat: 49.934,
     lng: 8.672,
@@ -625,6 +656,7 @@ export const facilities: readonly Facility[] = [
   {
     id: 'triumf',
     name: 'TRIUMF',
+    type: 'rare-isotope-facility',
     country: 'Canada',
     lat: 49.2488,
     lng: -123.2381,
@@ -643,7 +675,7 @@ export const facilities: readonly Facility[] = [
       { id: 'triumf-griffin', name: 'GRIFFIN', description: "Gamma-Ray Infrastructure For Fundamental Investigations of Nuclei; 16-detector HPGe array at ISAC for decay spectroscopy of neutron-rich rare isotopes, mapping nuclear structure across the chart of nuclides.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2014 },
     ],
     keyResults: [
-      { year: 2008, discovery: "Penning-Trap Masses of Halo Nuclei", description: "TITAN made the first Penning-trap mass measurements of the halo nuclei helium-8 and lithium-11. Lithium-11, with a half-life of 8.8 ms, was the shortest-lived nuclide ever measured in a Penning trap, and its two-neutron separation energy became seven times more precise (Physical Review Letters 101, 012501 and 202501)." },
+      { year: 2008, discovery: "Penning-Trap Masses of Halo Nuclei", description: "TITAN made the first Penning-trap mass measurements of the halo nuclei helium-8 and lithium-11. Lithium-11, with a half-life of 8.8 ms, was the shortest-lived nuclide ever measured in a Penning trap, and its two-neutron separation energy became seven times more precise (Physical Review Letters 101, 012501 and 202501).", sources: [{ label: "Ryjkov et al., Phys. Rev. Lett. 101, 012501 (2008)", url: "https://doi.org/10.1103/PhysRevLett.101.012501" }, { label: "Smith et al., Phys. Rev. Lett. 101, 202501 (2008)", url: "https://doi.org/10.1103/PhysRevLett.101.202501" }] },
     ],
     importantPeople: [
       { name: "Erich Vogt", contribution: "Co-founder of TRIUMF and its director from 1981 to 1994; oversaw its growth into an international user facility." },
@@ -659,6 +691,8 @@ export const facilities: readonly Facility[] = [
   {
     id: 'desy',
     name: 'DESY',
+    fullName: "Deutsches Elektronen-Synchrotron",
+    type: 'accelerator-laboratory',
     country: 'Germany',
     lat: 53.5741,
     lng: 9.8826,
@@ -683,7 +717,7 @@ export const facilities: readonly Facility[] = [
     ],
     importantPeople: [
       { name: "Bjorn Wiik", contribution: "DESY director (1993-1999) and HERA project leader; a driving force behind Hamburg's position as a world centre for accelerator-based physics." },
-      { name: "G\u00fcnter Wolf", contribution: "Spokesperson of the TASSO experiment at PETRA, who presented its three-jet evidence for the gluon in 1979; shared the 1995 European Physical Society High Energy and Particle Physics Prize for that work." },
+      { name: "G\u00fcnter Wolf", contribution: "Spokesperson of the TASSO experiment at PETRA, who presented its three-jet evidence for the gluon in 1979; shared the 1995 European Physical Society High Energy and Particle Physics Prize for that work.", sources: [{ label: "DESY: the discovery of the gluon", url: "https://www.desy.de/news/backgrounders/40_years_of_gluon/index_eng.html" }] },
     ],
     readMore: [
       { label: "DESY Official Site", url: "https://www.desy.de" },

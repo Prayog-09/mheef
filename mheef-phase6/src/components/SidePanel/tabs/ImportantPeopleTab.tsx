@@ -1,3 +1,4 @@
+import SourceLinks from '../../SourceLinks';
 import type { Facility } from '../../../types/facility';
 
 interface ImportantPeopleTabProps {
@@ -14,6 +15,7 @@ export default function ImportantPeopleTab({ facility }: ImportantPeopleTabProps
         <div key={person.name} className="rounded-lg border border-white/10 bg-white/[0.03] p-4">
           <h3 className="text-sm font-semibold text-white">{person.name}</h3>
           <p className="mt-1 text-xs leading-relaxed text-white/60">{person.contribution}</p>
+          <SourceLinks sources={person.sources} />
         </div>
       ))}
     </div>

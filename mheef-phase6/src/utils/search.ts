@@ -1,7 +1,7 @@
 import Fuse from 'fuse.js';
 import { facilities } from '../data/facilities';
 import type { Facility } from '../types/facility';
-import { PHYSICS_TOPIC_LABELS } from '../types/facility';
+import { FACILITY_TYPE_LABELS, PHYSICS_TOPIC_LABELS } from '../types/facility';
 
 // ---------------------------------------------------------------------------
 // Search record shape — wraps a full Facility with pre-flattened strings so
@@ -14,6 +14,8 @@ interface SearchRecord {
   searchableExperiments: string;
   /** Space-joined human-readable topic labels for the `weight: 0.1` key. */
   searchableTopics: string;
+  /** Full name and facility-type label, so "Deutsches" or "underground" find a match. */
+  searchableIdentity: string;
 }
 
 const records: SearchRecord[] = facilities.map((facility) => ({
@@ -22,6 +24,7 @@ const records: SearchRecord[] = facilities.map((facility) => ({
   searchableTopics: facility.experiments
     .flatMap((e) => e.topics.map((t) => PHYSICS_TOPIC_LABELS[t]))
     .join(' '),
+  searchableIdentity: `${facility.fullName ?? ''} ${FACILITY_TYPE_LABELS[facility.type]}`,
 }));
 
 // Built once at module load — static dataset means no re-indexing needed.
@@ -31,6 +34,7 @@ const fuse = new Fuse(records, {
     { name: 'facility.country', weight: 0.2 },
     { name: 'searchableExperiments', weight: 0.2 },
     { name: 'searchableTopics', weight: 0.1 },
+    { name: 'searchableIdentity', weight: 0.2 },
   ],
   threshold: 0.4,      // 0 = exact, 1 = match anything; 0.4 allows typos
   includeScore: true,

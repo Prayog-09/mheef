@@ -7,9 +7,10 @@
     "copy-cesium": "node scripts/copy-cesium.mjs",
     "predev": "npm run copy-cesium",
     "dev": "astro dev",
-    "prebuild": "npm run copy-cesium",
+    "prebuild": "npm run validate && npm run copy-cesium",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "validate": "node scripts/validate-data.ts"
   },
   "dependencies": {
     "@astrojs/react": "^7.1.8",
