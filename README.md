@@ -28,6 +28,6 @@ next.
 
 ## Status
 
-This is an early version. The dataset covers 50 facilities and some
+This is an early version. The dataset covers 60 facilities and some
 entries are still being verified; corrections are welcome through the
 repository's issue tracker.

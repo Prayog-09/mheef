@@ -1,7 +1,7 @@
 import type { Facility } from '../types/facility';
 
 /**
- * Master dataset. 50 HEP facilities across all major
+ * Master dataset. 60 HEP facilities across all major
  * categories.
  *
  * Phase 3: side panel looks up any Facility by selectedFacilityId from here.
@@ -1824,6 +1824,319 @@ export const facilities: readonly Facility[] = [
     ],
     readMore: [
       { label: "The supernova neutrino paper", url: "https://doi.org/10.1103/PhysRevLett.58.1494" },
+    ],
+  },
+
+  {
+    id: 'cavendish',
+    name: "Cavendish Laboratory",
+    fullName: "Cavendish Laboratory, University of Cambridge",
+    type: 'accelerator-laboratory',
+    country: "United Kingdom",
+    lat: 52.2035,
+    lng: 0.1187,
+    founded: 1874,
+    status: 'historic',
+    overview: "The Cavendish Laboratory is the physics department of the University of Cambridge, opened in 1874 under James Clerk Maxwell. In its original building in the centre of Cambridge the electron and the neutron were discovered and the atomic nucleus was first split with artificially accelerated particles, making it one of the birthplaces of particle and nuclear physics. The laboratory moved to West Cambridge in 1974 and remains a working department; it is listed here for its historic role.",
+    specs: [
+    ],
+    history: [
+      { year: 1874, event: "The laboratory opens under James Clerk Maxwell, the first Cavendish Professor.", sources: [{ label: "University of Cambridge, Department of Physics: Our history", url: "https://www.phy.cam.ac.uk/about/our-history/" }] },
+      { year: 1897, event: "J. J. Thomson's experiments on cathode rays reveal the electron, the first subatomic particle. He receives the 1906 Nobel Prize.", sources: [{ label: "J. J. Thomson, Cathode Rays, Phil. Mag. 44, 293 (1897)", url: "https://doi.org/10.1080/14786449708621070" }, { label: "University of Cambridge, Department of Physics: Our history", url: "https://www.phy.cam.ac.uk/about/our-history/" }, { label: "Nobel Prize in Physics 1906", url: "https://www.nobelprize.org/prizes/physics/1906/summary/" }] },
+      { year: 1919, event: "Ernest Rutherford becomes Cavendish Professor.", sources: [{ label: "University of Cambridge, Department of Physics: Our history", url: "https://www.phy.cam.ac.uk/about/our-history/" }] },
+      { year: 1932, event: "James Chadwick discovers the neutron, and John Cockcroft and Ernest Walton split the atomic nucleus with accelerated protons.", sources: [{ label: "J. Chadwick, Possible Existence of a Neutron, Nature 129, 312 (1932)", url: "https://doi.org/10.1038/129312a0" }, { label: "Cockcroft and Walton, Proc. R. Soc. A 137, 229 (1932)", url: "https://doi.org/10.1098/rspa.1932.0133" }, { label: "University of Cambridge, Department of Physics: Our history", url: "https://www.phy.cam.ac.uk/about/our-history/" }] },
+      { year: 1974, event: "The laboratory completes its move to a new site in West Cambridge.", sources: [{ label: "University of Cambridge, Department of Physics: Our history", url: "https://www.phy.cam.ac.uk/about/our-history/" }] },
+    ],
+    experiments: [
+      { id: 'cavendish-cw', name: "Cockcroft-Walton accelerator", description: "High-voltage accelerator with which protons were first used to disintegrate atomic nuclei.", topics: ['nuclear-structure'], startYear: 1932, sources: [{ label: "Cockcroft and Walton, Proc. R. Soc. A 137, 229 (1932)", url: "https://doi.org/10.1098/rspa.1932.0133" }] },
+    ],
+    keyResults: [
+      { year: 1897, discovery: "Discovery of the Electron", description: "Cathode rays were shown to consist of particles far lighter than atoms. Nobel Prize 1906.", sources: [{ label: "J. J. Thomson, Cathode Rays, Phil. Mag. 44, 293 (1897)", url: "https://doi.org/10.1080/14786449708621070" }, { label: "Nobel Prize in Physics 1906", url: "https://www.nobelprize.org/prizes/physics/1906/summary/" }] },
+      { year: 1932, discovery: "Discovery of the Neutron", description: "Chadwick identified a neutral particle of about the proton's mass in the radiation from beryllium. Nobel Prize 1935.", sources: [{ label: "J. Chadwick, Possible Existence of a Neutron, Nature 129, 312 (1932)", url: "https://doi.org/10.1038/129312a0" }, { label: "Nobel Prize in Physics 1935", url: "https://www.nobelprize.org/prizes/physics/1935/summary/" }] },
+      { year: 1932, discovery: "First Artificial Splitting of the Nucleus", description: "Protons accelerated to a few hundred kilovolts broke lithium nuclei into pairs of alpha particles. Nobel Prize 1951.", sources: [{ label: "Cockcroft and Walton, Proc. R. Soc. A 137, 229 (1932)", url: "https://doi.org/10.1098/rspa.1932.0133" }, { label: "Nobel Prize in Physics 1951", url: "https://www.nobelprize.org/prizes/physics/1951/summary/" }] },
+    ],
+    importantPeople: [
+      { name: "J. J. Thomson", contribution: "Discovered the electron; Nobel Prize in Physics 1906.", sources: [{ label: "Nobel Prize in Physics 1906", url: "https://www.nobelprize.org/prizes/physics/1906/summary/" }] },
+      { name: "James Chadwick", contribution: "Discovered the neutron; Nobel Prize in Physics 1935.", sources: [{ label: "Nobel Prize in Physics 1935", url: "https://www.nobelprize.org/prizes/physics/1935/summary/" }] },
+      { name: "John Cockcroft and Ernest Walton", contribution: "Built the first accelerator to split the nucleus; Nobel Prize in Physics 1951.", sources: [{ label: "Nobel Prize in Physics 1951", url: "https://www.nobelprize.org/prizes/physics/1951/summary/" }] },
+    ],
+    readMore: [
+      { label: "Department of Physics, University of Cambridge", url: "https://www.phy.cam.ac.uk" },
+    ],
+  },
+  {
+    id: 'berkeley-lab',
+    name: "Berkeley Lab",
+    fullName: "Lawrence Berkeley National Laboratory",
+    type: 'accelerator-laboratory',
+    country: "United States",
+    lat: 37.876,
+    lng: -122.251,
+    founded: 1931,
+    status: 'active',
+    overview: "Lawrence Berkeley National Laboratory grew from the Radiation Laboratory that Ernest Lawrence founded at the University of California in 1931 to develop his invention, the cyclotron. A succession of ever larger machines made it the model for the modern accelerator laboratory. Its cyclotrons produced the first elements beyond uranium, and its Bevatron revealed the antiproton.",
+    specs: [
+    ],
+    history: [
+      { year: 1931, event: "Lawrence is given a disused building on the Berkeley campus for a radiation laboratory, in the month an 11-inch cyclotron reaches 1.1 MeV.", sources: [{ label: "Berkeley Lab: History timeline", url: "https://www2.lbl.gov/Science-Articles/Archive/timeline.html" }] },
+      { year: 1939, event: "Lawrence receives the Nobel Prize for the invention of the cyclotron.", sources: [{ label: "Berkeley Lab: History timeline", url: "https://www2.lbl.gov/Science-Articles/Archive/timeline.html" }, { label: "Nobel Prize in Physics 1939", url: "https://www.nobelprize.org/prizes/physics/1939/summary/" }] },
+      { year: 1940, event: "Neptunium and plutonium, the first elements beyond uranium, are discovered at the laboratory.", sources: [{ label: "Berkeley Lab: History timeline", url: "https://www2.lbl.gov/Science-Articles/Archive/timeline.html" }, { label: "Nobel Prize in Chemistry 1951", url: "https://www.nobelprize.org/prizes/chemistry/1951/summary/" }] },
+      { year: 1954, event: "The Bevatron proton accelerator is completed.", sources: [{ label: "Berkeley Lab: History timeline", url: "https://www2.lbl.gov/Science-Articles/Archive/timeline.html" }] },
+      { year: 1955, event: "The antiproton is discovered at the Bevatron by Owen Chamberlain, Emilio Segrè and colleagues.", sources: [{ label: "Chamberlain, Segrè, Wiegand and Ypsilantis, Phys. Rev. 100, 947 (1955)", url: "https://doi.org/10.1103/PhysRev.100.947" }, { label: "Berkeley Lab: History timeline", url: "https://www2.lbl.gov/Science-Articles/Archive/timeline.html" }] },
+    ],
+    experiments: [
+      { id: 'lbl-cyclotron', name: "Cyclotrons", description: "The series of cyclotrons, from 11 inches to the 184-inch synchrocyclotron, built by Lawrence and his laboratory.", topics: ['nuclear-structure'], startYear: 1931, sources: [{ label: "Lawrence and Livingston, Phys. Rev. 40, 19 (1932)", url: "https://doi.org/10.1103/PhysRev.40.19" }, { label: "Berkeley Lab: History timeline", url: "https://www2.lbl.gov/Science-Articles/Archive/timeline.html" }] },
+      { id: 'lbl-bevatron', name: "Bevatron", description: "Proton synchrotron designed to reach the energy needed to create antiprotons.", topics: ['qcd'], startYear: 1954, sources: [{ label: "Berkeley Lab: History timeline", url: "https://www2.lbl.gov/Science-Articles/Archive/timeline.html" }, { label: "Chamberlain, Segrè, Wiegand and Ypsilantis, Phys. Rev. 100, 947 (1955)", url: "https://doi.org/10.1103/PhysRev.100.947" }] },
+    ],
+    keyResults: [
+      { year: 1955, discovery: "Discovery of the Antiproton", description: "Negatively charged particles with the mass of the proton were identified among the products of Bevatron collisions. Nobel Prize 1959.", sources: [{ label: "Chamberlain, Segrè, Wiegand and Ypsilantis, Phys. Rev. 100, 947 (1955)", url: "https://doi.org/10.1103/PhysRev.100.947" }, { label: "Nobel Prize in Physics 1959", url: "https://www.nobelprize.org/prizes/physics/1959/summary/" }] },
+    ],
+    importantPeople: [
+      { name: "Ernest Lawrence", contribution: "Invented the cyclotron and founded the laboratory; Nobel Prize in Physics 1939.", sources: [{ label: "Nobel Prize in Physics 1939", url: "https://www.nobelprize.org/prizes/physics/1939/summary/" }] },
+      { name: "Emilio Segrè and Owen Chamberlain", contribution: "Discovered the antiproton; Nobel Prize in Physics 1959.", sources: [{ label: "Nobel Prize in Physics 1959", url: "https://www.nobelprize.org/prizes/physics/1959/summary/" }] },
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.lbl.gov" },
+    ],
+  },
+  {
+    id: 'los-alamos',
+    name: "Los Alamos (LANSCE)",
+    fullName: "Los Alamos Neutron Science Center",
+    type: 'accelerator-laboratory',
+    country: "United States",
+    lat: 35.869,
+    lng: -106.257,
+    founded: 1972,
+    status: 'active',
+    overview: "The Los Alamos Neutron Science Center is built around a half-mile-long proton linear accelerator, opened as the Los Alamos Meson Physics Facility. Its intense beams made it a centre for pion, muon and neutrino physics. The LSND experiment there reported an unexplained excess of electron antineutrinos that still drives searches for sterile neutrinos.",
+    specs: [
+      { label: "Linear accelerator", value: "Half a mile long, 800 MeV protons", sources: [{ label: "Los Alamos National Laboratory: About LANSCE", url: "https://www.lanl.gov/science-engineering/science-facilities/lansce/about" }] },
+    ],
+    history: [
+      { year: 1972, event: "The accelerator first reaches its design energy of 800 MeV on 9 June 1972.", sources: [{ label: "Los Alamos National Laboratory: 50 years of beaming", url: "https://www.lanl.gov/media/publications/1663/0922-50-years-of-beaming" }] },
+      { year: 1996, event: "The LSND experiment reports evidence for muon antineutrinos changing into electron antineutrinos.", sources: [{ label: "LSND Collaboration, Phys. Rev. Lett. 77, 3082 (1996)", url: "https://doi.org/10.1103/PhysRevLett.77.3082" }] },
+      { year: 2001, event: "LSND publishes its final result, an excess of electron antineutrino events that standard three-neutrino oscillations cannot explain.", sources: [{ label: "LSND Collaboration, Phys. Rev. D 64, 112007 (2001)", url: "https://doi.org/10.1103/PhysRevD.64.112007" }] },
+    ],
+    experiments: [
+      { id: 'lanl-lsnd', name: "LSND", description: "Liquid Scintillator Neutrino Detector, searching for the appearance of electron antineutrinos in a beam of muon antineutrinos.", topics: ['neutrinos'], sources: [{ label: "LSND Collaboration, Phys. Rev. D 64, 112007 (2001)", url: "https://doi.org/10.1103/PhysRevD.64.112007" }] },
+    ],
+    keyResults: [
+      { year: 2001, discovery: "The LSND Anomaly", description: "The excess of electron antineutrinos would require a neutrino mass difference far larger than those seen elsewhere, hinting at additional, sterile neutrinos.", sources: [{ label: "LSND Collaboration, Phys. Rev. D 64, 112007 (2001)", url: "https://doi.org/10.1103/PhysRevD.64.112007" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "LANSCE", url: "https://www.lanl.gov/science-engineering/science-facilities/lansce" },
+    ],
+  },
+  {
+    id: 'modane',
+    name: "Modane (LSM)",
+    fullName: "Laboratoire Souterrain de Modane",
+    type: 'underground-laboratory',
+    country: "France",
+    lat: 45.142,
+    lng: 6.689,
+    founded: 1982,
+    status: 'active',
+    overview: "The Modane Underground Laboratory sits at the midpoint of the Fréjus road tunnel between France and Italy, under about 1,700 m of rock, which makes it one of the deepest laboratories in Europe. Built for a proton decay experiment, it later hosted the NEMO-3 search for neutrinoless double-beta decay and the EDELWEISS dark matter experiment.",
+    specs: [
+      { label: "Rock overburden", value: "1,700 m (4,800 m water equivalent)", sources: [{ label: "Piquemal, Modane underground laboratory: status and project, Eur. Phys. J. Plus 127, 110 (2012)", url: "https://ui.adsabs.harvard.edu/abs/2012EPJP..127..110P" }] },
+    ],
+    history: [
+      { year: 2015, event: "NEMO-3 publishes its final search for the neutrinoless double-beta decay of molybdenum-100.", sources: [{ label: "NEMO-3 Collaboration, Phys. Rev. D 92, 072011 (2015)", url: "https://doi.org/10.1103/PhysRevD.92.072011" }] },
+      { year: 2016, event: "EDELWEISS-III publishes limits on low-mass dark matter particles.", sources: [{ label: "EDELWEISS Collaboration, JCAP 05 (2016) 019", url: "https://doi.org/10.1088/1475-7516/2016/05/019" }] },
+    ],
+    experiments: [
+      { id: 'lsm-nemo3', name: "NEMO-3", description: "Tracking detector and calorimeter that recorded the two electrons of double-beta decay in thin source foils.", topics: ['neutrinos'], sources: [{ label: "NEMO-3 Collaboration, Phys. Rev. D 92, 072011 (2015)", url: "https://doi.org/10.1103/PhysRevD.92.072011" }] },
+      { id: 'lsm-edelweiss', name: "EDELWEISS", description: "Cryogenic germanium detectors measuring heat and ionisation to search for dark matter.", topics: ['dark-matter'], sources: [{ label: "EDELWEISS Collaboration, JCAP 05 (2016) 019", url: "https://doi.org/10.1088/1475-7516/2016/05/019" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://lsm.in2p3.fr" },
+    ],
+  },
+  {
+    id: 'yemilab',
+    name: "Yemilab",
+    type: 'underground-laboratory',
+    country: "South Korea",
+    lat: 37.19,
+    lng: 128.66,
+    founded: 2022,
+    status: 'active',
+    overview: "Yemilab is South Korea's deep underground laboratory, about 1,000 m below Mount Yemi in Jeongseon, reached through an operating iron mine. Completed in 2022 by the Institute for Basic Science, it takes over from the smaller Yangyang laboratory and is designed for searches for dark matter and neutrinoless double-beta decay.",
+    specs: [
+      { label: "Depth", value: "About 1,000 m", sources: [{ label: "Park et al., Construction of Yemilab, Front. Phys. 12, 1323991 (2024)", url: "https://doi.org/10.3389/fphy.2024.1323991" }] },
+      { label: "Dedicated experimental area", value: "3,000 m³, plus a 6,300 m³ cylindrical pit", sources: [{ label: "Park et al., Construction of Yemilab, Front. Phys. 12, 1323991 (2024)", url: "https://doi.org/10.3389/fphy.2024.1323991" }] },
+    ],
+    history: [
+      { year: 2022, event: "Construction of the laboratory is completed in September 2022.", sources: [{ label: "Park et al., Construction of Yemilab, Front. Phys. 12, 1323991 (2024)", url: "https://doi.org/10.3389/fphy.2024.1323991" }] },
+    ],
+    experiments: [
+      { id: 'yemilab-amore', name: "AMoRE", description: "Search for the neutrinoless double-beta decay of molybdenum-100 with cryogenic crystal detectors, begun at the Yangyang laboratory.", topics: ['neutrinos'], sources: [{ label: "AMoRE Collaboration, Eur. Phys. J. C 79, 791 (2019)", url: "https://doi.org/10.1140/epjc/s10052-019-7279-1" }, { label: "Park et al., Construction of Yemilab, Front. Phys. 12, 1323991 (2024)", url: "https://doi.org/10.3389/fphy.2024.1323991" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Construction of Yemilab (paper)", url: "https://doi.org/10.3389/fphy.2024.1323991" },
+    ],
+  },
+  {
+    id: 'ssc',
+    name: "SSC",
+    fullName: "Superconducting Super Collider",
+    type: 'accelerator-laboratory',
+    country: "United States",
+    lat: 32.36,
+    lng: -96.94,
+    founded: 1987,
+    status: 'historic',
+    overview: "The Superconducting Super Collider was to have been the world's most powerful particle accelerator, a ring 54 miles around near Waxahachie, Texas, colliding protons at 20 TeV per beam. Approved in 1987, it was cancelled by the United States Congress in October 1993 after about two billion dollars had been spent and part of the tunnel had been bored. Its cancellation left the search for the Higgs boson to CERN's Large Hadron Collider.",
+    specs: [
+      { label: "Planned ring circumference", value: "54 miles (about 87 km)", sources: [{ label: "NPR: U.S. physicists recall brush with supercollider fame (2008)", url: "https://www.npr.org/2008/09/10/94481272/u-s-physicists-recall-brush-with-supercollider-fame" }] },
+      { label: "Planned beam energy", value: "20 TeV per beam", sources: [{ label: "Physics Today: A bridge too far, the demise of the Superconducting Super Collider", url: "https://physicstoday.aip.org/features/a-bridge-too-far-the-demise-of-the-superconducting-super-collider" }] },
+      { label: "Spent before cancellation", value: "About $2 billion", sources: [{ label: "APS News: October 1993, Congress cancels funding for the SSC", url: "https://aps.org/publications/apsnews/201310/physicshistory.cfm" }] },
+    ],
+    history: [
+      { year: 1987, event: "President Reagan approves the project.", sources: [{ label: "APS News: October 1993, Congress cancels funding for the SSC", url: "https://aps.org/publications/apsnews/201310/physicshistory.cfm" }] },
+      { year: 1993, event: "Congress ends funding for the collider in October 1993, and the bill cancelling it is signed on 30 October.", sources: [{ label: "APS News: October 1993, Congress cancels funding for the SSC", url: "https://aps.org/publications/apsnews/201310/physicshistory.cfm" }, { label: "Physics Today: A bridge too far, the demise of the Superconducting Super Collider", url: "https://physicstoday.aip.org/features/a-bridge-too-far-the-demise-of-the-superconducting-super-collider" }] },
+    ],
+    experiments: [
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Physics Today: the demise of the SSC", url: "https://physicstoday.aip.org/features/a-bridge-too-far-the-demise-of-the-superconducting-super-collider" },
+    ],
+  },
+  {
+    id: 'vecc',
+    name: "VECC Kolkata",
+    fullName: "Variable Energy Cyclotron Centre",
+    type: 'rare-isotope-facility',
+    country: "India",
+    lat: 22.5958,
+    lng: 88.4144,
+    founded: 1969,
+    status: 'active',
+    overview: "The Variable Energy Cyclotron Centre in Kolkata is a research unit of India's Department of Atomic Energy built around cyclotrons. Its room-temperature cyclotron has run since 1977 and a superconducting cyclotron delivers heavy-ion beams; the centre works on experimental nuclear physics, accelerator technology and isotope production.",
+    specs: [
+      { label: "Cyclotrons", value: "K130 room-temperature, K500 superconducting, and a 30 MeV medical cyclotron", sources: [{ label: "VECC: About", url: "https://www.vecc.gov.in/about-us" }] },
+    ],
+    history: [
+      { year: 1969, event: "Work on the cyclotron begins in Kolkata under the Bhabha Atomic Research Centre, following Homi Bhabha's proposal of 1965.", sources: [{ label: "VECC: About", url: "https://www.vecc.gov.in/about-us" }] },
+      { year: 1977, event: "The K130 variable-energy cyclotron is commissioned.", sources: [{ label: "VECC: About", url: "https://www.vecc.gov.in/about-us" }] },
+      { year: 1990, event: "VECC becomes an independent unit of the Department of Atomic Energy in May 1990.", sources: [{ label: "VECC: About", url: "https://www.vecc.gov.in/about-us" }] },
+    ],
+    experiments: [
+      { id: 'vecc-k130', name: "K130 cyclotron", description: "Room-temperature variable-energy cyclotron, in operation since 1977.", topics: ['nuclear-structure'], startYear: 1977, sources: [{ label: "VECC: About", url: "https://www.vecc.gov.in/about-us" }] },
+      { id: 'vecc-k500', name: "K500 superconducting cyclotron", description: "Superconducting cyclotron delivering heavy-ion beams for basic research.", topics: ['nuclear-structure', 'rare-isotopes'], sources: [{ label: "VECC: About", url: "https://www.vecc.gov.in/about-us" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.vecc.gov.in" },
+    ],
+  },
+  {
+    id: 'iuac',
+    name: "IUAC New Delhi",
+    fullName: "Inter-University Accelerator Centre",
+    type: 'rare-isotope-facility',
+    country: "India",
+    lat: 28.5403,
+    lng: 77.164,
+    founded: 1984,
+    status: 'active',
+    overview: "The Inter-University Accelerator Centre in New Delhi, originally the Nuclear Science Centre, gives researchers from universities across India access to accelerator beams. Its 15UD Pelletron tandem accelerator, later boosted by a superconducting linac, serves nuclear physics, materials science and radiation biology.",
+    specs: [
+      { label: "Pelletron", value: "15UD tandem, terminal potential up to 16 MV", sources: [{ label: "IUAC: Past, present and future, a perspective", url: "https://iuac.res.in/iuacoldwebsite/aboutus/history/index.html" }] },
+    ],
+    history: [
+      { year: 1984, event: "The concept of an inter-university centre is approved by the Prime Minister on 19 June 1984.", sources: [{ label: "IUAC: Key dates", url: "https://www.iuac.res.in/iuacoldwebsite/aboutus/history/dates.pdf" }] },
+      { year: 1990, event: "The Pelletron accelerator is commissioned and dedicated to the nation on 19 December 1990; the first user experiment follows in July 1991.", sources: [{ label: "IUAC: Key dates", url: "https://www.iuac.res.in/iuacoldwebsite/aboutus/history/dates.pdf" }] },
+      { year: 2004, event: "The first module of the superconducting linac is commissioned.", sources: [{ label: "IUAC: Key dates", url: "https://www.iuac.res.in/iuacoldwebsite/aboutus/history/dates.pdf" }] },
+      { year: 2005, event: "The centre is renamed the Inter-University Accelerator Centre.", sources: [{ label: "IUAC: Key dates", url: "https://www.iuac.res.in/iuacoldwebsite/aboutus/history/dates.pdf" }] },
+    ],
+    experiments: [
+      { id: 'iuac-pelletron', name: "15UD Pelletron", description: "Tandem electrostatic accelerator providing ion beams for nuclear physics, materials science and radiation biology.", topics: ['nuclear-structure'], startYear: 1990, sources: [{ label: "IUAC: Key dates", url: "https://www.iuac.res.in/iuacoldwebsite/aboutus/history/dates.pdf" }, { label: "IUAC: Past, present and future, a perspective", url: "https://iuac.res.in/iuacoldwebsite/aboutus/history/index.html" }] },
+      { id: 'iuac-inga', name: "INGA", description: "Indian National Gamma Array for gamma-ray spectroscopy of nuclei, commissioned at IUAC in 2008.", topics: ['nuclear-structure'], startYear: 2008, sources: [{ label: "IUAC: Key dates", url: "https://www.iuac.res.in/iuacoldwebsite/aboutus/history/dates.pdf" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.iuac.res.in" },
+    ],
+  },
+  {
+    id: 'ino',
+    name: "INO",
+    fullName: "India-based Neutrino Observatory",
+    type: 'neutrino-observatory',
+    country: "India",
+    lat: 9.955,
+    lng: 77.283,
+    founded: 2015,
+    status: 'planned',
+    overview: "The India-based Neutrino Observatory is a proposed underground laboratory in the Bodi West Hills of Theni district, Tamil Nadu, the intended successor to the Kolar Gold Fields experiments. Its main detector, ICAL, would be a 50-kilotonne magnetised iron calorimeter able to tell neutrinos from antineutrinos. The project has been held up for years by legal challenges, and its funding was reported terminated in 2023, so its future is uncertain.",
+    specs: [
+      { label: "ICAL detector mass", value: "About 50 kilotonnes of magnetised iron", sources: [{ label: "ICAL Collaboration, Physics potential of the ICAL detector at INO, Pramana 88, 79 (2017)", url: "https://doi.org/10.1007/s12043-017-1373-4" }] },
+    ],
+    history: [
+      { year: 2017, event: "The collaboration publishes the physics case for the ICAL detector.", sources: [{ label: "ICAL Collaboration, Physics potential of the ICAL detector at INO, Pramana 88, 79 (2017)", url: "https://doi.org/10.1007/s12043-017-1373-4" }] },
+      { year: 2023, event: "With the project stalled by lawsuits and court orders, its funding is reported to have been terminated as of March 2023.", sources: [{ label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }] },
+    ],
+    experiments: [
+      { id: 'ino-ical', name: "ICAL", description: "Iron Calorimeter: a magnetised detector designed to study atmospheric neutrinos and antineutrinos separately and so determine the neutrino mass ordering.", topics: ['neutrinos'], sources: [{ label: "ICAL Collaboration, Physics potential of the ICAL detector at INO, Pramana 88, 79 (2017)", url: "https://doi.org/10.1007/s12043-017-1373-4" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "ICAL physics paper", url: "https://doi.org/10.1007/s12043-017-1373-4" },
+    ],
+  },
+  {
+    id: 'ganil',
+    name: "GANIL",
+    fullName: "Grand Accélérateur National d’Ions Lourds",
+    type: 'rare-isotope-facility',
+    country: "France",
+    lat: 49.214,
+    lng: -0.364,
+    founded: 1976,
+    status: 'active',
+    overview: "GANIL in Caen is France's national heavy-ion laboratory, run jointly by the CEA and the CNRS. Its coupled cyclotrons have delivered heavy-ion beams since 1983, and the SPIRAL2 superconducting linear accelerator, which began commissioning in 2019, adds very intense beams of light ions and neutrons.",
+    specs: [
+    ],
+    history: [
+      { year: 1982, event: "The first beam is extracted from the second separated-sector cyclotron on 19 November 1982; experiments begin the following year.", sources: [{ label: "GANIL status report, Cyclotrons 2022 proceedings (TUAO01)", url: "https://accelconf.web.cern.ch/cyclotrons2022/papers/tuao01.pdf" }] },
+      { year: 2019, event: "Commissioning of the SPIRAL2 superconducting linear accelerator begins.", sources: [{ label: "GANIL status report, Cyclotrons 2022 proceedings (TUAO01)", url: "https://accelconf.web.cern.ch/cyclotrons2022/papers/tuao01.pdf" }, { label: "CERN Courier: Spiralling into the femtoscale", url: "https://cerncourier.com/a/spiralling-into-the-femtoscale/" }] },
+    ],
+    experiments: [
+      { id: 'ganil-cyclotrons', name: "GANIL cyclotrons", description: "Coupled separated-sector cyclotrons accelerating heavy ions for nuclear physics.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 1983, sources: [{ label: "GANIL status report, Cyclotrons 2022 proceedings (TUAO01)", url: "https://accelconf.web.cern.ch/cyclotrons2022/papers/tuao01.pdf" }] },
+      { id: 'ganil-spiral2', name: "SPIRAL2", description: "Superconducting linear accelerator for intense beams of protons, deuterons and light ions, feeding the Neutrons for Science facility.", topics: ['nuclear-structure', 'rare-isotopes'], startYear: 2019, sources: [{ label: "GANIL status report, Cyclotrons 2022 proceedings (TUAO01)", url: "https://accelconf.web.cern.ch/cyclotrons2022/papers/tuao01.pdf" }, { label: "CERN Courier: Spiralling into the femtoscale", url: "https://cerncourier.com/a/spiralling-into-the-femtoscale/" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.ganil-spiral2.eu" },
     ],
   },
 ];
