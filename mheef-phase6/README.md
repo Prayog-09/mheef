@@ -22,7 +22,7 @@ pulses, no bounce.
 | State | Zustand (selected facility, search query, active filters) |
 | Search | Fuse.js (fuzzy match on name / country / experiments / topics) |
 | Icons | lucide-react |
-| Data | Static, typed TypeScript files (`src/data/facilities.ts`) — no backend |
+| Data | Static, typed TypeScript files, one per facility (`src/data/facilities/`) — no backend |
 
 ## Running it locally
 
@@ -64,14 +64,21 @@ at site scale.
 | `/facilities/` | A list of every facility |
 | `/facilities/<id>/` | One static page per facility, generated from the dataset |
 
-Facility pages are plain HTML built from `src/data/facilities.ts`, so they
+Facility pages are plain HTML built from the files in `src/data/facilities/`, so they
 load without the globe, can be linked to and are indexable by search
 engines. Adding a facility to the dataset adds its page automatically.
 
 ## The dataset
 
-Everything on the site comes from `src/data/facilities.ts`; the shape of a
-record is defined in `src/types/facility.ts`.
+Each facility has its own file in `src/data/facilities/`, named after its
+id (`cern.ts`, `kamioka.ts`). `src/data/facilities.ts` lists them all, and
+the shape of a record is defined in `src/types/facility.ts`.
+
+To add a facility, copy an existing file, change its contents, then import
+it in `src/data/facilities.ts` and add it to the list there.
+
+- `specs` holds key figures (sizes, energies, depths). Every one must cite
+  a source.
 
 - Each facility has a `type` (accelerator laboratory, underground
   laboratory, neutrino observatory and so on), which sets its marker
@@ -84,7 +91,8 @@ record is defined in `src/types/facility.ts`.
 
 `npm run validate` checks the dataset and runs automatically before every
 build. Structural mistakes (duplicate ids, coordinates off the globe,
-malformed links, unknown topics) fail the build. It also prints how many
+malformed links, unknown topics, a key figure without a source, a facility
+file missing from the list) fail the build. It also prints how many
 facts cite a source and how many facilities have been reviewed.
 
 ## Folder structure
@@ -118,7 +126,8 @@ mheef-phase6/
     │   ├── TopBar.tsx               # Title, link to all facilities, search
     │   └── SidePanel/               # Slide-in facility panel and its tabs
     │
-    ├── data/facilities.ts           # The dataset
+    ├── data/facilities.ts           # The list of facilities
+    ├── data/facilities/             # One file per facility
     ├── hooks/useMediaQuery.ts
     ├── store/useGlobeStore.ts       # Zustand: selection, search query, filters
     ├── types/facility.ts

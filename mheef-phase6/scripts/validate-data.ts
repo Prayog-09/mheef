@@ -2,6 +2,8 @@
 // duplicate id, a coordinate off the globe, a malformed link) fail the
 // build; missing sources and reviews are reported as coverage figures so
 // progress toward "every fact sourced" is visible. Run with `npm run validate`.
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
 import { facilities } from '../src/data/facilities.ts';
 import { FACILITY_TYPE_LABELS, PHYSICS_TOPIC_LABELS } from '../src/types/facility.ts';
 import type { SourceRef } from '../src/types/facility.ts';
@@ -117,6 +119,20 @@ for (const facility of facilities) {
   }
 }
 
+// Every file in src/data/facilities/ must be named after the facility it
+// holds and be listed in src/data/facilities.ts, so none is silently left out.
+const facilityFiles = readdirSync(join(import.meta.dirname, '../src/data/facilities'))
+  .filter((name) => name.endsWith('.ts'))
+  .map((name) => name.slice(0, -3));
+for (const file of facilityFiles) {
+  if (!facilityIds.has(file)) {
+    errors.push(`src/data/facilities/${file}.ts is not listed in src/data/facilities.ts, or its id is not "${file}"`);
+  }
+}
+for (const id of facilityIds) {
+  if (!facilityFiles.includes(id)) errors.push(`facility "${id}" is not in a file named ${id}.ts`);
+}
+
 const percent = facts === 0 ? 0 : Math.round((sourcedFacts / facts) * 100);
 console.log(`Facility data: ${facilities.length} facilities, ${experimentIds.size} experiments.`);
 console.log(`  Facts with a source: ${sourcedFacts} of ${facts} (${percent}%).`);
@@ -124,7 +140,7 @@ console.log(`  Sourced specifications: ${specCount}.`);
 console.log(`  Facilities reviewed: ${reviewed} of ${facilities.length}.`);
 
 if (errors.length > 0) {
-  console.error(`\n${errors.length} problem(s) in src/data/facilities.ts:`);
+  console.error(`\n${errors.length} problem(s) in the facility data (src/data/facilities/):`);
   for (const error of errors) console.error(`  - ${error}`);
   process.exit(1);
 }
