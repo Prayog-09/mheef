@@ -984,14 +984,19 @@ export const facilities: readonly Facility[] = [
     status: 'active',
     overview: "The Frascati National Laboratories near Rome were founded by INFN to host Italy's first accelerator, an electron synchrotron. In 1961 Bruno Touschek's group built AdA there, the first electron-positron storage ring, the ancestor of every later collider of matter and antimatter. The larger ADONE collider followed, and the laboratory now operates the DAFNE electron-positron collider.",
     specs: [
+      { label: "DAFNE beam energy", value: "0.51 GeV per beam", sources: [{ label: "Overview of Beam Dynamics Studies at DAFNE (arXiv:0806.1105)", url: "https://arxiv.org/abs/0806.1105" }] },
     ],
     history: [
       { year: 1954, event: "The laboratory is founded to host a 1.1 GeV electron synchrotron, the first accelerator built in Italy.", sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }] },
       { year: 1961, event: "AdA (Anello di Accumulazione), proposed by Bruno Touschek, starts to operate in February 1961 as the first electron-positron storage ring.", sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }, { label: "Touschek with AdA in Orsay and the first direct observation of electron-positron collisions (arXiv:1812.11847)", url: "https://arxiv.org/abs/1812.11847" }] },
       { year: 1962, event: "AdA is moved to Orsay in France, where a more intense injector allows the first direct observation of electron-positron collisions.", sources: [{ label: "Touschek with AdA in Orsay and the first direct observation of electron-positron collisions (arXiv:1812.11847)", url: "https://arxiv.org/abs/1812.11847" }] },
+      { year: 2000, event: "The DAFNE electron-positron collider begins delivering collisions to the KLOE, FINUDA and DEAR experiments.", sources: [{ label: "Overview of Beam Dynamics Studies at DAFNE (arXiv:0806.1105)", url: "https://arxiv.org/abs/0806.1105" }] },
+      { year: 2007, event: "DAFNE is rebuilt to test the crab-waist collision scheme, which raises its luminosity about threefold.", sources: [{ label: "Overview of Beam Dynamics Studies at DAFNE (arXiv:0806.1105)", url: "https://arxiv.org/abs/0806.1105" }, { label: "DAFNE Interaction Regions upgrade (arXiv:0803.1450)", url: "https://arxiv.org/abs/0803.1450" }] },
     ],
     experiments: [
       { id: 'lnf-ada', name: "AdA", description: "The first electron-positron storage ring, which demonstrated that beams of matter and antimatter could be stored and collided in a single ring.", topics: ['electroweak'], startYear: 1961, sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }, { label: "Touschek with AdA in Orsay and the first direct observation of electron-positron collisions (arXiv:1812.11847)", url: "https://arxiv.org/abs/1812.11847" }] },
+      { id: 'lnf-dafne', name: "DAFNE", description: "Electron-positron collider tuned to produce phi mesons, and the first machine to use crab-waist collisions.", topics: ['electroweak', 'cp-violation'], startYear: 2000, sources: [{ label: "Overview of Beam Dynamics Studies at DAFNE (arXiv:0806.1105)", url: "https://arxiv.org/abs/0806.1105" }, { label: "DAFNE Interaction Regions upgrade (arXiv:0803.1450)", url: "https://arxiv.org/abs/0803.1450" }] },
+      { id: 'lnf-kloe', name: "KLOE", description: "Detector at DAFNE studying kaon decays and CP violation.", topics: ['cp-violation', 'electroweak'], sources: [{ label: "The KLOE electromagnetic calorimeter, Nucl. Instrum. Meth. A 482, 364 (2002)", url: "https://doi.org/10.1016/S0168-9002(01)01502-9" }, { label: "Overview of Beam Dynamics Studies at DAFNE (arXiv:0806.1105)", url: "https://arxiv.org/abs/0806.1105" }] },
     ],
     keyResults: [
       { year: 1961, discovery: "First Electron-Positron Storage Ring", description: "AdA showed that electrons and positrons could circulate in the same ring in opposite directions, opening the way to colliders such as ADONE, SPEAR, LEP and their successors.", sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }, { label: "Touschek with AdA in Orsay and the first direct observation of electron-positron collisions (arXiv:1812.11847)", url: "https://arxiv.org/abs/1812.11847" }] },
@@ -1149,9 +1154,13 @@ export const facilities: readonly Facility[] = [
     specs: [
       { label: "Depth", value: "1,025 m", sources: [{ label: "The SABRE South Experiment at the Stawell Underground Physics Laboratory (arXiv:2211.03016)", url: "https://arxiv.org/abs/2211.03016" }] },
       { label: "Access", value: "By road through the mine tunnels", sources: [{ label: "The SABRE South Experiment at the Stawell Underground Physics Laboratory (arXiv:2211.03016)", url: "https://arxiv.org/abs/2211.03016" }] },
+      { label: "Laboratory floor area", value: "260 m²", sources: [{ label: "SUPL: Our story so far", url: "https://supl.org.au/our-story-so-far/" }] },
     ],
     history: [
       { year: 2022, event: "Stage 1 of the laboratory is officially opened in August 2022.", sources: [{ label: "University of Melbourne: Completion of Stage 1 of SUPL (2022)", url: "https://www.unimelb.edu.au/newsroom/news/2022/august/the-global-hunt-for-dark-matter-has-arrived-in-australia-with-the-completion-of-stage-1-of-the-stawell-underground-physics-laboratory" }] },
+      { year: 2014, event: "The laboratory is first proposed.", sources: [{ label: "SUPL: Our story so far", url: "https://supl.org.au/our-story-so-far/" }] },
+      { year: 2016, event: "Construction starts, but stops when the gold mine is placed in care and maintenance in December.", sources: [{ label: "SUPL: Our story so far", url: "https://supl.org.au/our-story-so-far/" }] },
+      { year: 2019, event: "After the mine's sale to a new owner, a memorandum of understanding is signed and the project resumes.", sources: [{ label: "SUPL: Our story so far", url: "https://supl.org.au/our-story-so-far/" }] },
     ],
     experiments: [
       { id: 'supl-sabre', name: "SABRE South", description: "Sodium iodide dark matter detector designed to test the annual-modulation signal reported by the DAMA/LIBRA experiment at Gran Sasso.", topics: ['dark-matter'], sources: [{ label: "The SABRE South Experiment at the Stawell Underground Physics Laboratory (arXiv:2211.03016)", url: "https://arxiv.org/abs/2211.03016" }] },
@@ -1526,17 +1535,26 @@ export const facilities: readonly Facility[] = [
     country: "United Kingdom",
     lat: 54.553,
     lng: -0.825,
-    founded: 1995,
+    founded: 1989,
     status: 'active',
     overview: "The Boulby Underground Laboratory is the United Kingdom's deep underground science facility, 1.1 km below the North Yorkshire coast in a working mine. It has hosted dark matter searches for decades, including the ZEPLIN liquid-xenon experiments that were forerunners of LUX-ZEPLIN, and now also supports low-background measurement, earth science and astrobiology.",
     specs: [
       { label: "Depth", value: "1.1 km (2,805 m water equivalent)", sources: [{ label: "Boulby Underground Laboratory", url: "https://www.boulby.stfc.ac.uk" }, { label: "STFC Boulby Underground Laboratory: status talk (2022)", url: "https://indico.stfc.ac.uk/event/324/contributions/2838/attachments/1036/1830/STFCBoulby_IOP_April2022_Final.pdf" }] },
+      { label: "Laboratory volume", value: "4,000 m³, plus a 3,000 m³ outside experimental area", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
+      { label: "Operator", value: "STFC, hosted by the mine operator ICL-UK", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
     ],
     history: [
       { year: 2012, event: "ZEPLIN-III publishes the dark matter results of its second science run.", sources: [{ label: "ZEPLIN-III Collaboration, Phys. Lett. B 709, 14 (2012)", url: "https://doi.org/10.1016/j.physletb.2012.01.064" }] },
+      { year: 1989, event: "The first radioactive background measurements are taken underground in Boulby Mine.", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
+      { year: 1993, event: "The first underground dark matter search data are taken at Boulby with sodium iodide detectors.", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
+      { year: 2003, event: "A new laboratory opens, and the NAIAD and DRIFT-I experiments publish their first results.", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
+      { year: 2007, event: "ZEPLIN-II, a two-phase xenon detector, publishes its first dark matter results.", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }, { label: "ZEPLIN-II Collaboration, Astropart. Phys. 28, 287 (2007)", url: "https://doi.org/10.1016/j.astropartphys.2007.06.002" }] },
+      { year: 2017, event: "The current laboratory is built to host a new generation of low-background experiments.", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
+      { year: 2025, event: "Excavation for the next expansion of the laboratory is completed.", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
     ],
     experiments: [
       { id: 'boulby-zeplin3', name: "ZEPLIN-III", description: "Two-phase xenon detector searching for dark matter particles.", topics: ['dark-matter'], sources: [{ label: "ZEPLIN-III Collaboration, Phys. Lett. B 709, 14 (2012)", url: "https://doi.org/10.1016/j.physletb.2012.01.064" }] },
+      { id: 'boulby-zeplin2', name: "ZEPLIN-II", description: "Two-phase xenon detector that set early limits on dark matter particles.", topics: ['dark-matter'], sources: [{ label: "ZEPLIN-II Collaboration, Astropart. Phys. 28, 287 (2007)", url: "https://doi.org/10.1016/j.astropartphys.2007.06.002" }] },
     ],
     keyResults: [
     ],
@@ -1560,17 +1578,24 @@ export const facilities: readonly Facility[] = [
     specs: [
       { label: "Maximum depth", value: "800 m of rock", sources: [{ label: "Canfranc biology platform, Front. Phys. 12 (2024)", url: "https://doi.org/10.3389/fphy.2024.1397799" }] },
       { label: "ANAIS-112 overburden", value: "2,450 m water equivalent", sources: [{ label: "ANAIS-112 Collaboration, Phys. Rev. Lett. 123, 031301 (2019)", url: "https://doi.org/10.1103/PhysRevLett.123.031301" }] },
+      { label: "Older underground facilities", value: "1,560 m² and 10,500 m³", sources: [{ label: "LSC: History", url: "https://lsc-canfranc.es/en/history/" }] },
     ],
     history: [
       { year: 2017, event: "ANAIS-112 begins taking data on 3 August 2017.", sources: [{ label: "ANAIS-112 Collaboration, Phys. Rev. Lett. 123, 031301 (2019)", url: "https://doi.org/10.1103/PhysRevLett.123.031301" }] },
       { year: 2021, event: "Three years of ANAIS-112 data show no annual modulation, in tension with the DAMA/LIBRA signal.", sources: [{ label: "ANAIS-112 Collaboration, Phys. Rev. D 103, 102005 (2021)", url: "https://doi.org/10.1103/PhysRevD.103.102005" }] },
+      { year: 1985, event: "A. Morales and the University of Zaragoza's nuclear and astroparticle physics group begin using the abandoned railway tunnel for underground experiments.", sources: [{ label: "LSC: History", url: "https://lsc-canfranc.es/en/history/" }] },
+      { year: 1994, event: "A new experimental hall of 118 m² is excavated during work on the Somport road tunnel.", sources: [{ label: "LSC: History", url: "https://lsc-canfranc.es/en/history/" }] },
+      { year: 2006, event: "The main laboratory, 800 m under Mount Tobazo, is completed.", sources: [{ label: "LSC: History", url: "https://lsc-canfranc.es/en/history/" }] },
+      { year: 2010, event: "The University of Zaragoza hands the underground facilities over to the LSC Consortium on 30 June 2010.", sources: [{ label: "LSC: History", url: "https://lsc-canfranc.es/en/history/" }] },
     ],
     experiments: [
       { id: 'lsc-anais', name: "ANAIS-112", description: "112 kg of sodium iodide scintillators searching for an annual modulation in the dark matter interaction rate.", topics: ['dark-matter'], startYear: 2017, sources: [{ label: "ANAIS-112 Collaboration, Phys. Rev. Lett. 123, 031301 (2019)", url: "https://doi.org/10.1103/PhysRevLett.123.031301" }, { label: "ANAIS-112 Collaboration, Phys. Rev. D 103, 102005 (2021)", url: "https://doi.org/10.1103/PhysRevD.103.102005" }] },
+      { id: 'lsc-next', name: "NEXT", description: "High-pressure xenon gas time projection chambers searching for the neutrinoless double-beta decay of xenon-136.", topics: ['neutrinos'], sources: [{ label: "NEXT-100 Technical Design Report, JINST 7, T06001 (2012)", url: "https://doi.org/10.1088/1748-0221/7/06/T06001" }, { label: "NEXT Collaboration, JHEP 10 (2019) 230", url: "https://doi.org/10.1007/JHEP10(2019)230" }] },
     ],
     keyResults: [
     ],
     importantPeople: [
+      { name: "A. Morales", contribution: "Started the underground physics programme at Canfranc with the University of Zaragoza group in 1985.", sources: [{ label: "LSC: History", url: "https://lsc-canfranc.es/en/history/" }] },
     ],
     readMore: [
       { label: "Official Site", url: "https://lsc-canfranc.es/en/" },
@@ -1619,17 +1644,25 @@ export const facilities: readonly Facility[] = [
     status: 'historic',
     overview: "The deep gold mines of Kolar in Karnataka hosted pioneering underground physics experiments by the Tata Institute of Fundamental Research with collaborators from Osaka and Durham. In 1965, working more than two kilometres below ground, they reported the first detection of muons produced by cosmic-ray neutrinos in the rock, the first observation of atmospheric neutrinos.",
     specs: [
+      { label: "Depth of the 1965 neutrino detector", value: "About 2,300 m", sources: [{ label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }] },
+      { label: "Second proton decay detector", value: "About 366 tonnes, 2 km underground", sources: [{ label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }] },
     ],
     history: [
       { year: 1965, event: "The Kolar collaboration reports the detection of muons produced deep underground by cosmic-ray neutrinos.", sources: [{ label: "Achar et al., Phys. Lett. 18, 196 (1965)", url: "https://doi.org/10.1016/0031-9163(65)90712-2" }] },
+      { year: 1965, event: "A group led by Frederick Reines, working in a South African gold mine, reports the same phenomenon two weeks after the Kolar paper.", sources: [{ label: "Reines et al., Phys. Rev. Lett. 15, 429 (1965)", url: "https://doi.org/10.1103/PhysRevLett.15.429" }, { label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }] },
+      { year: 1980, event: "The first proton decay experiment begins operating 2.3 km underground; candidate events are reported the following year.", sources: [{ label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }, { label: "Krishnaswamy et al., Phys. Lett. B 106, 339 (1981)", url: "https://doi.org/10.1016/0370-2693(81)90549-9" }] },
+      { year: 1993, event: "The underground experiments begin to be shut down; the mines themselves close in 2001.", sources: [{ label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }] },
     ],
     experiments: [
       { id: 'kgf-neutrino', name: "Atmospheric neutrino experiment", description: "Detectors deep in the mine recording muons produced by neutrino interactions in the surrounding rock.", topics: ['neutrinos', 'cosmic-rays'], startYear: 1965, sources: [{ label: "Achar et al., Phys. Lett. 18, 196 (1965)", url: "https://doi.org/10.1016/0031-9163(65)90712-2" }] },
+      { id: 'kgf-proton-decay', name: "Proton decay experiments", description: "Two successive detectors of the Bombay-Osaka collaboration searching for the decay of the proton.", topics: ['electroweak'], startYear: 1980, sources: [{ label: "Krishnaswamy et al., Phys. Lett. B 106, 339 (1981)", url: "https://doi.org/10.1016/0370-2693(81)90549-9" }, { label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }] },
     ],
     keyResults: [
       { year: 1965, discovery: "First Detection of Atmospheric Neutrinos", description: "Muons arriving at large angles deep underground could only have been produced by neutrinos from cosmic-ray showers in the atmosphere.", sources: [{ label: "Achar et al., Phys. Lett. 18, 196 (1965)", url: "https://doi.org/10.1016/0031-9163(65)90712-2" }] },
     ],
     importantPeople: [
+      { name: "B. V. Sreekantan", contribution: "Conducted the first physics experiments at Kolar in the 1950s.", sources: [{ label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }] },
+      { name: "V. S. Narasimham", contribution: "With P. V. Ramanamurthy and Saburo Miyake, carried the Kolar cosmic-ray and neutrino work forward in the 1960s.", sources: [{ label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }] },
     ],
     readMore: [
       { label: "The 1965 discovery paper", url: "https://doi.org/10.1016/0031-9163(65)90712-2" },
@@ -1708,15 +1741,18 @@ export const facilities: readonly Facility[] = [
     lng: 78.96,
     founded: 2024,
     status: 'active',
-    overview: "MACE is a large imaging atmospheric Cherenkov telescope at Hanle in Ladakh, built by the Bhabha Atomic Research Centre with Indian industry. At about 4,300 m it is the highest telescope of its kind in the world and the largest in Asia, designed to observe high-energy gamma rays from sources such as supernova remnants, black holes and gamma-ray bursts.",
+    overview: "MACE is a large imaging atmospheric Cherenkov telescope at Hanle in Ladakh, built by the Bhabha Atomic Research Centre with Indian industry. With a 21-metre dish at about 4,300 m, it is the highest telescope of its kind in the world and the largest in Asia, designed to observe high-energy gamma rays from sources such as supernova remnants, black holes and gamma-ray bursts.",
     specs: [
-      { label: "Altitude", value: "About 4,300 m", sources: [{ label: "Reach Ladakh: DAE inaugurates imaging Cherenkov observatory at Hanle (2024)", url: "https://www.reachladakh.com/news/social-news/dae-inaugurates-asia-s-largest-and-world-s-highest-imaging-cherenkov-observatory-at-hanle" }] },
+            { label: "Light collector", value: "21 m in diameter, made of 1,424 mirror facets", sources: [{ label: "HiGRO Collaboration: Status update of MACE Gamma-ray telescope (arXiv:2107.04297)", url: "https://arxiv.org/abs/2107.04297" }] },
+      { label: "Site altitude", value: "4,270 m above sea level", sources: [{ label: "HiGRO Collaboration: Status update of MACE Gamma-ray telescope (arXiv:2107.04297)", url: "https://arxiv.org/abs/2107.04297" }] },
+      { label: "Target energy range", value: "20 to 100 GeV and beyond", sources: [{ label: "HiGRO Collaboration: Status update of MACE Gamma-ray telescope (arXiv:2107.04297)", url: "https://arxiv.org/abs/2107.04297" }] },
     ],
     history: [
       { year: 2024, event: "The observatory is inaugurated on 4 October 2024 by the Secretary of the Department of Atomic Energy.", sources: [{ label: "Reach Ladakh: DAE inaugurates imaging Cherenkov observatory at Hanle (2024)", url: "https://www.reachladakh.com/news/social-news/dae-inaugurates-asia-s-largest-and-world-s-highest-imaging-cherenkov-observatory-at-hanle" }, { label: "Department of Atomic Energy: MACE inauguration (2024)", url: "https://dae.gov.in/?p=25806" }] },
+      { year: 2021, event: "With the telescope installed at Hanle, the collaboration reports results from its trial observations.", sources: [{ label: "HiGRO Collaboration: Status update of MACE Gamma-ray telescope (arXiv:2107.04297)", url: "https://arxiv.org/abs/2107.04297" }] },
     ],
     experiments: [
-      { id: 'mace-telescope', name: "MACE telescope", description: "Imaging atmospheric Cherenkov telescope observing high-energy gamma rays.", topics: ['cosmic-rays'], sources: [{ label: "Reach Ladakh: DAE inaugurates imaging Cherenkov observatory at Hanle (2024)", url: "https://www.reachladakh.com/news/social-news/dae-inaugurates-asia-s-largest-and-world-s-highest-imaging-cherenkov-observatory-at-hanle" }] },
+      { id: 'mace-telescope', name: "MACE telescope", description: "Imaging atmospheric Cherenkov telescope observing high-energy gamma rays.", topics: ['cosmic-rays'], sources: [{ label: "HiGRO Collaboration: Status update of MACE Gamma-ray telescope (arXiv:2107.04297)", url: "https://arxiv.org/abs/2107.04297" }, { label: "Reach Ladakh: DAE inaugurates imaging Cherenkov observatory at Hanle (2024)", url: "https://www.reachladakh.com/news/social-news/dae-inaugurates-asia-s-largest-and-world-s-highest-imaging-cherenkov-observatory-at-hanle" }] },
     ],
     keyResults: [
     ],
@@ -1737,9 +1773,14 @@ export const facilities: readonly Facility[] = [
     status: 'planned',
     overview: "LIGO-India is a planned gravitational-wave observatory at Aundha in the Hingoli district of Maharashtra, to be built by Indian institutions in collaboration with the LIGO Laboratory. Adding a detector far from the two in the United States will greatly improve how precisely sources can be located in the sky.",
     specs: [
+      { label: "Lead institutions", value: "RRCAT Indore, IPR Ahmedabad and IUCAA Pune", sources: [{ label: "LIGO Laboratory: LIGO-India", url: "https://www.ligo.caltech.edu/page/ligo-india" }] },
+      { label: "Funding agencies", value: "Department of Atomic Energy (lead) and Department of Science and Technology", sources: [{ label: "LIGO Laboratory: LIGO-India", url: "https://www.ligo.caltech.edu/page/ligo-india" }] },
+      { label: "Approved cost", value: "Rs 2,600 crore", sources: [{ label: "Deccan Herald: Cabinet approves Rs 2,600 crore gravitational-wave observatory (2023)", url: "https://www.deccanherald.com/india/cabinet-approves-new-space-policy-and-rs-2600-crore-gravity-wave-observatory-1207334.html" }] },
     ],
     history: [
       { year: 2022, event: "The science case for LIGO-India is published, setting out the gains in sky localisation from a detector in India.", sources: [{ label: "The science case for LIGO-India, Class. Quantum Grav. 39, 025004 (2022)", url: "https://doi.org/10.1088/1361-6382/ac3b99" }] },
+      { year: 2016, event: "A memorandum of understanding is signed in March 2016 under which the LIGO Laboratory will provide the hardware for a complete interferometer and India will build the facility.", sources: [{ label: "LIGO Laboratory: LIGO-India", url: "https://www.ligo.caltech.edu/page/ligo-india" }] },
+      { year: 2023, event: "The Union Cabinet approves the project on 6 April 2023; completion is expected by 2030.", sources: [{ label: "Deccan Herald: Cabinet approves Rs 2,600 crore gravitational-wave observatory (2023)", url: "https://www.deccanherald.com/india/cabinet-approves-new-space-policy-and-rs-2600-crore-gravity-wave-observatory-1207334.html" }] },
     ],
     experiments: [
       { id: 'ligo-india-det', name: "LIGO-India detector", description: "Planned Advanced LIGO interferometer in India, to operate as part of the global detector network.", topics: ['gravitational-waves'], sources: [{ label: "The science case for LIGO-India, Class. Quantum Grav. 39, 025004 (2022)", url: "https://doi.org/10.1088/1361-6382/ac3b99" }, { label: "LIGO Laboratory: LIGO-India", url: "https://www.ligo.caltech.edu/page/ligo-india" }] },
@@ -1764,12 +1805,17 @@ export const facilities: readonly Facility[] = [
     status: 'historic',
     overview: "The IMB detector was a large water Cherenkov detector in a salt mine on the shore of Lake Erie in Ohio, built to search for proton decay. It did not find it, but on 23 February 1987 it recorded a burst of neutrinos from Supernova 1987A, at the same time as the Kamiokande detector in Japan.",
     specs: [
+      { label: "Detector mass", value: "8,000 tons of water", sources: [{ label: "APS Historic Site: Morton Salt Mine", url: "https://www.aps.org/funding-recognition/historic-sites/morton" }] },
+      { label: "Depth", value: "Nearly 2,000 ft (about 600 m)", sources: [{ label: "APS Historic Site: Morton Salt Mine", url: "https://www.aps.org/funding-recognition/historic-sites/morton" }] },
+      { label: "Operation", value: "1982 to 1991", sources: [{ label: "APS Historic Site: Morton Salt Mine", url: "https://www.aps.org/funding-recognition/historic-sites/morton" }] },
     ],
     history: [
       { year: 1987, event: "IMB records eight neutrino events within six seconds, coinciding with Supernova 1987A in the Large Magellanic Cloud.", sources: [{ label: "IMB Collaboration, Phys. Rev. Lett. 58, 1494 (1987)", url: "https://doi.org/10.1103/PhysRevLett.58.1494" }] },
+      { year: 1983, event: "IMB publishes its first search for the decay of a proton into a positron and a neutral pion, finding none.", sources: [{ label: "IMB Collaboration, Phys. Rev. Lett. 51, 27 (1983)", url: "https://doi.org/10.1103/PhysRevLett.51.27" }] },
+      { year: 1991, event: "The upgraded IMB-3 detector measures the mix of atmospheric neutrinos and finds fewer muon neutrinos than expected, an early sign of what proved to be neutrino oscillation.", sources: [{ label: "IMB Collaboration, Phys. Rev. Lett. 66, 2561 (1991)", url: "https://doi.org/10.1103/PhysRevLett.66.2561" }, { label: "IMB-3: a large water Cherenkov detector, Nucl. Instrum. Meth. A 324, 363 (1993)", url: "https://doi.org/10.1016/0168-9002(93)90998-W" }] },
     ],
     experiments: [
-      { id: 'imb-det', name: "IMB detector", description: "Water Cherenkov detector built to search for proton decay.", topics: ['neutrinos'], startYear: 1982, sources: [{ label: "IMB Collaboration, Phys. Rev. Lett. 58, 1494 (1987)", url: "https://doi.org/10.1103/PhysRevLett.58.1494" }] },
+      { id: 'imb-det', name: "IMB detector", description: "Water Cherenkov detector built to search for proton decay.", topics: ['neutrinos'], startYear: 1982, endYear: 1991, sources: [{ label: "IMB Collaboration, Phys. Rev. Lett. 58, 1494 (1987)", url: "https://doi.org/10.1103/PhysRevLett.58.1494" }] },
     ],
     keyResults: [
       { year: 1987, discovery: "Neutrinos from Supernova 1987A", description: "Together with Kamiokande's events, the burst was the first detection of neutrinos from a supernova.", sources: [{ label: "IMB Collaboration, Phys. Rev. Lett. 58, 1494 (1987)", url: "https://doi.org/10.1103/PhysRevLett.58.1494" }] },
