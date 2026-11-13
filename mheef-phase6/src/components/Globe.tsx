@@ -16,6 +16,7 @@ import {
   NearFarScalar,
   PerspectiveFrustum,
   Rectangle,
+  SceneTransforms,
   ScreenSpaceEventHandler,
   ScreenSpaceEventType,
   TileMapServiceImageryProvider,
@@ -144,9 +145,18 @@ const HALO_ALPHA = 0.28;
 const HALO_MATCH_ALPHA = 0.45;
 const MARKER_DIM_COLOR = Color.fromCssColorString('#3d6670').withAlpha(0.35);
 const MARKER_OUTLINE = Color.WHITE.withAlpha(0.75);
+const LABEL_MAX_DISTANCE = 3_000_000;
 // Names appear on their own once the camera is this close (metres);
 // further out they show on hover only, so the overview stays uncluttered.
-const LABEL_VISIBLE_WITHIN = new DistanceDisplayCondition(0, 3_000_000);
+const LABEL_VISIBLE_WITHIN = new DistanceDisplayCondition(0, LABEL_MAX_DISTANCE);
+// Where several facilities sit close together (the three under Mount
+// Ikeno, the telescopes on La Palma) their names would print on top of one
+// another. A few times a second the labels are laid out again and any that
+// would cover an already placed one is hidden until the view opens up.
+const LABEL_DECLUTTER_MS = 150;
+const LABEL_CHAR_WIDTH = 7.6;
+const LABEL_HEIGHT = 26;
+const LABEL_GAP = 4;
 // Keep markers visible over 3D terrain when viewed from nearby.
 const MARKER_DEPTH_TEST_DISTANCE = 1_500_000;
 
@@ -417,13 +427,72 @@ export default function Globe() {
       viewer.canvas.style.cursor = facility ? 'pointer' : '';
     }, ScreenSpaceEventType.MOUSE_MOVE);
 
-    // ── Per-frame: idle rotation and the ion imagery cross-fade ──
+    // ── Label layout: hide names that would overlap one already shown ──
+    const labelPositions = new Map(
+      facilities.map((f) => [f.id, Cartesian3.fromDegrees(f.lng, f.lat)] as const)
+    );
+    const labelShown = new Map<string, boolean>();
+    const windowScratch = new Cartesian2();
+    const declutterLabels = () => {
+      const placed: { left: number; right: number; top: number; bottom: number }[] = [];
+      const selectedId = selectedIdRef.current;
+      // The hovered and selected facilities claim their space first.
+      const rank = (f: Facility) => (f === hovered ? 0 : f.id === selectedId ? 1 : 2);
+      const ordered = [...facilities].sort((a, b) => rank(a) - rank(b));
+
+      for (const facility of ordered) {
+        const label = markers.get(facility.id)?.core.label;
+        const position = labelPositions.get(facility.id);
+        if (!label || !position) continue;
+
+        const priority = rank(facility) < 2;
+        const inRange =
+          facility === hovered ||
+          Cartesian3.distance(camera.positionWC, position) <= LABEL_MAX_DISTANCE;
+        const point = inRange
+          ? SceneTransforms.worldToWindowCoordinates(scene, position, windowScratch)
+          : undefined;
+
+        let visible = false;
+        if (point) {
+          const halfWidth = (facility.name.length * LABEL_CHAR_WIDTH) / 2 + 8 + LABEL_GAP;
+          const box = {
+            left: point.x - halfWidth,
+            right: point.x + halfWidth,
+            bottom: point.y - 14 + LABEL_GAP,
+            top: point.y - 14 - LABEL_HEIGHT - LABEL_GAP,
+          };
+          const overlaps = placed.some(
+            (other) =>
+              box.left < other.right &&
+              box.right > other.left &&
+              box.top < other.bottom &&
+              box.bottom > other.top
+          );
+          visible = priority || !overlaps;
+          if (visible) placed.push(box);
+        }
+
+        if (labelShown.get(facility.id) !== visible) {
+          labelShown.set(facility.id, visible);
+          label.show = visible as never;
+        }
+      }
+    };
+    let lastDeclutter = 0;
+
+    // ── Per-frame: label layout, idle rotation and the ion imagery cross-fade ──
     let lastTick = performance.now();
     const removeTick = scene.preUpdate.addEventListener(() => {
       const now = performance.now();
       const deltaSeconds = Math.min((now - lastTick) / 1000, 0.1);
       lastTick = now;
       const height = camera.positionCartographic.height;
+
+      if (now - lastDeclutter > LABEL_DECLUTTER_MS) {
+        lastDeclutter = now;
+        declutterLabels();
+      }
 
       if (ionLayer) {
         const alpha = CesiumMath.clamp(
