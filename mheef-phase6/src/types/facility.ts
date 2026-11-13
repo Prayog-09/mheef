@@ -57,7 +57,17 @@ export type FacilityStatus = 'active' | 'historic' | 'planned';
 
 // ─── Facility type ───────────────────────────────────────────────────────────
 
-/** What kind of installation a facility is. Drives marker colour and the type filter. */
+/**
+ * What kind of installation a facility is. Drives marker colour and the type
+ * filter. Guide to the two that are easy to confuse:
+ *  - accelerator-laboratory: built around accelerators for particle physics
+ *    (CERN, SLAC, KEK), including ones never completed (SSC).
+ *  - nuclear-physics-facility: accelerators whose main programme is nuclei —
+ *    structure, reactions, rare isotopes, heavy elements (GSI, FRIB, Jefferson
+ *    Lab, VECC, IUAC).
+ * university-laboratory is for departments listed for discoveries made there
+ * rather than for a large machine (the Cavendish).
+ */
 export type FacilityType =
   | 'accelerator-laboratory'
   | 'underground-laboratory'
@@ -65,7 +75,8 @@ export type FacilityType =
   | 'cosmic-ray-observatory'
   | 'gamma-ray-observatory'
   | 'gravitational-wave-observatory'
-  | 'rare-isotope-facility';
+  | 'nuclear-physics-facility'
+  | 'university-laboratory';
 
 export const FACILITY_TYPE_LABELS: Record<FacilityType, string> = {
   'accelerator-laboratory': 'Accelerator laboratory',
@@ -74,7 +85,8 @@ export const FACILITY_TYPE_LABELS: Record<FacilityType, string> = {
   'cosmic-ray-observatory': 'Cosmic-ray observatory',
   'gamma-ray-observatory': 'Gamma-ray observatory',
   'gravitational-wave-observatory': 'Gravitational-wave observatory',
-  'rare-isotope-facility': 'Nuclear and rare-isotope facility',
+  'nuclear-physics-facility': 'Nuclear physics facility',
+  'university-laboratory': 'University laboratory',
 };
 
 /** Marker colour per type — chosen to stay distinct over both ocean and land imagery. */
@@ -85,7 +97,8 @@ export const FACILITY_TYPE_COLORS: Record<FacilityType, string> = {
   'cosmic-ray-observatory': '#fb923c',
   'gamma-ray-observatory': '#a3e635',
   'gravitational-wave-observatory': '#f472b6',
-  'rare-isotope-facility': '#f1f5f9',
+  'nuclear-physics-facility': '#f1f5f9',
+  'university-laboratory': '#f87171',
 };
 
 // ─── Sources ─────────────────────────────────────────────────────────────────
