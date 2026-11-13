@@ -1,7 +1,7 @@
 import type { Facility } from '../types/facility';
 
 /**
- * Master dataset. 40 HEP facilities across all major
+ * Master dataset. 50 HEP facilities across all major
  * categories.
  *
  * Phase 3: side panel looks up any Facility by selectedFacilityId from here.
@@ -1486,6 +1486,298 @@ export const facilities: readonly Facility[] = [
     ],
     readMore: [
       { label: "Official Site", url: "https://www.nishina.riken.jp/index_e.html" },
+    ],
+  },
+
+  {
+    id: 'ihep',
+    name: "IHEP Beijing",
+    fullName: "Institute of High Energy Physics, Chinese Academy of Sciences",
+    type: 'accelerator-laboratory',
+    country: "China",
+    lat: 39.911,
+    lng: 116.242,
+    founded: 1973,
+    status: 'active',
+    overview: "The Institute of High Energy Physics in Beijing is China's main laboratory for particle physics. Its Beijing Electron-Positron Collider works in the energy range of the tau lepton and charm quark, where the BES detectors made a precise measurement of the tau mass and discovered a new family of charged charmonium-like particles. IHEP also led the Daya Bay experiment and leads JUNO.",
+    specs: [
+    ],
+    history: [
+      { year: 1992, event: "The BES detector at the Beijing Electron-Positron Collider publishes a precise measurement of the mass of the tau lepton.", sources: [{ label: "BES Collaboration, Phys. Rev. Lett. 69, 3021 (1992)", url: "https://doi.org/10.1103/PhysRevLett.69.3021" }] },
+      { year: 2013, event: "BESIII observes Zc(3900), a charged charmonium-like structure that cannot be an ordinary quark-antiquark meson.", sources: [{ label: "BESIII Collaboration, Phys. Rev. Lett. 110, 252001 (2013)", url: "https://doi.org/10.1103/PhysRevLett.110.252001" }] },
+    ],
+    experiments: [
+      { id: 'ihep-bes3', name: "BESIII", description: "Detector at the upgraded BEPCII electron-positron collider, studying charm, charmonium and tau physics.", topics: ['qcd', 'electroweak'], startYear: 2008, sources: [{ label: "Design and construction of the BESIII detector, Nucl. Instrum. Meth. A 614, 345 (2010)", url: "https://doi.org/10.1016/j.nima.2009.12.050" }] },
+    ],
+    keyResults: [
+      { year: 2013, discovery: "A Charged Charmonium-like State, Zc(3900)", description: "A charged particle decaying to a pion and a J/psi must contain at least four quarks.", sources: [{ label: "BESIII Collaboration, Phys. Rev. Lett. 110, 252001 (2013)", url: "https://doi.org/10.1103/PhysRevLett.110.252001" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "BESIII detector paper", url: "https://doi.org/10.1016/j.nima.2009.12.050" },
+    ],
+  },
+  {
+    id: 'boulby',
+    name: "Boulby",
+    fullName: "Boulby Underground Laboratory",
+    type: 'underground-laboratory',
+    country: "United Kingdom",
+    lat: 54.553,
+    lng: -0.825,
+    founded: 1995,
+    status: 'active',
+    overview: "The Boulby Underground Laboratory is the United Kingdom's deep underground science facility, 1.1 km below the North Yorkshire coast in a working mine. It has hosted dark matter searches for decades, including the ZEPLIN liquid-xenon experiments that were forerunners of LUX-ZEPLIN, and now also supports low-background measurement, earth science and astrobiology.",
+    specs: [
+      { label: "Depth", value: "1.1 km (2,805 m water equivalent)", sources: [{ label: "Boulby Underground Laboratory", url: "https://www.boulby.stfc.ac.uk" }, { label: "STFC Boulby Underground Laboratory: status talk (2022)", url: "https://indico.stfc.ac.uk/event/324/contributions/2838/attachments/1036/1830/STFCBoulby_IOP_April2022_Final.pdf" }] },
+    ],
+    history: [
+      { year: 2012, event: "ZEPLIN-III publishes the dark matter results of its second science run.", sources: [{ label: "ZEPLIN-III Collaboration, Phys. Lett. B 709, 14 (2012)", url: "https://doi.org/10.1016/j.physletb.2012.01.064" }] },
+    ],
+    experiments: [
+      { id: 'boulby-zeplin3', name: "ZEPLIN-III", description: "Two-phase xenon detector searching for dark matter particles.", topics: ['dark-matter'], sources: [{ label: "ZEPLIN-III Collaboration, Phys. Lett. B 709, 14 (2012)", url: "https://doi.org/10.1016/j.physletb.2012.01.064" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.boulby.stfc.ac.uk" },
+    ],
+  },
+  {
+    id: 'canfranc',
+    name: "Canfranc (LSC)",
+    fullName: "Laboratorio Subterráneo de Canfranc",
+    type: 'underground-laboratory',
+    country: "Spain",
+    lat: 42.775,
+    lng: -0.529,
+    founded: 1985,
+    status: 'active',
+    overview: "The Canfranc Underground Laboratory lies under Mount Tobazo on the Spanish side of the Pyrenees, between the Somport road tunnel and a disused railway tunnel. Its ANAIS-112 experiment uses sodium iodide crystals to test the annual-modulation signal claimed by DAMA/LIBRA with the same target material.",
+    specs: [
+      { label: "Maximum depth", value: "800 m of rock", sources: [{ label: "Canfranc biology platform, Front. Phys. 12 (2024)", url: "https://doi.org/10.3389/fphy.2024.1397799" }] },
+      { label: "ANAIS-112 overburden", value: "2,450 m water equivalent", sources: [{ label: "ANAIS-112 Collaboration, Phys. Rev. Lett. 123, 031301 (2019)", url: "https://doi.org/10.1103/PhysRevLett.123.031301" }] },
+    ],
+    history: [
+      { year: 2017, event: "ANAIS-112 begins taking data on 3 August 2017.", sources: [{ label: "ANAIS-112 Collaboration, Phys. Rev. Lett. 123, 031301 (2019)", url: "https://doi.org/10.1103/PhysRevLett.123.031301" }] },
+      { year: 2021, event: "Three years of ANAIS-112 data show no annual modulation, in tension with the DAMA/LIBRA signal.", sources: [{ label: "ANAIS-112 Collaboration, Phys. Rev. D 103, 102005 (2021)", url: "https://doi.org/10.1103/PhysRevD.103.102005" }] },
+    ],
+    experiments: [
+      { id: 'lsc-anais', name: "ANAIS-112", description: "112 kg of sodium iodide scintillators searching for an annual modulation in the dark matter interaction rate.", topics: ['dark-matter'], startYear: 2017, sources: [{ label: "ANAIS-112 Collaboration, Phys. Rev. Lett. 123, 031301 (2019)", url: "https://doi.org/10.1103/PhysRevLett.123.031301" }, { label: "ANAIS-112 Collaboration, Phys. Rev. D 103, 102005 (2021)", url: "https://doi.org/10.1103/PhysRevD.103.102005" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://lsc-canfranc.es/en/" },
+    ],
+  },
+  {
+    id: 'baksan',
+    name: "Baksan",
+    fullName: "Baksan Neutrino Observatory",
+    type: 'underground-laboratory',
+    country: "Russia",
+    lat: 43.275,
+    lng: 42.69,
+    founded: 1967,
+    status: 'active',
+    overview: "The Baksan Neutrino Observatory is tunnelled into Mount Andyrchi in the Caucasus. Its gallium experiment SAGE measured low-energy neutrinos from the Sun for two decades. The same gallium was later used in the BEST experiment, which confirmed a puzzling shortfall, the gallium anomaly, in the neutrinos detected from an intense radioactive source.",
+    specs: [
+    ],
+    history: [
+      { year: 1991, event: "SAGE publishes its first search for solar neutrinos using the capture of neutrinos on gallium.", sources: [{ label: "SAGE Collaboration, Phys. Rev. Lett. 67, 3332 (1991)", url: "https://doi.org/10.1103/PhysRevLett.67.3332" }] },
+      { year: 2009, event: "SAGE reports its measurement of the solar neutrino capture rate from data taken up to 2007.", sources: [{ label: "SAGE Collaboration, Phys. Rev. C 80, 015807 (2009)", url: "https://doi.org/10.1103/PhysRevC.80.015807" }] },
+      { year: 2022, event: "BEST finds 20 to 24 per cent fewer germanium atoms than expected from a chromium-51 neutrino source, confirming the gallium anomaly.", sources: [{ label: "BEST Collaboration, Phys. Rev. Lett. 128, 232501 (2022)", url: "https://doi.org/10.1103/PhysRevLett.128.232501" }, { label: "A Search for Electron Neutrino Transitions to Sterile States in the BEST Experiment (arXiv:2201.07364)", url: "https://arxiv.org/abs/2201.07364" }] },
+    ],
+    experiments: [
+      { id: 'baksan-sage', name: "SAGE", description: "Gallium-metal radiochemical experiment measuring low-energy solar neutrinos.", topics: ['neutrinos'], sources: [{ label: "SAGE Collaboration, Phys. Rev. C 80, 015807 (2009)", url: "https://doi.org/10.1103/PhysRevC.80.015807" }] },
+      { id: 'baksan-best', name: "BEST", description: "Baksan Experiment on Sterile Transitions: a gallium target in two zones around an intense chromium-51 source, searching for oscillations into sterile neutrinos.", topics: ['neutrinos'], startYear: 2019, sources: [{ label: "BEST Collaboration, Phys. Rev. Lett. 128, 232501 (2022)", url: "https://doi.org/10.1103/PhysRevLett.128.232501" }, { label: "A Search for Electron Neutrino Transitions to Sterile States in the BEST Experiment (arXiv:2201.07364)", url: "https://arxiv.org/abs/2201.07364" }] },
+    ],
+    keyResults: [
+      { year: 2022, discovery: "Confirmation of the Gallium Anomaly", description: "Both zones of the BEST target saw a similar deficit, strengthening the anomaly without showing the distance dependence expected from oscillations.", sources: [{ label: "BEST Collaboration, Phys. Rev. Lett. 128, 232501 (2022)", url: "https://doi.org/10.1103/PhysRevLett.128.232501" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.inr.ru/eng/ebno.html" },
+    ],
+  },
+  {
+    id: 'kolar-gold-fields',
+    name: "Kolar Gold Fields",
+    fullName: "Kolar Gold Fields underground experiments",
+    type: 'underground-laboratory',
+    country: "India",
+    lat: 12.95,
+    lng: 78.27,
+    founded: 1965,
+    status: 'historic',
+    overview: "The deep gold mines of Kolar in Karnataka hosted pioneering underground physics experiments by the Tata Institute of Fundamental Research with collaborators from Osaka and Durham. In 1965, working more than two kilometres below ground, they reported the first detection of muons produced by cosmic-ray neutrinos in the rock, the first observation of atmospheric neutrinos.",
+    specs: [
+    ],
+    history: [
+      { year: 1965, event: "The Kolar collaboration reports the detection of muons produced deep underground by cosmic-ray neutrinos.", sources: [{ label: "Achar et al., Phys. Lett. 18, 196 (1965)", url: "https://doi.org/10.1016/0031-9163(65)90712-2" }] },
+    ],
+    experiments: [
+      { id: 'kgf-neutrino', name: "Atmospheric neutrino experiment", description: "Detectors deep in the mine recording muons produced by neutrino interactions in the surrounding rock.", topics: ['neutrinos', 'cosmic-rays'], startYear: 1965, sources: [{ label: "Achar et al., Phys. Lett. 18, 196 (1965)", url: "https://doi.org/10.1016/0031-9163(65)90712-2" }] },
+    ],
+    keyResults: [
+      { year: 1965, discovery: "First Detection of Atmospheric Neutrinos", description: "Muons arriving at large angles deep underground could only have been produced by neutrinos from cosmic-ray showers in the atmosphere.", sources: [{ label: "Achar et al., Phys. Lett. 18, 196 (1965)", url: "https://doi.org/10.1016/0031-9163(65)90712-2" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "The 1965 discovery paper", url: "https://doi.org/10.1016/0031-9163(65)90712-2" },
+    ],
+  },
+  {
+    id: 'veritas',
+    name: "VERITAS",
+    fullName: "Very Energetic Radiation Imaging Telescope Array System",
+    type: 'gamma-ray-observatory',
+    country: "United States",
+    lat: 31.675,
+    lng: -110.952,
+    founded: 2007,
+    status: 'active',
+    overview: "VERITAS is an array of four 12-metre imaging atmospheric Cherenkov telescopes at the Fred Lawrence Whipple Observatory in southern Arizona. It observes gamma rays from about 85 GeV to above 30 TeV, and among its results are gamma rays from the starburst galaxy M82 and pulsed emission above 100 GeV from the Crab pulsar.",
+    specs: [
+      { label: "Telescopes", value: "Four, each 12 m in diameter", sources: [{ label: "The Very Energetic Radiation Imaging Telescope Array System (VERITAS) (arXiv:2507.09813)", url: "https://arxiv.org/abs/2507.09813" }] },
+      { label: "Energy range", value: "85 GeV to above 30 TeV", sources: [{ label: "The Very Energetic Radiation Imaging Telescope Array System (VERITAS) (arXiv:2507.09813)", url: "https://arxiv.org/abs/2507.09813" }] },
+    ],
+    history: [
+      { year: 2005, event: "The first VERITAS telescope begins operating.", sources: [{ label: "The first VERITAS telescope, Astropart. Phys. 25, 391 (2006)", url: "https://doi.org/10.1016/j.astropartphys.2006.04.002" }] },
+      { year: 2007, event: "The full array of four telescopes is completed.", sources: [{ label: "The Very Energetic Radiation Imaging Telescope Array System (VERITAS) (arXiv:2507.09813)", url: "https://arxiv.org/abs/2507.09813" }] },
+      { year: 2011, event: "VERITAS detects pulsed gamma rays above 100 GeV from the Crab pulsar.", sources: [{ label: "VERITAS Collaboration, Science 334, 69 (2011)", url: "https://doi.org/10.1126/science.1208192" }] },
+    ],
+    experiments: [
+      { id: 'veritas-array', name: "VERITAS array", description: "Four 12-m Cherenkov telescopes observing very-high-energy gamma rays stereoscopically.", topics: ['cosmic-rays'], startYear: 2007, sources: [{ label: "The Very Energetic Radiation Imaging Telescope Array System (VERITAS) (arXiv:2507.09813)", url: "https://arxiv.org/abs/2507.09813" }] },
+    ],
+    keyResults: [
+      { year: 2009, discovery: "Gamma Rays from the Starburst Galaxy M82", description: "The detection linked intense star formation to the production of cosmic rays.", sources: [{ label: "VERITAS Collaboration, Nature 462, 770 (2009)", url: "https://doi.org/10.1038/nature08557" }] },
+      { year: 2011, discovery: "Pulsed Gamma Rays Above 100 GeV from the Crab Pulsar", description: "Pulsed emission at such high energies was not expected from existing pulsar models.", sources: [{ label: "VERITAS Collaboration, Science 334, 69 (2011)", url: "https://doi.org/10.1126/science.1208192" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://veritas.sao.arizona.edu" },
+    ],
+  },
+  {
+    id: 'antares',
+    name: "ANTARES",
+    fullName: "Astronomy with a Neutrino Telescope and Abyss environmental RESearch",
+    type: 'neutrino-observatory',
+    country: "France",
+    lat: 42.8,
+    lng: 6.17,
+    founded: 2006,
+    status: 'historic',
+    overview: "ANTARES was the first neutrino telescope in the deep sea, anchored about 2.5 km down in the Mediterranean off Toulon. Its twelve lines of optical modules watched for light from neutrino interactions for sixteen years and proved the techniques now used by its successor, KM3NeT.",
+    specs: [
+      { label: "Detection lines", value: "12, carrying 885 optical modules", sources: [{ label: "Nikhef: After sixteen years ANTARES is shut down (2022)", url: "https://www.nikhef.nl/www/en/news/after-sixteen-years-of-deep-sea-neutrino-watching-antares-is-shut-down/" }, { label: "ANTARES: the first undersea neutrino telescope, Nucl. Instrum. Meth. A 656, 11 (2011)", url: "https://doi.org/10.1016/j.nima.2011.06.103" }] },
+    ],
+    history: [
+      { year: 2006, event: "The first detection line is deployed.", sources: [{ label: "Nikhef: After sixteen years ANTARES is shut down (2022)", url: "https://www.nikhef.nl/www/en/news/after-sixteen-years-of-deep-sea-neutrino-watching-antares-is-shut-down/" }] },
+      { year: 2008, event: "The detector is completed in May 2008.", sources: [{ label: "Nikhef: After sixteen years ANTARES is shut down (2022)", url: "https://www.nikhef.nl/www/en/news/after-sixteen-years-of-deep-sea-neutrino-watching-antares-is-shut-down/" }] },
+      { year: 2022, event: "ANTARES stops taking data in February 2022 and is dismantled.", sources: [{ label: "Nikhef: After sixteen years ANTARES is shut down (2022)", url: "https://www.nikhef.nl/www/en/news/after-sixteen-years-of-deep-sea-neutrino-watching-antares-is-shut-down/" }] },
+    ],
+    experiments: [
+      { id: 'antares-det', name: "ANTARES detector", description: "Twelve vertical lines of optical modules on the seabed, detecting Cherenkov light from neutrino-induced muons.", topics: ['neutrinos', 'cosmic-rays'], startYear: 2006, endYear: 2022, sources: [{ label: "ANTARES: the first undersea neutrino telescope, Nucl. Instrum. Meth. A 656, 11 (2011)", url: "https://doi.org/10.1016/j.nima.2011.06.103" }, { label: "Nikhef: After sixteen years ANTARES is shut down (2022)", url: "https://www.nikhef.nl/www/en/news/after-sixteen-years-of-deep-sea-neutrino-watching-antares-is-shut-down/" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://antares.in2p3.fr" },
+    ],
+  },
+  {
+    id: 'mace',
+    name: "MACE",
+    fullName: "Major Atmospheric Cherenkov Experiment",
+    type: 'gamma-ray-observatory',
+    country: "India",
+    lat: 32.78,
+    lng: 78.96,
+    founded: 2024,
+    status: 'active',
+    overview: "MACE is a large imaging atmospheric Cherenkov telescope at Hanle in Ladakh, built by the Bhabha Atomic Research Centre with Indian industry. At about 4,300 m it is the highest telescope of its kind in the world and the largest in Asia, designed to observe high-energy gamma rays from sources such as supernova remnants, black holes and gamma-ray bursts.",
+    specs: [
+      { label: "Altitude", value: "About 4,300 m", sources: [{ label: "Reach Ladakh: DAE inaugurates imaging Cherenkov observatory at Hanle (2024)", url: "https://www.reachladakh.com/news/social-news/dae-inaugurates-asia-s-largest-and-world-s-highest-imaging-cherenkov-observatory-at-hanle" }] },
+    ],
+    history: [
+      { year: 2024, event: "The observatory is inaugurated on 4 October 2024 by the Secretary of the Department of Atomic Energy.", sources: [{ label: "Reach Ladakh: DAE inaugurates imaging Cherenkov observatory at Hanle (2024)", url: "https://www.reachladakh.com/news/social-news/dae-inaugurates-asia-s-largest-and-world-s-highest-imaging-cherenkov-observatory-at-hanle" }, { label: "Department of Atomic Energy: MACE inauguration (2024)", url: "https://dae.gov.in/?p=25806" }] },
+    ],
+    experiments: [
+      { id: 'mace-telescope', name: "MACE telescope", description: "Imaging atmospheric Cherenkov telescope observing high-energy gamma rays.", topics: ['cosmic-rays'], sources: [{ label: "Reach Ladakh: DAE inaugurates imaging Cherenkov observatory at Hanle (2024)", url: "https://www.reachladakh.com/news/social-news/dae-inaugurates-asia-s-largest-and-world-s-highest-imaging-cherenkov-observatory-at-hanle" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Department of Atomic Energy", url: "https://dae.gov.in" },
+    ],
+  },
+  {
+    id: 'ligo-india',
+    name: "LIGO-India",
+    type: 'gravitational-wave-observatory',
+    country: "India",
+    lat: 19.613,
+    lng: 77.031,
+    founded: 2023,
+    status: 'planned',
+    overview: "LIGO-India is a planned gravitational-wave observatory at Aundha in the Hingoli district of Maharashtra, to be built by Indian institutions in collaboration with the LIGO Laboratory. Adding a detector far from the two in the United States will greatly improve how precisely sources can be located in the sky.",
+    specs: [
+    ],
+    history: [
+      { year: 2022, event: "The science case for LIGO-India is published, setting out the gains in sky localisation from a detector in India.", sources: [{ label: "The science case for LIGO-India, Class. Quantum Grav. 39, 025004 (2022)", url: "https://doi.org/10.1088/1361-6382/ac3b99" }] },
+    ],
+    experiments: [
+      { id: 'ligo-india-det', name: "LIGO-India detector", description: "Planned Advanced LIGO interferometer in India, to operate as part of the global detector network.", topics: ['gravitational-waves'], sources: [{ label: "The science case for LIGO-India, Class. Quantum Grav. 39, 025004 (2022)", url: "https://doi.org/10.1088/1361-6382/ac3b99" }, { label: "LIGO Laboratory: LIGO-India", url: "https://www.ligo.caltech.edu/page/ligo-india" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.ligo-india.in" },
+    ],
+  },
+  {
+    id: 'imb',
+    name: "IMB",
+    fullName: "Irvine-Michigan-Brookhaven detector",
+    type: 'neutrino-observatory',
+    country: "United States",
+    lat: 41.75,
+    lng: -81.28,
+    founded: 1982,
+    status: 'historic',
+    overview: "The IMB detector was a large water Cherenkov detector in a salt mine on the shore of Lake Erie in Ohio, built to search for proton decay. It did not find it, but on 23 February 1987 it recorded a burst of neutrinos from Supernova 1987A, at the same time as the Kamiokande detector in Japan.",
+    specs: [
+    ],
+    history: [
+      { year: 1987, event: "IMB records eight neutrino events within six seconds, coinciding with Supernova 1987A in the Large Magellanic Cloud.", sources: [{ label: "IMB Collaboration, Phys. Rev. Lett. 58, 1494 (1987)", url: "https://doi.org/10.1103/PhysRevLett.58.1494" }] },
+    ],
+    experiments: [
+      { id: 'imb-det', name: "IMB detector", description: "Water Cherenkov detector built to search for proton decay.", topics: ['neutrinos'], startYear: 1982, sources: [{ label: "IMB Collaboration, Phys. Rev. Lett. 58, 1494 (1987)", url: "https://doi.org/10.1103/PhysRevLett.58.1494" }] },
+    ],
+    keyResults: [
+      { year: 1987, discovery: "Neutrinos from Supernova 1987A", description: "Together with Kamiokande's events, the burst was the first detection of neutrinos from a supernova.", sources: [{ label: "IMB Collaboration, Phys. Rev. Lett. 58, 1494 (1987)", url: "https://doi.org/10.1103/PhysRevLett.58.1494" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "The supernova neutrino paper", url: "https://doi.org/10.1103/PhysRevLett.58.1494" },
     ],
   },
 ];
