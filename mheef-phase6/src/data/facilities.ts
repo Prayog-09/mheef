@@ -1,7 +1,7 @@
 import type { Facility } from '../types/facility';
 
 /**
- * Master dataset. 60 HEP facilities across all major
+ * Master dataset. 70 HEP facilities across all major
  * categories.
  *
  * Phase 3: side panel looks up any Facility by selectedFacilityId from here.
@@ -2137,6 +2137,311 @@ export const facilities: readonly Facility[] = [
     ],
     readMore: [
       { label: "Official Site", url: "https://www.ganil-spiral2.eu" },
+    ],
+  },
+
+  {
+    id: 'savannah-river',
+    name: "Savannah River",
+    fullName: "Savannah River reactor neutrino experiment",
+    type: 'neutrino-observatory',
+    country: "United States",
+    lat: 33.25,
+    lng: -81.65,
+    founded: 1956,
+    status: 'historic',
+    overview: "At the Savannah River Plant in South Carolina, Clyde Cowan and Frederick Reines made the first detection of the neutrino in 1956, a quarter of a century after Wolfgang Pauli proposed the particle. Their detector, set beside one of the plant's powerful reactors, recorded the flashes produced when antineutrinos struck protons in a tank of water. Reines received the Nobel Prize for the discovery in 1995.",
+    specs: [
+    ],
+    history: [
+      { year: 1956, event: "Cowan and Reines detect neutrinos from the plant's P reactor, and on 14 June 1956 send a telegram to Pauli announcing the result.", sources: [{ label: "Cowan, Reines et al., Detection of the Free Neutrino: a Confirmation, Science 124, 103 (1956)", url: "https://doi.org/10.1126/science.124.3212.103" }, { label: "CERN Courier: Ghosts in the machine", url: "https://cerncourier.com/a/ghosts-in-the-machine/" }] },
+    ],
+    experiments: [
+      { id: 'srp-poltergeist', name: "Project Poltergeist", description: "Water and liquid-scintillator detector that recorded the inverse beta decay of protons struck by reactor antineutrinos.", topics: ['neutrinos'], startYear: 1956, sources: [{ label: "Cowan, Reines et al., Detection of the Free Neutrino: a Confirmation, Science 124, 103 (1956)", url: "https://doi.org/10.1126/science.124.3212.103" }, { label: "CERN Courier: Ghosts in the machine", url: "https://cerncourier.com/a/ghosts-in-the-machine/" }] },
+    ],
+    keyResults: [
+      { year: 1956, discovery: "First Detection of the Neutrino", description: "The paired signals of a positron and a neutron confirmed that neutrinos from a reactor interact with protons as predicted. Nobel Prize 1995.", sources: [{ label: "Cowan, Reines et al., Detection of the Free Neutrino: a Confirmation, Science 124, 103 (1956)", url: "https://doi.org/10.1126/science.124.3212.103" }, { label: "Nobel Prize in Physics 1995", url: "https://www.nobelprize.org/prizes/physics/1995/summary/" }] },
+    ],
+    importantPeople: [
+      { name: "Frederick Reines", contribution: "Co-led the experiment with Clyde Cowan; Nobel Prize in Physics 1995.", sources: [{ label: "Nobel Prize in Physics 1995", url: "https://www.nobelprize.org/prizes/physics/1995/summary/" }] },
+    ],
+    readMore: [
+      { label: "The 1956 discovery paper", url: "https://doi.org/10.1126/science.124.3212.103" },
+    ],
+  },
+  {
+    id: 'cornell',
+    name: "Cornell (CESR)",
+    fullName: "Wilson Laboratory, Cornell University",
+    type: 'accelerator-laboratory',
+    country: "United States",
+    lat: 42.445,
+    lng: -76.473,
+    founded: 1979,
+    status: 'active',
+    overview: "Cornell University's Wilson Laboratory houses CESR, a 768-metre electron-positron storage ring completed in 1979. For three decades its CLEO detector was a leading source of knowledge about bottom quarks, including the first observations of rare 'penguin' decays. Collider physics ended in 2008 and the ring now serves as an X-ray source.",
+    specs: [
+      { label: "CESR circumference", value: "768 m", sources: [{ label: "Cornell CLASSE: CESR", url: "https://www.classe.cornell.edu/public/CESR" }] },
+    ],
+    history: [
+      { year: 1979, event: "The Cornell Electron Storage Ring is completed.", sources: [{ label: "Cornell CLASSE: CESR", url: "https://www.classe.cornell.edu/public/CESR" }] },
+      { year: 1980, event: "CLEO observes a fourth upsilon state, the Upsilon(4S), which decays into pairs of B mesons.", sources: [{ label: "CLEO Collaboration, Phys. Rev. Lett. 45, 219 (1980)", url: "https://doi.org/10.1103/PhysRevLett.45.219" }] },
+      { year: 1993, event: "CLEO reports the first observation of a 'penguin' decay of a B meson, into a K* meson and a photon.", sources: [{ label: "CLEO Collaboration, Phys. Rev. Lett. 71, 674 (1993)", url: "https://doi.org/10.1103/PhysRevLett.71.674" }] },
+      { year: 1995, event: "CLEO measures the overall rate at which bottom quarks decay to a strange quark and a photon.", sources: [{ label: "CLEO Collaboration, Phys. Rev. Lett. 74, 2885 (1995)", url: "https://doi.org/10.1103/PhysRevLett.74.2885" }] },
+    ],
+    experiments: [
+      { id: 'cornell-cleo', name: "CLEO", description: "General-purpose detector at CESR for studying bottom and charm quarks produced in electron-positron collisions.", topics: ['b-physics', 'cp-violation'], startYear: 1979, endYear: 2008, sources: [{ label: "The CLEO II detector, Nucl. Instrum. Meth. A 320, 66 (1992)", url: "https://doi.org/10.1016/0168-9002(92)90770-5" }, { label: "CLEO Collaboration, Phys. Rev. Lett. 45, 219 (1980)", url: "https://doi.org/10.1103/PhysRevLett.45.219" }] },
+    ],
+    keyResults: [
+      { year: 1993, discovery: "First Observation of Penguin Decays", description: "Decays of B mesons through quantum loops, sensitive to particles too heavy to produce directly, were seen for the first time.", sources: [{ label: "CLEO Collaboration, Phys. Rev. Lett. 71, 674 (1993)", url: "https://doi.org/10.1103/PhysRevLett.71.674" }, { label: "CLEO Collaboration, Phys. Rev. Lett. 74, 2885 (1995)", url: "https://doi.org/10.1103/PhysRevLett.74.2885" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.classe.cornell.edu" },
+    ],
+  },
+  {
+    id: 'chacaltaya',
+    name: "Chacaltaya",
+    fullName: "Chacaltaya Cosmic Ray Laboratory",
+    type: 'cosmic-ray-observatory',
+    country: "Bolivia",
+    lat: -16.353,
+    lng: -68.131,
+    founded: 1952,
+    status: 'active',
+    overview: "The Chacaltaya laboratory stands at about 5,220 m in the Bolivian Andes near La Paz, the highest cosmic-ray laboratory in continuous operation. Photographic plates exposed on the mountain by César Lattes in 1947 confirmed the existence of the pion, the particle that carries the strong force between protons and neutrons. The laboratory was established there a few years later.",
+    specs: [
+      { label: "Altitude", value: "5,220 m", sources: [{ label: "CERN Courier: High energies and high altitudes", url: "https://cerncourier.com/a/high-energies-and-high-altitudes/" }] },
+    ],
+    history: [
+      { year: 1947, event: "Photographic emulsions exposed to cosmic rays at high altitude, including plates Lattes took to Chacaltaya, reveal the pion and its decay into a muon.", sources: [{ label: "Lattes, Muirhead, Occhialini and Powell, Nature 159, 694 (1947)", url: "https://doi.org/10.1038/159694a0" }, { label: "Lattes, Occhialini and Powell, Nature 160, 453 (1947)", url: "https://doi.org/10.1038/160453a0" }, { label: "CERN Courier: High energies and high altitudes", url: "https://cerncourier.com/a/high-energies-and-high-altitudes/" }] },
+    ],
+    experiments: [
+      { id: 'chacaltaya-emulsions', name: "Emulsion exposures", description: "Photographic emulsion plates left at high altitude to record the tracks of cosmic-ray particles.", topics: ['cosmic-rays'], startYear: 1947, sources: [{ label: "Lattes, Occhialini and Powell, Nature 160, 453 (1947)", url: "https://doi.org/10.1038/160453a0" }] },
+    ],
+    keyResults: [
+      { year: 1947, discovery: "Discovery of the Pion", description: "Tracks in the emulsions showed a meson stopping and decaying into a lighter one. Cecil Powell received the 1950 Nobel Prize for the method and these discoveries.", sources: [{ label: "Lattes, Muirhead, Occhialini and Powell, Nature 159, 694 (1947)", url: "https://doi.org/10.1038/159694a0" }, { label: "Lattes, Occhialini and Powell, Nature 160, 453 (1947)", url: "https://doi.org/10.1038/160453a0" }, { label: "Nobel Prize in Physics 1950", url: "https://www.nobelprize.org/prizes/physics/1950/summary/" }] },
+    ],
+    importantPeople: [
+      { name: "César Lattes", contribution: "Brazilian physicist who co-discovered the pion and exposed the decisive plates at Chacaltaya.", sources: [{ label: "Lattes, Occhialini and Powell, Nature 160, 453 (1947)", url: "https://doi.org/10.1038/160453a0" }, { label: "CERN Courier: High energies and high altitudes", url: "https://cerncourier.com/a/high-energies-and-high-altitudes/" }] },
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://rayoscosmicos.umsa.bo/" },
+    ],
+  },
+  {
+    id: 'soudan',
+    name: "Soudan",
+    fullName: "Soudan Underground Laboratory",
+    type: 'underground-laboratory',
+    country: "United States",
+    lat: 47.82,
+    lng: -92.242,
+    founded: 1981,
+    status: 'historic',
+    overview: "The Soudan Underground Laboratory occupied a former iron mine in northern Minnesota, about 700 m below ground. It held the far detector of the MINOS experiment, which studied a neutrino beam sent 735 km through the Earth from Fermilab, and the CDMS II dark matter experiment.",
+    specs: [
+      { label: "MINOS far detector mass", value: "5,400 tons", sources: [{ label: "The magnetized steel and scintillator calorimeters of the MINOS experiment (arXiv:0805.3170)", url: "https://arxiv.org/abs/0805.3170" }] },
+      { label: "Distance from Fermilab", value: "735 km", sources: [{ label: "MINOS Collaboration, Phys. Rev. Lett. 97, 191801 (2006)", url: "https://doi.org/10.1103/PhysRevLett.97.191801" }] },
+    ],
+    history: [
+      { year: 2006, event: "MINOS reports the disappearance of muon neutrinos between Fermilab and Soudan, confirming neutrino oscillations with an accelerator beam.", sources: [{ label: "MINOS Collaboration, Phys. Rev. Lett. 97, 191801 (2006)", url: "https://doi.org/10.1103/PhysRevLett.97.191801" }] },
+      { year: 2010, event: "CDMS II publishes the final results of its dark matter search, with two candidate events consistent with background.", sources: [{ label: "CDMS II Collaboration, Science 327, 1619 (2010)", url: "https://doi.org/10.1126/science.1186112" }] },
+    ],
+    experiments: [
+      { id: 'soudan-minos', name: "MINOS far detector", description: "Magnetised steel and scintillator calorimeter measuring the neutrino beam from Fermilab.", topics: ['neutrinos'], sources: [{ label: "The magnetized steel and scintillator calorimeters of the MINOS experiment (arXiv:0805.3170)", url: "https://arxiv.org/abs/0805.3170" }, { label: "MINOS Collaboration, Phys. Rev. Lett. 97, 191801 (2006)", url: "https://doi.org/10.1103/PhysRevLett.97.191801" }] },
+      { id: 'soudan-cdms', name: "CDMS II", description: "Cryogenic germanium and silicon detectors searching for dark matter particles.", topics: ['dark-matter'], sources: [{ label: "CDMS II Collaboration, Science 327, 1619 (2010)", url: "https://doi.org/10.1126/science.1186112" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "MINOS detector paper", url: "https://arxiv.org/abs/0805.3170" },
+    ],
+  },
+  {
+    id: 'reno',
+    name: "RENO",
+    fullName: "Reactor Experiment for Neutrino Oscillation",
+    type: 'neutrino-observatory',
+    country: "South Korea",
+    lat: 35.404,
+    lng: 126.416,
+    founded: 2011,
+    status: 'active',
+    overview: "RENO measures antineutrinos from the six reactors of the Hanbit (formerly Yonggwang) nuclear power plant on Korea's west coast. Two identical detectors, one near the reactors and one farther away, compare the neutrino rate at different distances. In 2012 RENO was one of three experiments to measure the mixing angle theta-13.",
+    specs: [
+      { label: "Detector distances", value: "294 m (near) and 1,383 m (far) from the reactor array", sources: [{ label: "RENO Collaboration, Phys. Rev. Lett. 108, 191802 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.191802" }] },
+      { label: "Reactors", value: "Six", sources: [{ label: "RENO Collaboration, Phys. Rev. Lett. 108, 191802 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.191802" }] },
+    ],
+    history: [
+      { year: 2011, event: "Data-taking begins with both detectors in August 2011.", sources: [{ label: "RENO Collaboration, Phys. Rev. Lett. 108, 191802 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.191802" }] },
+      { year: 2012, event: "RENO observes the disappearance of reactor antineutrinos and measures theta-13.", sources: [{ label: "RENO Collaboration, Phys. Rev. Lett. 108, 191802 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.191802" }] },
+    ],
+    experiments: [
+      { id: 'reno-detectors', name: "RENO detectors", description: "Two identical gadolinium-loaded liquid-scintillator detectors at different distances from the reactors.", topics: ['neutrinos'], startYear: 2011, sources: [{ label: "RENO Collaboration, Phys. Rev. Lett. 108, 191802 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.191802" }, { label: "RENO: An Experiment for Neutrino Oscillation Parameter theta_13 Using Reactor Neutrinos at Yonggwang (arXiv:1003.1391)", url: "https://arxiv.org/abs/1003.1391" }] },
+    ],
+    keyResults: [
+      { year: 2012, discovery: "Measurement of theta-13", description: "The far detector saw fewer antineutrinos than the near detector predicted, giving a clear measurement of the last unknown mixing angle.", sources: [{ label: "RENO Collaboration, Phys. Rev. Lett. 108, 191802 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.191802" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "RENO design paper", url: "https://arxiv.org/abs/1003.1391" },
+    ],
+  },
+  {
+    id: 'double-chooz',
+    name: "Double Chooz",
+    type: 'neutrino-observatory',
+    country: "France",
+    lat: 50.087,
+    lng: 4.79,
+    founded: 2011,
+    status: 'historic',
+    overview: "Double Chooz studied antineutrinos from the two reactors of the Chooz nuclear power plant in the French Ardennes. It followed the earlier CHOOZ experiment at the same site, whose limit on the mixing angle theta-13 stood for more than a decade, and in 2012 it published the first reactor indication that the angle is not zero.",
+    specs: [
+      { label: "Detector distances", value: "About 400 m (near) and 1,050 m (far) from the reactors", sources: [{ label: "Double Chooz: Searching for theta13 with reactor neutrinos (arXiv:1105.6079)", url: "https://arxiv.org/abs/1105.6079" }] },
+    ],
+    history: [
+      { year: 1999, event: "The CHOOZ experiment publishes its limits on neutrino oscillations, long the tightest constraint on theta-13.", sources: [{ label: "CHOOZ Collaboration, Phys. Lett. B 466, 415 (1999)", url: "https://doi.org/10.1016/S0370-2693(99)01072-2" }] },
+      { year: 2012, event: "Double Chooz publishes an indication of reactor antineutrino disappearance from its far detector.", sources: [{ label: "Double Chooz Collaboration, Phys. Rev. Lett. 108, 131801 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.131801" }] },
+    ],
+    experiments: [
+      { id: 'dchooz-detectors', name: "Double Chooz detectors", description: "Gadolinium-loaded liquid-scintillator detectors near and far from the reactor cores.", topics: ['neutrinos'], startYear: 2011, sources: [{ label: "Double Chooz: Searching for theta13 with reactor neutrinos (arXiv:1105.6079)", url: "https://arxiv.org/abs/1105.6079" }, { label: "Double Chooz Collaboration, Phys. Rev. Lett. 108, 131801 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.131801" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Double Chooz overview paper", url: "https://arxiv.org/abs/1105.6079" },
+    ],
+  },
+  {
+    id: 'flys-eye',
+    name: "Fly’s Eye / HiRes",
+    fullName: "Fly’s Eye and High Resolution Fly’s Eye",
+    type: 'cosmic-ray-observatory',
+    country: "United States",
+    lat: 40.2,
+    lng: -112.84,
+    founded: 1981,
+    status: 'historic',
+    overview: "The Fly's Eye detectors in the Utah desert pioneered the fluorescence technique, watching the faint ultraviolet glow that cosmic-ray air showers leave in the night sky. In 1991 the original detector recorded the most energetic cosmic ray seen up to that time, the 'Oh-My-God particle'. Its successor, HiRes, made the first observation of the predicted suppression of the cosmic-ray spectrum at the highest energies.",
+    specs: [
+    ],
+    history: [
+      { year: 1991, event: "On 15 October 1991 the Fly's Eye records a cosmic ray with an energy of about 3 × 10²⁰ eV.", sources: [{ label: "Bird et al., Astrophys. J. 441, 144 (1995)", url: "https://doi.org/10.1086/175344" }] },
+      { year: 2008, event: "HiRes publishes the first observation of the Greisen-Zatsepin-Kuzmin suppression.", sources: [{ label: "HiRes Collaboration, Phys. Rev. Lett. 100, 101101 (2008)", url: "https://doi.org/10.1103/PhysRevLett.100.101101" }] },
+    ],
+    experiments: [
+      { id: 'hires', name: "HiRes", description: "Two fluorescence detector sites observing air showers in stereo.", topics: ['cosmic-rays'], startYear: 1997, endYear: 2006, sources: [{ label: "HiRes Collaboration, Phys. Rev. Lett. 100, 101101 (2008)", url: "https://doi.org/10.1103/PhysRevLett.100.101101" }] },
+    ],
+    keyResults: [
+      { year: 1991, discovery: "The Oh-My-God Particle", description: "A single cosmic ray carried an energy far beyond the limit expected for particles travelling cosmological distances.", sources: [{ label: "Bird et al., Astrophys. J. 441, 144 (1995)", url: "https://doi.org/10.1086/175344" }] },
+      { year: 2008, discovery: "The GZK Suppression", description: "The cosmic-ray flux was seen to fall sharply above about 6 × 10¹⁹ eV, as predicted from collisions with the cosmic microwave background.", sources: [{ label: "HiRes Collaboration, Phys. Rev. Lett. 100, 101101 (2008)", url: "https://doi.org/10.1103/PhysRevLett.100.101101" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "HiRes GZK paper", url: "https://arxiv.org/abs/astro-ph/0703099" },
+    ],
+  },
+  {
+    id: 'agasa',
+    name: "AGASA",
+    fullName: "Akeno Giant Air Shower Array",
+    type: 'cosmic-ray-observatory',
+    country: "Japan",
+    lat: 35.787,
+    lng: 138.476,
+    founded: 1990,
+    status: 'historic',
+    overview: "AGASA, at Akeno in Yamanashi Prefecture, was for a decade the world's largest cosmic-ray detector: 111 scintillation detectors spread over about 100 square kilometres. It reported cosmic rays above the energy at which the spectrum was predicted to cut off, a puzzle that motivated the Pierre Auger Observatory and the Telescope Array.",
+    specs: [
+      { label: "Array", value: "111 surface detectors over about 100 km²", sources: [{ label: "AGASA Collaboration, Phys. Rev. Lett. 81, 1163 (1998)", url: "https://doi.org/10.1103/PhysRevLett.81.1163" }] },
+    ],
+    history: [
+      { year: 1990, event: "The array begins collecting data in February 1990.", sources: [{ label: "AGASA Collaboration, Phys. Rev. Lett. 81, 1163 (1998)", url: "https://doi.org/10.1103/PhysRevLett.81.1163" }] },
+      { year: 1998, event: "AGASA reports that the cosmic-ray energy spectrum extends beyond the predicted Greisen-Zatsepin-Kuzmin cutoff.", sources: [{ label: "AGASA Collaboration, Phys. Rev. Lett. 81, 1163 (1998)", url: "https://doi.org/10.1103/PhysRevLett.81.1163" }] },
+    ],
+    experiments: [
+      { id: 'agasa-array', name: "AGASA array", description: "Surface array of plastic scintillators measuring the particle density of giant air showers.", topics: ['cosmic-rays'], startYear: 1990, sources: [{ label: "AGASA Collaboration, Phys. Rev. Lett. 81, 1163 (1998)", url: "https://doi.org/10.1103/PhysRevLett.81.1163" }] },
+    ],
+    keyResults: [
+      { year: 1998, discovery: "Cosmic Rays Beyond the GZK Cutoff", description: "Events above 10²⁰ eV appeared to continue the spectrum without the expected cutoff; later, larger observatories did find a suppression.", sources: [{ label: "AGASA Collaboration, Phys. Rev. Lett. 81, 1163 (1998)", url: "https://doi.org/10.1103/PhysRevLett.81.1163" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "AGASA spectrum paper", url: "https://doi.org/10.1103/PhysRevLett.81.1163" },
+    ],
+  },
+  {
+    id: 'tibet-asgamma',
+    name: "Tibet ASγ",
+    fullName: "Tibet Air Shower Array",
+    type: 'cosmic-ray-observatory',
+    country: "China",
+    lat: 30.102,
+    lng: 90.522,
+    founded: 1990,
+    status: 'active',
+    overview: "The Tibet air shower array at Yangbajing, 4,300 m above sea level, is a Chinese-Japanese experiment that has observed cosmic rays and gamma rays since 1990. Underground muon detectors added in 2014 let it separate gamma rays from the far more numerous cosmic rays, and with them it detected the first photons above 100 TeV from an astrophysical source.",
+    specs: [
+      { label: "Altitude", value: "4,300 m", sources: [{ label: "Tibet ASγ: Dawn of sub-PeV gamma-ray astronomy, PoS(ECRS)049", url: "https://pos.sissa.it/421/049" }] },
+      { label: "Array area", value: "65,700 m², with about 600 scintillation detectors", sources: [{ label: "Tibet ASγ: Dawn of sub-PeV gamma-ray astronomy, PoS(ECRS)049", url: "https://pos.sissa.it/421/049" }] },
+    ],
+    history: [
+      { year: 1990, event: "The air shower array begins operating at Yangbajing.", sources: [{ label: "Tibet ASγ: Dawn of sub-PeV gamma-ray astronomy, PoS(ECRS)049", url: "https://pos.sissa.it/421/049" }] },
+      { year: 2014, event: "An underground muon detector array is added, extending sensitivity to gamma rays above 100 TeV.", sources: [{ label: "Tibet ASγ: Dawn of sub-PeV gamma-ray astronomy, PoS(ECRS)049", url: "https://pos.sissa.it/421/049" }] },
+      { year: 2019, event: "The experiment reports the first photons above 100 TeV from an astrophysical source, the Crab Nebula.", sources: [{ label: "Tibet ASγ Collaboration, Phys. Rev. Lett. 123, 051101 (2019)", url: "https://doi.org/10.1103/PhysRevLett.123.051101" }] },
+      { year: 2021, event: "It detects diffuse gamma rays of nearly PeV energy from the disc of the Milky Way.", sources: [{ label: "Tibet ASγ Collaboration, Phys. Rev. Lett. 126, 141101 (2021)", url: "https://doi.org/10.1103/PhysRevLett.126.141101" }] },
+    ],
+    experiments: [
+      { id: 'tibet-array', name: "Tibet air shower array", description: "Scintillation detector array with underground water-Cherenkov muon detectors.", topics: ['cosmic-rays'], startYear: 1990, sources: [{ label: "Tibet ASγ: Dawn of sub-PeV gamma-ray astronomy, PoS(ECRS)049", url: "https://pos.sissa.it/421/049" }] },
+    ],
+    keyResults: [
+      { year: 2021, discovery: "Sub-PeV Gamma Rays from the Galactic Disc", description: "Diffuse gamma rays up to nearly a PeV are evidence that cosmic rays are accelerated to PeV energies within our Galaxy.", sources: [{ label: "Tibet ASγ Collaboration, Phys. Rev. Lett. 126, 141101 (2021)", url: "https://doi.org/10.1103/PhysRevLett.126.141101" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Overview paper", url: "https://pos.sissa.it/421/049" },
+    ],
+  },
+  {
+    id: 'kascade',
+    name: "KASCADE",
+    fullName: "Karlsruhe Shower Core and Array Detector",
+    type: 'cosmic-ray-observatory',
+    country: "Germany",
+    lat: 49.099,
+    lng: 8.438,
+    founded: 1996,
+    status: 'historic',
+    overview: "KASCADE, on the campus of what is now the Karlsruhe Institute of Technology, measured cosmic-ray air showers in the energy range of the 'knee', where the cosmic-ray spectrum steepens. By recording several components of each shower at once, it showed that the knee is caused by the fading of the lightest nuclei.",
+    specs: [
+      { label: "Array", value: "252 detector stations on a 200 m × 200 m grid", sources: [{ label: "Galactic cosmic rays and the knee: results from the KASCADE experiment (arXiv:astro-ph/0509253)", url: "https://arxiv.org/abs/astro-ph/0509253" }, { label: "The cosmic-ray experiment KASCADE, Nucl. Instrum. Meth. A 513, 490 (2003)", url: "https://doi.org/10.1016/S0168-9002(03)02076-X" }] },
+    ],
+    history: [
+      { year: 1996, event: "KASCADE begins operating.", sources: [{ label: "Galactic cosmic rays and the knee: results from the KASCADE experiment (arXiv:astro-ph/0509253)", url: "https://arxiv.org/abs/astro-ph/0509253" }] },
+      { year: 2005, event: "KASCADE publishes energy spectra for separate groups of elements, showing that the knee comes from light nuclei.", sources: [{ label: "KASCADE Collaboration, Astropart. Phys. 24, 1 (2005)", url: "https://doi.org/10.1016/j.astropartphys.2005.04.001" }] },
+    ],
+    experiments: [
+      { id: 'kascade-array', name: "KASCADE array", description: "Detector stations measuring the electrons and muons of air showers, with a central hadron calorimeter.", topics: ['cosmic-rays'], startYear: 1996, sources: [{ label: "The cosmic-ray experiment KASCADE, Nucl. Instrum. Meth. A 513, 490 (2003)", url: "https://doi.org/10.1016/S0168-9002(03)02076-X" }] },
+    ],
+    keyResults: [
+      { year: 2005, discovery: "Origin of the Knee", description: "The steepening of the spectrum was traced to a drop in protons and helium nuclei, with heavier elements continuing to higher energy.", sources: [{ label: "KASCADE Collaboration, Astropart. Phys. 24, 1 (2005)", url: "https://doi.org/10.1016/j.astropartphys.2005.04.001" }, { label: "Galactic cosmic rays and the knee: results from the KASCADE experiment (arXiv:astro-ph/0509253)", url: "https://arxiv.org/abs/astro-ph/0509253" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "KASCADE detector paper", url: "https://doi.org/10.1016/S0168-9002(03)02076-X" },
     ],
   },
 ];
