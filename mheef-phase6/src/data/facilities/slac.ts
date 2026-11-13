@@ -15,6 +15,19 @@ const facility: Facility = {
     { label: "Linear accelerator length", value: "2 miles (about 3.2 km)", sources: [{ label: "SLAC: Our story", url: "https://www6.slac.stanford.edu/about/our-story" }] },
     { label: "Nobel Prizes for work at the laboratory", value: "Four", sources: [{ label: "SLAC: Our story", url: "https://www6.slac.stanford.edu/about/our-story" }] },
   ],
+  images: [
+    {
+      file: 'aerial.jpg',
+      width: 1600,
+      height: 1200,
+      alt: "Aerial view of a long straight building cutting across green hills and passing under a motorway.",
+      caption: "The SLAC linear accelerator from the air, February 2018.",
+      credit: "Pi.1415926535",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Stanford_Linear_Accelerator_aerial_view,_February_2018.JPG",
+    },
+  ],
   history: [
     { year: 1962, event: "SLAC begins with the construction of a two-mile-long linear electron accelerator.", sources: [{ label: "SLAC: Our story", url: "https://www6.slac.stanford.edu/about/our-story" }] },
     { year: 1969, event: "Electron-proton scattering experiments at the linac find that the proton contains point-like constituents, later identified with quarks. Jerome Friedman, Henry Kendall and Richard Taylor share the 1990 Nobel Prize.", sources: [{ label: "Bloom et al., Phys. Rev. Lett. 23, 930 (1969)", url: "https://doi.org/10.1103/PhysRevLett.23.930" }, { label: "Breidenbach et al., Phys. Rev. Lett. 23, 935 (1969)", url: "https://doi.org/10.1103/PhysRevLett.23.935" }, { label: "Nobel Prize in Physics 1990", url: "https://www.nobelprize.org/prizes/physics/1990/summary/" }] },

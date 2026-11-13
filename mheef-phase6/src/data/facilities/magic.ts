@@ -15,6 +15,19 @@ const facility: Facility = {
     { label: "Telescopes", value: "Two, each 17 m in diameter", sources: [{ label: "Performance of the MAGIC telescopes in stereoscopic mode (arXiv:0907.0960)", url: "https://arxiv.org/abs/0907.0960" }] },
     { label: "Altitude", value: "2,200 m", sources: [{ label: "Performance of the MAGIC telescopes in stereoscopic mode (arXiv:0907.0960)", url: "https://arxiv.org/abs/0907.0960" }] },
   ],
+  images: [
+    {
+      file: 'telescopes.jpg',
+      width: 1600,
+      height: 1065,
+      alt: "Large dish telescopes with segmented mirrors on a mountainside above the sea.",
+      caption: "The MAGIC telescopes at the Roque de los Muchachos Observatory on La Palma, 2022.",
+      credit: "Xosema",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:La_Palma_-_Observatorio_del_Roque_de_los_Muchachos_-_MAGIC_-_01.jpg",
+    },
+  ],
   history: [
     { year: 2004, event: "The first telescope, MAGIC-I, begins operating.", sources: [{ label: "Highlights of the MAGIC Telescopes (arXiv:1110.4747)", url: "https://arxiv.org/abs/1110.4747" }] },
     { year: 2009, event: "The second telescope starts taking data and regular stereoscopic observations begin in the autumn.", sources: [{ label: "Performance of the MAGIC telescopes in stereoscopic mode (arXiv:0907.0960)", url: "https://arxiv.org/abs/0907.0960" }, { label: "Highlights of the MAGIC Telescopes (arXiv:1110.4747)", url: "https://arxiv.org/abs/1110.4747" }] },

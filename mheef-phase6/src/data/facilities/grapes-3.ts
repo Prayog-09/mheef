@@ -16,6 +16,19 @@ const facility: Facility = {
     { label: "Scintillator detectors", value: "400, over 25,000 m²", sources: [{ label: "GRAPES-3 Collaboration: Monitoring the upper atmosphere with the GRAPES-3 muon telescope (arXiv:2602.11847)", url: "https://arxiv.org/abs/2602.11847" }] },
     { label: "Muon telescope area", value: "560 m²", sources: [{ label: "GRAPES-3 Collaboration: Monitoring the upper atmosphere with the GRAPES-3 muon telescope (arXiv:2602.11847)", url: "https://arxiv.org/abs/2602.11847" }] },
   ],
+  images: [
+    {
+      file: 'array.jpg',
+      width: 1600,
+      height: 1200,
+      alt: "Many small cone-topped detectors spread across a grassy field in front of trees.",
+      caption: "The air-shower detector array of GRAPES-3 at Ooty.",
+      credit: "Hideki Tanaka",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Air_shower_detector_array_of_GRAPES-3_experiment.jpg",
+    },
+  ],
   history: [
     { year: 2016, event: "GRAPES-3 reports a two-hour burst of cosmic-ray muons on 22 June 2015, caused by a transient weakening of Earth's magnetic shield during a geomagnetic storm.", sources: [{ label: "GRAPES-3 Collaboration, Phys. Rev. Lett. 117, 171101 (2016)", url: "https://doi.org/10.1103/PhysRevLett.117.171101" }] },
     { year: 2019, event: "Muon imaging of a thundercloud that passed over the array in December 2014 gives an electric potential of 1.3 gigavolts.", sources: [{ label: "GRAPES-3 Collaboration, Phys. Rev. Lett. 122, 105101 (2019)", url: "https://doi.org/10.1103/PhysRevLett.122.105101" }] },

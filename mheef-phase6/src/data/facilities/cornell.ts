@@ -14,6 +14,19 @@ const facility: Facility = {
   specs: [
     { label: "CESR circumference", value: "768 m", sources: [{ label: "Cornell CLASSE: CESR", url: "https://www.classe.cornell.edu/public/CESR" }] },
   ],
+  images: [
+    {
+      file: 'wilson-laboratory.jpg',
+      width: 1600,
+      height: 688,
+      alt: "A wide brick building made of separate tower-like blocks.",
+      caption: "Wilson Synchrotron Laboratory at Cornell University, 2023.",
+      credit: "Kenneth C. Zirkel",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Wilson_Synchrotron_Laboratory,_Cornell_University.jpg",
+    },
+  ],
   history: [
     { year: 1979, event: "The Cornell Electron Storage Ring is completed.", sources: [{ label: "Cornell CLASSE: CESR", url: "https://www.classe.cornell.edu/public/CESR" }] },
     { year: 1980, event: "CLEO observes a fourth upsilon state, the Upsilon(4S), which decays into pairs of B mesons.", sources: [{ label: "CLEO Collaboration, Phys. Rev. Lett. 45, 219 (1980)", url: "https://doi.org/10.1103/PhysRevLett.45.219" }] },

@@ -14,6 +14,18 @@ const facility: Facility = {
   specs: [
     { label: "Linear accelerator", value: "Half a mile long, 800 MeV protons", sources: [{ label: "Los Alamos National Laboratory: About LANSCE", url: "https://www.lanl.gov/science-engineering/science-facilities/lansce/about" }] },
   ],
+  images: [
+    {
+      file: 'lampf-aerial.jpg',
+      width: 1600,
+      height: 1280,
+      alt: "Aerial view of a long accelerator building and experimental halls on a mesa.",
+      caption: "The Los Alamos Meson Physics Facility (LAMPF) from the air; the accelerator complex was later renamed LANSCE.",
+      credit: "U.S. Department of Energy",
+      license: "Public domain",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:U.S._Department_of_Energy_-_Science_-_279_001_001_(16493614026).jpg",
+    },
+  ],
   history: [
     { year: 1972, event: "The accelerator first reaches its design energy of 800 MeV on 9 June 1972.", sources: [{ label: "Los Alamos National Laboratory: 50 years of beaming", url: "https://www.lanl.gov/media/publications/1663/0922-50-years-of-beaming" }] },
     { year: 1996, event: "The LSND experiment reports evidence for muon antineutrinos changing into electron antineutrinos.", sources: [{ label: "LSND Collaboration, Phys. Rev. Lett. 77, 3082 (1996)", url: "https://doi.org/10.1103/PhysRevLett.77.3082" }] },

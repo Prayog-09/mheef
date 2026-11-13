@@ -14,6 +14,19 @@ const facility: Facility = {
   specs: [
     { label: "Array", value: "252 detector stations on a 200 m × 200 m grid", sources: [{ label: "Galactic cosmic rays and the knee: results from the KASCADE experiment (arXiv:astro-ph/0509253)", url: "https://arxiv.org/abs/astro-ph/0509253" }, { label: "The cosmic-ray experiment KASCADE, Nucl. Instrum. Meth. A 513, 490 (2003)", url: "https://doi.org/10.1016/S0168-9002(03)02076-X" }] },
   ],
+  images: [
+    {
+      file: 'array.jpg',
+      width: 1600,
+      height: 1200,
+      alt: "A simple wire antenna on a wooden frame in a field of small white detector huts.",
+      caption: "A LOPES radio antenna among the detector stations of the KASCADE array in Karlsruhe, 2011.",
+      credit: "FrankSchroeder",
+      license: "CC BY 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/3.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:LOPES_Antenna.JPG",
+    },
+  ],
   history: [
     { year: 1996, event: "KASCADE begins operating.", sources: [{ label: "Galactic cosmic rays and the knee: results from the KASCADE experiment (arXiv:astro-ph/0509253)", url: "https://arxiv.org/abs/astro-ph/0509253" }] },
     { year: 2005, event: "KASCADE publishes energy spectra for separate groups of elements, showing that the knee comes from light nuclei.", sources: [{ label: "KASCADE Collaboration, Astropart. Phys. 24, 1 (2005)", url: "https://doi.org/10.1016/j.astropartphys.2005.04.001" }] },

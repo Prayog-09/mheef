@@ -13,6 +13,19 @@ const facility: Facility = {
   specs: [
     { label: "Arm length", value: "600 m", sources: [{ label: "GEO600: A brief history of GEO600", url: "https://www.geo600.org/23920/a-brief-history-of-geo600" }] },
   ],
+  images: [
+    {
+      file: 'site.jpg',
+      width: 1600,
+      height: 900,
+      alt: "A small white container building beside a track and a row of trees.",
+      caption: "At the GEO600 site, on the detector’s eastern arm, 2015.",
+      credit: "Oge oval",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:2015_GEO_600.jpg",
+    },
+  ],
   history: [
     { year: 1995, event: "Construction of the detector starts in September 1995.", sources: [{ label: "GEO600: A brief history of GEO600", url: "https://www.geo600.org/23920/a-brief-history-of-geo600" }] },
     { year: 2002, event: "GEO600 takes its first scientific data in August and September 2002, together with the LIGO detectors.", sources: [{ label: "GEO600: A brief history of GEO600", url: "https://www.geo600.org/23920/a-brief-history-of-geo600" }] },

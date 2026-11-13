@@ -13,6 +13,19 @@ const facility: Facility = {
   specs: [
     { label: "Arm length", value: "3 km", sources: [{ label: "Virgo: The detector", url: "https://www.virgo-gw.eu/science/detector/" }] },
   ],
+  images: [
+    {
+      file: 'aerial.jpg',
+      width: 1485,
+      height: 804,
+      alt: "Aerial view of two long straight tubes meeting at a central building in flat farmland.",
+      caption: "The Virgo site from the air, showing the central building and the 3-km west arm.",
+      credit: "The Virgo collaboration",
+      license: "CC0",
+      licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Virgo_aerial_view_01.jpg",
+    },
+  ],
   history: [
     { year: 1989, event: "Virgo, conceived two years earlier by Adalberto Giazotto and Alain Brillet, is formally proposed to the French CNRS and the Italian INFN.", sources: [{ label: "Virgo: History", url: "https://www.virgo-gw.eu/about/virgo-history/" }] },
     { year: 2003, event: "Virgo is inaugurated at Cascina, where construction had begun in 1997; commissioning follows.", sources: [{ label: "Virgo: History", url: "https://www.virgo-gw.eu/about/virgo-history/" }] },

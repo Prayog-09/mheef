@@ -15,6 +15,18 @@ const facility: Facility = {
     { label: "Depth of the 1965 neutrino detector", value: "About 2,300 m", sources: [{ label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }] },
     { label: "Second proton decay detector", value: "About 366 tonnes, 2 km underground", sources: [{ label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }] },
   ],
+  images: [
+    {
+      file: 'champion-reef-shaft.jpg',
+      width: 1296,
+      height: 972,
+      alt: "A steel mine headframe partly overgrown with creepers.",
+      caption: "The Champion Reef mine shaft at Kolar Gold Fields.",
+      credit: "Adu65",
+      license: "Public domain",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Champion_Reef_Mine_shaft.jpg",
+    },
+  ],
   history: [
     { year: 1965, event: "The Kolar collaboration reports the detection of muons produced deep underground by cosmic-ray neutrinos.", sources: [{ label: "Achar et al., Phys. Lett. 18, 196 (1965)", url: "https://doi.org/10.1016/0031-9163(65)90712-2" }] },
     { year: 1965, event: "A group led by Frederick Reines, working in a South African gold mine, reports the same phenomenon two weeks after the Kolar paper.", sources: [{ label: "Reines et al., Phys. Rev. Lett. 15, 429 (1965)", url: "https://doi.org/10.1103/PhysRevLett.15.429" }, { label: "ThePrint: Kolar Gold Fields and India's neutrino legacy", url: "https://theprint.in/science/how-experiments-at-karnatakas-kolar-gold-fields-are-last-remaining-piece-of-indias-neutrino-legacy/2361654/" }] },

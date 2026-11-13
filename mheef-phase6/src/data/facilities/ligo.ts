@@ -17,6 +17,19 @@ const facility: Facility = {
     { label: "Vacuum volume", value: "10,000 m³", sources: [{ label: "LIGO Laboratory: Facts", url: "https://www.ligo.caltech.edu/page/facts" }] },
     { label: "Smallest detectable change in arm length", value: "1/10,000 the width of a proton", sources: [{ label: "LIGO Laboratory: Facts", url: "https://www.ligo.caltech.edu/page/facts" }] },
   ],
+  images: [
+    {
+      file: 'hanford-arm.jpg',
+      width: 1600,
+      height: 1200,
+      alt: "A long concrete-covered tube stretching across flat scrubland to the horizon.",
+      caption: "The northern arm of the LIGO Hanford interferometer, 2006.",
+      credit: "Umptanum",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Northern_leg_of_LIGO_interferometer_on_Hanford_Reservation.JPG",
+    },
+  ],
   history: [
     { year: 1992, event: "NSF selects the Hanford and Livingston sites and signs the LIGO cooperative agreement with Caltech, two years after the National Science Board approved construction.", sources: [{ label: "LIGO Laboratory: Timeline", url: "https://www.ligo.caltech.edu/page/timeline" }] },
     { year: 2002, event: "The Initial LIGO interferometers operate in coincidence for the first time, together with GEO600, beginning two decades of progressively more sensitive observing runs.", sources: [{ label: "LIGO Laboratory: Timeline", url: "https://www.ligo.caltech.edu/page/timeline" }] },

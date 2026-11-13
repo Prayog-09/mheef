@@ -14,6 +14,19 @@ const facility: Facility = {
   specs: [
     { label: "DAFNE beam energy", value: "0.51 GeV per beam", sources: [{ label: "Overview of Beam Dynamics Studies at DAFNE (arXiv:0806.1105)", url: "https://arxiv.org/abs/0806.1105" }] },
   ],
+  images: [
+    {
+      file: 'frascati-1960.jpg',
+      width: 1600,
+      height: 1205,
+      alt: "Black-and-white aerial photograph of laboratory buildings among fields.",
+      caption: "The Frascati laboratories from the air, 1960.",
+      credit: "Touring Club Italiano",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Photo_Bird%27s_eye_view_of_National_Laboratory_of_Frascati_1960_-_Touring_Club_Italiano_07_0325.jpg",
+    },
+  ],
   history: [
     { year: 1954, event: "The laboratory is founded to host a 1.1 GeV electron synchrotron, the first accelerator built in Italy.", sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }] },
     { year: 1961, event: "AdA (Anello di Accumulazione), proposed by Bruno Touschek, starts to operate in February 1961 as the first electron-positron storage ring.", sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }, { label: "Touschek with AdA in Orsay and the first direct observation of electron-positron collisions (arXiv:1812.11847)", url: "https://arxiv.org/abs/1812.11847" }] },

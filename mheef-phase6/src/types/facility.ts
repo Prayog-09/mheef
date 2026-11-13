@@ -173,6 +173,31 @@ export interface FacilitySpec {
   sources: SourceRef[];
 }
 
+/**
+ * A photograph of a facility. The picture itself is stored in
+ * public/images/facilities/<facility id>/ in two sizes: `file` (up to
+ * 1600 px wide) and the same name ending "-sm" (640 px wide). Every image
+ * must say who made it and under which licence, and link to where it came
+ * from — `npm run validate` fails otherwise.
+ */
+export interface FacilityImage {
+  /** File name of the large version, e.g. "wilson-hall.jpg". */
+  file: string;
+  /** Pixel size of the large version, so the page can reserve its space. */
+  width: number;
+  height: number;
+  /** What the picture shows, for readers who cannot see it. */
+  alt: string;
+  caption: string;
+  /** The photographer or institution to credit. */
+  credit: string;
+  /** Short licence name, e.g. "CC BY-SA 4.0" or "Public domain". */
+  license: string;
+  licenseUrl?: string;
+  /** The page the picture was taken from. */
+  sourceUrl: string;
+}
+
 export interface ReadMoreLink {
   label: string;
   url: string;
@@ -200,6 +225,8 @@ export interface Facility extends FacilityStub {
   overview: string;
   /** Sourced key figures, shown as a table. */
   specs?: FacilitySpec[];
+  /** Photographs; the first is shown at the top of the page and in the side panel. */
+  images?: FacilityImage[];
   history: TimelineEntry[];
   experiments: Experiment[];
   keyResults: KeyResult[];

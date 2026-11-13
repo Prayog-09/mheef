@@ -15,6 +15,19 @@ const facility: Facility = {
     { label: "Energy range", value: "20 GeV to 300 TeV", sources: [{ label: "Science with the Cherenkov Telescope Array (2018)", url: "https://doi.org/10.1142/10986" }] },
     { label: "Sites", value: "La Palma (north) and Paranal (south)", sources: [{ label: "Science with the Cherenkov Telescope Array (2018)", url: "https://doi.org/10.1142/10986" }] },
   ],
+  images: [
+    {
+      file: 'lst-1.jpg',
+      width: 1600,
+      height: 1200,
+      alt: "A very large dish telescope with a segmented mirror on a steel frame, against a blue sky.",
+      caption: "LST-1, the first Large-Sized Telescope of the array, on La Palma, 2023.",
+      credit: "Syrio",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Telescopio_LST-1_01.jpg",
+    },
+  ],
   history: [
     { year: 2011, event: "The CTA Consortium publishes its design concepts for the array, built from telescopes of three sizes.", sources: [{ label: "CTA Consortium, Design concepts for the Cherenkov Telescope Array, Exp. Astron. 32, 193 (2011)", url: "https://doi.org/10.1007/s10686-011-9247-0" }] },
     { year: 2018, event: "LST-1, the prototype 23-metre Large-Sized Telescope, is inaugurated on La Palma on 10 October 2018; four such telescopes are planned for the northern site.", sources: [{ label: "CTA press release: the first telescope on a CTA site makes its debut (2018)", url: "https://www.eurekalert.org/news-releases/884285" }] },

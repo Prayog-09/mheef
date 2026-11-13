@@ -13,6 +13,18 @@ const facility: Facility = {
   overview: "Lawrence Berkeley National Laboratory grew from the Radiation Laboratory that Ernest Lawrence founded at the University of California in 1931 to develop his invention, the cyclotron. A succession of ever larger machines made it the model for the modern accelerator laboratory. Its cyclotrons produced the first elements beyond uranium, and its Bevatron revealed the antiproton.",
   specs: [
   ],
+  images: [
+    {
+      file: 'advanced-light-source.jpg',
+      width: 1600,
+      height: 1064,
+      alt: "Aerial view of a large domed building among other laboratory buildings on a wooded hillside.",
+      caption: "The domed Advanced Light Source building at Berkeley Lab, photographed by drone in 2020.",
+      credit: "U.S. Department of Energy",
+      license: "Public domain",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Advanced_Light_Source_building_(52230759447).jpg",
+    },
+  ],
   history: [
     { year: 1931, event: "Lawrence is given a disused building on the Berkeley campus for a radiation laboratory, in the month an 11-inch cyclotron reaches 1.1 MeV.", sources: [{ label: "Berkeley Lab: History timeline", url: "https://www2.lbl.gov/Science-Articles/Archive/timeline.html" }] },
     { year: 1939, event: "Lawrence receives the Nobel Prize for the invention of the cyclotron.", sources: [{ label: "Berkeley Lab: History timeline", url: "https://www2.lbl.gov/Science-Articles/Archive/timeline.html" }, { label: "Nobel Prize in Physics 1939", url: "https://www.nobelprize.org/prizes/physics/1939/summary/" }] },

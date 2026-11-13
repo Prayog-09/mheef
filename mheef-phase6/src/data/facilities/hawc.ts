@@ -16,6 +16,19 @@ const facility: Facility = {
     { label: "Water Cherenkov detectors", value: "300 tanks with 1,200 photomultiplier tubes", sources: [{ label: "The HAWC Gamma-Ray Observatory: Design, Calibration, and Operation (arXiv:1310.0074)", url: "https://arxiv.org/abs/1310.0074" }, { label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }] },
     { label: "Site area", value: "About 22,000 m²", sources: [{ label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }] },
   ],
+  images: [
+    {
+      file: 'array.jpg',
+      width: 1600,
+      height: 894,
+      alt: "A dense cluster of large water tanks on a high plain below a snow-capped volcano.",
+      caption: "The HAWC detector in August 2014, with Citlaltépetl (Pico de Orizaba) behind.",
+      credit: "Jordanagoodman",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:HAWC_from_LMT_Aug_14_2014_02.jpg",
+    },
+  ],
   history: [
     { year: 2015, event: "The full array of 300 tanks is completed in March 2015.", sources: [{ label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }] },
     { year: 2017, event: "HAWC finds extended gamma-ray emission around the nearby pulsars Geminga and PSR B0656+14, limiting their contribution to the positrons observed at Earth.", sources: [{ label: "HAWC Collaboration, Science 358, 911 (2017)", url: "https://doi.org/10.1126/science.aan4880" }] },

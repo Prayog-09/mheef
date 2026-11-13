@@ -16,6 +16,19 @@ const facility: Facility = {
     { label: "One cluster", value: "Eight strings carrying 288 optical modules", sources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },
     { label: "Module depths", value: "750 m to 1,275 m", sources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },
   ],
+  images: [
+    {
+      file: 'ice-camp.jpg',
+      width: 1600,
+      height: 1067,
+      alt: "Winches and cabins on the frozen surface of Lake Baikal, with snow-covered mountains behind.",
+      caption: "Deploying parts of the Baikal-GVD telescope through the lake ice during a winter expedition.",
+      credit: "Bair Shaybonov",
+      license: "CC BY 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Deployment_of_the_Baikal-GVD_neutrino_telescope_from_the_ice_cover_of_Lake_Baikal_in_daylight.jpg",
+    },
+  ],
   history: [
     { year: 2015, event: "Deployment begins with the first cluster, installed in April 2015.", sources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },
     { year: 2020, event: "By April 2020 the telescope has seven clusters with 2,016 optical modules.", sources: [{ label: "Neutrino astronomy at Lake Baikal (arXiv:2412.00164)", url: "https://arxiv.org/abs/2412.00164" }, { label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },

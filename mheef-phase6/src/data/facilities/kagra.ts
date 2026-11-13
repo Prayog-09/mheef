@@ -16,6 +16,19 @@ const facility: Facility = {
     { label: "Mirrors", value: "Sapphire, cooled to cryogenic temperature", sources: [{ label: "KAGRA Collaboration, Nature Astronomy 3, 35 (2019)", url: "https://doi.org/10.1038/s41550-018-0658-y" }] },
     { label: "Site", value: "Underground, inside Mount Ikenoyama", sources: [{ label: "KAGRA Collaboration, Nature Astronomy 3, 35 (2019)", url: "https://doi.org/10.1038/s41550-018-0658-y" }] },
   ],
+  images: [
+    {
+      file: 'arm-tunnel.jpg',
+      width: 1600,
+      height: 1200,
+      alt: "A steel vacuum tube running through a rock tunnel.",
+      caption: "KAGRA under construction in 2015: the vacuum tube of one of the interferometer arms.",
+      credit: "Christopher Berry",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:In-construction_KAGRA_gravitational-wave_detector.jpg",
+    },
+  ],
   history: [
     { year: 2010, event: "KAGRA (originally LCGT, Large-scale Cryogenic Gravitational wave Telescope) approved by the Japanese government and MEXT.", sources: [{ label: "KAGRA Collaboration, Nature Astronomy 3, 35 (2019)", url: "https://doi.org/10.1038/s41550-018-0658-y" }] },
     { year: 2012, event: "Tunnel excavation begins inside the Kamioka mine, sharing the mountain with the Super-Kamiokande detector.", sources: [{ label: "KAGRA Collaboration, Nature Astronomy 3, 35 (2019)", url: "https://doi.org/10.1038/s41550-018-0658-y" }] },

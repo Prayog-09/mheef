@@ -15,6 +15,18 @@ const facility: Facility = {
     { label: "Surface detectors", value: "1,660", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },
     { label: "Fluorescence telescopes", value: "27", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },
   ],
+  images: [
+    {
+      file: 'surface-detector.jpg',
+      width: 1600,
+      height: 1199,
+      alt: "A squat cylindrical water tank with a solar panel and antenna, standing on open scrubland.",
+      caption: "One of the surface detector tanks of the Pierre Auger Observatory on the Pampa Amarilla, 2007.",
+      credit: "Roberto Fiadone",
+      license: "Public domain",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Observatorio_Pierre_Auger_Tanque_Rayos_C%C3%B3smicos.jpg",
+    },
+  ],
   history: [
     { year: 1992, event: "Pierre Auger Observatory proposed by James Cronin (U. Chicago) and Alan Watson (U. Leeds) to resolve the origin and spectrum of ultra-high-energy cosmic rays.", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },
     { year: 2004, event: "First physics results are reported from more than 100 surface detector stations in the Pampa Amarilla; the hybrid technique combining surface stations with fluorescence telescopes is pioneered.", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },

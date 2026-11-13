@@ -79,6 +79,12 @@ it in `src/data/facilities.ts` and add it to the list there.
 
 - `specs` holds key figures (sizes, energies, depths). Every one must cite
   a source.
+- `images` holds photographs. The files live in
+  `public/images/facilities/<id>/` in two sizes (`name.jpg`, up to 1600 px
+  wide, and `name-sm.jpg`, 640 px wide). Every image must have alt text, a
+  caption, a credit, a licence and a link to where it came from, or
+  `npm run validate` fails. Only openly licensed pictures (public domain,
+  CC0, CC BY, CC BY-SA) are used; so far all come from Wikimedia Commons.
 
 - Each facility has a `type` (accelerator laboratory, underground
   laboratory, neutrino observatory and so on), which sets its marker

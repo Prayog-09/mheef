@@ -13,6 +13,19 @@ const facility: Facility = {
   overview: "The Budker Institute of Nuclear Physics in Novosibirsk's Akademgorodok was founded by Gersh Budker and was one of the places where the colliding-beam method was first realised. Its early VEP-1 and VEPP-2 machines were among the world's first colliders, and Budker proposed electron cooling there. The institute runs the VEPP-4M and VEPP-2000 electron-positron colliders.",
   specs: [
   ],
+  images: [
+    {
+      file: 'vepp-2000.jpg',
+      width: 1200,
+      height: 900,
+      alt: "A compact ring of blue magnets and beam pipes seen from above in a laboratory hall.",
+      caption: "The VEPP-2000 electron–positron collider with its two detectors, SND and CMD-3, in 2012.",
+      credit: "Eto shorcy",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:VEPP-2000_electron-positron_collider.jpg",
+    },
+  ],
   history: [
     { year: 1958, event: "The institute is founded on the basis of a laboratory headed by Gersh Budker.", sources: [{ label: "Science First Hand: Particle accelerators, microscopes of modern physics", url: "https://scfh.ru/en/papers/particle-accelerators-microscopes-of-modern-physics/" }] },
     { year: 1964, event: "The VEP-1 electron-electron collider is built, followed by the VEPP-2 electron-positron collider in 1966.", sources: [{ label: "Science First Hand: Particle accelerators, microscopes of modern physics", url: "https://scfh.ru/en/papers/particle-accelerators-microscopes-of-modern-physics/" }] },

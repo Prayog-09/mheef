@@ -15,6 +15,19 @@ const facility: Facility = {
     { label: "Main Ring proton energy", value: "30 GeV", sources: [{ label: "J-PARC: History", url: "https://j-parc.jp/c/en/about/history.html" }] },
     { label: "T2K baseline to Super-Kamiokande", value: "295 km", sources: [{ label: "The T2K experiment, Nucl. Instrum. Meth. A 659, 106 (2011)", url: "https://doi.org/10.1016/j.nima.2011.06.067" }] },
   ],
+  images: [
+    {
+      file: 'main-ring.jpg',
+      width: 1600,
+      height: 1200,
+      alt: "Yellow and blue accelerator magnets lined up along a tunnel.",
+      caption: "The Main Ring synchrotron at J-PARC, photographed on an open day in 2016.",
+      credit: "Kestrel",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:J-PARC_Main_Ring_P7311328.jpg",
+    },
+  ],
   history: [
     { year: 2001, event: "KEK and the Japan Atomic Energy Agency sign a cooperative agreement in April, and construction of J-PARC starts in December.", sources: [{ label: "J-PARC: History", url: "https://j-parc.jp/c/en/about/history.html" }] },
     { year: 2008, event: "The Main Ring reaches its initial target energy of 30 GeV in December.", sources: [{ label: "J-PARC: History", url: "https://j-parc.jp/c/en/about/history.html" }] },

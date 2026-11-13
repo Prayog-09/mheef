@@ -16,6 +16,19 @@ const facility: Facility = {
     { label: "Digital optical modules", value: "5,160", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },
     { label: "DeepCore energy threshold", value: "About 10 GeV", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },
   ],
+  images: [
+    {
+      file: 'icecube-laboratory.jpg',
+      width: 1600,
+      height: 1094,
+      alt: "A blue two-storey building on stilts flanked by two white towers, standing on snow.",
+      caption: "The IceCube Laboratory at the South Pole, 2023.",
+      credit: "Christopher Michel",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:IceCube_Neutrino_Observatory_in_2023_02.jpg",
+    },
+  ],
   history: [
     { year: 1993, event: "The first AMANDA (Antarctic Muon And Neutrino Detector Array) strings are deployed at the South Pole in the 1993-94 season, a proof of concept for deep-ice neutrino detection.", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },
     { year: 2004, event: "IceCube drilling and DOM deployment begins, expanding on AMANDA infrastructure.", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },

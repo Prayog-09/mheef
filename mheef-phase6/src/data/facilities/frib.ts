@@ -16,6 +16,19 @@ const facility: Facility = {
     { label: "Beam energy", value: "More than 200 MeV per nucleon", sources: [{ label: "Wei et al., FRIB status, SRF2023 proceedings (MOIAA01)", url: "https://proceedings.jacow.org/srf2023/papers/moiaa01.pdf" }] },
     { label: "Superconducting linac", value: "324 resonators in 46 cryomodules", sources: [{ label: "Wei et al., FRIB status, SRF2023 proceedings (MOIAA01)", url: "https://proceedings.jacow.org/srf2023/papers/moiaa01.pdf" }] },
   ],
+  images: [
+    {
+      file: 'construction-2015.jpg',
+      width: 1365,
+      height: 590,
+      alt: "A building site with cranes beside finished brick laboratory buildings.",
+      caption: "FRIB under construction, June 2015.",
+      credit: "Facility for Rare Isotope Beams",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:2015-06-09_FRIB_construction.JPG",
+    },
+  ],
   history: [
     { year: 2008, event: "DOE selects Michigan State University on 11 December 2008 to design and establish FRIB, successor to the National Superconducting Cyclotron Laboratory (NSCL).", sources: [{ label: "NSCL: History", url: "https://nscl.msu.edu/about/history.html" }] },
     { year: 2014, event: "Civil construction of FRIB starts with a ground-breaking ceremony on 17 March 2014.", sources: [{ label: "FRIB: Groundbreaking launches civil construction (2014)", url: "https://frib.msu.edu/news/2014/groundbreaking-launches-construction.html" }, { label: "MSU Today: FRIB groundbreaking, concept becomes reality (2014)", url: "https://msutoday.msu.edu/news/2014/frib-groundbreaking-concept-becomes-reality" }] },

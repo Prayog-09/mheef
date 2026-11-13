@@ -14,6 +14,19 @@ const facility: Facility = {
   specs: [
     { label: "Altitude", value: "5,220 m", sources: [{ label: "CERN Courier: High energies and high altitudes", url: "https://cerncourier.com/a/high-energies-and-high-altitudes/" }] },
   ],
+  images: [
+    {
+      file: 'observatory-entrance.jpg',
+      width: 1600,
+      height: 815,
+      alt: "A stone gateway on a snowy mountainside with observatory buildings behind it.",
+      caption: "Entrance to the Chacaltaya Astrophysical Observatory, 2011.",
+      credit: "DiverDave",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Chacaltaya_Astrophysical_Observatory_(04).JPG",
+    },
+  ],
   history: [
     { year: 1947, event: "Photographic emulsions exposed to cosmic rays at high altitude, including plates Lattes took to Chacaltaya, reveal the pion and its decay into a muon.", sources: [{ label: "Lattes, Muirhead, Occhialini and Powell, Nature 159, 694 (1947)", url: "https://doi.org/10.1038/159694a0" }, { label: "Lattes, Occhialini and Powell, Nature 160, 453 (1947)", url: "https://doi.org/10.1038/160453a0" }, { label: "CERN Courier: High energies and high altitudes", url: "https://cerncourier.com/a/high-energies-and-high-altitudes/" }] },
   ],

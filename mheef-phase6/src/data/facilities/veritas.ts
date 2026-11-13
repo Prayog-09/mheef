@@ -15,6 +15,19 @@ const facility: Facility = {
     { label: "Telescopes", value: "Four, each 12 m in diameter", sources: [{ label: "The Very Energetic Radiation Imaging Telescope Array System (VERITAS) (arXiv:2507.09813)", url: "https://arxiv.org/abs/2507.09813" }] },
     { label: "Energy range", value: "85 GeV to above 30 TeV", sources: [{ label: "The Very Energetic Radiation Imaging Telescope Array System (VERITAS) (arXiv:2507.09813)", url: "https://arxiv.org/abs/2507.09813" }] },
   ],
+  images: [
+    {
+      file: 'telescope-t2.jpg',
+      width: 1600,
+      height: 1200,
+      alt: "The segmented mirror of a dish telescope reflecting the setting sun.",
+      caption: "Telescope T2 of the VERITAS array, 2015.",
+      credit: "Étienne Bourbeau",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:VERITAS_sunset2.JPG",
+    },
+  ],
   history: [
     { year: 2005, event: "The first VERITAS telescope begins operating.", sources: [{ label: "The first VERITAS telescope, Astropart. Phys. 25, 391 (2006)", url: "https://doi.org/10.1016/j.astropartphys.2006.04.002" }] },
     { year: 2007, event: "The full array of four telescopes is completed.", sources: [{ label: "The Very Energetic Radiation Imaging Telescope Array System (VERITAS) (arXiv:2507.09813)", url: "https://arxiv.org/abs/2507.09813" }] },

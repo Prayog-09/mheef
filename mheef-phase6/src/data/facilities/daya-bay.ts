@@ -17,6 +17,19 @@ const facility: Facility = {
     { label: "Data set", value: "3,158 days; 5.55 million antineutrino candidates", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 130, 161802 (2023)", url: "https://doi.org/10.1103/PhysRevLett.130.161802" }] },
     { label: "Final sin² 2θ₁₃", value: "0.0851 ± 0.0024", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 130, 161802 (2023)", url: "https://doi.org/10.1103/PhysRevLett.130.161802" }] },
   ],
+  images: [
+    {
+      file: 'detectors-in-pool.jpg',
+      width: 1600,
+      height: 1448,
+      alt: "Four cylindrical detectors standing in a pool of clear water, seen from above.",
+      caption: "Antineutrino detectors in a water pool at the Daya Bay experiment.",
+      credit: "Institute of High Energy Physics, Chinese Academy of Sciences",
+      license: "CC BY 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Daya_Bay_Experiment.jpg",
+    },
+  ],
   history: [
     { year: 2011, event: "Daya Bay begins operations with the first set of antineutrino detectors installed in underground experimental halls.", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 108, 171803 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" }] },
     { year: 2012, event: "Daya Bay announces the first precise measurement of theta-13, finding sin2(2*theta-13) = 0.092 at more than 5 sigma — the world's first observation of non-zero theta-13.", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 108, 171803 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" }] },

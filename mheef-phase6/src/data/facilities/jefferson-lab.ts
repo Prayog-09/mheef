@@ -15,6 +15,18 @@ const facility: Facility = {
     { label: "CEBAF beam energy", value: "12 GeV", sources: [{ label: "The Continuous Electron Beam Accelerator Facility at 12 GeV (arXiv:2408.16880)", url: "https://arxiv.org/abs/2408.16880" }] },
     { label: "Experimental halls", value: "Four (A, B, C and D)", sources: [{ label: "The Continuous Electron Beam Accelerator Facility at 12 GeV (arXiv:2408.16880)", url: "https://arxiv.org/abs/2408.16880" }] },
   ],
+  images: [
+    {
+      file: 'hall-c.jpg',
+      width: 1600,
+      height: 1067,
+      alt: "Wide-angle view of a domed experimental hall holding large spectrometers.",
+      caption: "Experimental Hall C at Jefferson Lab.",
+      credit: "U.S. Department of Energy",
+      license: "Public domain",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:U.S._Department_of_Energy_-_Science_-_440_062_001_(9940016925).jpg",
+    },
+  ],
   history: [
     { year: 2000, event: "Polarisation-transfer measurements in Hall A show that the proton's electric and magnetic form factors fall off differently with momentum transfer.", sources: [{ label: "Jones et al., Phys. Rev. Lett. 84, 1398 (2000)", url: "https://doi.org/10.1103/PhysRevLett.84.1398" }] },
     { year: 2017, event: "The 12 GeV upgrade of CEBAF is completed, adding Hall D.", sources: [{ label: "The Continuous Electron Beam Accelerator Facility at 12 GeV (arXiv:2408.16880)", url: "https://arxiv.org/abs/2408.16880" }] },

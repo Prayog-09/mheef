@@ -16,6 +16,19 @@ const facility: Facility = {
     { label: "Telescopes", value: "Four of 12 m and one of 28 m", sources: [{ label: "H.E.S.S.: The High Energy Stereoscopic System (arXiv:2405.11104)", url: "https://arxiv.org/abs/2405.11104" }] },
     { label: "Energy range", value: "Tens of GeV to tens of TeV", sources: [{ label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }] },
   ],
+  images: [
+    {
+      file: 'telescopes.jpg',
+      width: 1600,
+      height: 831,
+      alt: "Four dish telescopes arranged around one much larger telescope in dry bushland.",
+      caption: "The five telescopes of H.E.S.S. in Namibia, 2012.",
+      credit: "Klepser, DESY, H.E.S.S. collaboration",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:HESS_II_gamma_ray_experiment_five_telescope_array.jpg",
+    },
+  ],
   history: [
     { year: 2002, event: "The first H.E.S.S. telescope begins operating in summer 2002.", sources: [{ label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }] },
     { year: 2004, event: "With all four telescopes running since December 2003, the observatory is inaugurated on 28 September 2004.", sources: [{ label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }] },

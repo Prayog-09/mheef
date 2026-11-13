@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import { facilities } from '../../data/facilities';
 import SourceLinks from '../../components/SourceLinks';
+import FacilityFigure from '../../components/FacilityFigure';
 import { FACILITY_TYPE_LABELS, PHYSICS_TOPIC_LABELS, type Facility } from '../../types/facility';
 import {
   STATUS_LABELS,
@@ -31,6 +32,7 @@ const history = [...facility.history].sort((a, b) => a.year - b.year);
 const keyResults = [...facility.keyResults].sort((a, b) => a.year - b.year);
 
 const specs = facility.specs ?? [];
+const [leadImage, ...moreImages] = facility.images ?? [];
 
 const sorted = [...facilities].sort((a, b) => a.name.localeCompare(b.name));
 const position = sorted.findIndex((f) => f.id === facility.id);
@@ -53,6 +55,7 @@ const sections = [
   { id: 'experiments', label: 'Experiments', show: facility.experiments.length > 0 },
   { id: 'key-results', label: 'Key results', show: keyResults.length > 0 },
   { id: 'people', label: 'People', show: facility.importantPeople.length > 0 },
+  { id: 'gallery', label: 'Gallery', show: moreImages.length > 0 },
   { id: 'read-more', label: 'Further reading', show: facility.readMore.length > 0 },
 ].filter((section) => section.show);
 
@@ -113,6 +116,19 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
         <span aria-hidden="true">→</span>
       </a>
     </header>
+
+    {
+      leadImage && (
+        <div class="mt-8 max-w-4xl">
+          <FacilityFigure
+            facilityId={facility.id}
+            image={leadImage}
+            sizes="(min-width: 960px) 896px, 100vw"
+            eager
+          />
+        </div>
+      )
+    }
 
     <dl class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
       {
@@ -246,6 +262,23 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
               </li>
             ))}
           </ul>
+        </section>
+      )
+    }
+
+    {
+      moreImages.length > 0 && (
+        <section aria-labelledby="gallery" class="mt-12">
+          <h2 id="gallery" class={sectionHeading}>Gallery</h2>
+          <div class="mt-5 grid gap-6 sm:grid-cols-2">
+            {moreImages.map((image) => (
+              <FacilityFigure
+                facilityId={facility.id}
+                image={image}
+                sizes="(min-width: 640px) 50vw, 100vw"
+              />
+            ))}
+          </div>
         </section>
       )
     }

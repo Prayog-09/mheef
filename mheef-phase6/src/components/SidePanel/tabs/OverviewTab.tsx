@@ -1,5 +1,6 @@
 import type { Facility } from '../../../types/facility';
 import SourceLinks from '../../SourceLinks';
+import FacilityFigure from '../../FacilityFigure';
 
 interface OverviewTabProps {
   facility: Facility;
@@ -15,6 +16,17 @@ export default function OverviewTab({ facility }: OverviewTabProps) {
 
   return (
     <div className="space-y-6">
+      {facility.images?.[0] && (
+        <FacilityFigure
+          key={facility.id}
+          facilityId={facility.id}
+          image={facility.images[0]}
+          sizes="400px"
+          eager
+          compact
+        />
+      )}
+
       <p className="text-sm leading-relaxed text-white/70">{facility.overview}</p>
 
       <dl className="grid grid-cols-2 gap-3">

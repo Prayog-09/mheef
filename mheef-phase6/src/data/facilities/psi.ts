@@ -13,6 +13,19 @@ const facility: Facility = {
   overview: "The Paul Scherrer Institute in Villigen is Switzerland's largest research institute for natural and engineering sciences. Its high-intensity proton accelerator supplies the world's most intense muon beams, used for precision tests of the Standard Model such as the size of the proton, the search for the decay of a muon into an electron and a photon, and the neutron's electric dipole moment.",
   specs: [
   ],
+  images: [
+    {
+      file: 'aerial.jpg',
+      width: 1600,
+      height: 1067,
+      alt: "Aerial view of a research campus on both banks of a river, with a large ring-shaped building.",
+      caption: "The Paul Scherrer Institute on both banks of the Aare, May 2016.",
+      credit: "Paul Scherrer Institute",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Luftbild_PSI_Mai_2016.jpg",
+    },
+  ],
   history: [
     { year: 1988, event: "PSI is formed by merging the Federal Institute for Reactor Research (EIR) and the Swiss Institute for Nuclear Research (SIN).", sources: [{ label: "PSI: The history of PSI", url: "https://www.psi.ch/en/about/history-of-psi" }] },
     { year: 2010, event: "Laser spectroscopy of muonic hydrogen at PSI gives a proton radius markedly smaller than earlier measurements, starting the proton radius puzzle.", sources: [{ label: "Pohl et al., Nature 466, 213 (2010)", url: "https://doi.org/10.1038/nature09250" }] },

@@ -13,6 +13,19 @@ const facility: Facility = {
   overview: "The Baksan Neutrino Observatory is tunnelled into Mount Andyrchi in the Caucasus. Its gallium experiment SAGE measured low-energy neutrinos from the Sun for two decades. The same gallium was later used in the BEST experiment, which confirmed a puzzling shortfall, the gallium anomaly, in the neutrinos detected from an intense radioactive source.",
   specs: [
   ],
+  images: [
+    {
+      file: 'scintillation-telescope.jpg',
+      width: 1600,
+      height: 1060,
+      alt: "A large underground hall filled with rows of cylindrical detector tanks.",
+      caption: "One of the four horizontal planes of the Baksan Underground Scintillation Telescope, 2010.",
+      credit: "Konstantin Malanchev",
+      license: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Baksan_Underground_Scintillation_Telescope,_one_of_the_4_horizontal_planes_-_DSC_0788.jpg",
+    },
+  ],
   history: [
     { year: 1991, event: "SAGE publishes its first search for solar neutrinos using the capture of neutrinos on gallium.", sources: [{ label: "SAGE Collaboration, Phys. Rev. Lett. 67, 3332 (1991)", url: "https://doi.org/10.1103/PhysRevLett.67.3332" }] },
     { year: 2009, event: "SAGE reports its measurement of the solar neutrino capture rate from data taken up to 2007.", sources: [{ label: "SAGE Collaboration, Phys. Rev. C 80, 015807 (2009)", url: "https://doi.org/10.1103/PhysRevC.80.015807" }] },

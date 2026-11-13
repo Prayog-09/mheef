@@ -2,7 +2,7 @@
 // duplicate id, a coordinate off the globe, a malformed link) fail the
 // build; missing sources and reviews are reported as coverage figures so
 // progress toward "every fact sourced" is visible. Run with `npm run validate`.
-import { readdirSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { facilities } from '../src/data/facilities.ts';
 import { FACILITY_TYPE_LABELS, PHYSICS_TOPIC_LABELS } from '../src/types/facility.ts';
@@ -47,6 +47,10 @@ const facilityIds = new Set<string>();
 const experimentIds = new Set<string>();
 let reviewed = 0;
 let specCount = 0;
+let imageCount = 0;
+let facilitiesWithImage = 0;
+const IMAGE_ROOT = join(import.meta.dirname, '../public/images/facilities');
+const IMAGE_FILE = /^[a-z0-9]+(-[a-z0-9]+)*\.jpg$/;
 
 for (const facility of facilities) {
   const at = `facility "${facility.id}"`;
@@ -80,6 +84,25 @@ for (const facility of facilities) {
       if (!isWebUrl(source.url)) errors.push(`${where}: source link "${source.url}" is not a web address`);
     }
     specCount += 1;
+  }
+
+  if (facility.images && facility.images.length > 0) facilitiesWithImage += 1;
+  for (const image of facility.images ?? []) {
+    const where = `${at} image "${image.file}"`;
+    if (!IMAGE_FILE.test(image.file)) errors.push(`${where}: file name must be lower-case words joined by hyphens, ending .jpg`);
+    for (const name of [image.file, image.file.replace(/\.jpg$/, '-sm.jpg')]) {
+      if (!existsSync(join(IMAGE_ROOT, facility.id, name))) {
+        errors.push(`${where}: public/images/facilities/${facility.id}/${name} does not exist`);
+      }
+    }
+    if (!(image.width > 0) || !(image.height > 0)) errors.push(`${where}: width and height are required`);
+    if (!image.alt.trim()) errors.push(`${where}: alt text is required`);
+    if (!image.caption.trim()) errors.push(`${where}: a caption is required`);
+    if (!image.credit.trim()) errors.push(`${where}: a credit is required`);
+    if (!image.license.trim()) errors.push(`${where}: a licence is required`);
+    if (image.licenseUrl !== undefined && !isWebUrl(image.licenseUrl)) errors.push(`${where}: licence link is not a web address`);
+    if (!isWebUrl(image.sourceUrl)) errors.push(`${where}: source link "${image.sourceUrl}" is not a web address`);
+    imageCount += 1;
   }
 
   for (const entry of facility.history) {
@@ -137,6 +160,7 @@ const percent = facts === 0 ? 0 : Math.round((sourcedFacts / facts) * 100);
 console.log(`Facility data: ${facilities.length} facilities, ${experimentIds.size} experiments.`);
 console.log(`  Facts with a source: ${sourcedFacts} of ${facts} (${percent}%).`);
 console.log(`  Sourced specifications: ${specCount}.`);
+console.log(`  Images: ${imageCount}, on ${facilitiesWithImage} of ${facilities.length} facilities.`);
 console.log(`  Facilities reviewed: ${reviewed} of ${facilities.length}.`);
 
 if (errors.length > 0) {

@@ -16,6 +16,18 @@ const facility: Facility = {
     { label: "Planned beam energy", value: "20 TeV per beam", sources: [{ label: "Physics Today: A bridge too far, the demise of the Superconducting Super Collider", url: "https://physicstoday.aip.org/features/a-bridge-too-far-the-demise-of-the-superconducting-super-collider" }] },
     { label: "Spent before cancellation", value: "About $2 billion", sources: [{ label: "APS News: October 1993, Congress cancels funding for the SSC", url: "https://aps.org/publications/apsnews/201310/physicshistory.cfm" }] },
   ],
+  images: [
+    {
+      file: 'magnet-development-laboratory.jpg',
+      width: 1600,
+      height: 1064,
+      alt: "Large empty industrial buildings in an overgrown field.",
+      caption: "The Magnet Development Laboratory building at the abandoned SSC site near Waxahachie, Texas, 2008.",
+      credit: "Wikipedia user “Ich weiß es nicht”",
+      license: "Public domain",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Ssc_mdl.JPG",
+    },
+  ],
   history: [
     { year: 1987, event: "President Reagan approves the project.", sources: [{ label: "APS News: October 1993, Congress cancels funding for the SSC", url: "https://aps.org/publications/apsnews/201310/physicshistory.cfm" }] },
     { year: 1993, event: "Congress ends funding for the collider in October 1993, and the bill cancelling it is signed on 30 October.", sources: [{ label: "APS News: October 1993, Congress cancels funding for the SSC", url: "https://aps.org/publications/apsnews/201310/physicshistory.cfm" }, { label: "Physics Today: A bridge too far, the demise of the Superconducting Super Collider", url: "https://physicstoday.aip.org/features/a-bridge-too-far-the-demise-of-the-superconducting-super-collider" }] },

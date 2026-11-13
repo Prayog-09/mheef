@@ -15,6 +15,19 @@ const facility: Facility = {
     { label: "Uranium beam energy", value: "345 MeV per nucleon", sources: [{ label: "RIKEN Nishina Center: About RIBF", url: "https://www.nishina.riken.jp/facility/RIBFabout_e.html" }] },
     { label: "Superconducting ring cyclotron", value: "8,300 tonnes, the first of its kind", sources: [{ label: "RIKEN Nishina Center: About RIBF", url: "https://www.nishina.riken.jp/facility/RIBFabout_e.html" }] },
   ],
+  images: [
+    {
+      file: 'superconducting-ring-cyclotron.jpg',
+      width: 1600,
+      height: 1200,
+      alt: "A huge pink and green cyclotron filling an underground hall.",
+      caption: "The Superconducting Ring Cyclotron of the RI Beam Factory, 2018.",
+      credit: "Kestrel",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:RIKEN_Superconducting_Ring_Cyclotron_P4213478.jpg",
+    },
+  ],
   history: [
     { year: 2004, event: "Kosuke Morita's team synthesises the first atom of element 113 in July 2004 by fusing zinc and bismuth.", sources: [{ label: "Morita et al., J. Phys. Soc. Jpn. 73, 2593 (2004)", url: "https://doi.org/10.1143/JPSJ.73.2593" }, { label: "RIKEN: Element 113 officially named nihonium (2016)", url: "https://www.riken.jp/en/pr/topics/2016/20161130_1/" }] },
     { year: 2016, event: "The name nihonium (Nh) for element 113 is formally approved in November 2016.", sources: [{ label: "RIKEN: Element 113 officially named nihonium (2016)", url: "https://www.riken.jp/en/pr/topics/2016/20161130_1/" }] },

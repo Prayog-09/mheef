@@ -14,6 +14,19 @@ const facility: Facility = {
     { label: "Depth", value: "2 km", sources: [{ label: "SNOLAB: About", url: "https://www.snolab.ca/about/about-snolab/" }] },
     { label: "Underground clean space", value: "5,000 m²", sources: [{ label: "SNOLAB: About", url: "https://www.snolab.ca/about/about-snolab/" }] },
   ],
+  images: [
+    {
+      file: 'surface-building.jpg',
+      width: 1600,
+      height: 1064,
+      alt: "An orange and glass office building in snow with a SNOLAB sign in front.",
+      caption: "The SNOLAB surface building, 2014.",
+      credit: "Boardhead",
+      license: "CC0",
+      licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:SNOLAB_2014-03-21.jpg",
+    },
+  ],
   history: [
     { year: 1999, event: "SNO detector begins operations, using 1,000 tonnes of heavy water to separately detect charged-current and neutral-current neutrino interactions.", sources: [{ label: "The Sudbury Neutrino Observatory, Nucl. Instrum. Meth. A 449, 172 (2000)", url: "https://doi.org/10.1016/S0168-9002(99)01469-2" }] },
     { year: 2001, event: "SNO charged-current result shows the solar electron-neutrino flux is one-third the Standard Solar Model prediction, hinting strongly at flavour change.", sources: [{ label: "SNO Collaboration, Phys. Rev. Lett. 87, 071301 (2001)", url: "https://doi.org/10.1103/PhysRevLett.87.071301" }] },

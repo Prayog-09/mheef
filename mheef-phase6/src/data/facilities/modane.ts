@@ -14,6 +14,19 @@ const facility: Facility = {
   specs: [
     { label: "Rock overburden", value: "1,700 m (4,800 m water equivalent)", sources: [{ label: "Piquemal, Modane underground laboratory: status and project, Eur. Phys. J. Plus 127, 110 (2012)", url: "https://ui.adsabs.harvard.edu/abs/2012EPJP..127..110P" }] },
   ],
+  images: [
+    {
+      file: 'germanium-detectors.jpg',
+      width: 1600,
+      height: 900,
+      alt: "A row of liquid-nitrogen vessels and shielded detectors in an underground room.",
+      caption: "Germanium detectors in the Modane Underground Laboratory, 2023.",
+      credit: "Wikimedia Commons user “Photo de qualité médiocre”",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Laboratoire_souterrain_de_Modane_-_d%C3%A9tecteurs_Germanium.jpg",
+    },
+  ],
   history: [
     { year: 2015, event: "NEMO-3 publishes its final search for the neutrinoless double-beta decay of molybdenum-100.", sources: [{ label: "NEMO-3 Collaboration, Phys. Rev. D 92, 072011 (2015)", url: "https://doi.org/10.1103/PhysRevD.92.072011" }] },
     { year: 2016, event: "EDELWEISS-III publishes limits on low-mass dark matter particles.", sources: [{ label: "EDELWEISS Collaboration, JCAP 05 (2016) 019", url: "https://doi.org/10.1088/1475-7516/2016/05/019" }] },

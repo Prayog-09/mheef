@@ -16,6 +16,19 @@ const facility: Facility = {
     { label: "Laboratory volume", value: "4,000 m³, plus a 3,000 m³ outside experimental area", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
     { label: "Operator", value: "STFC, hosted by the mine operator ICL-UK", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
   ],
+  images: [
+    {
+      file: 'boulby-mine.jpg',
+      width: 1600,
+      height: 1067,
+      alt: "Industrial mine buildings and a tall chimney set in green farmland near the coast.",
+      caption: "Boulby Mine in north-east England, 2015. The laboratory lies in the mine’s underground workings.",
+      credit: "Labratcreative",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:BoulbyMineICLUK.jpg",
+    },
+  ],
   history: [
     { year: 2012, event: "ZEPLIN-III publishes the dark matter results of its second science run.", sources: [{ label: "ZEPLIN-III Collaboration, Phys. Lett. B 709, 14 (2012)", url: "https://doi.org/10.1016/j.physletb.2012.01.064" }] },
     { year: 1989, event: "The first radioactive background measurements are taken underground in Boulby Mine.", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
