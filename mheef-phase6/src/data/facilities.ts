@@ -1,7 +1,7 @@
 import type { Facility } from '../types/facility';
 
 /**
- * Master dataset. 30 HEP facilities across all major
+ * Master dataset. 40 HEP facilities across all major
  * categories.
  *
  * Phase 3: side panel looks up any Facility by selectedFacilityId from here.
@@ -1162,6 +1162,330 @@ export const facilities: readonly Facility[] = [
     ],
     readMore: [
       { label: "Official Site", url: "https://www.supl.org.au" },
+    ],
+  },
+
+  {
+    id: 'hyper-kamiokande',
+    name: "Hyper-Kamiokande",
+    type: 'neutrino-observatory',
+    country: "Japan",
+    lat: 36.356,
+    lng: 137.314,
+    founded: 2020,
+    status: 'planned',
+    overview: "Hyper-Kamiokande is the successor to Super-Kamiokande, under construction beneath a mountain in Hida, Gifu Prefecture. Its water tank will have a fiducial mass 8.4 times that of Super-Kamiokande. It will study the difference between neutrinos and antineutrinos using a beam from J-PARC, search for proton decay, and watch for neutrinos from supernovae. It aims to start operating in 2028.",
+    specs: [
+      { label: "Tank", value: "68 m in diameter, 71 m water depth", sources: [{ label: "Hyper-Kamiokande: Overview", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/hk/about/outline/" }] },
+      { label: "Water mass", value: "About 260,000 tonnes, of which about 190,000 tonnes fiducial", sources: [{ label: "Hyper-Kamiokande: Overview", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/hk/about/outline/" }] },
+      { label: "Fiducial mass relative to Super-Kamiokande", value: "8.4 times larger", sources: [{ label: "Hyper-Kamiokande: Overview", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/hk/about/outline/" }] },
+      { label: "Planned start", value: "2028", sources: [{ label: "Hyper-Kamiokande: Overview", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/hk/about/outline/" }] },
+    ],
+    history: [
+      { year: 2020, event: "The project officially starts after the Japanese Diet approves the first construction budget in January 2020.", sources: [{ label: "Hyper-Kamiokande construction status and prospects, Front. Phys. 12 (2024)", url: "https://doi.org/10.3389/fphy.2024.1378254" }] },
+      { year: 2021, event: "Excavation of the access tunnel begins in May 2021.", sources: [{ label: "Hyper-Kamiokande construction status and prospects, Front. Phys. 12 (2024)", url: "https://doi.org/10.3389/fphy.2024.1378254" }] },
+      { year: 2022, event: "Excavation of the main cavern, one of the largest underground caverns in the world, begins in October 2022.", sources: [{ label: "Hyper-Kamiokande construction status and prospects, Front. Phys. 12 (2024)", url: "https://doi.org/10.3389/fphy.2024.1378254" }] },
+      { year: 2025, event: "Excavation of the cavern is completed on 31 July 2025.", sources: [{ label: "ICRR press release: cavern excavation completed (2025)", url: "https://www.icrr.u-tokyo.ac.jp/prwps/wp-content/uploads/HKpressrelease_v1.9_2.pdf" }] },
+    ],
+    experiments: [
+      { id: 'hk-detector', name: "Hyper-Kamiokande detector", description: "Water Cherenkov detector viewed by tens of thousands of high-sensitivity photosensors, to study neutrino oscillations, proton decay and astrophysical neutrinos.", topics: ['neutrinos', 'cp-violation'], sources: [{ label: "Hyper-Kamiokande: Overview", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/hk/about/outline/" }, { label: "Hyper-Kamiokande Design Report (arXiv:1805.04163)", url: "https://arxiv.org/abs/1805.04163" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/hk/" },
+    ],
+  },
+  {
+    id: 'cjpl',
+    name: "Jinping (CJPL)",
+    fullName: "China Jinping Underground Laboratory",
+    type: 'underground-laboratory',
+    country: "China",
+    lat: 28.153,
+    lng: 101.711,
+    founded: 2010,
+    status: 'active',
+    overview: "The China Jinping Underground Laboratory lies beneath Jinping Mountain in Sichuan, reached through a road tunnel built for a hydropower project. With about 2,400 m of rock above it, it is the deepest underground laboratory in the world. It hosts the PandaX liquid-xenon and CDEX germanium dark matter experiments.",
+    specs: [
+      { label: "Rock overburden", value: "About 2,400 m", sources: [{ label: "Cheng et al., Annu. Rev. Nucl. Part. Sci. 67, 231 (2017)", url: "https://doi.org/10.1146/annurev-nucl-102115-044842" }] },
+    ],
+    history: [
+      { year: 2010, event: "The first phase of the laboratory, CJPL-I, begins operating.", sources: [{ label: "Cheng et al., Annu. Rev. Nucl. Part. Sci. 67, 231 (2017)", url: "https://doi.org/10.1146/annurev-nucl-102115-044842" }] },
+      { year: 2018, event: "The CDEX-10 germanium experiment publishes limits on light dark matter particles.", sources: [{ label: "CDEX Collaboration, Phys. Rev. Lett. 120, 241301 (2018)", url: "https://doi.org/10.1103/PhysRevLett.120.241301" }] },
+      { year: 2021, event: "PandaX-4T publishes dark matter search results from its commissioning run.", sources: [{ label: "PandaX-4T Collaboration, Phys. Rev. Lett. 127, 261802 (2021)", url: "https://doi.org/10.1103/PhysRevLett.127.261802" }] },
+    ],
+    experiments: [
+      { id: 'cjpl-pandax', name: "PandaX-4T", description: "Dual-phase liquid-xenon time projection chamber searching for dark matter particles.", topics: ['dark-matter'], sources: [{ label: "PandaX-4T Collaboration, Phys. Rev. Lett. 127, 261802 (2021)", url: "https://doi.org/10.1103/PhysRevLett.127.261802" }] },
+      { id: 'cjpl-cdex', name: "CDEX", description: "Germanium detectors searching for light dark matter particles.", topics: ['dark-matter'], sources: [{ label: "CDEX Collaboration, Phys. Rev. Lett. 120, 241301 (2018)", url: "https://doi.org/10.1103/PhysRevLett.120.241301" }, { label: "Cheng et al., Annu. Rev. Nucl. Part. Sci. 67, 231 (2017)", url: "https://doi.org/10.1146/annurev-nucl-102115-044842" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Review: CJPL and its early science", url: "https://doi.org/10.1146/annurev-nucl-102115-044842" },
+    ],
+  },
+  {
+    id: 'km3net',
+    name: "KM3NeT",
+    fullName: "Cubic Kilometre Neutrino Telescope",
+    type: 'neutrino-observatory',
+    country: "Mediterranean Sea (Italy / France)",
+    lat: 36.27,
+    lng: 16.1,
+    founded: 2015,
+    status: 'active',
+    overview: "KM3NeT is a neutrino telescope being built on the floor of the Mediterranean Sea. Its ARCA detector off Sicily looks for high-energy neutrinos from the cosmos, while the denser ORCA detector off Toulon studies neutrino oscillations. Although still under construction, ARCA recorded in 2023 the most energetic neutrino ever observed.",
+    specs: [
+      { label: "ARCA depth", value: "About 3,500 m, off Portopalo di Capo Passero, Sicily", sources: [{ label: "Nikhef: KM3NeT detects the highest energy neutrino ever observed", url: "https://www.nikhef.nl/en/news/km3net-detects-the-highest-energy-neutrino-ever-observed/" }] },
+      { label: "ORCA depth", value: "2,450 m, about 40 km off Toulon", sources: [{ label: "Nikhef: KM3NeT detects the highest energy neutrino ever observed", url: "https://www.nikhef.nl/en/news/km3net-detects-the-highest-energy-neutrino-ever-observed/" }] },
+      { label: "Planned detection units", value: "230 for ARCA, 115 for ORCA", sources: [{ label: "Nikhef: KM3NeT detects the highest energy neutrino ever observed", url: "https://www.nikhef.nl/en/news/km3net-detects-the-highest-energy-neutrino-ever-observed/" }] },
+    ],
+    history: [
+      { year: 2016, event: "The collaboration publishes its letter of intent for KM3NeT 2.0, with the ARCA and ORCA detectors.", sources: [{ label: "Letter of intent for KM3NeT 2.0, J. Phys. G 43, 084001 (2016)", url: "https://doi.org/10.1088/0954-3899/43/8/084001" }] },
+      { year: 2023, event: "On 13 February 2023 the partly built ARCA detector records a muon from a neutrino with an estimated energy of about 220 PeV.", sources: [{ label: "KM3NeT Collaboration, Nature 638, 376 (2025)", url: "https://doi.org/10.1038/s41586-024-08543-1" }, { label: "Nikhef: KM3NeT detects the highest energy neutrino ever observed", url: "https://www.nikhef.nl/en/news/km3net-detects-the-highest-energy-neutrino-ever-observed/" }] },
+      { year: 2025, event: "The observation of the ultra-high-energy neutrino is published in Nature.", sources: [{ label: "KM3NeT Collaboration, Nature 638, 376 (2025)", url: "https://doi.org/10.1038/s41586-024-08543-1" }] },
+    ],
+    experiments: [
+      { id: 'km3net-arca', name: "ARCA", description: "Astroparticle Research with Cosmics in the Abyss: a sparse deep-sea array for high-energy cosmic neutrinos.", topics: ['neutrinos', 'cosmic-rays'], sources: [{ label: "Letter of intent for KM3NeT 2.0, J. Phys. G 43, 084001 (2016)", url: "https://doi.org/10.1088/0954-3899/43/8/084001" }, { label: "Nikhef: KM3NeT detects the highest energy neutrino ever observed", url: "https://www.nikhef.nl/en/news/km3net-detects-the-highest-energy-neutrino-ever-observed/" }] },
+      { id: 'km3net-orca', name: "ORCA", description: "Oscillation Research with Cosmics in the Abyss: a dense array measuring atmospheric neutrino oscillations.", topics: ['neutrinos'], sources: [{ label: "Letter of intent for KM3NeT 2.0, J. Phys. G 43, 084001 (2016)", url: "https://doi.org/10.1088/0954-3899/43/8/084001" }, { label: "Nikhef: KM3NeT detects the highest energy neutrino ever observed", url: "https://www.nikhef.nl/en/news/km3net-detects-the-highest-energy-neutrino-ever-observed/" }] },
+    ],
+    keyResults: [
+      { year: 2025, discovery: "The Most Energetic Neutrino Observed", description: "A single event in ARCA implied a cosmic neutrino of about 220 PeV, far above any previously detected.", sources: [{ label: "KM3NeT Collaboration, Nature 638, 376 (2025)", url: "https://doi.org/10.1038/s41586-024-08543-1" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.km3net.org" },
+    ],
+  },
+  {
+    id: 'baikal-gvd',
+    name: "Baikal-GVD",
+    fullName: "Baikal Gigaton Volume Detector",
+    type: 'neutrino-observatory',
+    country: "Russia",
+    lat: 51.77,
+    lng: 104.4,
+    founded: 2015,
+    status: 'active',
+    overview: "Baikal-GVD is a neutrino telescope in the deep water of southern Lake Baikal, deployed each winter from the lake's ice. Strings of optical modules record the light from particles produced when neutrinos interact in the water. It is the largest neutrino telescope in the Northern Hemisphere.",
+    specs: [
+      { label: "Lake depth at the site", value: "1,366 m, 3.6 km from the shore", sources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },
+      { label: "One cluster", value: "Eight strings carrying 288 optical modules", sources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },
+      { label: "Module depths", value: "750 m to 1,275 m", sources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },
+    ],
+    history: [
+      { year: 2015, event: "Deployment begins with the first cluster, installed in April 2015.", sources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },
+      { year: 2020, event: "By April 2020 the telescope has seven clusters with 2,016 optical modules.", sources: [{ label: "Neutrino astronomy at Lake Baikal (arXiv:2412.00164)", url: "https://arxiv.org/abs/2412.00164" }, { label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },
+      { year: 2023, event: "Baikal-GVD publishes its measurement of the diffuse flux of astrophysical neutrinos.", sources: [{ label: "Baikal-GVD Collaboration, Phys. Rev. D 107, 042005 (2023)", url: "https://doi.org/10.1103/PhysRevD.107.042005" }] },
+    ],
+    experiments: [
+      { id: 'baikal-gvd-array', name: "Baikal-GVD array", description: "Clusters of eight vertical strings of optical modules in Lake Baikal, detecting Cherenkov light from neutrino interactions.", topics: ['neutrinos', 'cosmic-rays'], startYear: 2015, sources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }, { label: "JINR: About", url: "https://www.jinr.ru/about-en/" }] },
+    ],
+    keyResults: [
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://baikalgvd.jinr.ru" },
+    ],
+  },
+  {
+    id: 'lhaaso',
+    name: "LHAASO",
+    fullName: "Large High Altitude Air Shower Observatory",
+    type: 'gamma-ray-observatory',
+    country: "China",
+    lat: 29.358,
+    lng: 100.138,
+    founded: 2021,
+    status: 'active',
+    overview: "LHAASO stands at 4,410 m on Mount Haizi in Daocheng, Sichuan. It combines a square-kilometre array of particle and muon detectors, a large water Cherenkov pool and wide-field Cherenkov telescopes to observe gamma rays and cosmic rays at the highest energies. Even before completion it found a dozen Galactic sources emitting photons up to 1.4 PeV.",
+    specs: [
+      { label: "Altitude", value: "4,410 m", sources: [{ label: "The First LHAASO Catalog of Gamma-Ray Sources (arXiv:2305.17030)", url: "https://arxiv.org/abs/2305.17030" }] },
+      { label: "KM2A array area", value: "1.3 km², with 1,188 muon detectors", sources: [{ label: "The First LHAASO Catalog of Gamma-Ray Sources (arXiv:2305.17030)", url: "https://arxiv.org/abs/2305.17030" }] },
+      { label: "Water Cherenkov detector array", value: "78,000 m²", sources: [{ label: "The First LHAASO Catalog of Gamma-Ray Sources (arXiv:2305.17030)", url: "https://arxiv.org/abs/2305.17030" }] },
+      { label: "Wide-field Cherenkov telescopes", value: "18", sources: [{ label: "The First LHAASO Catalog of Gamma-Ray Sources (arXiv:2305.17030)", url: "https://arxiv.org/abs/2305.17030" }] },
+    ],
+    history: [
+      { year: 2021, event: "LHAASO reports twelve Galactic sources of photons above 100 TeV, with energies up to 1.4 PeV, and PeV gamma rays from the Crab Nebula. The full array is completed in July 2021.", sources: [{ label: "LHAASO Collaboration, Nature 594, 33 (2021)", url: "https://doi.org/10.1038/s41586-021-03498-z" }, { label: "LHAASO Collaboration, Science 373, 425 (2021)", url: "https://doi.org/10.1126/science.abg5137" }, { label: "The First LHAASO Catalog of Gamma-Ray Sources (arXiv:2305.17030)", url: "https://arxiv.org/abs/2305.17030" }] },
+      { year: 2023, event: "LHAASO publishes its observation of the TeV afterglow of the exceptionally bright gamma-ray burst GRB 221009A.", sources: [{ label: "LHAASO Collaboration, Science 380, 1390 (2023)", url: "https://doi.org/10.1126/science.adg9328" }] },
+    ],
+    experiments: [
+      { id: 'lhaaso-km2a', name: "KM2A", description: "Square-kilometre array of electromagnetic particle detectors and buried muon detectors for gamma rays above tens of TeV.", topics: ['cosmic-rays'], sources: [{ label: "The First LHAASO Catalog of Gamma-Ray Sources (arXiv:2305.17030)", url: "https://arxiv.org/abs/2305.17030" }] },
+      { id: 'lhaaso-wcda', name: "WCDA", description: "Water Cherenkov Detector Array for surveying the sky at TeV energies.", topics: ['cosmic-rays'], sources: [{ label: "The First LHAASO Catalog of Gamma-Ray Sources (arXiv:2305.17030)", url: "https://arxiv.org/abs/2305.17030" }] },
+    ],
+    keyResults: [
+      { year: 2021, discovery: "Photons up to 1.4 PeV from Galactic Sources", description: "Twelve sources in the Milky Way were seen above 100 TeV, showing that the Galaxy contains accelerators reaching PeV energies.", sources: [{ label: "LHAASO Collaboration, Nature 594, 33 (2021)", url: "https://doi.org/10.1038/s41586-021-03498-z" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "First LHAASO source catalogue", url: "https://arxiv.org/abs/2305.17030" },
+    ],
+  },
+  {
+    id: 'magic',
+    name: "MAGIC",
+    fullName: "Major Atmospheric Gamma Imaging Cherenkov Telescopes",
+    type: 'gamma-ray-observatory',
+    country: "Spain",
+    lat: 28.762,
+    lng: -17.89,
+    founded: 2004,
+    status: 'active',
+    overview: "MAGIC is a pair of 17-metre imaging atmospheric Cherenkov telescopes at the Roque de los Muchachos Observatory on La Palma in the Canary Islands. Their large mirrors give a low energy threshold, which allowed MAGIC to detect pulsed gamma rays from the Crab pulsar and the first teraelectronvolt emission from a gamma-ray burst.",
+    specs: [
+      { label: "Telescopes", value: "Two, each 17 m in diameter", sources: [{ label: "Performance of the MAGIC telescopes in stereoscopic mode (arXiv:0907.0960)", url: "https://arxiv.org/abs/0907.0960" }] },
+      { label: "Altitude", value: "2,200 m", sources: [{ label: "Performance of the MAGIC telescopes in stereoscopic mode (arXiv:0907.0960)", url: "https://arxiv.org/abs/0907.0960" }] },
+    ],
+    history: [
+      { year: 2004, event: "The first telescope, MAGIC-I, begins operating.", sources: [{ label: "Highlights of the MAGIC Telescopes (arXiv:1110.4747)", url: "https://arxiv.org/abs/1110.4747" }] },
+      { year: 2009, event: "The second telescope starts taking data and regular stereoscopic observations begin in the autumn.", sources: [{ label: "Performance of the MAGIC telescopes in stereoscopic mode (arXiv:0907.0960)", url: "https://arxiv.org/abs/0907.0960" }, { label: "Highlights of the MAGIC Telescopes (arXiv:1110.4747)", url: "https://arxiv.org/abs/1110.4747" }] },
+      { year: 2019, event: "MAGIC reports teraelectronvolt gamma rays from the burst GRB 190114C.", sources: [{ label: "MAGIC Collaboration, Nature 575, 455 (2019)", url: "https://doi.org/10.1038/s41586-019-1750-x" }] },
+    ],
+    experiments: [
+      { id: 'magic-telescopes', name: "MAGIC telescopes", description: "Two 17-m Cherenkov telescopes 85 m apart, operated together in stereoscopic mode.", topics: ['cosmic-rays'], startYear: 2004, sources: [{ label: "Performance of the MAGIC telescopes in stereoscopic mode (arXiv:0907.0960)", url: "https://arxiv.org/abs/0907.0960" }] },
+    ],
+    keyResults: [
+      { year: 2008, discovery: "Pulsed Gamma Rays from the Crab Pulsar", description: "MAGIC detected pulsed emission above 25 GeV from the Crab pulsar, constraining where in the magnetosphere the gamma rays are produced.", sources: [{ label: "MAGIC Collaboration, Science 322, 1221 (2008)", url: "https://doi.org/10.1126/science.1164718" }] },
+      { year: 2019, discovery: "Teraelectronvolt Emission from a Gamma-Ray Burst", description: "GRB 190114C was the first gamma-ray burst seen at TeV energies.", sources: [{ label: "MAGIC Collaboration, Nature 575, 455 (2019)", url: "https://doi.org/10.1038/s41586-019-1750-x" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://magic.mpp.mpg.de" },
+    ],
+  },
+  {
+    id: 'hawc',
+    name: "HAWC",
+    fullName: "High-Altitude Water Cherenkov Observatory",
+    type: 'gamma-ray-observatory',
+    country: "Mexico",
+    lat: 18.995,
+    lng: -97.308,
+    founded: 2015,
+    status: 'active',
+    overview: "HAWC is an array of 300 water tanks at 4,100 m on the flank of the Sierra Negra volcano in Puebla, Mexico. Each tank detects the particles of air showers started by gamma rays and cosmic rays, day and night, giving a continuous view of a large part of the sky between about 100 GeV and 100 TeV.",
+    specs: [
+      { label: "Altitude", value: "4,100 m", sources: [{ label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }] },
+      { label: "Water Cherenkov detectors", value: "300 tanks with 1,200 photomultiplier tubes", sources: [{ label: "The HAWC Gamma-Ray Observatory: Design, Calibration, and Operation (arXiv:1310.0074)", url: "https://arxiv.org/abs/1310.0074" }, { label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }] },
+      { label: "Site area", value: "About 22,000 m²", sources: [{ label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }] },
+    ],
+    history: [
+      { year: 2015, event: "The full array of 300 tanks is completed in March 2015.", sources: [{ label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }] },
+      { year: 2017, event: "HAWC finds extended gamma-ray emission around the nearby pulsars Geminga and PSR B0656+14, limiting their contribution to the positrons observed at Earth.", sources: [{ label: "HAWC Collaboration, Science 358, 911 (2017)", url: "https://doi.org/10.1126/science.aan4880" }] },
+    ],
+    experiments: [
+      { id: 'hawc-array', name: "HAWC array", description: "300 water Cherenkov tanks recording air-shower particles to map the gamma-ray sky.", topics: ['cosmic-rays'], startYear: 2015, sources: [{ label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }, { label: "The HAWC Gamma-Ray Observatory: Design, Calibration, and Operation (arXiv:1310.0074)", url: "https://arxiv.org/abs/1310.0074" }] },
+    ],
+    keyResults: [
+      { year: 2017, discovery: "Gamma-Ray Halos Around Nearby Pulsars", description: "Extended emission around two pulsars showed that their positrons diffuse too slowly to explain the excess seen at Earth.", sources: [{ label: "HAWC Collaboration, Science 358, 911 (2017)", url: "https://doi.org/10.1126/science.aan4880" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.hawc-observatory.org" },
+    ],
+  },
+  {
+    id: 'telescope-array',
+    name: "Telescope Array",
+    fullName: "Telescope Array Project",
+    type: 'cosmic-ray-observatory',
+    country: "United States",
+    lat: 39.3,
+    lng: -112.91,
+    founded: 2008,
+    status: 'active',
+    overview: "The Telescope Array in Millard County, Utah, is the largest cosmic-ray observatory in the Northern Hemisphere. A grid of 507 scintillator detectors covering about 700 square kilometres is overlooked by fluorescence telescopes. In 2021 it recorded one of the most energetic cosmic rays ever seen, nicknamed the Amaterasu particle.",
+    specs: [
+      { label: "Surface detectors", value: "507, spaced 1.2 km apart", sources: [{ label: "The surface detector array of the Telescope Array experiment, Nucl. Instrum. Meth. A 689, 87 (2012)", url: "https://doi.org/10.1016/j.nima.2012.05.079" }] },
+      { label: "Array area", value: "About 700 km²", sources: [{ label: "The surface detector array of the Telescope Array experiment, Nucl. Instrum. Meth. A 689, 87 (2012)", url: "https://doi.org/10.1016/j.nima.2012.05.079" }] },
+    ],
+    history: [
+      { year: 2008, event: "The surface detector array begins operating.", sources: [{ label: "The surface detector array of the Telescope Array experiment, Nucl. Instrum. Meth. A 689, 87 (2012)", url: "https://doi.org/10.1016/j.nima.2012.05.079" }] },
+      { year: 2014, event: "The collaboration reports a 'hotspot', a cluster of cosmic rays above 57 EeV in the northern sky.", sources: [{ label: "Telescope Array Collaboration, Astrophys. J. Lett. 790, L21 (2014)", url: "https://doi.org/10.1088/2041-8205/790/2/L21" }] },
+      { year: 2021, event: "On 27 May 2021 the surface array records a cosmic ray with an energy of about 244 EeV.", sources: [{ label: "Telescope Array Collaboration, Science 382, 903 (2023)", url: "https://doi.org/10.1126/science.abo5095" }] },
+    ],
+    experiments: [
+      { id: 'ta-sd', name: "Surface detector array", description: "507 plastic scintillator stations measuring the particles of extensive air showers at ground level.", topics: ['cosmic-rays'], startYear: 2008, sources: [{ label: "The surface detector array of the Telescope Array experiment, Nucl. Instrum. Meth. A 689, 87 (2012)", url: "https://doi.org/10.1016/j.nima.2012.05.079" }] },
+    ],
+    keyResults: [
+      { year: 2023, discovery: "An Extremely Energetic Cosmic Ray", description: "The 244 EeV event arrived from the direction of the Local Void, where no obvious source is known.", sources: [{ label: "Telescope Array Collaboration, Science 382, 903 (2023)", url: "https://doi.org/10.1126/science.abo5095" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "http://www.telescopearray.org" },
+    ],
+  },
+  {
+    id: 'geo600',
+    name: "GEO600",
+    type: 'gravitational-wave-observatory',
+    country: "Germany",
+    lat: 52.2469,
+    lng: 9.8083,
+    founded: 1995,
+    status: 'active',
+    overview: "GEO600 is a German-British gravitational-wave detector with 600-metre arms near Ruthe, about 20 km south of Hannover. Smaller than LIGO and Virgo, it has served as the test bed for techniques now used in all large detectors, including signal recycling, monolithic mirror suspensions and squeezed light.",
+    specs: [
+      { label: "Arm length", value: "600 m", sources: [{ label: "GEO600: A brief history of GEO600", url: "https://www.geo600.org/23920/a-brief-history-of-geo600" }] },
+    ],
+    history: [
+      { year: 1995, event: "Construction of the detector starts in September 1995.", sources: [{ label: "GEO600: A brief history of GEO600", url: "https://www.geo600.org/23920/a-brief-history-of-geo600" }] },
+      { year: 2002, event: "GEO600 takes its first scientific data in August and September 2002, together with the LIGO detectors.", sources: [{ label: "GEO600: A brief history of GEO600", url: "https://www.geo600.org/23920/a-brief-history-of-geo600" }] },
+      { year: 2011, event: "GEO600 becomes the first gravitational-wave observatory to operate with squeezed light, beating the quantum shot-noise limit.", sources: [{ label: "LIGO Scientific Collaboration, Nature Physics 7, 962 (2011)", url: "https://doi.org/10.1038/nphys2083" }] },
+    ],
+    experiments: [
+      { id: 'geo600-det', name: "GEO600 interferometer", description: "Michelson interferometer with 600-m arms, using signal recycling and squeezed light.", topics: ['gravitational-waves'], startYear: 2002, sources: [{ label: "GEO600: A brief history of GEO600", url: "https://www.geo600.org/23920/a-brief-history-of-geo600" }, { label: "GEO600", url: "https://www.geo600.org/" }] },
+    ],
+    keyResults: [
+      { year: 2011, discovery: "Observing Beyond the Quantum Shot-Noise Limit", description: "Injecting squeezed light into the interferometer improved its sensitivity beyond the limit set by quantum fluctuations of the laser light.", sources: [{ label: "LIGO Scientific Collaboration, Nature Physics 7, 962 (2011)", url: "https://doi.org/10.1038/nphys2083" }] },
+    ],
+    importantPeople: [
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.geo600.org" },
+    ],
+  },
+  {
+    id: 'riken-ribf',
+    name: "RIKEN RIBF",
+    fullName: "RIKEN RI Beam Factory",
+    type: 'rare-isotope-facility',
+    country: "Japan",
+    lat: 35.779,
+    lng: 139.614,
+    founded: 2006,
+    status: 'active',
+    overview: "The RI Beam Factory at the RIKEN Nishina Center in Wako, near Tokyo, produces beams of unstable nuclei of all elements up to uranium. Its final accelerator is the world's first superconducting ring cyclotron. RIKEN's team also synthesised element 113, nihonium, the first element discovered in Asia.",
+    specs: [
+      { label: "Uranium beam energy", value: "345 MeV per nucleon", sources: [{ label: "RIKEN Nishina Center: About RIBF", url: "https://www.nishina.riken.jp/facility/RIBFabout_e.html" }] },
+      { label: "Superconducting ring cyclotron", value: "8,300 tonnes, the first of its kind", sources: [{ label: "RIKEN Nishina Center: About RIBF", url: "https://www.nishina.riken.jp/facility/RIBFabout_e.html" }] },
+    ],
+    history: [
+      { year: 2004, event: "Kosuke Morita's team synthesises the first atom of element 113 in July 2004 by fusing zinc and bismuth.", sources: [{ label: "Morita et al., J. Phys. Soc. Jpn. 73, 2593 (2004)", url: "https://doi.org/10.1143/JPSJ.73.2593" }, { label: "RIKEN: Element 113 officially named nihonium (2016)", url: "https://www.riken.jp/en/pr/topics/2016/20161130_1/" }] },
+      { year: 2016, event: "The name nihonium (Nh) for element 113 is formally approved in November 2016.", sources: [{ label: "RIKEN: Element 113 officially named nihonium (2016)", url: "https://www.riken.jp/en/pr/topics/2016/20161130_1/" }] },
+    ],
+    experiments: [
+      { id: 'ribf-bigrips', name: "BigRIPS", description: "Superconducting separator that selects and identifies rare isotopes produced from the cyclotron beams.", topics: ['rare-isotopes', 'nuclear-structure'], sources: [{ label: "Kubo et al., BigRIPS separator, Prog. Theor. Exp. Phys. 2012, 03C003", url: "https://doi.org/10.1093/ptep/pts064" }, { label: "RIKEN Nishina Center: About RIBF", url: "https://www.nishina.riken.jp/facility/RIBFabout_e.html" }] },
+    ],
+    keyResults: [
+      { year: 2004, discovery: "Synthesis of Element 113 (Nihonium)", description: "The fusion of zinc-70 with bismuth-209 produced element 113, later recognised as the first element discovered in Asia.", sources: [{ label: "Morita et al., J. Phys. Soc. Jpn. 73, 2593 (2004)", url: "https://doi.org/10.1143/JPSJ.73.2593" }, { label: "RIKEN: The discovery of element 113", url: "https://www.riken.jp/en/about/history/story/113/" }] },
+    ],
+    importantPeople: [
+      { name: "Kosuke Morita", contribution: "Led the RIKEN team that synthesised element 113, nihonium.", sources: [{ label: "Morita et al., J. Phys. Soc. Jpn. 73, 2593 (2004)", url: "https://doi.org/10.1143/JPSJ.73.2593" }, { label: "RIKEN: Element 113 officially named nihonium (2016)", url: "https://www.riken.jp/en/pr/topics/2016/20161130_1/" }] },
+    ],
+    readMore: [
+      { label: "Official Site", url: "https://www.nishina.riken.jp/index_e.html" },
     ],
   },
 ];
