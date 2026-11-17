@@ -16,12 +16,12 @@ import {
   LabelCollection,
   LabelStyle,
   Math as CesiumMath,
-  NearFarScalar,
   PerspectiveFrustum,
   PointPrimitiveCollection,
   Rectangle,
   SceneTransforms,
   ScreenSpaceEventHandler,
+  CallbackProperty,
   ScreenSpaceEventType,
   TileMapServiceImageryProvider,
   UrlTemplateImageryProvider,
@@ -170,8 +170,28 @@ const LABEL_VISIBLE_WITHIN = new DistanceDisplayCondition(0, LABEL_MAX_DISTANCE)
 // another. A few times a second the labels are laid out again and any that
 // would cover an already placed one is hidden until the view opens up.
 const LABEL_DECLUTTER_MS = 150;
-const LABEL_CHAR_WIDTH = 7.6;
-const LABEL_HEIGHT = 26;
+const LABEL_CHAR_WIDTH = 8.2;
+const LABEL_HEIGHT = 28;
+// Cesium draws each label from a bitmap rendered at its font size, then
+// scales that bitmap by the screen's pixel density, which blurs text on
+// high-resolution screens. Rendering every label at twice the size and
+// drawing it at half scale keeps text sharp on screens up to 2× density.
+const TEXT_SCALE = 0.5;
+const FONT_FAMILY = '"Inter Variable", Inter, sans-serif';
+/** A CSS font at TEXT_SCALE's inverse, so `size` is the size seen on screen. */
+function labelFont(weight: number, size: number, italic = false): string {
+  return `${italic ? 'italic ' : ''}${weight} ${size / TEXT_SCALE}px ${FONT_FAMILY}`;
+}
+// The facility a visitor has opened keeps a larger name in its type's
+// colour and a pulsing ring, so it stays easy to find among the imagery's
+// own place names when zoomed in.
+const FACILITY_LABEL_FONT = labelFont(600, 14);
+const SELECTED_LABEL_FONT = labelFont(700, 16);
+const SELECTED_CHAR_WIDTH_FACTOR = 1.18;
+const FACILITY_LABEL_PADDING = new Cartesian2(16, 10);
+const SELECTED_LABEL_PADDING = new Cartesian2(20, 12);
+const FACILITY_LABEL_BACKGROUND = Color.BLACK.withAlpha(0.72);
+const RING_PERIOD_MS = 1800;
 const LABEL_GAP = 4;
 // Keep markers visible over 3D terrain when viewed from nearby.
 const MARKER_DEPTH_TEST_DISTANCE = 1_500_000;
@@ -207,18 +227,18 @@ function createMarker(viewer: Viewer, facility: Facility): MarkerEntities {
     },
     label: {
       text: facility.name,
-      font: '600 13px "Inter Variable", Inter, sans-serif',
+      font: FACILITY_LABEL_FONT,
+      scale: TEXT_SCALE,
       fillColor: Color.WHITE,
       style: LabelStyle.FILL,
       showBackground: true,
-      backgroundColor: Color.BLACK.withAlpha(0.72),
-      backgroundPadding: new Cartesian2(8, 5),
+      backgroundColor: FACILITY_LABEL_BACKGROUND,
+      backgroundPadding: FACILITY_LABEL_PADDING,
       verticalOrigin: VerticalOrigin.BOTTOM,
       pixelOffset: new Cartesian2(0, -14),
       heightReference: HeightReference.CLAMP_TO_GROUND,
       disableDepthTestDistance: MARKER_DEPTH_TEST_DISTANCE,
       distanceDisplayCondition: LABEL_VISIBLE_WITHIN,
-      scaleByDistance: new NearFarScalar(2_000, 1.1, 3_000_000, 0.85),
     },
   });
 
@@ -253,17 +273,17 @@ const PLACE_STYLES: Record<
   PlaceKind,
   { font: string; color: Color; charWidth: number; height: number; upper?: boolean }
 > = {
-  ocean: { font: 'italic 500 14px "Inter Variable", Inter, sans-serif', color: WATER_COLOR, charWidth: 7.6, height: 16 },
-  sea: { font: 'italic 500 11px "Inter Variable", Inter, sans-serif', color: WATER_COLOR, charWidth: 6, height: 13 },
+  ocean: { font: labelFont(500, 14, true), color: WATER_COLOR, charWidth: 7.6, height: 16 },
+  sea: { font: labelFont(500, 11, true), color: WATER_COLOR, charWidth: 6, height: 13 },
   country: {
-    font: '600 11px "Inter Variable", Inter, sans-serif',
+    font: labelFont(600, 11),
     color: Color.WHITE.withAlpha(0.8),
     charWidth: 7.4,
     height: 13,
     upper: true,
   },
-  capital: { font: '600 11px "Inter Variable", Inter, sans-serif', color: Color.WHITE.withAlpha(0.92), charWidth: 6.4, height: 13 },
-  city: { font: '500 11px "Inter Variable", Inter, sans-serif', color: Color.WHITE.withAlpha(0.8), charWidth: 6.2, height: 13 },
+  capital: { font: labelFont(600, 11), color: Color.WHITE.withAlpha(0.92), charWidth: 6.4, height: 13 },
+  city: { font: labelFont(500, 11), color: Color.WHITE.withAlpha(0.8), charWidth: 6.2, height: 13 },
 };
 const CITY_DOT_COLOR = Color.WHITE.withAlpha(0.85);
 
@@ -291,9 +311,10 @@ function createPlaceNames(labels: LabelCollection, dots: PointPrimitiveCollectio
       position,
       text,
       font: style.font,
+      scale: TEXT_SCALE,
       fillColor: style.color,
       outlineColor: PLACE_OUTLINE,
-      outlineWidth: 3,
+      outlineWidth: 3 / TEXT_SCALE,
       style: LabelStyle.FILL_AND_OUTLINE,
       horizontalOrigin: isTown ? HorizontalOrigin.LEFT : HorizontalOrigin.CENTER,
       verticalOrigin: VerticalOrigin.CENTER,
@@ -333,6 +354,8 @@ export default function Globe() {
   const markersRef = useRef(new Map<string, MarkerEntities>());
   const isFlyingRef = useRef(false);
   const ionReadyRef = useRef(false);
+  // The pulsing ring drawn round the facility that is open in the panel.
+  const selectionRingRef = useRef<Entity | null>(null);
   const [failed, setFailed] = useState(false);
 
   const selectedFacilityId = useGlobeStore((s) => s.selectedFacilityId);
@@ -394,7 +417,13 @@ export default function Globe() {
         fullscreenButton: false,
         infoBox: false,
         selectionIndicator: false,
+        // Render at the screen's real pixel density rather than the
+        // browser's lower "recommended" one, which made the globe and its
+        // text look soft on high-resolution screens. Capped at 2× so very
+        // dense phone screens don't slow older devices.
+        useBrowserRecommendedResolution: false,
       });
+      viewer.resolutionScale = Math.min(1, 2 / (window.devicePixelRatio || 1));
     } catch (error) {
       // Most often: WebGL is unavailable or blocked on this device.
       console.error('Globe failed to start:', error);
@@ -490,9 +519,15 @@ export default function Globe() {
       facilityByEntity.set(marker.core, facility);
       facilityByEntity.set(marker.halo, facility);
     }
+
     const facilityAt = (windowPosition: Cartesian2): Facility | undefined => {
       const picked = scene.pick(windowPosition);
-      return picked && picked.id instanceof Entity ? facilityByEntity.get(picked.id) : undefined;
+      if (!picked || !(picked.id instanceof Entity)) return undefined;
+      // The ring sits over the selected marker, so a pick of it means that facility.
+      if (picked.id === selectionRingRef.current) {
+        return facilities.find((f) => f.id === selectedIdRef.current);
+      }
+      return facilityByEntity.get(picked.id);
     };
 
     // ── Framing ──
@@ -598,7 +633,9 @@ export default function Globe() {
 
         let visible = false;
         if (point) {
-          const halfWidth = (facility.name.length * LABEL_CHAR_WIDTH) / 2 + 8 + LABEL_GAP;
+          const charWidth =
+            LABEL_CHAR_WIDTH * (facility.id === selectedId ? SELECTED_CHAR_WIDTH_FACTOR : 1);
+          const halfWidth = (facility.name.length * charWidth) / 2 + 10 + LABEL_GAP;
           const box = {
             left: point.x - halfWidth,
             right: point.x + halfWidth,
@@ -745,6 +782,7 @@ export default function Globe() {
       window.removeEventListener('pointerup', onPointerUp);
       viewer.canvas.removeEventListener('wheel', markInteraction);
       markers.clear();
+      selectionRingRef.current = null;
       placeLabels.removeAll();
       placeDots.removeAll();
       viewerRef.current = null;
@@ -784,6 +822,48 @@ export default function Globe() {
       isFlyingRef.current = false;
     };
     camera.flyTo({ destination, duration: 2.6, complete: done, cancel: done });
+  }, [selectedFacilityId]);
+
+  // ── Highlight the selected facility: ring, and a larger name in its colour ──
+  useEffect(() => {
+    const ring = selectionRingRef.current;
+    const facility = facilities.find((f) => f.id === selectedFacilityId);
+    for (const [id, marker] of markersRef.current) {
+      const label = marker.core.label;
+      if (!label) continue;
+      const selected = id === selectedFacilityId;
+      const color = TYPE_COLORS[facilities.find((f) => f.id === id)!.type];
+      label.font = (selected ? SELECTED_LABEL_FONT : FACILITY_LABEL_FONT) as never;
+      label.fillColor = (selected ? Color.BLACK : Color.WHITE) as never;
+      label.backgroundColor = (selected ? color : FACILITY_LABEL_BACKGROUND) as never;
+      label.backgroundPadding = (selected ? SELECTED_LABEL_PADDING : FACILITY_LABEL_PADDING) as never;
+      label.pixelOffset = new Cartesian2(0, selected ? -18 : -14) as never;
+    }
+    // A new ring for each selection: it grows and fades continuously, like a
+    // sonar ping, in the facility's type colour. Created afresh at the
+    // facility each time: a single ring added hidden and moved later did
+    // not reliably appear.
+    const viewer = viewerRef.current;
+    if (!viewer) return;
+    if (ring) viewer.entities.remove(ring);
+    selectionRingRef.current = null;
+    if (!facility) return;
+    const color = TYPE_COLORS[facility.type];
+    const phase = () => (performance.now() % RING_PERIOD_MS) / RING_PERIOD_MS;
+    const scratch = new Color();
+    selectionRingRef.current = viewer.entities.add({
+      position: Cartesian3.fromDegrees(facility.lng, facility.lat),
+      point: {
+        pixelSize: new CallbackProperty(() => 14 + 30 * phase(), false),
+        color: color.withAlpha(0.02),
+        outlineColor: new CallbackProperty(
+          () => Color.clone(color, scratch).withAlpha(0.95 * (1 - phase()), scratch),
+          false
+        ),
+        outlineWidth: 2.5,
+        disableDepthTestDistance: MARKER_DEPTH_TEST_DISTANCE,
+      },
+    });
   }, [selectedFacilityId]);
 
   // ── Filter highlight ──
