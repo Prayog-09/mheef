@@ -110,6 +110,14 @@ export default function TopBar() {
         >
           All facilities
         </a>
+        {/* Hidden on phones, where the search box needs the room; the
+            facilities page links to it too. */}
+        <a
+          href={withBase('/about/')}
+          className="hidden whitespace-nowrap text-xs font-medium text-white/60 transition-colors hover:text-white sm:inline"
+        >
+          About
+        </a>
       </div>
 
       <div className="pointer-events-auto relative min-w-0 flex-1 sm:w-72 sm:flex-none" ref={containerRef}>

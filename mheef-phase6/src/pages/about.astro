@@ -1,0 +1,221 @@
+---
+import Base from '../layouts/Base.astro';
+import { facilities } from '../data/facilities';
+import { facilityPagePath, withBase } from '../utils/paths';
+
+// Figures are counted from the dataset at build time, so this page never
+// drifts from what the site actually holds.
+const facts = facilities.flatMap((f) => [
+  ...f.history,
+  ...f.experiments,
+  ...f.keyResults,
+  ...f.importantPeople,
+]);
+const sourcedFacts = facts.filter((fact) => fact.sources && fact.sources.length > 0).length;
+const specCount = facilities.reduce((sum, f) => sum + (f.specs?.length ?? 0), 0);
+const reviewedCount = facilities.filter((f) => f.reviewed).length;
+const countries = new Set(facilities.flatMap((f) => f.country.split(' / ')));
+const sourceUrls = new Set(
+  [...facts.flatMap((fact) => fact.sources ?? []), ...facilities.flatMap((f) => f.specs ?? []).flatMap((s) => s.sources)].map(
+    (source) => source.url
+  )
+);
+const doiCount = [...sourceUrls].filter((url) => url.includes('doi.org/')).length;
+
+const withImages = [...facilities]
+  .filter((f) => f.images && f.images.length > 0)
+  .sort((a, b) => a.name.localeCompare(b.name));
+const imageCount = withImages.reduce((sum, f) => sum + (f.images?.length ?? 0), 0);
+
+const figures = [
+  { value: facilities.length, label: 'facilities' },
+  { value: countries.size, label: 'countries and territories' },
+  { value: `${sourcedFacts} of ${facts.length}`, label: 'entries cite a source' },
+  { value: sourceUrls.size, label: 'distinct sources, ' + doiCount + ' of them DOIs' },
+];
+
+const sectionHeading = 'text-xs font-semibold uppercase tracking-[0.2em] text-accent-300';
+const link = 'text-accent-300 underline decoration-accent-300/40 underline-offset-2 hover:text-white';
+const prose = 'mt-4 max-w-3xl space-y-4 text-sm leading-relaxed text-white/70';
+---
+
+<Base
+  title="About"
+  description="How the MHEEF atlas is put together: what it covers, how each fact is sourced, what has not yet been checked, and where its maps and photographs come from."
+>
+  <h1 class="text-3xl font-semibold tracking-tight">About MHEEF</h1>
+  <p class="mt-4 max-w-3xl text-base leading-relaxed text-white/75">
+    MHEEF — Mapping High Energy Experimental Facilities — is an atlas of the places where
+    high-energy physics is done: accelerator laboratories, underground laboratories, neutrino,
+    cosmic-ray and gamma-ray observatories, gravitational-wave detectors and nuclear physics
+    facilities, past, present and planned. It is meant for students meeting the field for the first
+    time, for researchers who want a quick, sourced reference, and for instructors who teach with it.
+  </p>
+
+  <dl class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+    {
+      figures.map((figure) => (
+        <div class="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3">
+          <dd class="text-lg font-semibold text-white">{figure.value}</dd>
+          <dt class="mt-0.5 text-xs text-white/50">{figure.label}</dt>
+        </div>
+      ))
+    }
+  </dl>
+
+  <nav aria-label="On this page" class="mt-10 flex flex-wrap gap-x-5 gap-y-2 border-y border-white/10 py-3 text-xs">
+    <a href="#method" class="text-white/55 hover:text-white">How facts are checked</a>
+    <a href="#limits" class="text-white/55 hover:text-white">What is not yet checked</a>
+    <a href="#data" class="text-white/55 hover:text-white">Download the data</a>
+    <a href="#corrections" class="text-white/55 hover:text-white">Corrections</a>
+    <a href="#credits" class="text-white/55 hover:text-white">Maps and photographs</a>
+  </nav>
+
+  <section aria-labelledby="method" class="mt-12">
+    <h2 id="method" class={sectionHeading}>How facts are checked</h2>
+    <div class={prose}>
+      <p>
+        Every dated history entry, experiment, key result, person and key figure on a facility page
+        lists the source it was checked against, shown directly beneath it. Where possible the
+        source is the original paper (by its DOI) or the laboratory's own page; otherwise it is an
+        official news release, a conference paper or a reference work. Each source was checked when
+        its fact was added: DOIs against Crossref, other pages by opening and reading them. A few
+        sites refuse automated access; for those the source was confirmed from its title and a
+        search summary only. A fact that no available source supported was left out rather than
+        published unsourced, which is why some entries are shorter than others.
+      </p>
+      <p>
+        At present {sourcedFacts} of {facts.length} entries and all {specCount} key figures cite a
+        source. A check runs every time the site is built and stops the build if a key figure or
+        photograph has no source, or if a coordinate, year or link is malformed.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="limits" class="mt-12">
+    <h2 id="limits" class={sectionHeading}>What is not yet checked</h2>
+    <div class={prose}>
+      <p>The atlas is an early version, and readers should know where its limits are:</p>
+      <ul class="list-disc space-y-2 pl-5">
+        <li>
+          <strong class="font-semibold text-white/85">Specialist review.</strong>{' '}
+          {reviewedCount === 0
+            ? 'No facility page has yet been reviewed by someone who works in that area.'
+            : `${reviewedCount} of ${facilities.length} facility pages have been reviewed by someone who works in that area.`}{' '}
+          Each page says whether it has been reviewed.
+        </li>
+        <li>
+          <strong class="font-semibold text-white/85">Overviews, coordinates and founding years</strong>{' '}
+          are not individually sourced. Coordinates mark the site in general, not a particular
+          building or detector.
+        </li>
+        <li>
+          <strong class="font-semibold text-white/85">Coverage.</strong> The list of facilities is
+          growing and is not complete; a facility's absence says nothing about its importance.
+        </li>
+        <li>
+          <strong class="font-semibold text-white/85">Planned facilities</strong> change: dates and
+          specifications for machines not yet built are as published at the time of writing.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="data" class="mt-12">
+    <h2 id="data" class={sectionHeading}>Download the data</h2>
+    <div class={prose}>
+      <p>The full dataset is available for reuse and checking:</p>
+      <ul class="space-y-2">
+        <li>
+          <a href={withBase('/data/facilities.json')} class={link}>facilities.json</a> — every record
+          in full, with all history, experiments, results, people, key figures, photographs and
+          their sources.
+        </li>
+        <li>
+          <a href={withBase('/data/facilities.csv')} class={link}>facilities.csv</a> — one row per
+          facility (name, type, status, country, coordinates, founding year, topics, experiments),
+          for spreadsheets.
+        </li>
+      </ul>
+      <p>
+        The source files, one per facility, are in the{' '}
+        <a href="https://github.com/Prayog-09/mheef" class={link}>project's GitHub repository</a>.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="corrections" class="mt-12">
+    <h2 id="corrections" class={sectionHeading}>Corrections</h2>
+    <div class={prose}>
+      <p>
+        Errors and missing sources are welcome. Every facility page has a “Suggest a correction”
+        link that opens a pre-filled issue on GitHub; please include a source for the correction.
+        You can also{' '}
+        <a href="https://github.com/Prayog-09/mheef/issues" class={link}>browse or open issues</a>{' '}
+        directly.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="credits" class="mt-12">
+    <h2 id="credits" class={sectionHeading}>Maps and photographs</h2>
+    <div class={prose}>
+      <p>The globe is drawn with <a href="https://cesium.com/platform/cesiumjs/" class={link}>CesiumJS</a> from these layers:</p>
+      <ul class="list-disc space-y-2 pl-5">
+        <li>
+          <a href="https://www.naturalearthdata.com/" class={link}>Natural Earth</a> (public domain):
+          the base map and the country, sea and city names drawn when zoomed out.
+        </li>
+        <li>
+          NASA Blue Marble, served by{' '}
+          <a href="https://earthdata.nasa.gov/gibs" class={link}>NASA GIBS</a>: the satellite view of
+          the whole Earth.
+        </li>
+        <li>
+          <a href="https://cesium.com/platform/cesium-ion/" class={link}>Cesium ion</a>: aerial
+          imagery, its place names and terrain when zoomed in. Their providers are listed under
+          “Data attribution” on the globe.
+        </li>
+      </ul>
+      <p>
+        {imageCount} photographs appear on {withImages.length} facility pages. All are openly
+        licensed and come from{' '}
+        <a href="https://commons.wikimedia.org/" class={link}>Wikimedia Commons</a>; each is credited
+        beneath it on its page, and listed here with its licence and source.
+      </p>
+    </div>
+
+    <ul class="mt-6 divide-y divide-white/10 border-y border-white/10 text-sm">
+      {
+        withImages.map((facility) => (
+          <li class="grid gap-x-6 gap-y-1 py-3 sm:grid-cols-[12rem_minmax(0,1fr)]">
+            <a href={facilityPagePath(facility.id)} class="font-medium text-white/85 hover:text-accent-300">
+              {facility.name}
+            </a>
+            <ul class="space-y-1 text-xs leading-relaxed text-white/55">
+              {facility.images!.map((image) => (
+                <li>
+                  {image.caption}{' '}
+                  <span class="text-white/40">
+                    Photo:{' '}
+                    <a href={image.sourceUrl} class="text-white/65 underline decoration-white/25 underline-offset-2 hover:text-accent-300">
+                      {image.credit}
+                    </a>
+                    {' · '}
+                    {image.licenseUrl ? (
+                      <a href={image.licenseUrl} class="underline decoration-white/25 underline-offset-2 hover:text-accent-300">
+                        {image.license}
+                      </a>
+                    ) : (
+                      image.license
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

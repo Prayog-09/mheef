@@ -22,6 +22,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const navLinks = [
   { href: withBase('/'), label: 'Globe' },
   { href: withBase('/facilities/'), label: 'Facilities' },
+  { href: withBase('/about/'), label: 'About' },
 ];
 ---
 
@@ -73,12 +74,19 @@ const navLinks = [
             <div class="mx-auto w-full max-w-4xl px-6 py-6 text-xs leading-relaxed text-white/45">
               <p>
                 MHEEF — Mapping High Energy Experimental Facilities. An early version: some entries
-                are still being reviewed, and corrections are welcome through the
+                are still being reviewed, and corrections are welcome through the{' '}
                 <a
                   href="https://github.com/Prayog-09/mheef/issues"
                   class="text-white/70 underline decoration-white/30 underline-offset-2 hover:text-white"
                   >project's issue tracker</a
                 >.
+              </p>
+              <p class="mt-2">
+                <a href={withBase('/about/')} class="text-white/70 underline decoration-white/30 underline-offset-2 hover:text-white">How facts are checked</a>
+                {' · '}
+                <a href={withBase('/data/facilities.json')} class="text-white/70 underline decoration-white/30 underline-offset-2 hover:text-white">Data (JSON)</a>
+                {' · '}
+                <a href={withBase('/data/facilities.csv')} class="text-white/70 underline decoration-white/30 underline-offset-2 hover:text-white">Data (CSV)</a>
               </p>
             </div>
           </footer>
