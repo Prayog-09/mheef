@@ -236,10 +236,16 @@ type PlaceRecord = [PlaceKind, string, number, number, number];
 const PLACE_ZOOM_HEIGHT = 70_000_000;
 // Drawing order, which is also who wins when two names would overlap.
 const PLACE_PRIORITY: Record<PlaceKind, number> = { ocean: 0, country: 1, sea: 2, capital: 3, city: 4 };
-// Once labelled aerial imagery is on screen the site's own names fade out
-// between these camera distances, so the two sets don't print twice.
-const OWN_NAMES_FADE = new NearFarScalar(1_200_000, 0, 2_000_000, 1);
-const OWN_NAMES_HIDDEN_BELOW = 1_200_000;
+// Only one source of place names is ever on screen. The labelled aerial
+// imagery takes over from the site's own names once the aerial layer has
+// fully faded in, and hands back a little higher up; the gap stops the two
+// flickering when the camera hovers at the boundary.
+const LABELLED_BELOW = ION_FADE_END;
+const LABELLED_ABOVE = 1_050_000;
+// While the incoming layer's tiles load, the outgoing one stays underneath
+// (for at most this long) so the ground never flashes back to Blue Marble.
+const LAYER_SWAP_MIN_MS = 300;
+const LAYER_SWAP_MAX_MS = 4000;
 
 const PLACE_OUTLINE = Color.BLACK.withAlpha(0.75);
 const WATER_COLOR = Color.fromCssColorString('#a5cdea').withAlpha(0.85);
@@ -475,7 +481,6 @@ export default function Globe() {
     const placeLabels = scene.primitives.add(new LabelCollection({ scene })) as LabelCollection;
     const placeDots = scene.primitives.add(new PointPrimitiveCollection()) as PointPrimitiveCollection;
     const placeNames = createPlaceNames(placeLabels, placeDots);
-    let ownNamesFading = false;
 
     const markers = markersRef.current;
     const facilityByEntity = new Map<Entity, Facility>();
@@ -569,8 +574,8 @@ export default function Globe() {
     const windowScratch = new Cartesian2();
     const toCamera = new Cartesian3();
     const normalScratch = new Cartesian3();
-    // The labelled imagery is in use only while the switch is on.
-    const ionLabelledActive = () => ionLabelledLayer !== null && ionLayer !== null && showPlaceNamesRef.current;
+    // Whether names printed in the aerial imagery are currently on screen.
+    const labelledOnScreen = () => ionLabelledLayer !== null && ionLabelledLayer.show;
     const declutterLabels = () => {
       const placed: { left: number; right: number; top: number; bottom: number }[] = [];
       const selectedId = selectedIdRef.current;
@@ -637,16 +642,7 @@ export default function Globe() {
         return Cartesian3.dot(Cartesian3.normalize(position, normalScratch), toCamera) > 0.3;
       };
       const height = camera.positionCartographic.height;
-      const namesOn =
-        showPlaceNamesRef.current && !(ionLabelledActive() && height < OWN_NAMES_HIDDEN_BELOW);
-      const fading = namesOn && ionLabelledActive();
-      if (fading !== ownNamesFading) {
-        ownNamesFading = fading;
-        for (const place of placeNames) {
-          place.label.translucencyByDistance = (fading ? OWN_NAMES_FADE : undefined) as never;
-          if (place.dot) place.dot.translucencyByDistance = (fading ? OWN_NAMES_FADE : undefined) as never;
-        }
-      }
+      const namesOn = showPlaceNamesRef.current && !labelledOnScreen();
       const width = viewer.canvas.clientWidth;
       const canvasHeight = viewer.canvas.clientHeight;
       for (const place of placeNames) {
@@ -678,6 +674,9 @@ export default function Globe() {
 
     // ── Per-frame: label layout, idle rotation and the ion imagery cross-fade ──
     let lastTick = performance.now();
+    let useLabelled = false;
+    let swapOut: ImageryLayer | null = null;
+    let swapStarted = 0;
     const removeTick = scene.preUpdate.addEventListener(() => {
       const now = performance.now();
       const deltaSeconds = Math.min((now - lastTick) / 1000, 0.1);
@@ -695,15 +694,32 @@ export default function Globe() {
           0,
           1
         );
-        // Only one of the two aerial layers is shown (and downloaded) at a time.
-        const labelled = ionLabelledActive();
-        for (const [layer, active] of [
-          [ionLayer, !labelled],
-          [ionLabelledLayer, labelled],
-        ] as const) {
-          if (!layer) continue;
-          layer.show = active && alpha > 0;
-          layer.alpha = alpha;
+        // One of the two aerial layers is in use; the other is shown only
+        // briefly, underneath, while the one in use loads after a swap.
+        const namesSwitchOn = showPlaceNamesRef.current;
+        const wantLabelled =
+          ionLabelledLayer !== null &&
+          namesSwitchOn &&
+          height <= (useLabelled ? LABELLED_ABOVE : LABELLED_BELOW);
+        if (wantLabelled !== useLabelled) {
+          // Turning the switch off removes the names at once.
+          swapOut = namesSwitchOn ? (useLabelled ? ionLabelledLayer : ionLayer) : null;
+          swapStarted = now;
+          useLabelled = wantLabelled;
+        }
+        const active = useLabelled && ionLabelledLayer ? ionLabelledLayer : ionLayer;
+        const other = active === ionLayer ? ionLabelledLayer : ionLayer;
+        active.show = alpha > 0;
+        active.alpha = alpha;
+        if (other) {
+          const elapsed = now - swapStarted;
+          const keep =
+            other === swapOut &&
+            elapsed < LAYER_SWAP_MAX_MS &&
+            (elapsed < LAYER_SWAP_MIN_MS || !scene.globe.tilesLoaded);
+          if (!keep) swapOut = null;
+          other.show = keep && alpha > 0;
+          other.alpha = alpha;
         }
       }
 
