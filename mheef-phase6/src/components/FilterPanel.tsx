@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronUp, SlidersHorizontal, X } from 'lucide-react';
+import { ChevronUp, MapPinned, SlidersHorizontal, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { facilities } from '../data/facilities';
 import { useGlobeStore } from '../store/useGlobeStore';
@@ -141,6 +141,8 @@ export default function FilterPanel() {
   const toggleStatusFilter = useGlobeStore((s) => s.toggleStatusFilter);
   const toggleTypeFilter = useGlobeStore((s) => s.toggleTypeFilter);
   const clearFilters = useGlobeStore((s) => s.clearFilters);
+  const showPlaceNames = useGlobeStore((s) => s.showPlaceNames);
+  const togglePlaceNames = useGlobeStore((s) => s.togglePlaceNames);
   const [expanded, setExpanded] = useState(false);
   const isMobile = useMediaQuery(MOBILE_QUERY);
 
@@ -183,14 +185,33 @@ export default function FilterPanel() {
     </button>
   );
 
+  // Country, sea and city names on the globe. Facility names are not
+  // affected. The choice is remembered in the visitor's browser.
+  const placeNamesButton = (
+    <button
+      onClick={togglePlaceNames}
+      aria-pressed={showPlaceNames}
+      title={showPlaceNames ? 'Hide country, sea and city names' : 'Show country, sea and city names'}
+      className={`pointer-events-auto flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-wide backdrop-blur-md transition-colors ${
+        showPlaceNames
+          ? 'border-accent-400/40 bg-accent-400/15 text-accent-300 hover:border-accent-400/60'
+          : 'border-white/15 bg-black/50 text-white/60 hover:border-white/30 hover:text-white/85'
+      }`}
+    >
+      <MapPinned className="h-3.5 w-3.5" aria-hidden="true" />
+      Place names
+    </button>
+  );
+
   // ── Mobile: a single floating button that opens a centered modal ─────
   // (per the Phase 5 brief: "collapse into a single button that opens a
   // modal on small screens"), instead of the desktop's inline panel.
   if (isMobile) {
     return (
       <>
-        <div className="pointer-events-none fixed bottom-6 left-6 z-10">
+        <div className="pointer-events-none fixed bottom-6 left-6 z-10 flex items-center gap-2">
           <div className="pointer-events-auto">{toggleButton}</div>
+          {placeNamesButton}
         </div>
 
         <AnimatePresence>
@@ -293,7 +314,10 @@ export default function FilterPanel() {
         )}
       </AnimatePresence>
 
-      <div className="pointer-events-auto">{toggleButton}</div>
+      <div className="flex items-center gap-2">
+        <div className="pointer-events-auto">{toggleButton}</div>
+        {placeNamesButton}
+      </div>
     </div>
   );
 }

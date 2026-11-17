@@ -56,6 +56,20 @@ at site scale.
    `CESIUM_ION_TOKEN` (Settings → Secrets and variables → Actions →
    Variables), then re-run the deploy workflow.
 
+The site uses two ion assets: 2 (aerial imagery) and 3 (aerial imagery with
+place names, used when the visitor's "Place names" switch is on). If the
+token is limited to chosen assets, include both; without asset 3 the site
+keeps drawing its own names when zoomed in.
+
+### Place names
+
+Country, sea and city names on the globe come from
+[Natural Earth](https://www.naturalearthdata.com/) (public domain), stored
+in `src/data/placeNames.json`. To refresh them, download the GeoJSON files
+listed at the top of `scripts/build-place-names.ts` and run
+`node scripts/build-place-names.ts <folder>`. Visitors can hide the names
+with the "Place names" switch; the choice is remembered in their browser.
+
 ## Pages
 
 | Address | What it is |

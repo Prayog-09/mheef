@@ -12,6 +12,25 @@ export interface ActiveFilters {
 
 const EMPTY_FILTERS: ActiveFilters = { topics: [], statuses: [], types: [] };
 
+// The place-names switch is remembered in the visitor's own browser. Storage
+// can be missing or blocked (private windows, strict settings), so every
+// access is guarded and the default is "on".
+const PLACE_NAMES_KEY = 'mheef.placeNames';
+function readPlaceNames(): boolean {
+  try {
+    return window.localStorage.getItem(PLACE_NAMES_KEY) !== 'off';
+  } catch {
+    return true;
+  }
+}
+function savePlaceNames(on: boolean): void {
+  try {
+    window.localStorage.setItem(PLACE_NAMES_KEY, on ? 'on' : 'off');
+  } catch {
+    // Not remembered; the switch still works for this visit.
+  }
+}
+
 interface GlobeState {
   /** Facility currently focused by camera fly-to and side panel. */
   selectedFacilityId: string | null;
@@ -28,6 +47,10 @@ interface GlobeState {
   toggleStatusFilter: (status: FacilityStatus) => void;
   toggleTypeFilter: (type: FacilityType) => void;
   clearFilters: () => void;
+
+  /** Whether country, sea and city names are drawn on the globe. */
+  showPlaceNames: boolean;
+  togglePlaceNames: () => void;
 }
 
 export const useGlobeStore = create<GlobeState>((set) => ({
@@ -64,4 +87,11 @@ export const useGlobeStore = create<GlobeState>((set) => ({
     }),
 
   clearFilters: () => set({ activeFilters: EMPTY_FILTERS }),
+
+  showPlaceNames: readPlaceNames(),
+  togglePlaceNames: () =>
+    set((state) => {
+      savePlaceNames(!state.showPlaceNames);
+      return { showPlaceNames: !state.showPlaceNames };
+    }),
 }));

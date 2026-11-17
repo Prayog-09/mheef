@@ -4,17 +4,21 @@ import {
   Cartesian2,
   Cartesian3,
   Color,
+  Credit,
   DistanceDisplayCondition,
   Entity,
   GeographicTilingScheme,
   HeightReference,
+  HorizontalOrigin,
   ImageryLayer,
   Ion,
   IonImageryProvider,
+  LabelCollection,
   LabelStyle,
   Math as CesiumMath,
   NearFarScalar,
   PerspectiveFrustum,
+  PointPrimitiveCollection,
   Rectangle,
   SceneTransforms,
   ScreenSpaceEventHandler,
@@ -33,6 +37,7 @@ import { FACILITY_TYPE_COLORS } from '../types/facility';
 import type { Facility, FacilityStub, FacilityType } from '../types/facility';
 import { facilities } from '../data/facilities';
 import { facilityMatchesFilters } from '../utils/filters';
+import placeNameData from '../data/placeNames.json';
 
 // Phase 8 — the globe is now CesiumJS rather than a hand-built three.js
 // sphere. Cesium streams map tiles and loads more detail as the camera
@@ -46,7 +51,15 @@ import { facilityMatchesFilters } from '../utils/filters';
 //      account or key. The default look, sharp to about 500 m per pixel.
 //   3. Cesium ion aerial imagery plus 3D terrain — only when a token is
 //      configured, and only shown once the camera is close enough to
-//      need it, which also keeps ion usage down.
+//      need it, which also keeps ion usage down. There are two versions of
+//      the aerial imagery, with and without place names printed on it;
+//      the "Place names" switch picks between them.
+//
+// Place names come from two sources. From far out, the site draws its own
+// country, sea and city names (Natural Earth data, src/data/placeNames.json).
+// Close in, the labelled aerial imagery takes over, since it names far more
+// places than could be bundled. Without ion, the site's own names stay on
+// at every height.
 
 const ION_TOKEN = import.meta.env.PUBLIC_CESIUM_ION_TOKEN?.trim() ?? '';
 const HAS_ION = ION_TOKEN.length > 0;
@@ -84,6 +97,9 @@ function createBlueMarbleProvider(): UrlTemplateImageryProvider {
 // Camera heights (metres) between which ion imagery fades in over Blue Marble.
 const ION_FADE_START = 2_500_000;
 const ION_FADE_END = 900_000;
+// ion asset ids: aerial imagery without and with place names.
+const ION_AERIAL = 2;
+const ION_AERIAL_WITH_LABELS = 3;
 
 // ─── Camera ───────────────────────────────────────────────────────────────────
 
@@ -209,6 +225,99 @@ function createMarker(viewer: Viewer, facility: Facility): MarkerEntities {
   return { core, halo };
 }
 
+// ─── Place names ──────────────────────────────────────────────────────────────
+
+type PlaceKind = 'ocean' | 'sea' | 'country' | 'capital' | 'city';
+type PlaceRecord = [PlaceKind, string, number, number, number];
+
+// Natural Earth gives each name the web-map zoom level at which it should
+// first appear. Converted to a camera height: zoom 2 ≈ 17,500 km,
+// zoom 4 ≈ 4,400 km, zoom 6 ≈ 1,100 km.
+const PLACE_ZOOM_HEIGHT = 70_000_000;
+// Drawing order, which is also who wins when two names would overlap.
+const PLACE_PRIORITY: Record<PlaceKind, number> = { ocean: 0, country: 1, sea: 2, capital: 3, city: 4 };
+// Once labelled aerial imagery is on screen the site's own names fade out
+// between these camera distances, so the two sets don't print twice.
+const OWN_NAMES_FADE = new NearFarScalar(1_200_000, 0, 2_000_000, 1);
+const OWN_NAMES_HIDDEN_BELOW = 1_200_000;
+
+const PLACE_OUTLINE = Color.BLACK.withAlpha(0.75);
+const WATER_COLOR = Color.fromCssColorString('#a5cdea').withAlpha(0.85);
+const PLACE_STYLES: Record<
+  PlaceKind,
+  { font: string; color: Color; charWidth: number; height: number; upper?: boolean }
+> = {
+  ocean: { font: 'italic 500 14px "Inter Variable", Inter, sans-serif', color: WATER_COLOR, charWidth: 7.6, height: 16 },
+  sea: { font: 'italic 500 11px "Inter Variable", Inter, sans-serif', color: WATER_COLOR, charWidth: 6, height: 13 },
+  country: {
+    font: '600 11px "Inter Variable", Inter, sans-serif',
+    color: Color.WHITE.withAlpha(0.8),
+    charWidth: 7.4,
+    height: 13,
+    upper: true,
+  },
+  capital: { font: '600 11px "Inter Variable", Inter, sans-serif', color: Color.WHITE.withAlpha(0.92), charWidth: 6.4, height: 13 },
+  city: { font: '500 11px "Inter Variable", Inter, sans-serif', color: Color.WHITE.withAlpha(0.8), charWidth: 6.2, height: 13 },
+};
+const CITY_DOT_COLOR = Color.WHITE.withAlpha(0.85);
+
+interface PlaceName {
+  kind: PlaceKind;
+  text: string;
+  position: Cartesian3;
+  /** Highest camera height (metres) at which the name is shown. */
+  maxHeight: number;
+  label: ReturnType<LabelCollection['add']>;
+  dot?: ReturnType<PointPrimitiveCollection['add']>;
+  shown: boolean;
+}
+
+function createPlaceNames(labels: LabelCollection, dots: PointPrimitiveCollection): PlaceName[] {
+  const records = (placeNameData as PlaceRecord[])
+    .slice()
+    .sort((a, b) => PLACE_PRIORITY[a[0]] - PLACE_PRIORITY[b[0]] || a[4] - b[4]);
+  return records.map(([kind, name, lat, lng, minZoom]) => {
+    const style = PLACE_STYLES[kind];
+    const position = Cartesian3.fromDegrees(lng, lat);
+    const isTown = kind === 'capital' || kind === 'city';
+    const text = style.upper ? name.toUpperCase() : name;
+    const label = labels.add({
+      position,
+      text,
+      font: style.font,
+      fillColor: style.color,
+      outlineColor: PLACE_OUTLINE,
+      outlineWidth: 3,
+      style: LabelStyle.FILL_AND_OUTLINE,
+      horizontalOrigin: isTown ? HorizontalOrigin.LEFT : HorizontalOrigin.CENTER,
+      verticalOrigin: VerticalOrigin.CENTER,
+      pixelOffset: isTown ? new Cartesian2(6, 0) : Cartesian2.ZERO,
+      disableDepthTestDistance: MARKER_DEPTH_TEST_DISTANCE,
+      show: false,
+    });
+    const dot = isTown
+      ? dots.add({
+          position,
+          pixelSize: kind === 'capital' ? 4.5 : 3.5,
+          color: CITY_DOT_COLOR,
+          outlineColor: PLACE_OUTLINE,
+          outlineWidth: 1,
+          disableDepthTestDistance: MARKER_DEPTH_TEST_DISTANCE,
+          show: false,
+        })
+      : undefined;
+    return {
+      kind,
+      text,
+      position,
+      maxHeight: PLACE_ZOOM_HEIGHT / 2 ** minZoom,
+      label,
+      dot,
+      shown: false,
+    };
+  });
+}
+
 // ─── Globe ────────────────────────────────────────────────────────────────────
 
 export default function Globe() {
@@ -223,6 +332,9 @@ export default function Globe() {
   const selectedFacilityId = useGlobeStore((s) => s.selectedFacilityId);
   const setSelectedFacilityId = useGlobeStore((s) => s.setSelectedFacilityId);
   const activeFilters = useGlobeStore((s) => s.activeFilters);
+  const showPlaceNames = useGlobeStore((s) => s.showPlaceNames);
+  const showPlaceNamesRef = useRef(showPlaceNames);
+  showPlaceNamesRef.current = showPlaceNames;
 
   // The viewer's event handlers are registered once, so they read the
   // current selection through a ref rather than a stale closure.
@@ -301,19 +413,35 @@ export default function Globe() {
     // and for good if the token is rejected, the globe is exactly the
     // Blue Marble globe a token-less build shows.
     let ionLayer: ImageryLayer | null = null;
+    let ionLabelledLayer: ImageryLayer | null = null;
+    // Clipped short of the poles: beyond its coverage the aerial imagery's
+    // edge pixels smear all the way to the pole, hiding Blue Marble's
+    // proper polar imagery underneath.
+    const createIonLayer = (provider: IonImageryProvider) =>
+      new ImageryLayer(provider, {
+        rectangle: Rectangle.fromDegrees(-180, -POLAR_LATITUDE, 180, POLAR_LATITUDE),
+        show: false,
+      });
     if (HAS_ION) {
-      // Asset 2 is ion's global aerial imagery.
-      IonImageryProvider.fromAssetId(2)
+      // The labelled version is optional: if the token cannot use it, the
+      // site's own names simply stay on when zoomed in.
+      IonImageryProvider.fromAssetId(ION_AERIAL_WITH_LABELS)
         .then((provider) => {
           if (viewer.isDestroyed()) return;
-          // Clipped short of the poles: beyond its coverage the aerial
-          // imagery's edge pixels smear all the way to the pole, hiding
-          // Blue Marble's proper polar imagery underneath.
-          ionLayer = new ImageryLayer(provider, {
-            rectangle: Rectangle.fromDegrees(-180, -POLAR_LATITUDE, 180, POLAR_LATITUDE),
-            show: false,
-          });
+          ionLabelledLayer = createIonLayer(provider);
+          viewer.imageryLayers.add(ionLabelledLayer);
+        })
+        .catch((error) => {
+          console.warn('Labelled aerial imagery unavailable; place names stay drawn by the site.', error);
+        });
+
+      IonImageryProvider.fromAssetId(ION_AERIAL)
+        .then((provider) => {
+          if (viewer.isDestroyed()) return;
+          ionLayer = createIonLayer(provider);
           viewer.imageryLayers.add(ionLayer);
+          // Keep the labelled layer, if already there, on top.
+          if (ionLabelledLayer) viewer.imageryLayers.raiseToTop(ionLabelledLayer);
           ionReadyRef.current = true;
           scene.screenSpaceCameraController.minimumZoomDistance = VIEW_LIMITS.ion.minZoom;
           // A facility opened before ion finished loading (e.g. from a
@@ -342,6 +470,12 @@ export default function Globe() {
           console.warn('Cesium ion terrain unavailable; the globe stays smooth.', error);
         });
     }
+
+    viewer.creditDisplay.addStaticCredit(new Credit('Place names: Natural Earth'));
+    const placeLabels = scene.primitives.add(new LabelCollection({ scene })) as LabelCollection;
+    const placeDots = scene.primitives.add(new PointPrimitiveCollection()) as PointPrimitiveCollection;
+    const placeNames = createPlaceNames(placeLabels, placeDots);
+    let ownNamesFading = false;
 
     const markers = markersRef.current;
     const facilityByEntity = new Map<Entity, Facility>();
@@ -433,6 +567,10 @@ export default function Globe() {
     );
     const labelShown = new Map<string, boolean>();
     const windowScratch = new Cartesian2();
+    const toCamera = new Cartesian3();
+    const normalScratch = new Cartesian3();
+    // The labelled imagery is in use only while the switch is on.
+    const ionLabelledActive = () => ionLabelledLayer !== null && ionLayer !== null && showPlaceNamesRef.current;
     const declutterLabels = () => {
       const placed: { left: number; right: number; top: number; bottom: number }[] = [];
       const selectedId = selectedIdRef.current;
@@ -478,6 +616,63 @@ export default function Globe() {
           label.show = visible as never;
         }
       }
+
+      // Place names never cover a facility marker or name.
+      const cameraPosition = camera.positionWC;
+      const isFacing = (position: Cartesian3) =>
+        Cartesian3.dot(position, Cartesian3.subtract(cameraPosition, position, toCamera)) > 0;
+      for (const position of labelPositions.values()) {
+        if (!isFacing(position)) continue;
+        const point = SceneTransforms.worldToWindowCoordinates(scene, position, windowScratch);
+        if (point) {
+          placed.push({ left: point.x - 9, right: point.x + 9, top: point.y - 9, bottom: point.y + 9 });
+        }
+      }
+
+      // Names close to the globe's edge are skipped: foreshortened and
+      // half off the disc, they are hard to read.
+      const facesCamera = (position: Cartesian3) => {
+        Cartesian3.subtract(cameraPosition, position, toCamera);
+        Cartesian3.normalize(toCamera, toCamera);
+        return Cartesian3.dot(Cartesian3.normalize(position, normalScratch), toCamera) > 0.3;
+      };
+      const height = camera.positionCartographic.height;
+      const namesOn =
+        showPlaceNamesRef.current && !(ionLabelledActive() && height < OWN_NAMES_HIDDEN_BELOW);
+      const fading = namesOn && ionLabelledActive();
+      if (fading !== ownNamesFading) {
+        ownNamesFading = fading;
+        for (const place of placeNames) {
+          place.label.translucencyByDistance = (fading ? OWN_NAMES_FADE : undefined) as never;
+          if (place.dot) place.dot.translucencyByDistance = (fading ? OWN_NAMES_FADE : undefined) as never;
+        }
+      }
+      const width = viewer.canvas.clientWidth;
+      const canvasHeight = viewer.canvas.clientHeight;
+      for (const place of placeNames) {
+        let visible = false;
+        if (namesOn && height <= place.maxHeight && facesCamera(place.position)) {
+          const point = SceneTransforms.worldToWindowCoordinates(scene, place.position, windowScratch);
+          if (point && point.x > -50 && point.x < width + 50 && point.y > -20 && point.y < canvasHeight + 20) {
+            const style = PLACE_STYLES[place.kind];
+            const textWidth = place.text.length * style.charWidth;
+            const isTown = place.kind === 'capital' || place.kind === 'city';
+            const box = isTown
+              ? { left: point.x - 4, right: point.x + 8 + textWidth, top: point.y - style.height / 2 - 2, bottom: point.y + style.height / 2 + 2 }
+              : { left: point.x - textWidth / 2 - 4, right: point.x + textWidth / 2 + 4, top: point.y - style.height / 2 - 2, bottom: point.y + style.height / 2 + 2 };
+            visible = !placed.some(
+              (other) =>
+                box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top
+            );
+            if (visible) placed.push(box);
+          }
+        }
+        if (place.shown !== visible) {
+          place.shown = visible;
+          place.label.show = visible;
+          if (place.dot) place.dot.show = visible;
+        }
+      }
     };
     let lastDeclutter = 0;
 
@@ -500,8 +695,16 @@ export default function Globe() {
           0,
           1
         );
-        ionLayer.show = alpha > 0;
-        ionLayer.alpha = alpha;
+        // Only one of the two aerial layers is shown (and downloaded) at a time.
+        const labelled = ionLabelledActive();
+        for (const [layer, active] of [
+          [ionLayer, !labelled],
+          [ionLabelledLayer, labelled],
+        ] as const) {
+          if (!layer) continue;
+          layer.show = active && alpha > 0;
+          layer.alpha = alpha;
+        }
       }
 
       const idle =
@@ -526,6 +729,8 @@ export default function Globe() {
       window.removeEventListener('pointerup', onPointerUp);
       viewer.canvas.removeEventListener('wheel', markInteraction);
       markers.clear();
+      placeLabels.removeAll();
+      placeDots.removeAll();
       viewerRef.current = null;
       ionReadyRef.current = false;
       viewer.destroy();
