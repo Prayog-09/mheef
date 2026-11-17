@@ -118,7 +118,7 @@ facts cite a source and how many facilities have been reviewed.
 ## Folder structure
 
 ```
-mheef-phase6/
+mheef-phase7/
 ├── astro.config.mjs                 # Site address, base path, integrations
 ├── scripts/copy-cesium.mjs          # Copies Cesium's runtime files into public/
 ├── scripts/validate-data.ts         # Checks the dataset before every build
