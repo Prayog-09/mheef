@@ -13,6 +13,7 @@ import {
   formatYears,
 } from '../../utils/facility';
 import { facilityGlobePath, facilityPagePath, withBase } from '../../utils/paths';
+import { CITATION_AUTHOR, CITATION_YEAR, CONTENT_LICENSE, SITE_TITLE } from '../../utils/citation';
 
 // One static page per facility, generated at build time from the dataset.
 export const getStaticPaths = (() =>
@@ -79,6 +80,8 @@ const reviewedOn = facility.reviewed
 const correctionUrl = `https://github.com/Prayog-09/mheef/issues/new?title=${encodeURIComponent(
   `Correction: ${facility.name}`
 )}`;
+
+const pageUrl = new URL(facilityPagePath(facility.id), Astro.site).href;
 
 const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-accent-300';
 ---
@@ -332,6 +335,23 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
           >Suggest a correction</a
         >.
       </p>
+      <div class="mt-4 border-t border-white/10 pt-4">
+        <p class="text-xs text-white/45">Cite this page</p>
+        <p class="mt-1 text-sm leading-relaxed text-white/80">
+          {CITATION_AUTHOR} ({CITATION_YEAR}). {facility.name}. In <em>{SITE_TITLE}</em>. {pageUrl} (accessed
+          [date]).
+        </p>
+        <p class="mt-2 text-xs text-white/45">
+          Text and data:{' '}
+          <a
+            href={CONTENT_LICENSE.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-white/65 underline decoration-white/25 underline-offset-2 hover:text-accent-300"
+            >{CONTENT_LICENSE.name}</a
+          >. For a particular fact, also cite the source given beneath it.
+        </p>
+      </div>
     </section>
   </article>
 

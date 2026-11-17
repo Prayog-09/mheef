@@ -31,3 +31,10 @@ next.
 This is an early version. The dataset covers 70 facilities and some
 entries are still being verified; corrections are welcome through the
 repository's issue tracker.
+
+## Licence and citation
+
+Code: MIT (`LICENSE`). Text and data: CC BY 4.0 (`LICENSE-CONTENT.md`,
+which also lists what keeps its own licence — photographs, map imagery and
+place names). To cite the atlas, see `CITATION.cff` or the "How to cite"
+section of the site's About page.

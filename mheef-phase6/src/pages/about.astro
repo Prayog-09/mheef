@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { facilities } from '../data/facilities';
 import { facilityPagePath, withBase } from '../utils/paths';
+import { CITATION_AUTHOR, CITATION_YEAR, CODE_LICENSE, CONTENT_LICENSE, SITE_TITLE } from '../utils/citation';
 
 // Figures are counted from the dataset at build time, so this page never
 // drifts from what the site actually holds.
@@ -33,6 +34,8 @@ const figures = [
   { value: `${sourcedFacts} of ${facts.length}`, label: 'entries cite a source' },
   { value: sourceUrls.size, label: 'distinct sources, ' + doiCount + ' of them DOIs' },
 ];
+
+const homepage = new URL(withBase('/'), Astro.site).href;
 
 const sectionHeading = 'text-xs font-semibold uppercase tracking-[0.2em] text-accent-300';
 const link = 'text-accent-300 underline decoration-accent-300/40 underline-offset-2 hover:text-white';
@@ -67,6 +70,7 @@ const prose = 'mt-4 max-w-3xl space-y-4 text-sm leading-relaxed text-white/70';
     <a href="#method" class="text-white/55 hover:text-white">How facts are checked</a>
     <a href="#limits" class="text-white/55 hover:text-white">What is not yet checked</a>
     <a href="#data" class="text-white/55 hover:text-white">Download the data</a>
+    <a href="#cite" class="text-white/55 hover:text-white">How to cite</a>
     <a href="#corrections" class="text-white/55 hover:text-white">Corrections</a>
     <a href="#credits" class="text-white/55 hover:text-white">Maps and photographs</a>
   </nav>
@@ -140,6 +144,31 @@ const prose = 'mt-4 max-w-3xl space-y-4 text-sm leading-relaxed text-white/70';
       <p>
         The source files, one per facility, are in the{' '}
         <a href="https://github.com/Prayog-09/mheef" class={link}>project's GitHub repository</a>.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="cite" class="mt-12">
+    <h2 id="cite" class={sectionHeading}>How to cite and reuse</h2>
+    <div class={prose}>
+      <p>To cite the atlas as a whole:</p>
+      <p class="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-white/85">
+        {CITATION_AUTHOR} ({CITATION_YEAR}). <em>{SITE_TITLE}</em>. {homepage} (accessed [date]).
+      </p>
+      <p>
+        Each facility page gives a citation for that page. Where you rely on a particular fact,
+        please also cite the source listed beneath it, which is the primary authority. Citation
+        details for reference managers are in{' '}
+        <a href="https://github.com/Prayog-09/mheef/blob/main/CITATION.cff" class={link}>CITATION.cff</a>.
+      </p>
+      <p>
+        The text and data are licensed under{' '}
+        <a href={CONTENT_LICENSE.url} class={link}>{CONTENT_LICENSE.name}</a>: you may reuse and
+        adapt them for any purpose, with credit. The code is under the{' '}
+        <a href={CODE_LICENSE.url} class={link}>{CODE_LICENSE.name} licence</a>. Photographs, map
+        imagery and place names keep their own licences, listed below; see{' '}
+        <a href="https://github.com/Prayog-09/mheef/blob/main/LICENSE-CONTENT.md" class={link}>LICENSE-CONTENT.md</a>{' '}
+        for the details.
       </p>
     </div>
   </section>
