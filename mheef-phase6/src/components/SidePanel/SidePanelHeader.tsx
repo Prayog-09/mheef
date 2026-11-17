@@ -7,17 +7,14 @@ interface SidePanelHeaderProps {
   facility: Facility;
 }
 
-// "Image placeholder" per the Phase 3 brief — the Phase 2 dataset has no
-// photo field yet. Phase 6+ extension point: add `imageUrl` to Facility
-// and swap this gradient block for a real <img>.
+// The panel opens straight onto the facility's name. Its photograph, where
+// there is one, is at the top of the Overview tab, so every facility's
+// header looks the same with or without a picture.
 export default function SidePanelHeader({ facility }: SidePanelHeaderProps) {
   return (
     <div className="shrink-0">
-      <div className="relative h-32 w-full overflow-hidden bg-gradient-to-br from-accent-500/30 via-space-900 to-space-950">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.25),transparent_60%)]" />
-      </div>
-
-      <div className="px-6 pb-3 pt-4">
+      {/* pr-14 keeps the status badge clear of the panel's close button. */}
+      <div className="px-6 pb-3 pr-14 pt-5">
         <div className="flex items-start justify-between gap-3">
           <h2 className="text-lg font-semibold text-white">{facility.name}</h2>
           <StatusBadge status={facility.status} />
