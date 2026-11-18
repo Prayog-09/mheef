@@ -236,10 +236,13 @@ traceable, every link works, and specialists have started reviewing.
   sentence that cannot be sourced.
 - *Done when:* the validator reports 100 % for overviews, coordinates and
   founding years, and the About page no longer lists them as unsourced.
-- *In progress (started 2026-11-18): 21 of 70 done* — CERN, Fermilab, SLAC,
+- *In progress (started 2026-11-18): 28 of 70 done* — CERN, Fermilab, SLAC,
   DESY, TRIUMF, Jefferson Lab; J-PARC, JINR, PSI, Frascati, Boulby,
   Berkeley Lab, Cornell; KEK, Brookhaven, GSI, FRIB, GANIL, VECC, RIKEN
-  RIBF, IUAC. VECC has no location source yet: its postal address (AF
+  RIBF, IUAC; Cavendish, Los Alamos, IHEP, Savannah River, SSC, Gran
+  Sasso, SNOLAB. Without a location source yet: Savannah River (the P
+  reactor is not on OpenStreetMap; needs a DOE site map), SSC (the former
+  campus is not mapped; needs a source for the site), and VECC: its postal address (AF
   Block, Sector I, Bidhannagar) and its OpenStreetMap point (AL Block,
   Sector II) disagree; settle which is the main campus before citing. Fields as built: `overviewSources`,
   `foundedBasis: { meaning, sources }` and `location: { represents,
@@ -290,11 +293,18 @@ traceable, every link works, and specialists have started reviewing.
     "world's most powerful" (not in any source found); GSI's "FAIR will
     collide heavy ions and antiprotons"; Brookhaven's "world leader";
     KEK's "50 times Belle's dataset" (the source gives 50 ab⁻¹ only).
+  - Batch 4 corrections: SNOLAB's 2004 is the start of excavation for the
+    expansion ("Construction began"), and "world's deepest clean-room
+    laboratory" was removed (no source); Gran Sasso's "world's largest
+    underground laboratory" became LNGS's own "world's leading underground
+    laboratory for neutrino and astroparticle physics"; IHEP's "a new
+    family of charged charmonium-like particles" became the single
+    Zc(3900); SSC's "part of the tunnel had been bored" removed (not
+    confirmed). SNOLAB's marker moved 1.1 km onto its surface building.
   - ar5iv.labs.arxiv.org/html/<arXiv id> gives an arXiv paper as HTML,
     useful for checking a claim in a long paper (no PDF tools here).
-  - Next batches: Cavendish, Los Alamos, IHEP, Savannah River, SSC; then
-    underground labs (Gran Sasso, SNOLAB, Kamioka, SURF, Modane, Canfranc,
-    CJPL, Baksan, Kolar Gold Fields, Soudan, SUPL, Yemilab, INO); then
+  - Next batches: underground labs (Kamioka, SURF, Modane, Canfranc, CJPL,
+    Baksan, Kolar Gold Fields, Soudan, SUPL, Yemilab, INO); then
     observatories and detectors.
 
 **7A-3 Record how each source was checked (M)**

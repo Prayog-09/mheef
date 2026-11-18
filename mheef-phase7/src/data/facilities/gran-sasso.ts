@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 42.4536,
   lng: 13.576,
   founded: 1987,
+  foundedBasis: { meaning: "completed", sources: [{ label: "Overview of the European Underground Facilities (arXiv:1102.0208)", url: "https://arxiv.org/abs/1102.0208" }] },
+  location: { represents: "The underground laboratory beside the Gran Sasso motorway tunnel", sources: [{ label: "LNGS: Overview (its map link gives 42.4527° N, 13.5735° E)", url: "https://www.lngs.infn.it/en/lngs-overview" }] },
   status: 'active',
-  overview: "The Laboratori Nazionali del Gran Sasso (LNGS) beneath the Apennine Mountains in central Italy is the world's largest underground research laboratory, with three experimental halls at 1,400 m rock overburden. Its extreme shielding from cosmic-ray muons makes it ideal for rare-event searches including neutrinoless double-beta decay, WIMP dark matter detection, solar neutrino spectroscopy, and neutrino oscillation studies using beams sent from CERN 730 km away.",
+  overview: "The Laboratori Nazionali del Gran Sasso (LNGS) of Italy's INFN lie beside the 10-kilometre motorway tunnel through the Gran Sasso massif, between L'Aquila and Teramo, under 1,400 m of rock that shields them from cosmic rays. The underground laboratory has three large experimental halls; their excavation began in 1982 and was completed in 1987. LNGS describes itself as the world's leading underground laboratory for neutrino and astroparticle physics, and its experiments have included OPERA, which detected tau neutrinos in a beam sent 730 km from CERN, BOREXINO, which measured the Sun's pp neutrinos, and the XENONnT dark matter search.",
+  overviewSources: [{ label: "LNGS: Overview", url: "https://www.lngs.infn.it/en/lngs-overview" }, { label: "Overview of the European Underground Facilities (arXiv:1102.0208)", url: "https://arxiv.org/abs/1102.0208" }, { label: "OPERA Collaboration, Phys. Lett. B 691, 138 (2010)", url: "https://doi.org/10.1016/j.physletb.2010.06.022" }, { label: "Borexino Collaboration, Nature 512, 383 (2014)", url: "https://doi.org/10.1038/nature13702" }, { label: "The XENONnT dark matter experiment, Eur. Phys. J. C 84, 784 (2024)", url: "https://doi.org/10.1140/epjc/s10052-024-12982-5" }],
   specs: [
     { label: "Rock overburden", value: "1,400 m", sources: [{ label: "LNGS: Overview", url: "https://www.lngs.infn.it/en/lngs-overview" }] },
     { label: "Cosmic-ray flux", value: "Reduced a million times by the rock", sources: [{ label: "LNGS: Overview", url: "https://www.lngs.infn.it/en/lngs-overview" }] },

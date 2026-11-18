@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 52.2035,
   lng: 0.1187,
   founded: 1874,
+  foundedBasis: { meaning: "established", sources: [{ label: "University of Cambridge, Department of Physics: Our history", url: "https://www.phy.cam.ac.uk/about/our-history/" }] },
+  location: { represents: "The original laboratory building on Free School Lane, Cambridge", sources: [{ label: "OpenStreetMap: Old Cavendish Laboratory", url: "https://www.openstreetmap.org/way/119569820" }] },
   status: 'historic',
-  overview: "The Cavendish Laboratory is the physics department of the University of Cambridge, opened in 1874 under James Clerk Maxwell. In its original building in the centre of Cambridge the electron and the neutron were discovered and the atomic nucleus was first split with artificially accelerated particles, making it one of the birthplaces of particle and nuclear physics. The laboratory moved to West Cambridge in 1974 and remains a working department; it is listed here for its historic role.",
+  overview: "The Cavendish Laboratory, the physics department of the University of Cambridge, opened in 1874 under James Clerk Maxwell, the first Cavendish Professor, on the New Museums Site on Free School Lane in central Cambridge. There J. J. Thomson discovered the electron in 1897, and in 1932 James Chadwick discovered the neutron while John Cockcroft and Ernest Walton split the atomic nucleus for the first time, using accelerated protons. The laboratory completed its move to a new site in West Cambridge in 1974 and remains a working department; it is listed here for its historic role, and its map point marks the original building.",
+  overviewSources: [{ label: "University of Cambridge, Department of Physics: Our history", url: "https://www.phy.cam.ac.uk/about/our-history/" }, { label: "J. J. Thomson, Cathode Rays, Phil. Mag. 44, 293 (1897)", url: "https://doi.org/10.1080/14786449708621070" }, { label: "J. Chadwick, Possible Existence of a Neutron, Nature 129, 312 (1932)", url: "https://doi.org/10.1038/129312a0" }, { label: "Cockcroft and Walton, Proc. R. Soc. A 137, 229 (1932)", url: "https://doi.org/10.1098/rspa.1932.0133" }],
   specs: [
   ],
   images: [

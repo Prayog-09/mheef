@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 35.869,
   lng: -106.257,
   founded: 1972,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "Los Alamos National Laboratory: 50 years of beaming", url: "https://www.lanl.gov/media/publications/1663/0922-50-years-of-beaming" }] },
+  location: { represents: "LANSCE, Technical Area 53, Los Alamos", sources: [{ label: "OpenStreetMap: TA-53 Los Alamos Neutron Science Center", url: "https://www.openstreetmap.org/relation/16012987" }] },
   status: 'active',
-  overview: "The Los Alamos Neutron Science Center is built around a half-mile-long proton linear accelerator, opened as the Los Alamos Meson Physics Facility. Its intense beams made it a centre for pion, muon and neutrino physics. The LSND experiment there reported an unexplained excess of electron antineutrinos that still drives searches for sterile neutrinos.",
+  overview: "The Los Alamos Neutron Science Center (LANSCE), at Los Alamos National Laboratory in New Mexico, is built around a half-mile-long proton linear accelerator. It opened in 1972 as the Los Alamos Meson Physics Facility (LAMPF), built to produce pions and their decay products, among them muons and muon neutrinos, and first reached its design energy of 800 MeV on 9 June that year. Its LSND experiment reported an excess of electron antineutrinos that standard three-neutrino oscillations cannot explain, hinting at additional, sterile neutrinos.",
+  overviewSources: [{ label: "Los Alamos National Laboratory: About LANSCE", url: "https://www.lanl.gov/science-engineering/science-facilities/lansce/about" }, { label: "Los Alamos National Laboratory: 50 years of beaming", url: "https://www.lanl.gov/media/publications/1663/0922-50-years-of-beaming" }, { label: "LSND Collaboration, Phys. Rev. D 64, 112007 (2001)", url: "https://doi.org/10.1103/PhysRevD.64.112007" }],
   specs: [
     { label: "Linear accelerator", value: "Half a mile long, 800 MeV protons", sources: [{ label: "Los Alamos National Laboratory: About LANSCE", url: "https://www.lanl.gov/science-engineering/science-facilities/lansce/about" }] },
   ],
