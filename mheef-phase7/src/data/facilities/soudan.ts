@@ -9,8 +9,10 @@ const facility: Facility = {
   lat: 47.82,
   lng: -92.242,
   founded: 1981,
+  location: { represents: "The Soudan Mine, Soudan, Minnesota", sources: [{ label: "OpenStreetMap: Soudan Mine", url: "https://www.openstreetmap.org/way/722791010" }] },
   status: 'historic',
-  overview: "The Soudan Underground Laboratory occupied a former iron mine in northern Minnesota, about 700 m below ground. It held the far detector of the MINOS experiment, which studied a neutrino beam sent 735 km through the Earth from Fermilab, and the CDMS II dark matter experiment.",
+  overview: "The Soudan Underground Laboratory in northern Minnesota held the far detector of the MINOS experiment, which measured a neutrino beam sent 735 km from Fermilab; in 2006 MINOS reported the disappearance of muon neutrinos between the two sites, confirming neutrino oscillations with an accelerator beam. The laboratory also hosted the CDMS II dark matter experiment, whose final results in 2010 included two candidate events consistent with background.",
+  overviewSources: [{ label: "MINOS Collaboration, Phys. Rev. Lett. 97, 191801 (2006)", url: "https://doi.org/10.1103/PhysRevLett.97.191801" }, { label: "The magnetized steel and scintillator calorimeters of the MINOS experiment (arXiv:0805.3170)", url: "https://arxiv.org/abs/0805.3170" }, { label: "CDMS II Collaboration, Science 327, 1619 (2010)", url: "https://doi.org/10.1126/science.1186112" }],
   specs: [
     { label: "MINOS far detector mass", value: "5,400 tons", sources: [{ label: "The magnetized steel and scintillator calorimeters of the MINOS experiment (arXiv:0805.3170)", url: "https://arxiv.org/abs/0805.3170" }] },
     { label: "Distance from Fermilab", value: "735 km", sources: [{ label: "MINOS Collaboration, Phys. Rev. Lett. 97, 191801 (2006)", url: "https://doi.org/10.1103/PhysRevLett.97.191801" }] },

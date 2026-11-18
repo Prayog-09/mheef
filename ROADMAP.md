@@ -236,11 +236,15 @@ traceable, every link works, and specialists have started reviewing.
   sentence that cannot be sourced.
 - *Done when:* the validator reports 100 % for overviews, coordinates and
   founding years, and the About page no longer lists them as unsourced.
-- *In progress (started 2026-11-18): 28 of 70 done* — CERN, Fermilab, SLAC,
+- *In progress (started 2026-11-18): 35 of 70 overviews, 34 years, 32
+  locations* — CERN, Fermilab, SLAC,
   DESY, TRIUMF, Jefferson Lab; J-PARC, JINR, PSI, Frascati, Boulby,
   Berkeley Lab, Cornell; KEK, Brookhaven, GSI, FRIB, GANIL, VECC, RIKEN
   RIBF, IUAC; Cavendish, Los Alamos, IHEP, Savannah River, SSC, Gran
-  Sasso, SNOLAB. Without a location source yet: Savannah River (the P
+  Sasso, SNOLAB; Kamioka, SURF, Modane, Canfranc, CJPL, Baksan, Soudan.
+  Soudan's 1981 (Soudan 1 in routine operation, August 1981) has no
+  readable source yet: soudan.umn.edu has a broken certificate and the
+  Minnesota DNR page blocks scripts. Without a location source yet: Savannah River (the P
   reactor is not on OpenStreetMap; needs a DOE site map), SSC (the former
   campus is not mapped; needs a source for the site), and VECC: its postal address (AF
   Block, Sector I, Bidhannagar) and its OpenStreetMap point (AL Block,
@@ -301,11 +305,23 @@ traceable, every link works, and specialists have started reviewing.
     family of charged charmonium-like particles" became the single
     Zc(3900); SSC's "part of the tunnel had been bored" removed (not
     confirmed). SNOLAB's marker moved 1.1 km onto its surface building.
+  - Batch 5 corrections: Kamioka's overview credited Super-Kamiokande with
+    the SN1987A neutrinos (it was Kamiokande; Super-K began in 1996) and
+    gave Hyper-K as "260,000 tonnes" (its own page gives 8.4 times Super-K's
+    fiducial mass); "one of the most productive" removed. SURF's "world
+    record" LZ claim became "the most stringent limits then achieved"
+    (2022). Modane's "one of the deepest in Europe" removed. Years now
+    labelled: Kamioka and Modane and Canfranc "First operation", Baksan
+    "Approved 1967" (29 June 1967), CJPL "Completed 2010" (inaugurated).
+    CJPL's marker moved 2.75 km onto the laboratory as mapped in
+    OpenStreetMap, in the Jinping II hydropower access tunnel.
+    Sanford Lab's "Our story" contradicts itself on Homestake's closing
+    year (2001 vs the year of Davis's 2002 Nobel); SURF history entry
+    "2002" should be rechecked in 7A-4.
   - ar5iv.labs.arxiv.org/html/<arXiv id> gives an arXiv paper as HTML,
     useful for checking a claim in a long paper (no PDF tools here).
-  - Next batches: underground labs (Kamioka, SURF, Modane, Canfranc, CJPL,
-    Baksan, Kolar Gold Fields, Soudan, SUPL, Yemilab, INO); then
-    observatories and detectors.
+  - Next batches: Kolar Gold Fields, SUPL, Yemilab, INO, Hyper-Kamiokande;
+    then observatories and detectors.
 
 **7A-3 Record how each source was checked (M)**
 - *Do:* add an optional `checked` field to `SourceRef`

@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 43.275,
   lng: 42.69,
   founded: 1967,
+  foundedBasis: { meaning: "approved", sources: [{ label: "CERN Courier: Baksan scales new neutrino heights (2017)", url: "https://cerncourier.com/a/baksan-scales-new-neutrino-heights/" }] },
+  location: { represents: "The observatory's site in the Baksan valley, by the village of Neutrino", sources: [{ label: "OpenStreetMap: Baksan Neutrino Observatory (БНО)", url: "https://www.openstreetmap.org/way/1504181774" }] },
   status: 'active',
-  overview: "The Baksan Neutrino Observatory is tunnelled into Mount Andyrchi in the Caucasus. Its gallium experiment SAGE measured low-energy neutrinos from the Sun for two decades. The same gallium was later used in the BEST experiment, which confirmed a puzzling shortfall, the gallium anomaly, in the neutrinos detected from an intense radioactive source.",
+  overview: "The Baksan Neutrino Observatory, operated by the Institute for Nuclear Research of the Russian Academy of Sciences, is tunnelled under Mount Andyrchi in the Baksan valley of the Northern Caucasus. The Soviet government gave the go-ahead to build it on 29 June 1967, and its first neutrino telescope started operation ten years later. Its gallium experiment SAGE published its first solar neutrino results in 1991 and measured the solar neutrino capture rate with data up to 2007; the same gallium was later used in the BEST experiment, which in 2022 confirmed a puzzling shortfall, the gallium anomaly, in the neutrinos detected from an intense radioactive source.",
+  overviewSources: [{ label: "CERN Courier: Baksan scales new neutrino heights (2017)", url: "https://cerncourier.com/a/baksan-scales-new-neutrino-heights/" }, { label: "SAGE Collaboration, Phys. Rev. Lett. 67, 3332 (1991)", url: "https://doi.org/10.1103/PhysRevLett.67.3332" }, { label: "SAGE Collaboration, Phys. Rev. C 80, 015807 (2009)", url: "https://doi.org/10.1103/PhysRevC.80.015807" }, { label: "BEST Collaboration, Phys. Rev. Lett. 128, 232501 (2022)", url: "https://doi.org/10.1103/PhysRevLett.128.232501" }],
   specs: [
   ],
   images: [

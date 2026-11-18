@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 42.775,
   lng: -0.529,
   founded: 1985,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "LSC: History", url: "https://lsc-canfranc.es/en/history/" }] },
+  location: { represents: "The underground laboratory beside the Somport tunnels", sources: [{ label: "OpenStreetMap: Laboratorio Subterráneo de Canfranc", url: "https://www.openstreetmap.org/way/1075274236" }] },
   status: 'active',
-  overview: "The Canfranc Underground Laboratory lies under Mount Tobazo on the Spanish side of the Pyrenees, between the Somport road tunnel and a disused railway tunnel. Its ANAIS-112 experiment uses sodium iodide crystals to test the annual-modulation signal claimed by DAMA/LIBRA with the same target material.",
+  overview: "The Canfranc Underground Laboratory (LSC) lies under Mount Tobazo in the Spanish Pyrenees. Underground experiments began there in 1985, when A. Morales and the University of Zaragoza's group started using an abandoned railway tunnel; a new hall was excavated in 1994 during work on the parallel Somport road tunnel, and the main laboratory, 800 m under Mount Tobazo, was completed in 2006. Its ANAIS-112 experiment uses sodium iodide crystals to test the annual-modulation signal claimed by DAMA/LIBRA, and found no modulation in three years of data.",
+  overviewSources: [{ label: "LSC: History", url: "https://lsc-canfranc.es/en/history/" }, { label: "ANAIS-112 Collaboration, Phys. Rev. Lett. 123, 031301 (2019)", url: "https://doi.org/10.1103/PhysRevLett.123.031301" }, { label: "ANAIS-112 Collaboration, Phys. Rev. D 103, 102005 (2021)", url: "https://doi.org/10.1103/PhysRevD.103.102005" }],
   specs: [
     { label: "Maximum depth", value: "800 m of rock", sources: [{ label: "Canfranc biology platform, Front. Phys. 12 (2024)", url: "https://doi.org/10.3389/fphy.2024.1397799" }] },
     { label: "ANAIS-112 overburden", value: "2,450 m water equivalent", sources: [{ label: "ANAIS-112 Collaboration, Phys. Rev. Lett. 123, 031301 (2019)", url: "https://doi.org/10.1103/PhysRevLett.123.031301" }] },
