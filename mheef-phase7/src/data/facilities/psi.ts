@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 47.5363,
   lng: 8.2225,
   founded: 1988,
+  foundedBasis: { meaning: "established", sources: [{ label: "PSI: The history of PSI", url: "https://www.psi.ch/en/about/history-of-psi" }] },
+  location: { represents: "The PSI site at Villigen", sources: [{ label: "INSPIRE-HEP institution record: PSI, Villigen", url: "https://inspirehep.net/institutions/905405" }] },
   status: 'active',
-  overview: "The Paul Scherrer Institute in Villigen is Switzerland's largest research institute for natural and engineering sciences. Its high-intensity proton accelerator supplies the world's most intense muon beams, used for precision tests of the Standard Model such as the size of the proton, the search for the decay of a muon into an electron and a photon, and the neutron's electric dipole moment.",
+  overview: "The Paul Scherrer Institute in Villigen, formed in 1988 by merging the Federal Institute for Reactor Research (EIR) and the Swiss Institute for Nuclear Research (SIN), is the largest research institute for natural and engineering sciences in Switzerland. Its HIPA proton accelerator delivers a 1.4 MW beam, with a current that holds the world record for a cyclotron-based facility, to targets that produce pions, muons and neutrons. These serve precision tests of the Standard Model, among them the measurement of the proton's size with muonic hydrogen, the MEG search for a muon decaying into an electron and a photon, and the measurement of the neutron's electric dipole moment with ultracold neutrons.",
+  overviewSources: [{ label: "PSI in brief", url: "https://www.psi.ch/en/about/psi-in-brief" }, { label: "PSI: The history of PSI", url: "https://www.psi.ch/en/about/history-of-psi" }, { label: "PSI: High Intensity Proton Accelerator Facility (HIPA)", url: "https://www.psi.ch/en/gfa/hipa" }, { label: "Pohl et al., Nature 466, 213 (2010)", url: "https://doi.org/10.1038/nature09250" }, { label: "MEG Collaboration, Eur. Phys. J. C 76, 434 (2016)", url: "https://doi.org/10.1140/epjc/s10052-016-4271-x" }, { label: "nEDM Collaboration, Phys. Rev. Lett. 124, 081803 (2020)", url: "https://doi.org/10.1103/PhysRevLett.124.081803" }],
   specs: [
   ],
   images: [

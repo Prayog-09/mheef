@@ -236,8 +236,9 @@ traceable, every link works, and specialists have started reviewing.
   sentence that cannot be sourced.
 - *Done when:* the validator reports 100 % for overviews, coordinates and
   founding years, and the About page no longer lists them as unsourced.
-- *In progress (started 2026-11-18): 6 of 70 done* — CERN, Fermilab, SLAC,
-  DESY, TRIUMF, Jefferson Lab. Fields as built: `overviewSources`,
+- *In progress (started 2026-11-18): 13 of 70 done* — CERN, Fermilab, SLAC,
+  DESY, TRIUMF, Jefferson Lab; J-PARC, JINR, PSI, Frascati, Boulby,
+  Berkeley Lab, Cornell. Fields as built: `overviewSources`,
   `foundedBasis: { meaning, sources }` and `location: { represents,
   sources }` (`lat`/`lng` stay where they are; 7B-1 need not move them).
   Rules adopted:
@@ -265,9 +266,19 @@ traceable, every link works, and specialists have started reviewing.
     leading centre", which is opinion. Both reworded to what the sources
     say. The 99.9999991 % LHC figure is for the 7 TeV design energy and
     was left out of CERN's new overview. Expect more of this in 7A-4.
-  - Next batches: the remaining INSPIRE-matched labs (J-PARC, JINR, PSI,
-    Frascati, GANIL, VECC, Boulby, Kamioka, SNOLAB, Berkeley Lab, Cornell,
-    Cavendish, Los Alamos, IHEP), then underground labs, then observatories.
+  - Check that an INSPIRE coordinate comes from a street address: records
+    with only a city or postcode are geocoded to the town centre (JINR,
+    Cornell). For those, an OpenStreetMap object for the site is cited as
+    the map source (openstreetmap.org/relation/<id>; found with Nominatim
+    search, one request per second, generic user agent).
+  - Frascati's year changed from 1954 to 1955: the lab's own page says
+    "Costruiti nel 1955" and the paper cited for 1954 does not give that
+    year. Some accounts give 1954; none was found that could be cited.
+  - ar5iv.labs.arxiv.org/html/<arXiv id> gives an arXiv paper as HTML,
+    useful for checking a claim in a long paper (no PDF tools here).
+  - Next batches: GANIL, VECC, Kamioka, SNOLAB, Cavendish, Los Alamos,
+    IHEP, Savannah River, KEK, Brookhaven, GSI, FRIB, IUAC, RIKEN; then
+    underground labs, then observatories.
 
 **7A-3 Record how each source was checked (M)**
 - *Do:* add an optional `checked` field to `SourceRef`

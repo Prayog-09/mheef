@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 36.445,
   lng: 140.606,
   founded: 2001,
+  foundedBasis: { meaning: "construction-start", sources: [{ label: "J-PARC: History", url: "https://j-parc.jp/c/en/about/history.html" }] },
+  location: { represents: "The J-PARC site at Tokai, Ibaraki", sources: [{ label: "INSPIRE-HEP institution record: J-PARC", url: "https://inspirehep.net/institutions/1279701" }] },
   status: 'active',
-  overview: "J-PARC in Tokai, on Japan's Pacific coast, is a high-intensity proton accelerator complex built jointly by KEK and the Japan Atomic Energy Agency. A linac and two synchrotrons deliver protons to facilities for neutrino physics, hadron physics and materials science. Its neutrino beam is aimed at the Super-Kamiokande detector 295 km away for the T2K experiment.",
+  overview: "J-PARC, the Japan Proton Accelerator Research Complex in Tokai village, Ibaraki, is a multi-purpose accelerator facility; its construction began in December 2001, after KEK and the Japan Atomic Energy Agency signed a cooperative agreement that April. A chain of three high-intensity proton accelerators (a 400 MeV linac, a 3 GeV rapid cycling synchrotron and a main ring synchrotron) supplies beams for materials and life science, hadron physics and neutrino physics. Its neutrino beam is measured near its source and again at the Super-Kamiokande detector, 295 km away, in the T2K experiment.",
+  overviewSources: [{ label: "J-PARC: History", url: "https://j-parc.jp/c/en/about/history.html" }, { label: "Hadron Physics at J-PARC (arXiv:1912.02380)", url: "https://arxiv.org/abs/1912.02380" }, { label: "J-PARC: About J-PARC", url: "https://j-parc.jp/c/en/about/index.html" }, { label: "The T2K experiment, Nucl. Instrum. Meth. A 659, 106 (2011)", url: "https://doi.org/10.1016/j.nima.2011.06.067" }],
   specs: [
     { label: "Main Ring proton energy", value: "30 GeV", sources: [{ label: "J-PARC: History", url: "https://j-parc.jp/c/en/about/history.html" }] },
     { label: "T2K baseline to Super-Kamiokande", value: "295 km", sources: [{ label: "The T2K experiment, Nucl. Instrum. Meth. A 659, 106 (2011)", url: "https://doi.org/10.1016/j.nima.2011.06.067" }] },

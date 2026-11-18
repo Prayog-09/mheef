@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 37.876,
   lng: -122.251,
   founded: 1931,
+  foundedBasis: { meaning: "established", sources: [{ label: "Berkeley Lab: History timeline", url: "https://www2.lbl.gov/Science-Articles/Archive/timeline.html" }] },
+  location: { represents: "Berkeley Lab, 1 Cyclotron Road, Berkeley", sources: [{ label: "INSPIRE-HEP institution record: LBNL, Berkeley", url: "https://inspirehep.net/institutions/1189711" }] },
   status: 'active',
-  overview: "Lawrence Berkeley National Laboratory grew from the Radiation Laboratory that Ernest Lawrence founded at the University of California in 1931 to develop his invention, the cyclotron. A succession of ever larger machines made it the model for the modern accelerator laboratory. Its cyclotrons produced the first elements beyond uranium, and its Bevatron revealed the antiproton.",
+  overview: "Lawrence Berkeley National Laboratory grew from the radiation laboratory that Ernest Lawrence set up on the University of California's Berkeley campus in 1931 to develop his invention, the cyclotron, for which he received the 1939 Nobel Prize in Physics. Neptunium and plutonium, the first elements beyond uranium, were discovered at the laboratory in 1940. Its Bevatron proton accelerator, completed in 1954, revealed the antiproton in 1955.",
+  overviewSources: [{ label: "Berkeley Lab: History timeline", url: "https://www2.lbl.gov/Science-Articles/Archive/timeline.html" }, { label: "Nobel Prize in Physics 1939", url: "https://www.nobelprize.org/prizes/physics/1939/summary/" }, { label: "Chamberlain, Segrè, Wiegand and Ypsilantis, Phys. Rev. 100, 947 (1955)", url: "https://doi.org/10.1103/PhysRev.100.947" }],
   specs: [
   ],
   images: [

@@ -8,9 +8,12 @@ const facility: Facility = {
   country: "Italy",
   lat: 41.8236,
   lng: 12.6736,
-  founded: 1954,
+  founded: 1955,
+  foundedBasis: { meaning: "established", sources: [{ label: "LNF: Chi siamo (About us, in Italian), “Costruiti nel 1955”", url: "https://w3.lnf.infn.it/chi-siamo/" }] },
+  location: { represents: "The laboratories on Via Enrico Fermi, Frascati", sources: [{ label: "INSPIRE-HEP institution record: Frascati", url: "https://inspirehep.net/institutions/902807" }] },
   status: 'active',
-  overview: "The Frascati National Laboratories near Rome were founded by INFN to host Italy's first accelerator, an electron synchrotron. In 1961 Bruno Touschek's group built AdA there, the first electron-positron storage ring, the ancestor of every later collider of matter and antimatter. The larger ADONE collider followed, and the laboratory now operates the DAFNE electron-positron collider.",
+  overview: "The Frascati National Laboratories (LNF), near Rome, were built in 1955 as Italy's first research centre for nuclear and subnuclear physics with accelerators, and are the largest laboratory of the Italian National Institute for Nuclear Physics (INFN). Accelerator building there began in 1957 with a 1.1 GeV electron synchrotron. AdA, proposed and led by Bruno Touschek, began operating in 1961 as the first electron-positron storage ring; it was followed by the larger ADONE collider (1969) and, in 2000, by the DAFNE electron-positron collider, which is still running.",
+  overviewSources: [{ label: "LNF: Chi siamo (About us, in Italian)", url: "https://w3.lnf.infn.it/chi-siamo/" }, { label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }, { label: "Overview of Beam Dynamics Studies at DAFNE (arXiv:0806.1105)", url: "https://arxiv.org/abs/0806.1105" }],
   specs: [
     { label: "DAFNE beam energy", value: "0.51 GeV per beam", sources: [{ label: "Overview of Beam Dynamics Studies at DAFNE (arXiv:0806.1105)", url: "https://arxiv.org/abs/0806.1105" }] },
   ],
@@ -28,7 +31,7 @@ const facility: Facility = {
     },
   ],
   history: [
-    { year: 1954, event: "The laboratory is founded to host a 1.1 GeV electron synchrotron, the first accelerator built in Italy.", sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }] },
+    { year: 1955, event: "The Frascati National Laboratories are built, Italy's first research centre for nuclear and subnuclear physics with accelerators; building accelerators there begins in 1957 with a 1.1 GeV electron synchrotron.", sources: [{ label: "LNF: Chi siamo (About us, in Italian)", url: "https://w3.lnf.infn.it/chi-siamo/" }] },
     { year: 1961, event: "AdA (Anello di Accumulazione), proposed by Bruno Touschek, starts to operate in February 1961 as the first electron-positron storage ring.", sources: [{ label: "Bruno Touschek and AdA: from Frascati to Orsay (arXiv:1805.09434)", url: "https://arxiv.org/abs/1805.09434" }, { label: "Touschek with AdA in Orsay and the first direct observation of electron-positron collisions (arXiv:1812.11847)", url: "https://arxiv.org/abs/1812.11847" }] },
     { year: 1962, event: "AdA is moved to Orsay in France, where a more intense injector allows the first direct observation of electron-positron collisions.", sources: [{ label: "Touschek with AdA in Orsay and the first direct observation of electron-positron collisions (arXiv:1812.11847)", url: "https://arxiv.org/abs/1812.11847" }] },
     { year: 2000, event: "The DAFNE electron-positron collider begins delivering collisions to the KLOE, FINUDA and DEAR experiments.", sources: [{ label: "Overview of Beam Dynamics Studies at DAFNE (arXiv:0806.1105)", url: "https://arxiv.org/abs/0806.1105" }] },

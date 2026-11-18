@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 42.445,
   lng: -76.473,
   founded: 1979,
+  foundedBasis: { meaning: "completed", sources: [{ label: "Cornell CLASSE: CESR", url: "https://www.classe.cornell.edu/public/CESR" }] },
+  location: { represents: "Wilson Synchrotron Laboratory, Cornell University, Ithaca", sources: [{ label: "OpenStreetMap: Wilson Synchrotron Laboratory", url: "https://www.openstreetmap.org/relation/6057493" }, { label: "INSPIRE-HEP institution record: Cornell U., CLASSE", url: "https://inspirehep.net/institutions/911093" }] },
   status: 'active',
-  overview: "Cornell University's Wilson Laboratory houses CESR, a 768-metre electron-positron storage ring completed in 1979. For three decades its CLEO detector was a leading source of knowledge about bottom quarks, including the first observations of rare 'penguin' decays. Collider physics ended in 2008 and the ring now serves as an X-ray source.",
+  overview: "The Cornell Electron Storage Ring (CESR), a 768-metre electron-positron ring buried beneath Alumni Field on the Cornell University campus in Ithaca, was completed in 1979. The CLEO detector recorded its collisions from 1979 to 2008, studying bottom and charm quarks, and in 1993 made the first observation of a 'penguin' decay of a B meson. CESR is now used as an X-ray source.",
+  overviewSources: [{ label: "Cornell CLASSE: CESR", url: "https://www.classe.cornell.edu/public/CESR" }, { label: "Cornell CLASSE: CLEO", url: "https://www.classe.cornell.edu/Research/CLEO/" }, { label: "CLEO Collaboration, Phys. Rev. Lett. 71, 674 (1993)", url: "https://doi.org/10.1103/PhysRevLett.71.674" }],
   specs: [
     { label: "CESR circumference", value: "768 m", sources: [{ label: "Cornell CLASSE: CESR", url: "https://www.classe.cornell.edu/public/CESR" }] },
   ],

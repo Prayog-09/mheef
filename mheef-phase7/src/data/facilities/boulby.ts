@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 54.553,
   lng: -0.825,
   founded: 1989,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
+  location: { represents: "Boulby Mine, near Loftus on the North Yorkshire coast", sources: [{ label: "INSPIRE-HEP institution record: Boulby Underground Laboratory", url: "https://inspirehep.net/institutions/1278962" }] },
   status: 'active',
-  overview: "The Boulby Underground Laboratory is the United Kingdom's deep underground science facility, 1.1 km below the North Yorkshire coast in a working mine. It has hosted dark matter searches for decades, including the ZEPLIN liquid-xenon experiments that were forerunners of LUX-ZEPLIN, and now also supports low-background measurement, earth science and astrobiology.",
+  overview: "The Boulby Underground Laboratory is the UK's deep underground science facility, 1.1 km beneath the North York Moors within a working polyhalite and salt mine. The first radioactive background measurements were made there in 1989 and the first dark matter search data were taken in 1993; the ZEPLIN series of xenon detectors published dark matter results from 2005 to 2012. The laboratory also supports low-background physics, earth and environmental science and astrobiology.",
+  overviewSources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }, { label: "ZEPLIN-III Collaboration, Phys. Lett. B 709, 14 (2012)", url: "https://doi.org/10.1016/j.physletb.2012.01.064" }],
   specs: [
     { label: "Depth", value: "1.1 km (2,805 m water equivalent)", sources: [{ label: "Boulby Underground Laboratory", url: "https://www.boulby.stfc.ac.uk" }, { label: "STFC Boulby Underground Laboratory: status talk (2022)", url: "https://indico.stfc.ac.uk/event/324/contributions/2838/attachments/1036/1830/STFCBoulby_IOP_April2022_Final.pdf" }] },
     { label: "Laboratory volume", value: "4,000 m³, plus a 3,000 m³ outside experimental area", sources: [{ label: "Boulby Underground Laboratory: About", url: "https://www.boulby.stfc.ac.uk/about/" }] },
