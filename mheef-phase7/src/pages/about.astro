@@ -15,6 +15,11 @@ const facts = facilities.flatMap((f) => [
 const sourcedFacts = facts.filter((fact) => fact.sources && fact.sources.length > 0).length;
 const specCount = facilities.reduce((sum, f) => sum + (f.specs?.length ?? 0), 0);
 const reviewedCount = facilities.filter((f) => f.reviewed).length;
+// Progress on sourcing the basics (roadmap task 7A-2).
+const overviewsSourced = facilities.filter((f) => f.overviewSources?.length).length;
+const foundedSourced = facilities.filter((f) => f.foundedBasis).length;
+const locationsSourced = facilities.filter((f) => f.location).length;
+const basicsDone = [overviewsSourced, foundedSourced, locationsSourced].every((n) => n === facilities.length);
 const countries = new Set(facilities.flatMap((f) => f.country.split(' / ')));
 const sourceUrls = new Set(
   [...facts.flatMap((fact) => fact.sources ?? []), ...facilities.flatMap((f) => f.specs ?? []).flatMap((s) => s.sources)].map(
@@ -108,11 +113,19 @@ const prose = 'mt-4 max-w-3xl space-y-4 text-sm leading-relaxed text-white/70';
             : `${reviewedCount} of ${facilities.length} facility pages have been reviewed by someone who works in that area.`}{' '}
           Each page says whether it has been reviewed.
         </li>
-        <li>
-          <strong class="font-semibold text-white/85">Overviews, coordinates and founding years</strong>{' '}
-          are not individually sourced. Coordinates mark the site in general, not a particular
-          building or detector.
-        </li>
+        {
+          !basicsDone && (
+            <li>
+              <strong class="font-semibold text-white/85">Overviews, founding years and coordinates</strong>{' '}
+              are being sourced: so far {overviewsSourced} of {facilities.length} overviews,{' '}
+              {foundedSourced} founding years and {locationsSourced} sets of coordinates cite a
+              source. Where they do, the page says so and states what the year means (founded,
+              first operation, completed…) and what the map point marks; a cited position must lie
+              within 2 km of the point. Elsewhere, coordinates mark
+              the site in general, not a particular building or detector.
+            </li>
+          )
+        }
         <li>
           <strong class="font-semibold text-white/85">Coverage.</strong> The list of facilities is
           growing and is not complete; a facility's absence says nothing about its importance.

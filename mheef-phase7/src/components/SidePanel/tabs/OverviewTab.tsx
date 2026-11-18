@@ -1,5 +1,6 @@
 import type { Facility } from '../../../types/facility';
 import SourceLinks from '../../SourceLinks';
+import { foundedLabel } from '../../../utils/facility';
 import FacilityFigure from '../../FacilityFigure';
 
 interface OverviewTabProps {
@@ -8,7 +9,7 @@ interface OverviewTabProps {
 
 export default function OverviewTab({ facility }: OverviewTabProps) {
   const stats = [
-    { label: 'Founded', value: String(facility.founded) },
+    { label: foundedLabel(facility), value: String(facility.founded) },
     { label: 'Status', value: facility.status[0].toUpperCase() + facility.status.slice(1) },
     { label: 'Country', value: facility.country },
     { label: 'Experiments', value: String(facility.experiments.length) },
@@ -27,7 +28,10 @@ export default function OverviewTab({ facility }: OverviewTabProps) {
         />
       )}
 
-      <p className="text-sm leading-relaxed text-white/70">{facility.overview}</p>
+      <div>
+        <p className="text-sm leading-relaxed text-white/70">{facility.overview}</p>
+        <SourceLinks sources={facility.overviewSources} />
+      </div>
 
       <dl className="grid grid-cols-2 gap-3">
         {stats.map((stat) => (

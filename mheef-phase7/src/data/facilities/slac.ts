@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 37.419,
   lng: -122.2046,
   founded: 1962,
+  foundedBasis: { meaning: "construction-start", sources: [{ label: "SLAC: History", url: "https://www6.slac.stanford.edu/about/slac-history" }] },
+  location: { represents: "The SLAC campus on Sand Hill Road, Menlo Park", sources: [{ label: "INSPIRE-HEP institution record: SLAC", url: "https://inspirehep.net/institutions/903206" }] },
   status: 'active',
-  overview: "SLAC National Accelerator Laboratory in Menlo Park, California, was built around a two-mile linear electron accelerator. Electron scattering experiments there revealed point-like constituents inside the proton, and its SPEAR storage ring produced the J/psi particle and the tau lepton. The laboratory later ran the BaBar experiment on matter-antimatter differences in B mesons, and today its linac drives the LCLS X-ray free-electron laser.",
+  overview: "SLAC National Accelerator Laboratory, in Menlo Park, California, was built around a two-mile linear electron accelerator, on which construction began in 1962. Electron-scattering experiments at the linac revealed point-like constituents inside the proton, later identified as quarks, and the SPEAR collider produced the discoveries of the J/psi particle and the tau lepton. The BaBar experiment later observed CP violation, a difference between matter and antimatter, in B-meson decays, and the linac now drives the LCLS X-ray free-electron laser.",
+  overviewSources: [{ label: "SLAC: History", url: "https://www6.slac.stanford.edu/about/slac-history" }, { label: "Bloom et al., Phys. Rev. Lett. 23, 930 (1969)", url: "https://doi.org/10.1103/PhysRevLett.23.930" }, { label: "Augustin et al., Phys. Rev. Lett. 33, 1406 (1974)", url: "https://doi.org/10.1103/PhysRevLett.33.1406" }, { label: "Perl et al., Phys. Rev. Lett. 35, 1489 (1975)", url: "https://doi.org/10.1103/PhysRevLett.35.1489" }, { label: "BaBar Collaboration, Phys. Rev. Lett. 87, 091801 (2001)", url: "https://doi.org/10.1103/PhysRevLett.87.091801" }, { label: "Emma et al., Nature Photonics 4, 641 (2010)", url: "https://doi.org/10.1038/nphoton.2010.176" }],
   specs: [
     { label: "Linear accelerator length", value: "2 miles (about 3.2 km)", sources: [{ label: "SLAC: Our story", url: "https://www6.slac.stanford.edu/about/our-story" }] },
     { label: "Nobel Prizes for work at the laboratory", value: "Four", sources: [{ label: "SLAC: Our story", url: "https://www6.slac.stanford.edu/about/our-story" }] },

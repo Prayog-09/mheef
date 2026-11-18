@@ -2,6 +2,7 @@ import { ArrowUpRight, MapPin } from 'lucide-react';
 import { FACILITY_TYPE_LABELS, type Facility } from '../../types/facility';
 import StatusBadge from '../StatusBadge';
 import { facilityPagePath } from '../../utils/paths';
+import { foundedLabel } from '../../utils/facility';
 
 interface SidePanelHeaderProps {
   facility: Facility;
@@ -30,7 +31,9 @@ export default function SidePanelHeader({ facility }: SidePanelHeaderProps) {
             <MapPin className="h-3 w-3 text-accent-300/70" aria-hidden="true" />
             {facility.country}
           </span>
-          <span>Founded {facility.founded}</span>
+          <span>
+            {foundedLabel(facility)} {facility.founded}
+          </span>
           <span className="font-mono text-[11px] text-white/50">
             {facility.lat.toFixed(2)}°, {facility.lng.toFixed(2)}°
           </span>

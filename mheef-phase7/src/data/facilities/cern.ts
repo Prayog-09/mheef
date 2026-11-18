@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 46.2331,
   lng: 6.0558,
   founded: 1954,
+  foundedBasis: { meaning: "established", sources: [{ label: "CERN: Our history", url: "https://home.cern/about/who-we-are/our-history" }] },
+  location: { represents: "CERN's main site, on the Franco-Swiss border near Geneva", sources: [{ label: "INSPIRE-HEP institution record: CERN", url: "https://inspirehep.net/institutions/902725" }] },
   status: 'active',
-  overview: "The European Organization for Nuclear Research (CERN), founded in 1954, operates the world's largest and most powerful particle accelerator complex on the Franco-Swiss border near Geneva. Its 27-kilometre Large Hadron Collider (LHC) accelerates protons to 99.9999991% the speed of light and collides them at four interaction points where ATLAS, CMS, ALICE, and LHCb record the debris. CERN is also the birthplace of the World Wide Web (1989) and a model of global scientific collaboration, involving over 17,000 scientists from more than 100 countries.",
+  overview: "The European Organization for Nuclear Research (CERN) began in 1954; the convention establishing it was signed by 12 states. Its laboratory lies on the Franco-Swiss border near Geneva. CERN's Large Hadron Collider (LHC), a 27-kilometre ring of superconducting magnets, is the world's largest and most powerful particle accelerator; its beams collide at four points around the ring, where the ATLAS, CMS, ALICE and LHCb experiments record the collisions. Tim Berners-Lee invented the World Wide Web at CERN in 1989. According to CERN, over 12,200 scientists of 110 nationalities, from institutes in more than 70 countries, work with the laboratory.",
+  overviewSources: [{ label: "CERN: Our history", url: "https://home.cern/about/who-we-are/our-history" }, { label: "CERN: The Large Hadron Collider", url: "https://home.cern/science/accelerators/large-hadron-collider" }, { label: "CERN: A short history of the Web", url: "https://home.cern/science/computing/the-birth-of-the-web/short-history-web/" }, { label: "CERN: Our people", url: "https://home.cern/about/who-we-are/our-people" }],
   specs: [
     { label: "LHC circumference", value: "26,659 m", sources: [{ label: "CERN: The Large Hadron Collider", url: "https://home.cern/science/accelerators/large-hadron-collider" }] },
     { label: "LHC tunnel depth", value: "100 m underground", sources: [{ label: "CERN: The Large Hadron Collider", url: "https://home.cern/science/accelerators/large-hadron-collider" }] },
@@ -43,7 +46,7 @@ const facility: Facility = {
     },
   ],
   history: [
-    { year: 1954, event: "CERN founded by 12 European member states, establishing Geneva as the world's leading centre for particle physics.", sources: [{ label: "CERN: Our history", url: "https://home.cern/about/who-we-are/our-history" }] },
+    { year: 1954, event: "CERN begins; the convention establishing it had been signed by 12 European states.", sources: [{ label: "CERN: Our history", url: "https://home.cern/about/who-we-are/our-history" }] },
     { year: 1983, event: "UA1 and UA2 experiments at the SPS collider discover the W\u00b1 and Z\u2070 bosons, confirming electroweak unification. Carlo Rubbia and Simon van der Meer awarded the Nobel Prize in 1984.", sources: [{ label: "Nobel Prize in Physics 1984", url: "https://www.nobelprize.org/prizes/physics/1984/summary/" }] },
     { year: 1989, event: "Large Electron-Positron Collider (LEP) begins operations; over eleven years its experiments make a detailed study of the electroweak interaction and establish that exactly three light neutrino generations exist.", sources: [{ label: "CERN: The Large Electron-Positron Collider", url: "https://home.cern/science/accelerators/large-electron-positron-collider" }] },
     { year: 2008, event: "Large Hadron Collider (LHC) circulates its first beams on 10 September 2008; collisions at 7 TeV follow in March 2010, making it the world's highest-energy collider.", sources: [{ label: "CERN: The Large Hadron Collider", url: "https://home.cern/science/accelerators/large-hadron-collider" }] },

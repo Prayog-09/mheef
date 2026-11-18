@@ -11,6 +11,7 @@ import {
   facilityTopics,
   formatCoordinates,
   formatYears,
+  foundedLabel,
 } from '../../utils/facility';
 import { facilityGlobePath, facilityPagePath, withBase } from '../../utils/paths';
 import { CITATION_AUTHOR, CITATION_YEAR, CONTENT_LICENSE, SITE_TITLE } from '../../utils/citation';
@@ -45,7 +46,7 @@ const description = facility.overview.match(/^.*?[.!?](?=\s|$)/)?.[0] ?? facilit
 
 const facts = [
   { label: 'Location', value: facility.country },
-  { label: 'Founded', value: String(facility.founded) },
+  { label: foundedLabel(facility), value: String(facility.founded) },
   { label: 'Status', value: STATUS_LABELS[facility.status] },
   { label: 'Coordinates', value: formatCoordinates(facility.lat, facility.lng) },
 ];
@@ -110,6 +111,9 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
       </p>
 
       <p class="mt-5 max-w-3xl text-base leading-relaxed text-white/75">{facility.overview}</p>
+      <div class="max-w-3xl">
+        <SourceLinks sources={facility.overviewSources} subject="Overview" />
+      </div>
 
       <a
         href={facilityGlobePath(facility.id)}
@@ -143,6 +147,25 @@ const sectionHeading = 'scroll-mt-6 text-xs font-semibold uppercase tracking-[0.
         ))
       }
     </dl>
+
+    {
+      (facility.foundedBasis || facility.location) && (
+        <div class="mt-2 max-w-3xl">
+          {facility.foundedBasis && (
+            <SourceLinks
+              sources={facility.foundedBasis.sources}
+              subject={`${foundedLabel(facility)} ${facility.founded}`}
+            />
+          )}
+          {facility.location && (
+            <SourceLinks
+              sources={facility.location.sources}
+              subject={`Map point: ${facility.location.represents}`}
+            />
+          )}
+        </div>
+      )
+    }
 
     {
       topics.length > 0 && (

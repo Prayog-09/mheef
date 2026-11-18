@@ -1,4 +1,4 @@
-import type { Facility, FacilityStatus, PhysicsTopicId } from '../types/facility';
+import { FOUNDED_LABELS, type Facility, type FacilityStatus, type PhysicsTopicId } from '../types/facility';
 
 export const STATUS_LABELS: Record<FacilityStatus, string> = {
   active: 'Active',
@@ -29,4 +29,9 @@ export function formatCoordinates(lat: number, lng: number): string {
   const latitude = `${Math.abs(lat).toFixed(2)}° ${lat >= 0 ? 'N' : 'S'}`;
   const longitude = `${Math.abs(lng).toFixed(2)}° ${lng >= 0 ? 'E' : 'W'}`;
   return `${latitude}, ${longitude}`;
+}
+
+/** "Founded", "First operation", "Completed"… — what the facility's year stands for. */
+export function foundedLabel(facility: Facility): string {
+  return FOUNDED_LABELS[facility.foundedBasis?.meaning ?? 'established'];
 }

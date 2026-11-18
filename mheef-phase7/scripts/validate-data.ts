@@ -5,7 +5,7 @@
 import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { facilities } from '../src/data/facilities.ts';
-import { FACILITY_TYPE_LABELS, PHYSICS_TOPIC_LABELS } from '../src/types/facility.ts';
+import { FACILITY_TYPE_LABELS, FOUNDED_LABELS, PHYSICS_TOPIC_LABELS } from '../src/types/facility.ts';
 import type { SourceRef } from '../src/types/facility.ts';
 
 const errors: string[] = [];
@@ -43,6 +43,22 @@ function countFact(where: string, sources: SourceRef[] | undefined) {
   }
 }
 
+// Overviews, founding years and coordinates are counted separately from the
+// facts above, so progress on roadmap task 7A-2 is visible on its own.
+const basics = { overview: 0, founded: 0, location: 0 };
+function checkSources(where: string, sources: SourceRef[] | undefined): boolean {
+  if (!sources) return false;
+  if (sources.length === 0) {
+    errors.push(`${where}: sources is empty — remove it or add one`);
+    return false;
+  }
+  for (const source of sources) {
+    if (!source.label.trim()) errors.push(`${where}: a source has no label`);
+    if (!isWebUrl(source.url)) errors.push(`${where}: source link "${source.url}" is not a web address`);
+  }
+  return true;
+}
+
 const facilityIds = new Set<string>();
 const experimentIds = new Set<string>();
 let reviewed = 0;
@@ -67,6 +83,20 @@ for (const facility of facilities) {
   if (!(facility.lat >= -90 && facility.lat <= 90)) errors.push(`${at}: latitude ${facility.lat} is out of range`);
   if (!(facility.lng >= -180 && facility.lng <= 180)) errors.push(`${at}: longitude ${facility.lng} is out of range`);
   checkYear(`${at} founded`, facility.founded, { allowFuture: facility.status === 'planned' });
+
+  if (checkSources(`${at} overview`, facility.overviewSources)) basics.overview += 1;
+  if (facility.foundedBasis) {
+    if (!(facility.foundedBasis.meaning in FOUNDED_LABELS)) {
+      errors.push(`${at}: foundedBasis.meaning "${facility.foundedBasis.meaning}" is not one of ${Object.keys(FOUNDED_LABELS).join(', ')}`);
+    }
+    if (checkSources(`${at} founded`, facility.foundedBasis.sources)) basics.founded += 1;
+    else errors.push(`${at}: foundedBasis must cite a source`);
+  }
+  if (facility.location) {
+    if (!facility.location.represents.trim()) errors.push(`${at}: location.represents must say what the point marks`);
+    if (checkSources(`${at} location`, facility.location.sources)) basics.location += 1;
+    else errors.push(`${at}: location must cite a source`);
+  }
 
   if (facility.reviewed !== undefined) {
     const valid = ISO_DATE.test(facility.reviewed) && !Number.isNaN(Date.parse(facility.reviewed));
@@ -160,6 +190,8 @@ const percent = facts === 0 ? 0 : Math.round((sourcedFacts / facts) * 100);
 console.log(`Facility data: ${facilities.length} facilities, ${experimentIds.size} experiments.`);
 console.log(`  Facts with a source: ${sourcedFacts} of ${facts} (${percent}%).`);
 console.log(`  Sourced specifications: ${specCount}.`);
+const n = facilities.length;
+console.log(`  Sourced overviews: ${basics.overview} of ${n}; founding years: ${basics.founded} of ${n}; coordinates: ${basics.location} of ${n}.`);
 console.log(`  Images: ${imageCount}, on ${facilitiesWithImage} of ${facilities.length} facilities.`);
 console.log(`  Facilities reviewed: ${reviewed} of ${facilities.length}.`);
 

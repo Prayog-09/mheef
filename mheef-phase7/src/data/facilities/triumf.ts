@@ -8,8 +8,11 @@ const facility: Facility = {
   lat: 49.2488,
   lng: -123.2381,
   founded: 1968,
+  foundedBasis: { meaning: "approved", sources: [{ label: "CERN Courier: Tales of TRIUMF", url: "https://cerncourier.com/a/tales-of-triumf/" }] },
+  location: { represents: "The TRIUMF site on the University of British Columbia's south campus, Vancouver", sources: [{ label: "INSPIRE-HEP institution record: TRIUMF", url: "https://inspirehep.net/institutions/903290" }, { label: "CERN Courier: Tales of TRIUMF", url: "https://cerncourier.com/a/tales-of-triumf/" }] },
   status: 'active',
-  overview: "TRIUMF at the University of British Columbia in Vancouver is Canada's particle accelerator centre. Its 520-MeV H-minus cyclotron — one of the world's largest — drives the ISAC radioactive ion beam facility, producing rare isotopes for nuclear physics, nuclear astrophysics, and medical isotope production. TRIUMF is a world leader in precision mass measurements of short-lived nuclei, gamma-ray spectroscopy of neutron-rich isotopes, and isotopes for cancer therapy. The ARIEL electron linac, commissioned in 2022, triples rare-isotope production capacity.",
+  overview: "TRIUMF began on the University of British Columbia's south campus in Vancouver, and received federal funding in April 1968, when construction began. Its 520 MeV cyclotron, which accelerates negative hydrogen ions, first delivered protons in 1974, and by the early 1980s it was the world's largest cyclotron. The cyclotron drives ISAC, which since 1998 has produced beams of rare isotopes for nuclear physics and astrophysics. TRIUMF's work has also included producing commercial medical isotopes used in diagnosing cancer and heart conditions. A superconducting electron linac for ARIEL, built to add new ways of producing rare isotopes, delivered its first beam in 2014.",
+  overviewSources: [{ label: "CERN Courier: Tales of TRIUMF", url: "https://cerncourier.com/a/tales-of-triumf/" }, { label: "Ball et al., The TRIUMF-ISAC facility, Phys. Scr. 91, 093002 (2016)", url: "https://doi.org/10.1088/0031-8949/91/9/093002" }, { label: "TRIUMF news release: Canada's superconducting electron linear accelerator produces first beam (2014)", url: "https://lists.triumf.ca/pipermail/news-releases/2014-October/000110.html" }],
   specs: [
     { label: "Cyclotron proton energy", value: "500 MeV", sources: [{ label: "CERN Courier: Tales of TRIUMF", url: "https://cerncourier.com/a/tales-of-triumf/" }] },
   ],

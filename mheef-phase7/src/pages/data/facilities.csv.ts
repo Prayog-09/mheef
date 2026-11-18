@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { facilities } from '../../data/facilities';
-import { FACILITY_TYPE_LABELS, PHYSICS_TOPIC_LABELS } from '../../types/facility';
+import { FACILITY_TYPE_LABELS, FOUNDED_LABELS, PHYSICS_TOPIC_LABELS } from '../../types/facility';
 import { STATUS_LABELS, facilityTopics } from '../../utils/facility';
 import { facilityPagePath } from '../../utils/paths';
 
@@ -22,6 +22,8 @@ export const GET: APIRoute = ({ site }) => {
     'latitude',
     'longitude',
     'founded',
+    'founded_means',
+    'coordinates_mark',
     'topics',
     'experiments',
     'key_results',
@@ -38,6 +40,8 @@ export const GET: APIRoute = ({ site }) => {
     f.lat,
     f.lng,
     f.founded,
+    f.foundedBasis ? FOUNDED_LABELS[f.foundedBasis.meaning] : '',
+    f.location?.represents,
     facilityTopics(f).map((topic) => PHYSICS_TOPIC_LABELS[topic]).join('; '),
     f.experiments.map((experiment) => experiment.name).join('; '),
     f.keyResults.length,

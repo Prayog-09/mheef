@@ -236,6 +236,38 @@ traceable, every link works, and specialists have started reviewing.
   sentence that cannot be sourced.
 - *Done when:* the validator reports 100 % for overviews, coordinates and
   founding years, and the About page no longer lists them as unsourced.
+- *In progress (started 2026-11-18): 6 of 70 done* — CERN, Fermilab, SLAC,
+  DESY, TRIUMF, Jefferson Lab. Fields as built: `overviewSources`,
+  `foundedBasis: { meaning, sources }` and `location: { represents,
+  sources }` (`lat`/`lng` stay where they are; 7B-1 need not move them).
+  Rules adopted:
+  - **What a year means:** `meaning` is one of established / approved /
+    construction-start / first-operation / completed, and the page label
+    follows it ("Construction began 1962"). Keep the existing year and
+    label it truthfully; change a year only if no source supports it.
+  - **Coordinates:** a cited position (INSPIRE institution record, a paper
+    giving site coordinates, a site map) must lie within 2 km of the map
+    point. INSPIRE matches about 20 facilities this closely (mostly
+    accelerator labs); observatories and underground labs need papers or
+    site maps. A throwaway lookup script was used; rewrite it into
+    `scripts/` if it proves useful again.
+  - **Overviews:** every sentence must be supported by an overview source
+    or a source already cited in the same record. Superlatives were
+    dropped unless a source states them ("world's largest cyclotron" by
+    the early 1980s, per CERN Courier).
+  - Many lab sites block scripts (fnal.gov, dunescience.org). The UNT
+    Libraries web archive (`webarchive.library.unt.edu`) holds readable
+    copies of older US lab pages; `…/<timestamp>id_/<url>` gives the raw
+    page.
+  - Fixed while doing this: Fermilab history 2011 claimed a "pivot to
+    become the US hub for neutrino physics", which its cited CERN Courier
+    article does not say; CERN history 1954 called Geneva "the world's
+    leading centre", which is opinion. Both reworded to what the sources
+    say. The 99.9999991 % LHC figure is for the 7 TeV design energy and
+    was left out of CERN's new overview. Expect more of this in 7A-4.
+  - Next batches: the remaining INSPIRE-matched labs (J-PARC, JINR, PSI,
+    Frascati, GANIL, VECC, Boulby, Kamioka, SNOLAB, Berkeley Lab, Cornell,
+    Cavendish, Los Alamos, IHEP), then underground labs, then observatories.
 
 **7A-3 Record how each source was checked (M)**
 - *Do:* add an optional `checked` field to `SourceRef`

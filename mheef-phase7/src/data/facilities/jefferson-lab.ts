@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 37.0958,
   lng: -76.4817,
   founded: 1984,
+  foundedBasis: { meaning: "approved", sources: [{ label: "Jefferson Lab fact sheet (2010, UNT Libraries web archive)", url: "https://webarchive.library.unt.edu/web/20120915100710/http://www.jlab.org/div_dept/admin/publications/factsheet.pdf" }] },
+  location: { represents: "The Jefferson Lab site, Newport News, Virginia", sources: [{ label: "INSPIRE-HEP institution record: Jefferson Lab", url: "https://inspirehep.net/institutions/904961" }] },
   status: 'active',
-  overview: "Jefferson Lab in Newport News, Virginia, operates CEBAF, a continuous electron beam accelerator built with superconducting radio-frequency cavities. Its beams probe how quarks and gluons build protons, neutrons and nuclei. An upgrade completed in 2017 raised the beam energy to 12 GeV and added a fourth experimental hall.",
+  overview: "Jefferson Lab, in Newport News, Virginia, received its first federal funds in 1984 and was called CEBAF until 1996, after its accelerator, the Continuous Electron Beam Accelerator Facility. CEBAF was the first large-scale application of superconducting radio-frequency acceleration, and physics experiments there began in 1995. Its electron beams probe how quarks make up protons, neutrons and nuclei. An upgrade completed in 2017 raised the beam energy to 12 GeV and added a fourth experimental hall, Hall D.",
+  overviewSources: [{ label: "Jefferson Lab fact sheet (2010, UNT Libraries web archive)", url: "https://webarchive.library.unt.edu/web/20120915100710/http://www.jlab.org/div_dept/admin/publications/factsheet.pdf" }, { label: "The Continuous Electron Beam Accelerator Facility at 12 GeV (arXiv:2408.16880)", url: "https://arxiv.org/abs/2408.16880" }],
   specs: [
     { label: "CEBAF beam energy", value: "12 GeV", sources: [{ label: "The Continuous Electron Beam Accelerator Facility at 12 GeV (arXiv:2408.16880)", url: "https://arxiv.org/abs/2408.16880" }] },
     { label: "Experimental halls", value: "Four (A, B, C and D)", sources: [{ label: "The Continuous Electron Beam Accelerator Facility at 12 GeV (arXiv:2408.16880)", url: "https://arxiv.org/abs/2408.16880" }] },

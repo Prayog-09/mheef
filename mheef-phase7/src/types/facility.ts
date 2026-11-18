@@ -112,6 +112,51 @@ export interface SourceRef {
   url: string;
 }
 
+/**
+ * What a facility's `founded` year stands for. The year means different
+ * things for different kinds of facility — a laboratory is founded, an
+ * observatory is completed or starts observing — so each record says which,
+ * and the page labels the year accordingly.
+ *  - established: the organisation or laboratory was formally created
+ *    (a convention, a founding decision, an institute set up)
+ *  - approved: funding or construction was approved
+ *  - construction-start: building began
+ *  - first-operation: first beam, first light or first science data
+ *  - completed: construction finished or the facility was inaugurated
+ */
+export type FoundedMeaning =
+  | 'established'
+  | 'approved'
+  | 'construction-start'
+  | 'first-operation'
+  | 'completed';
+
+/** Label shown before the year, e.g. "First operation 2002". */
+export const FOUNDED_LABELS: Record<FoundedMeaning, string> = {
+  established: 'Founded',
+  approved: 'Approved',
+  'construction-start': 'Construction began',
+  'first-operation': 'First operation',
+  completed: 'Completed',
+};
+
+/** The source for a facility's `founded` year and what that year means. */
+export interface FoundedBasis {
+  meaning: FoundedMeaning;
+  sources: SourceRef[];
+}
+
+/**
+ * The source for a facility's coordinates and what the point marks. A marker
+ * for a large site is necessarily a choice: the main campus, a detector hall,
+ * the centre of an array.
+ */
+export interface LocationBasis {
+  /** What the point marks, e.g. "Main site at Meyrin" or "Centre of the surface array". */
+  represents: string;
+  sources: SourceRef[];
+}
+
 // ─── Stub (used by Globe + Marker — do not widen) ────────────────────────────
 
 /** Minimal shape used by Globe and Marker. Stable across all phases. */
@@ -215,7 +260,11 @@ export interface Facility extends FacilityStub {
   /** Official long-form name, where it differs from the display name. */
   fullName?: string;
   type: FacilityType;
+  /** Year shown as "Founded", unless `foundedBasis` says it means something else. */
   founded: number;
+  foundedBasis?: FoundedBasis;
+  /** Where `lat` and `lng` come from and what they mark. */
+  location?: LocationBasis;
   /**
    * ISO date (YYYY-MM-DD) of the last check of this whole record by someone
    * working in the field. Absent means not yet reviewed.
@@ -223,6 +272,8 @@ export interface Facility extends FacilityStub {
   reviewed?: string;
   status: FacilityStatus;
   overview: string;
+  /** Sources that together support every sentence of the overview. */
+  overviewSources?: SourceRef[];
   /** Sourced key figures, shown as a table. */
   specs?: FacilitySpec[];
   /** Photographs; the first is shown at the top of the page and in the side panel. */
