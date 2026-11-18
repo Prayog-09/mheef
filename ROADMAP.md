@@ -236,12 +236,19 @@ traceable, every link works, and specialists have started reviewing.
   sentence that cannot be sourced.
 - *Done when:* the validator reports 100 % for overviews, coordinates and
   founding years, and the About page no longer lists them as unsourced.
-- *In progress (started 2026-11-18): 35 of 70 overviews, 34 years, 32
+- *In progress (started 2026-11-18): 42 of 70 overviews, 40 years, 36
   locations* — CERN, Fermilab, SLAC,
   DESY, TRIUMF, Jefferson Lab; J-PARC, JINR, PSI, Frascati, Boulby,
   Berkeley Lab, Cornell; KEK, Brookhaven, GSI, FRIB, GANIL, VECC, RIKEN
   RIBF, IUAC; Cavendish, Los Alamos, IHEP, Savannah River, SSC, Gran
-  Sasso, SNOLAB; Kamioka, SURF, Modane, Canfranc, CJPL, Baksan, Soudan.
+  Sasso, SNOLAB; Kamioka, SURF, Modane, Canfranc, CJPL, Baksan, Soudan;
+  Kolar Gold Fields, SUPL, Yemilab, INO, Hyper-Kamiokande, Daya Bay, JUNO.
+  Kolar's 1965 is the year of its atmospheric-neutrino discovery, not a
+  start: experiments there began in the 1950s (ThePrint) but no exact
+  year was found, so the page still shows the default "Founded 1965",
+  which is wrong. Find the start year (TIFR history, Sreekantan's papers)
+  or ask the owner how historic experiment sites should be dated. Not on
+  OpenStreetMap, so no location source yet: Yemilab, INO, Hyper-K.
   Soudan's 1981 (Soudan 1 in routine operation, August 1981) has no
   readable source yet: soudan.umn.edu has a broken certificate and the
   Minnesota DNR page blocks scripts. Without a location source yet: Savannah River (the P
@@ -318,10 +325,21 @@ traceable, every link works, and specialists have started reviewing.
     Sanford Lab's "Our story" contradicts itself on Homestake's closing
     year (2001 vs the year of Davis's 2002 Nobel); SURF history entry
     "2002" should be rechecked in 7A-4.
+  - Batch 6 corrections: Daya Bay's overview gave baselines "360-1860 m",
+    contradicting its own key figures (470, 576 and 1,648 m, PRL 2012);
+    JUNO's said "over 17,000" large PMTs against its key figure of more
+    than 20,000; Kolar's "collaborators from Osaka and Durham" and SUPL's
+    "seasons reversed" removed (not in readable sources); "world's
+    largest" for JUNO now attributed to the 2015 CERN Courier report.
+    Hyper-K's start: its own page says 2028, the 2024 Front. Phys. paper
+    2027; the overview uses 2028. Kamioka now also cites that paper for
+    Hyper-K being in Hida.
   - ar5iv.labs.arxiv.org/html/<arXiv id> gives an arXiv paper as HTML,
     useful for checking a claim in a long paper (no PDF tools here).
-  - Next batches: Kolar Gold Fields, SUPL, Yemilab, INO, Hyper-Kamiokande;
-    then observatories and detectors.
+  - Next batches (28 left): IceCube, KM3NeT, ANTARES, Baikal-GVD, IMB,
+    Double Chooz, RENO; Pierre Auger, Telescope Array, AGASA, Fly's Eye,
+    KASCADE, Chacaltaya, GRAPES-3, LHAASO, Tibet ASγ; H.E.S.S., MAGIC,
+    VERITAS, HAWC, MACE, CTA; LIGO, Virgo, KAGRA, GEO600, LIGO-India.
 
 **7A-3 Record how each source was checked (M)**
 - *Do:* add an optional `checked` field to `SourceRef`

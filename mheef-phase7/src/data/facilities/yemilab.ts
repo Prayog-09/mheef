@@ -8,8 +8,10 @@ const facility: Facility = {
   lat: 37.19,
   lng: 128.66,
   founded: 2022,
+  foundedBasis: { meaning: "completed", sources: [{ label: "Park et al., Construction of Yemilab, Front. Phys. 12, 1323991 (2024)", url: "https://doi.org/10.3389/fphy.2024.1323991" }] },
   status: 'active',
-  overview: "Yemilab is South Korea's deep underground laboratory, about 1,000 m below Mount Yemi in Jeongseon, reached through an operating iron mine. Completed in 2022 by the Institute for Basic Science, it takes over from the smaller Yangyang laboratory and is designed for searches for dark matter and neutrinoless double-beta decay.",
+  overview: "Yemilab is the deep underground laboratory of the Center for Underground Physics of Korea's Institute for Basic Science (IBS), about 1,000 m below Mount Yemi in Jeongseon, Gangwon Province, a mountain that encompasses the Handuk iron mine. Completed in September 2022, it takes over the facilities of the Yangyang Underground Laboratory and is built to search for extremely rare interactions such as those of dark matter and neutrinos, including the AMoRE-II search for neutrinoless double-beta decay.",
+  overviewSources: [{ label: "Park et al., Construction of Yemilab, Front. Phys. 12, 1323991 (2024)", url: "https://doi.org/10.3389/fphy.2024.1323991" }],
   specs: [
     { label: "Depth", value: "About 1,000 m", sources: [{ label: "Park et al., Construction of Yemilab, Front. Phys. 12, 1323991 (2024)", url: "https://doi.org/10.3389/fphy.2024.1323991" }] },
     { label: "Dedicated experimental area", value: "3,000 m³, plus a 6,300 m³ cylindrical pit", sources: [{ label: "Park et al., Construction of Yemilab, Front. Phys. 12, 1323991 (2024)", url: "https://doi.org/10.3389/fphy.2024.1323991" }] },

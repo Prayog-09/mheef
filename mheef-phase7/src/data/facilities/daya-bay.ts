@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 22.5956,
   lng: 114.5378,
   founded: 2011,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 108, 171803 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" }] },
+  location: { represents: "The Daya Bay nuclear power plant, Shenzhen", sources: [{ label: "OpenStreetMap: Daya Bay Nuclear Power Plant", url: "https://www.openstreetmap.org/way/299929726" }] },
   status: 'historic',
-  overview: "The Daya Bay Reactor Neutrino Experiment operated from 2011 to 2020 near nuclear power plants in Guangdong, China. Using eight gadolinium-doped liquid-scintillator detectors across three underground halls at baselines of 360-1860 m from the reactors, Daya Bay made the world's most precise measurement of the mixing angle theta-13 — a critical parameter for future experiments seeking to measure the neutrino CP-violating phase delta-CP.",
+  overview: "The Daya Bay Reactor Neutrino Experiment ran from 2011 to 2020 beside the nuclear power plants at Daya Bay, near Shenzhen in Guangdong, China. Antineutrinos from six 2.9 GW reactors were recorded by detectors in two near halls, at flux-weighted baselines of 470 m and 576 m, and one far hall at 1,648 m. In 2012 it measured a non-zero value of the neutrino mixing angle θ13 at more than five standard deviations, and its final result is the world's most precise measurement of that angle.",
+  overviewSources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 108, 171803 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" }, { label: "Daya Bay Collaboration, Phys. Rev. Lett. 130, 161802 (2023)", url: "https://doi.org/10.1103/PhysRevLett.130.161802" }, { label: "Berkeley Lab: Scientists say farewell to Daya Bay site (2020)", url: "https://newscenter.lbl.gov/2020/12/11/scientists-say-farewell-to-daya-bay-site-proceed-with-final-data-analysis/" }, { label: "OpenStreetMap: Daya Bay Nuclear Power Plant", url: "https://www.openstreetmap.org/way/299929726" }],
   specs: [
     { label: "Reactors", value: "Six, each of 2.9 GW thermal power", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 108, 171803 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" }] },
     { label: "Hall baselines", value: "470 m and 576 m (near), 1,648 m (far)", sources: [{ label: "Daya Bay Collaboration, Phys. Rev. Lett. 108, 171803 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.171803" }] },

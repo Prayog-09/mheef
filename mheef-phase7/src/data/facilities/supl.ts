@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: -37.06,
   lng: 142.8,
   founded: 2022,
+  foundedBasis: { meaning: "completed", sources: [{ label: "SUPL: Our story so far", url: "https://supl.org.au/our-story-so-far/" }] },
+  location: { represents: "Stawell Gold Mine, Stawell, Victoria", sources: [{ label: "OpenStreetMap: Stawell Gold Mine", url: "https://www.openstreetmap.org/relation/15097444" }] },
   status: 'active',
-  overview: "The Stawell Underground Physics Laboratory lies just over a kilometre underground in an active gold mine at Stawell, Victoria. It is the first deep underground laboratory in the Southern Hemisphere. Its first experiment, SABRE South, uses ultra-pure sodium iodide crystals to test a long-standing claim of a dark matter signal, with the seasons reversed relative to northern laboratories.",
+  overview: "The Stawell Underground Physics Laboratory (SUPL) lies 1,025 m underground in a working gold mine at Stawell, Victoria, and was set up as the Southern Hemisphere's first underground physics laboratory. First proposed in 2014, it was completed in August 2022. Its first experiment, SABRE South, uses ultra-high-purity sodium iodide crystals to provide a model-independent test of the annual-modulation signal observed by DAMA/LIBRA.",
+  overviewSources: [{ label: "SUPL: Our story so far", url: "https://supl.org.au/our-story-so-far/" }, { label: "The SABRE South Experiment at the Stawell Underground Physics Laboratory (arXiv:2211.03016)", url: "https://arxiv.org/abs/2211.03016" }],
   specs: [
     { label: "Depth", value: "1,025 m", sources: [{ label: "The SABRE South Experiment at the Stawell Underground Physics Laboratory (arXiv:2211.03016)", url: "https://arxiv.org/abs/2211.03016" }] },
     { label: "Access", value: "By road through the mine tunnels", sources: [{ label: "The SABRE South Experiment at the Stawell Underground Physics Laboratory (arXiv:2211.03016)", url: "https://arxiv.org/abs/2211.03016" }] },

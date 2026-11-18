@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 22.118,
   lng: 112.518,
   founded: 2015,
+  foundedBasis: { meaning: "construction-start", sources: [{ label: "CERN Courier: Ground-breaking for China's new neutrino observatory", url: "https://cerncourier.com/a/ground-breaking-for-chinas-new-neutrino-observatory/" }] },
+  location: { represents: "The JUNO site on Neutrino Road near Kaiping, Jiangmen", sources: [{ label: "OpenStreetMap: Jiangmen Underground Neutrino Observatory", url: "https://www.openstreetmap.org/way/905454906" }] },
   status: 'active',
-  overview: "The Jiangmen Underground Neutrino Observatory (JUNO) in Guangdong Province, China, is the world's largest liquid-scintillator neutrino detector — a 20,000-tonne sphere at 700 m depth instrumented with over 17,000 large photomultiplier tubes. Its primary goals are to determine the neutrino mass ordering (normal vs. inverted hierarchy) and to measure the oscillation parameters sin2-theta-12 and Delta-m2-21 to sub-percent precision, using reactor antineutrinos from nearby nuclear power plants.",
+  overview: "The Jiangmen Underground Neutrino Observatory (JUNO), near Jiangmen in Guangdong, China, was described at its ground-breaking as the world's largest and highest-precision liquid scintillator detector: 20,000 tonnes of liquid scintillator under 700 m of rock, viewed by more than 20,000 large and 25,000 small photomultiplier tubes. It lies 53 km from both the Yangjiang and Taishan nuclear power plants and is designed to determine the neutrino mass ordering and to measure oscillation parameters with sub-percent precision. Construction began on 10 January 2015, and data taking started on 26 August 2025.",
+  overviewSources: [{ label: "CERN Courier: Ground-breaking for China's new neutrino observatory", url: "https://cerncourier.com/a/ground-breaking-for-chinas-new-neutrino-observatory/" }, { label: "GSI: JUNO delivers first physics results (2025)", url: "https://www.gsi.de/en/start/news/details/2025/11/19/juno-experiment-first-data" }],
   specs: [
     { label: "Liquid scintillator mass", value: "20,000 tonnes", sources: [{ label: "Neutrino physics with JUNO, J. Phys. G 43, 030401 (2016)", url: "https://doi.org/10.1088/0954-3899/43/3/030401" }] },
     { label: "Reactor baseline", value: "53 km", sources: [{ label: "Neutrino physics with JUNO, J. Phys. G 43, 030401 (2016)", url: "https://doi.org/10.1088/0954-3899/43/3/030401" }] },

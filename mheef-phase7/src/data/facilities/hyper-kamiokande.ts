@@ -8,8 +8,10 @@ const facility: Facility = {
   lat: 36.356,
   lng: 137.314,
   founded: 2020,
+  foundedBasis: { meaning: "approved", sources: [{ label: "Hyper-Kamiokande construction status and prospects, Front. Phys. 12 (2024)", url: "https://doi.org/10.3389/fphy.2024.1378254" }] },
   status: 'planned',
-  overview: "Hyper-Kamiokande is the successor to Super-Kamiokande, under construction beneath a mountain in Hida, Gifu Prefecture. Its water tank will have a fiducial mass 8.4 times that of Super-Kamiokande. It will study the difference between neutrinos and antineutrinos using a beam from J-PARC, search for proton decay, and watch for neutrinos from supernovae. It aims to start operating in 2028.",
+  overview: "Hyper-Kamiokande, the successor to Super-Kamiokande, is under construction about 600 m underground beneath the Kamioka Mine in Hida City, Gifu Prefecture, in one of the world's largest underground caverns; the project officially began when its first construction budget was approved in January 2020. Its water tank will have a fiducial mass 8.4 times that of Super-Kamiokande. Using a neutrino beam from J-PARC it will study CP violation, the difference between neutrinos and antineutrinos, and it will search for proton decay and watch for neutrinos from supernova explosions. It aims to start experiments in 2028.",
+  overviewSources: [{ label: "Hyper-Kamiokande construction status and prospects, Front. Phys. 12 (2024)", url: "https://doi.org/10.3389/fphy.2024.1378254" }, { label: "Hyper-Kamiokande: Overview", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/hk/about/outline/" }],
   specs: [
     { label: "Tank", value: "68 m in diameter, 71 m water depth", sources: [{ label: "Hyper-Kamiokande: Overview", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/hk/about/outline/" }] },
     { label: "Water mass", value: "About 260,000 tonnes, of which about 190,000 tonnes fiducial", sources: [{ label: "Hyper-Kamiokande: Overview", url: "https://www-sk.icrr.u-tokyo.ac.jp/en/hk/about/outline/" }] },
