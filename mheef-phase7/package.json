@@ -11,7 +11,8 @@
     "prebuild": "npm run validate && npm run copy-cesium",
     "build": "astro build",
     "preview": "astro preview",
-    "validate": "node scripts/validate-data.ts"
+    "validate": "node scripts/validate-data.ts",
+    "check-links": "node scripts/check-links.ts"
   },
   "dependencies": {
     "@astrojs/react": "^7.1.8",

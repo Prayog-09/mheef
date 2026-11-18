@@ -1,0 +1,66 @@
+name: Check links
+
+# Roadmap task 7A-1: every Monday, check every link in the dataset and keep
+# one issue titled "Broken links" up to date. The issue is opened when links
+# are broken or moved, updated on later runs, and closed when all is well.
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: check-links
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mheef-phase7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # The checker reads only the dataset files, so no npm install is needed.
+      - name: Check links
+        id: check
+        run: |
+          set +e
+          node scripts/check-links.ts --report "$RUNNER_TEMP/links.md" > /dev/null
+          echo "failed=$?" >> "$GITHUB_OUTPUT"
+      - name: Update the "Broken links" issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FAILED: ${{ steps.check.outputs.failed }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          report="$RUNNER_TEMP/links.md"
+          if [ ! -f "$report" ]; then
+            echo "The checker stopped before writing its report (exit $FAILED)." >&2
+            exit 1
+          fi
+          printf '\n---\nFrom [this run](%s) of `scripts/check-links.ts`. This issue is updated every Monday and closed automatically once nothing is broken or moved.\n' "$RUN_URL" >> "$report"
+          cat "$report" >> "$GITHUB_STEP_SUMMARY"
+          number=$(gh issue list --state open --search 'in:title "Broken links"' --json number,title \
+            -q '[.[] | select(.title == "Broken links")][0].number // empty')
+          if [ "$FAILED" = "1" ]; then
+            if [ -n "$number" ]; then
+              gh issue edit "$number" --body-file "$report"
+            else
+              gh issue create --title "Broken links" --body-file "$report"
+            fi
+          elif [ "$FAILED" = "0" ]; then
+            if [ -n "$number" ]; then
+              gh issue comment "$number" --body-file "$report"
+              gh issue close "$number" --reason completed
+            fi
+          else
+            echo "The checker itself failed (exit $FAILED)." >&2
+            exit 1
+          fi

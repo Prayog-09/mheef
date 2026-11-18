@@ -46,7 +46,7 @@ const facility: Facility = {
     { name: "Victor Hess", contribution: "Discoverer of cosmic radiation, after whom the observatory is named; Nobel Prize in Physics 1936.", sources: [{ label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }, { label: "Nobel Prize in Physics 1936", url: "https://www.nobelprize.org/prizes/physics/1936/summary/" }] },
   ],
   readMore: [
-    { label: "Official Site", url: "https://www.mpi-hd.mpg.de/HESS/" },
+    { label: "Official Site", url: "https://hess-experiment.eu/" },
   ],
 };
 

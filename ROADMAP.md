@@ -214,6 +214,16 @@ traceable, every link works, and specialists have started reviewing.
   "blocked", listed separately, not as broken.
 - *Done when:* the workflow has run once on `main` and its issue (or a
   clean result) is visible.
+- ✅ *Done 2026-11-18.* `npm run check-links` (`--only <id>` for one
+  facility); workflow `.github/workflows/check-links.yml`, Mondays 06:00 UTC.
+  Any 401/403/405/429 counts as "could not check", not only the sites
+  named above (NASA ADS answers 405 behind a human check). DOIs are checked
+  against the DOI register, not the publisher. Only *broken* and *moved*
+  open the issue; *unreachable* is listed but needs two weeks running
+  before action. First run: 460 links; fixed Modane (ADS → DOI plus the
+  LSM home page for the 1,700 m figure), FRIB 2008 (dead NSCL page → DOE
+  press release, archived; "successor" wording dropped because the release
+  does not say it) and the H.E.S.S. site address.
 
 **7A-2 Source the unsourced fields (L)**
 - *Do:* add `sources` to the facility's `overview`, its coordinates and its

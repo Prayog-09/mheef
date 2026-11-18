@@ -12,7 +12,7 @@ const facility: Facility = {
   status: 'active',
   overview: "The Modane Underground Laboratory sits at the midpoint of the Fréjus road tunnel between France and Italy, under about 1,700 m of rock, which makes it one of the deepest laboratories in Europe. Built for a proton decay experiment, it later hosted the NEMO-3 search for neutrinoless double-beta decay and the EDELWEISS dark matter experiment.",
   specs: [
-    { label: "Rock overburden", value: "1,700 m (4,800 m water equivalent)", sources: [{ label: "Piquemal, Modane underground laboratory: status and project, Eur. Phys. J. Plus 127, 110 (2012)", url: "https://ui.adsabs.harvard.edu/abs/2012EPJP..127..110P" }] },
+    { label: "Rock overburden", value: "1,700 m (4,800 m water equivalent)", sources: [{ label: "Piquemal, Modane underground laboratory: status and project, Eur. Phys. J. Plus 127, 110 (2012)", url: "https://doi.org/10.1140/epjp/i2012-12110-3" }, { label: "LSM: home page, “1700 m de roches” (in French)", url: "https://lsm.in2p3.fr/" }] },
   ],
   images: [
     {
