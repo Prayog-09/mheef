@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 35.404,
   lng: 126.416,
   founded: 2011,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "RENO Collaboration, Phys. Rev. Lett. 108, 191802 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.191802" }] },
+  location: { represents: "The Hanbit (formerly Yonggwang) nuclear power plant", sources: [{ label: "OpenStreetMap: Hanbit Nuclear Power Plant", url: "https://www.openstreetmap.org/way/387266330" }] },
   status: 'active',
-  overview: "RENO measures antineutrinos from the six reactors of the Hanbit (formerly Yonggwang) nuclear power plant on Korea's west coast. Two identical detectors, one near the reactors and one farther away, compare the neutrino rate at different distances. In 2012 RENO was one of three experiments to measure the mixing angle theta-13.",
+  overview: "RENO (Reactor Experiment for Neutrino Oscillation) records antineutrinos from the six reactors of the Yonggwang nuclear power plant, now called Hanbit, in Korea, using two identical detectors 294 m and 1,383 m from the centre of the reactor array. Data-taking began on 11 August 2011, and in 2012 RENO observed the disappearance of reactor antineutrinos at 4.9 standard deviations and measured the mixing angle θ13.",
+  overviewSources: [{ label: "RENO Collaboration, Phys. Rev. Lett. 108, 191802 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.191802" }, { label: "OpenStreetMap: Hanbit Nuclear Power Plant", url: "https://www.openstreetmap.org/way/387266330" }],
   specs: [
     { label: "Detector distances", value: "294 m (near) and 1,383 m (far) from the reactor array", sources: [{ label: "RENO Collaboration, Phys. Rev. Lett. 108, 191802 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.191802" }] },
     { label: "Reactors", value: "Six", sources: [{ label: "RENO Collaboration, Phys. Rev. Lett. 108, 191802 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.191802" }] },

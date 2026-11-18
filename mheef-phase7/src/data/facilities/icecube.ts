@@ -8,8 +8,11 @@ const facility: Facility = {
   lat: -89.9944,
   lng: -63.4536,
   founded: 2010,
+  foundedBasis: { meaning: "completed", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },
+  location: { represents: "The IceCube Laboratory at the South Pole", sources: [{ label: "OpenStreetMap: IceCube Neutrino Observatory", url: "https://www.openstreetmap.org/node/5249487917" }] },
   status: 'active',
-  overview: "The IceCube Neutrino Observatory at the geographic South Pole instruments a cubic kilometre of Antarctic ice between 1.5 and 2.5 km depth with 5,160 Digital Optical Modules on 86 vertical strings. It detects Cherenkov light from secondary particles produced when high-energy neutrinos interact in the ice — the world's largest neutrino telescope. IceCube opened the field of high-energy neutrino astronomy with its 2013 astrophysical neutrino detection, and in 2022 identified NGC 1068 as a cosmic neutrino source.",
+  overview: "The IceCube Neutrino Observatory at the South Pole instruments a cubic kilometre of Antarctic ice: 5,160 digital optical modules on 86 strings, frozen into boreholes between 1,450 m and 2,450 m deep, detect light from charged particles produced when neutrinos interact in the ice. Completed on 18 December 2010, it is the only cubic-kilometre neutrino detector built to date. In 2013 IceCube reported the first high-energy neutrinos from beyond the Solar System, and in 2022 it published evidence for neutrino emission from the galaxy NGC 1068.",
+  overviewSources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }, { label: "IceCube Collaboration, Science 342, 1242856 (2013)", url: "https://doi.org/10.1126/science.1242856" }, { label: "IceCube Collaboration, Science 378, 538 (2022)", url: "https://doi.org/10.1126/science.abg3395" }],
   specs: [
     { label: "Instrumented volume", value: "One cubic kilometre of ice", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },
     { label: "Strings", value: "86", sources: [{ label: "IceCube: The detector", url: "https://icecube.wisc.edu/science/icecube/" }] },

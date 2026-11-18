@@ -9,8 +9,10 @@ const facility: Facility = {
   lat: 41.75,
   lng: -81.28,
   founded: 1982,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "APS Historic Site: Morton Salt Mine", url: "https://www.aps.org/funding-recognition/historic-sites/morton" }] },
   status: 'historic',
-  overview: "The IMB detector was a large water Cherenkov detector in a salt mine on the shore of Lake Erie in Ohio, built to search for proton decay. It did not find it, but on 23 February 1987 it recorded a burst of neutrinos from Supernova 1987A, at the same time as the Kamiokande detector in Japan.",
+  overview: "The IMB (Irvine-Michigan-Brookhaven) detector was an 8,000-ton water Cherenkov detector nearly 2,000 feet underground in the Fairport Harbor Morton Salt Mine in Ohio, operating from 1982 to 1991. Built to search for proton decay, it found none; on 23 February 1987 it recorded eight neutrino events from Supernova 1987A, as did Kamiokande in Japan, and its upgraded form, IMB-3, found fewer atmospheric muon neutrinos than expected.",
+  overviewSources: [{ label: "APS Historic Site: Morton Salt Mine", url: "https://www.aps.org/funding-recognition/historic-sites/morton" }, { label: "IMB Collaboration, Phys. Rev. Lett. 58, 1494 (1987)", url: "https://doi.org/10.1103/PhysRevLett.58.1494" }, { label: "IMB-3: a large water Cherenkov detector, Nucl. Instrum. Meth. A 324, 363 (1993)", url: "https://doi.org/10.1016/0168-9002(93)90998-W" }, { label: "IMB Collaboration, Phys. Rev. Lett. 66, 2561 (1991)", url: "https://doi.org/10.1103/PhysRevLett.66.2561" }],
   specs: [
     { label: "Detector mass", value: "8,000 tons of water", sources: [{ label: "APS Historic Site: Morton Salt Mine", url: "https://www.aps.org/funding-recognition/historic-sites/morton" }] },
     { label: "Depth", value: "Nearly 2,000 ft (about 600 m)", sources: [{ label: "APS Historic Site: Morton Salt Mine", url: "https://www.aps.org/funding-recognition/historic-sites/morton" }] },

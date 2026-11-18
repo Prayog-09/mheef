@@ -224,6 +224,15 @@ traceable, every link works, and specialists have started reviewing.
   LSM home page for the 1,700 m figure), FRIB 2008 (dead NSCL page → DOE
   press release, archived; "successor" wording dropped because the release
   does not say it) and the H.E.S.S. site address.
+  - 2026-11-19: "moved" now also catches a deep link that lands on a
+    shorter address on the same site (a news archive). It found Nikhef's
+    old news articles (ANTARES, KM3NeT; replaced by the ANTARES
+    collaboration's history page and KM3NeT's own press release) and an
+    MSU Today article (FRIB 2014; replaced by Michigan Public's report).
+  - Not detectable automatically: frib.msu.edu answers 200 with an
+    "additional security check" page, even in a normal browser. Its links
+    count as working but may not be readable by visitors; prefer other
+    sources for FRIB facts (7A-3).
 
 **7A-2 Source the unsourced fields (L)**
 - *Do:* add `sources` to the facility's `overview`, its coordinates and its
@@ -236,13 +245,20 @@ traceable, every link works, and specialists have started reviewing.
   sentence that cannot be sourced.
 - *Done when:* the validator reports 100 % for overviews, coordinates and
   founding years, and the About page no longer lists them as unsourced.
-- *In progress (started 2026-11-18): 42 of 70 overviews, 40 years, 36
+- *In progress (started 2026-11-18): 49 of 70 overviews, 45 years, 39
   locations* — CERN, Fermilab, SLAC,
   DESY, TRIUMF, Jefferson Lab; J-PARC, JINR, PSI, Frascati, Boulby,
   Berkeley Lab, Cornell; KEK, Brookhaven, GSI, FRIB, GANIL, VECC, RIKEN
   RIBF, IUAC; Cavendish, Los Alamos, IHEP, Savannah River, SSC, Gran
   Sasso, SNOLAB; Kamioka, SURF, Modane, Canfranc, CJPL, Baksan, Soudan;
-  Kolar Gold Fields, SUPL, Yemilab, INO, Hyper-Kamiokande, Daya Bay, JUNO.
+  Kolar Gold Fields, SUPL, Yemilab, INO, Hyper-Kamiokande, Daya Bay, JUNO;
+  IceCube, KM3NeT, ANTARES, Baikal-GVD, IMB, Double Chooz, RENO.
+  Years still unsourced in this group: KM3NeT 2015 (sources disagree on
+  the first ARCA unit: December 2014 per PoS(NOW2016)054, December 2015
+  per others) and Double Chooz 2011 (its 2012 paper gives no start date).
+  Sea, lake and mine sites without a map source: KM3NeT, ANTARES,
+  Baikal-GVD (need a paper giving site coordinates) and IMB (the
+  Fairport Harbor mine is not on OpenStreetMap).
   Kolar's 1965 is the year of its atmospheric-neutrino discovery, not a
   start: experiments there began in the 1950s (ThePrint) but no exact
   year was found, so the page still shows the default "Founded 1965",
@@ -334,10 +350,16 @@ traceable, every link works, and specialists have started reviewing.
     Hyper-K's start: its own page says 2028, the 2024 Front. Phys. paper
     2027; the overview uses 2028. Kamioka now also cites that paper for
     Hyper-K being in Hida.
+  - Batch 7 corrections: IceCube's "world's largest neutrino telescope"
+    became its own "only cubic-kilometre neutrino detector built to
+    date"; IMB's "on the shore of Lake Erie" removed (APS says only the
+    Fairport Harbor mine); Double Chooz's "first reactor indication"
+    became "an indication" (priority not established); RENO's plant named
+    as in its paper (Yonggwang), with today's name Hanbit. RENO's status
+    "active" should be checked (7A-4).
   - ar5iv.labs.arxiv.org/html/<arXiv id> gives an arXiv paper as HTML,
     useful for checking a claim in a long paper (no PDF tools here).
-  - Next batches (28 left): IceCube, KM3NeT, ANTARES, Baikal-GVD, IMB,
-    Double Chooz, RENO; Pierre Auger, Telescope Array, AGASA, Fly's Eye,
+  - Next batches (21 left): Pierre Auger, Telescope Array, AGASA, Fly's Eye,
     KASCADE, Chacaltaya, GRAPES-3, LHAASO, Tibet ASγ; H.E.S.S., MAGIC,
     VERITAS, HAWC, MACE, CTA; LIGO, Virgo, KAGRA, GEO600, LIGO-India.
 

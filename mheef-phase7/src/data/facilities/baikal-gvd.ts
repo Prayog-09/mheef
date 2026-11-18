@@ -9,8 +9,10 @@ const facility: Facility = {
   lat: 51.77,
   lng: 104.4,
   founded: 2015,
+  foundedBasis: { meaning: "construction-start", sources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },
   status: 'active',
-  overview: "Baikal-GVD is a neutrino telescope in the deep water of southern Lake Baikal, deployed each winter from the lake's ice. Strings of optical modules record the light from particles produced when neutrinos interact in the water. It is the largest neutrino telescope in the Northern Hemisphere.",
+  overview: "Baikal-GVD is a neutrino telescope in the deep water of Lake Baikal, built from clusters of vertical strings of optical modules, installed during winter expeditions, that record Cherenkov light from particles produced when neutrinos interact in the water. Construction began in 2015 with its first cluster, and by April 2020 it had seven clusters with 2,016 optical modules. It is the largest operating neutrino telescope in the Northern Hemisphere.",
+  overviewSources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }, { label: "Neutrino astronomy at Lake Baikal (arXiv:2412.00164)", url: "https://arxiv.org/abs/2412.00164" }],
   specs: [
     { label: "Lake depth at the site", value: "1,366 m, 3.6 km from the shore", sources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },
     { label: "One cluster", value: "Eight strings carrying 288 optical modules", sources: [{ label: "Neutrino Telescope in Lake Baikal: Present and Future (arXiv:1908.05427)", url: "https://arxiv.org/abs/1908.05427" }] },

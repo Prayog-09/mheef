@@ -5,8 +5,9 @@
 // the results:
 //   broken      the site answered that the page is gone (404, 410, other 4xx)
 //               or the domain no longer exists
-//   moved       the link now redirects to the site's home page, which
-//               usually means the page was removed — check by hand
+//   moved       the link now redirects to the site's home page or to a
+//               shorter address on the same site (a news archive, a section
+//               index), which usually means the page was removed — check by hand
 //   unreachable timeouts, server errors, TLS failures; often temporary
 //   blocked     401/403/405/429: the site refuses automated requests, so the
 //               link could not be checked (not evidence that it is broken)
@@ -101,6 +102,21 @@ function isHomePage(url: URL) {
   return url.pathname.replace(/\/(index\.\w+)?$/, '') === '' && url.search === '';
 }
 
+const pathParts = (url: URL) => url.pathname.split('/').filter(Boolean);
+
+/**
+ * A deep link that now lands on a shorter path of the same site, such as a
+ * news archive or section index, usually means the page was removed (Nikhef
+ * sent its old news articles to /actueel/nieuws/). Ordinary redirects keep
+ * at least as much path, or move to another site.
+ */
+function isLikelyListing(from: URL, to: URL) {
+  const sameSite = from.hostname.replace(/^www\./, '') === to.hostname.replace(/^www\./, '');
+  const before = pathParts(from);
+  const after = pathParts(to);
+  return sameSite && before.length >= 2 && after.length < before.length && after.join('/') !== before.join('/');
+}
+
 async function checkOnce(raw: string): Promise<Result> {
   const url = new URL(raw);
   const doi = doiOf(url);
@@ -132,6 +148,9 @@ async function checkOnce(raw: string): Promise<Result> {
   if (status >= 400) return { outcome: 'broken', detail: `${status}${final.href !== raw ? ` at ${final.href}` : ''}` };
   if (!isHomePage(url) && isHomePage(final)) {
     return { outcome: 'moved', detail: `redirects to the home page ${final.href}` };
+  }
+  if (isLikelyListing(url, final)) {
+    return { outcome: 'moved', detail: `redirects to a shorter address on the same site, ${final.href}` };
   }
   return { outcome: 'ok', detail: String(status) };
 }
@@ -187,7 +206,7 @@ await Promise.all(Array.from({ length: CONCURRENCY }, worker));
 
 const SECTIONS: { outcome: Outcome; title: string; note: string }[] = [
   { outcome: 'broken', title: 'Broken', note: 'The site says the page is gone, or the domain no longer exists. Find a replacement source.' },
-  { outcome: 'moved', title: 'Moved', note: 'The link now lands on the site’s home page, so the page was probably removed. Check by hand.' },
+  { outcome: 'moved', title: 'Moved', note: 'The link now lands on the site’s home page or a shorter address on the same site (an archive or index), so the page was probably removed. Check by hand.' },
   { outcome: 'unreachable', title: 'Unreachable', note: 'Timed out or server error, twice. Often temporary; act if it appears two weeks running.' },
   { outcome: 'blocked', title: 'Could not check', note: 'The site refuses automated requests. Not evidence of a broken link; open one by hand now and then.' },
 ];

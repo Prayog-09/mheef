@@ -8,8 +8,10 @@ const facility: Facility = {
   lat: 50.087,
   lng: 4.79,
   founded: 2011,
+  location: { represents: "The Chooz nuclear power plant, Chooz, France", sources: [{ label: "OpenStreetMap: Centre Nucléaire de Production d'Electricité de Chooz", url: "https://www.openstreetmap.org/relation/20011646" }] },
   status: 'historic',
-  overview: "Double Chooz studied antineutrinos from the two reactors of the Chooz nuclear power plant in the French Ardennes. It followed the earlier CHOOZ experiment at the same site, whose limit on the mixing angle theta-13 stood for more than a decade, and in 2012 it published the first reactor indication that the angle is not zero.",
+  overview: "Double Chooz studied antineutrinos from the two 4.25 GW reactors of the Chooz nuclear power plant in France, with detectors about 400 m and 1,050 m from the reactor cores. It followed the CHOOZ experiment at the same site, whose 1999 limit long remained the tightest constraint on the mixing angle θ13, and in 2012 it published an indication of reactor antineutrino disappearance pointing to a non-zero value of that angle.",
+  overviewSources: [{ label: "Double Chooz Collaboration, Phys. Rev. Lett. 108, 131801 (2012)", url: "https://doi.org/10.1103/PhysRevLett.108.131801" }, { label: "Double Chooz: Searching for theta13 with reactor neutrinos (arXiv:1105.6079)", url: "https://arxiv.org/abs/1105.6079" }, { label: "CHOOZ Collaboration, Phys. Lett. B 466, 415 (1999)", url: "https://doi.org/10.1016/S0370-2693(99)01072-2" }],
   specs: [
     { label: "Detector distances", value: "About 400 m (near) and 1,050 m (far) from the reactors", sources: [{ label: "Double Chooz: Searching for theta13 with reactor neutrinos (arXiv:1105.6079)", url: "https://arxiv.org/abs/1105.6079" }] },
   ],
