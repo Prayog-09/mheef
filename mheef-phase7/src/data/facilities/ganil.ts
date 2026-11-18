@@ -8,9 +8,12 @@ const facility: Facility = {
   country: "France",
   lat: 49.214,
   lng: -0.364,
-  founded: 1976,
+  founded: 1975,
+  foundedBasis: { meaning: "approved", sources: [{ label: "Physics Today: French heavy-ion laboratory under way (1976)", url: "https://doi.org/10.1063/1.3023364" }, { label: "History and prospectives of GANIL, Cyclotrons 2022 proceedings (TUAO01)", url: "https://accelconf.web.cern.ch/cyclotrons2022/papers/tuao01.pdf" }] },
+  location: { represents: "The GANIL site on Boulevard Henri Becquerel, Caen", sources: [{ label: "OpenStreetMap: GANIL", url: "https://www.openstreetmap.org/way/264092864" }] },
   status: 'active',
-  overview: "GANIL in Caen is France's national heavy-ion laboratory, run jointly by the CEA and the CNRS. Its coupled cyclotrons have delivered heavy-ion beams since 1983, and the SPIRAL2 superconducting linear accelerator, which began commissioning in 2019, adds very intense beams of light ions and neutrons.",
+  overview: "GANIL (Grand Accélérateur National d'Ions Lourds) in Caen is France's national heavy-ion laboratory, run jointly by the CEA and the CNRS. Its construction was authorised in 1975; its cyclotrons delivered their first beam on 19 November 1982, and the first experiment took place in January 1983. Since 2001 its SPIRAL1 facility has produced exotic beams by isotope separation on-line, and in 2019 the first beam was accelerated in SPIRAL2, a superconducting linear accelerator for intense beams of light ions that also feeds the Neutrons for Science facility.",
+  overviewSources: [{ label: "Physics Today: French heavy-ion laboratory under way (1976)", url: "https://doi.org/10.1063/1.3023364" }, { label: "History and prospectives of GANIL, Cyclotrons 2022 proceedings (TUAO01)", url: "https://accelconf.web.cern.ch/cyclotrons2022/papers/tuao01.pdf" }, { label: "CERN Courier: Spiralling into the femtoscale", url: "https://cerncourier.com/a/spiralling-into-the-femtoscale/" }],
   specs: [
   ],
   images: [

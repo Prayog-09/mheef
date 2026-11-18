@@ -9,8 +9,10 @@ const facility: Facility = {
   lat: 22.5958,
   lng: 88.4144,
   founded: 1969,
+  foundedBasis: { meaning: "construction-start", sources: [{ label: "VECC: About", url: "https://www.vecc.gov.in/about-us" }] },
   status: 'active',
-  overview: "The Variable Energy Cyclotron Centre in Kolkata is a research unit of India's Department of Atomic Energy built around cyclotrons. Its room-temperature cyclotron has run since 1977 and a superconducting cyclotron delivers heavy-ion beams; the centre works on experimental nuclear physics, accelerator technology and isotope production.",
+  overview: "The Variable Energy Cyclotron Centre (VECC) in Kolkata grew from work that the Bhabha Atomic Research Centre began there in 1969, and became an independent R&D unit of India's Department of Atomic Energy in May 1990. Its K130 cyclotron was commissioned in 1977, delivering its first beam of alpha particles on 16 June that year, and its K500 superconducting cyclotron delivers heavy-ion beams for basic research. The centre's work covers experimental nuclear physics, radiation damage studies and isotope production, along with accelerator design and technology development.",
+  overviewSources: [{ label: "VECC: About", url: "https://www.vecc.gov.in/about-us" }],
   specs: [
     { label: "Cyclotrons", value: "K130 room-temperature, K500 superconducting, and a 30 MeV medical cyclotron", sources: [{ label: "VECC: About", url: "https://www.vecc.gov.in/about-us" }] },
   ],

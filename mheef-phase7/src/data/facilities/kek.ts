@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 36.1512,
   lng: 140.0712,
   founded: 1971,
+  foundedBasis: { meaning: "established", sources: [{ label: "KEK: History", url: "https://www.kek.jp/en/about/history" }] },
+  location: { represents: "KEK's Tsukuba campus", sources: [{ label: "OpenStreetMap: KEK (High Energy Accelerator Research Organization)", url: "https://www.openstreetmap.org/way/100702753" }] },
   status: 'active',
-  overview: "The High Energy Accelerator Research Organization (KEK) in Tsukuba, Japan operates SuperKEKB — an asymmetric-energy electron-positron collider designed to produce B mesons near their pair-production threshold. The Belle II detector, collecting data since 2019, aims to accumulate 50 times the dataset of its predecessor Belle to search for CP violation, rare decays, and dark-sector particles with unprecedented precision.",
+  overview: "The High Energy Accelerator Research Organization (KEK), in Tsukuba, Japan, was established in April 1971 as the National Laboratory for High Energy Physics. Its KEKB collider stored its first beams in 1998, and the Belle experiment, which took data there from 1999 to 2010, measured large CP violation in B-meson decays, as did BaBar at SLAC, confirming the Kobayashi-Maskawa mechanism. KEKB's successor, the SuperKEKB electron-positron collider, has hosted the Belle II experiment since 2019; Belle II is expected to collect 50 ab⁻¹ of data for studies ranging from B and charm physics to searches for dark-sector particles.",
+  overviewSources: [{ label: "KEK: History", url: "https://www.kek.jp/en/about/history" }, { label: "Nobel Prize in Physics 2008", url: "https://www.nobelprize.org/prizes/physics/2008/summary/" }, { label: "The Belle II Physics Book, PTEP 2019, 123C01", url: "https://doi.org/10.1093/ptep/ptz106" }, { label: "Belle II at SuperKEKB: input to the European Strategy (arXiv:2503.24155)", url: "https://arxiv.org/abs/2503.24155" }],
   specs: [
     { label: "KEKB data delivered", value: "More than 1 ab⁻¹", sources: [{ label: "The Belle II Physics Book, PTEP 2019, 123C01", url: "https://doi.org/10.1093/ptep/ptz106" }] },
     { label: "SuperKEKB design luminosity", value: "40 times that of KEKB", sources: [{ label: "The Belle II Physics Book, PTEP 2019, 123C01", url: "https://doi.org/10.1093/ptep/ptz106" }] },

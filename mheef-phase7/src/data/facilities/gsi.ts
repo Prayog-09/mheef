@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 49.934,
   lng: 8.672,
   founded: 1969,
+  foundedBasis: { meaning: "established", sources: [{ label: "GSI and FAIR timeline", url: "https://www.gsi.de/en/about_us/history" }] },
+  location: { represents: "The GSI campus at Wixhausen, Darmstadt", sources: [{ label: "OpenStreetMap: GSI Helmholtzzentrum für Schwerionenforschung, Darmstadt", url: "https://www.openstreetmap.org/way/723075568" }] },
   status: 'active',
-  overview: "The GSI Helmholtz Centre for Heavy Ion Research in Darmstadt operates a heavy-ion accelerator complex and is home to FAIR (Facility for Antiproton and Ion Research), currently under construction on the same campus. GSI is internationally renowned for synthesising six new super-heavy elements (Bohrium to Copernicium, Z=107-112) between 1981 and 1996, for pioneering heavy-ion cancer therapy in the 1990s, and for its HADES spectrometer studying dense hadronic matter. FAIR will collide heavy ions and antiprotons at unprecedented intensities.",
+  overview: "The GSI Helmholtz Centre for Heavy Ion Research in Darmstadt was founded in 1969 as the Gesellschaft für Schwerionenforschung and operates a heavy-ion accelerator complex. Between 1981 and 1996 teams at GSI synthesised six new elements, from bohrium (element 107) to copernicium (element 112). In 1997 GSI treated its first cancer patients with carbon-ion beams, and its HADES spectrometer studies dense hadronic matter made in heavy-ion collisions. FAIR, the Facility for Antiproton and Ion Research, is a new international accelerator centre under construction at GSI; ground was broken in 2017.",
+  overviewSources: [{ label: "GSI and FAIR timeline", url: "https://www.gsi.de/en/about_us/history" }, { label: "Münzenberg et al., Z. Phys. A 300, 107 (1981)", url: "https://doi.org/10.1007/BF01412623" }, { label: "Hofmann et al., Z. Phys. A 354, 229 (1996)", url: "https://doi.org/10.1007/BF02769517" }, { label: "The HADES Collaboration, Eur. Phys. J. A 41, 243 (2009)", url: "https://doi.org/10.1140/epja/i2009-10807-5" }, { label: "OpenStreetMap: GSI Helmholtzzentrum für Schwerionenforschung, Darmstadt", url: "https://www.openstreetmap.org/way/723075568" }],
   specs: [
     { label: "UNILAC length", value: "120 m", sources: [{ label: "FAIR: The accelerator facility", url: "https://fair-center.eu/overview/accelerator" }] },
     { label: "SIS18 circumference", value: "216 m", sources: [{ label: "FAIR: The accelerator facility", url: "https://fair-center.eu/overview/accelerator" }] },

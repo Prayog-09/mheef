@@ -236,9 +236,12 @@ traceable, every link works, and specialists have started reviewing.
   sentence that cannot be sourced.
 - *Done when:* the validator reports 100 % for overviews, coordinates and
   founding years, and the About page no longer lists them as unsourced.
-- *In progress (started 2026-11-18): 13 of 70 done* — CERN, Fermilab, SLAC,
+- *In progress (started 2026-11-18): 21 of 70 done* — CERN, Fermilab, SLAC,
   DESY, TRIUMF, Jefferson Lab; J-PARC, JINR, PSI, Frascati, Boulby,
-  Berkeley Lab, Cornell. Fields as built: `overviewSources`,
+  Berkeley Lab, Cornell; KEK, Brookhaven, GSI, FRIB, GANIL, VECC, RIKEN
+  RIBF, IUAC. VECC has no location source yet: its postal address (AF
+  Block, Sector I, Bidhannagar) and its OpenStreetMap point (AL Block,
+  Sector II) disagree; settle which is the main campus before citing. Fields as built: `overviewSources`,
   `foundedBasis: { meaning, sources }` and `location: { represents,
   sources }` (`lat`/`lng` stay where they are; 7B-1 need not move them).
   Rules adopted:
@@ -274,11 +277,25 @@ traceable, every link works, and specialists have started reviewing.
   - Frascati's year changed from 1954 to 1955: the lab's own page says
     "Costruiti nel 1955" and the paper cited for 1954 does not give that
     year. Some accounts give 1954; none was found that could be cited.
+  - GANIL's year changed from 1976 to 1975 ("Approved"): construction was
+    authorised in 1975 (Physics Today, March 1976; GANIL's own 2022 status
+    report). 1976 is when the GANIL economic interest group (GIE) was
+    registered, per search summaries of the SIRENE register and a
+    prefecture report; neither could be opened. If a readable source is
+    found, 1976 "Founded" is equally valid.
+  - Markers moved onto the facility where the old point was beside it:
+    FRIB (0.9 km, onto the FRIB building) and IUAC (1.5 km, from JNU Ring
+    Road onto the IUAC campus), both from OpenStreetMap.
+  - Overview corrections in this batch: FRIB's "beryllium targets" and
+    "world's most powerful" (not in any source found); GSI's "FAIR will
+    collide heavy ions and antiprotons"; Brookhaven's "world leader";
+    KEK's "50 times Belle's dataset" (the source gives 50 ab⁻¹ only).
   - ar5iv.labs.arxiv.org/html/<arXiv id> gives an arXiv paper as HTML,
     useful for checking a claim in a long paper (no PDF tools here).
-  - Next batches: GANIL, VECC, Kamioka, SNOLAB, Cavendish, Los Alamos,
-    IHEP, Savannah River, KEK, Brookhaven, GSI, FRIB, IUAC, RIKEN; then
-    underground labs, then observatories.
+  - Next batches: Cavendish, Los Alamos, IHEP, Savannah River, SSC; then
+    underground labs (Gran Sasso, SNOLAB, Kamioka, SURF, Modane, Canfranc,
+    CJPL, Baksan, Kolar Gold Fields, Soudan, SUPL, Yemilab, INO); then
+    observatories and detectors.
 
 **7A-3 Record how each source was checked (M)**
 - *Do:* add an optional `checked` field to `SourceRef`
