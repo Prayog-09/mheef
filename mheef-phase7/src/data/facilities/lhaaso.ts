@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 29.358,
   lng: 100.138,
   founded: 2021,
+  foundedBasis: { meaning: "completed", sources: [{ label: "The First LHAASO Catalog of Gamma-Ray Sources (arXiv:2305.17030)", url: "https://arxiv.org/abs/2305.17030" }] },
+  location: { represents: "The LHAASO site in Daocheng county, Sichuan", sources: [{ label: "OpenStreetMap: LHAASO (高海拔宇宙线观测站)", url: "https://www.openstreetmap.org/node/8410412309" }] },
   status: 'active',
-  overview: "LHAASO stands at 4,410 m on Mount Haizi in Daocheng, Sichuan. It combines a square-kilometre array of particle and muon detectors, a large water Cherenkov pool and wide-field Cherenkov telescopes to observe gamma rays and cosmic rays at the highest energies. Even before completion it found a dozen Galactic sources emitting photons up to 1.4 PeV.",
+  overview: "The Large High Altitude Air Shower Observatory (LHAASO) stands at 4,410 m in Daocheng county, Sichuan, China. It combines a 1.3 km² array of particle detectors with 1,188 buried muon detectors (KM2A), a 78,000 m² water Cherenkov detector array and 18 wide-field Cherenkov telescopes to observe gamma rays and cosmic rays. Its KM2A array was completed and running from 19 July 2021; even before then, LHAASO reported twelve Galactic sources of photons above 100 TeV, with energies up to 1.4 PeV.",
+  overviewSources: [{ label: "The First LHAASO Catalog of Gamma-Ray Sources (arXiv:2305.17030)", url: "https://arxiv.org/abs/2305.17030" }, { label: "LHAASO Collaboration, Nature 594, 33 (2021)", url: "https://doi.org/10.1038/s41586-021-03498-z" }, { label: "OpenStreetMap: LHAASO (高海拔宇宙线观测站)", url: "https://www.openstreetmap.org/node/8410412309" }],
   specs: [
     { label: "Altitude", value: "4,410 m", sources: [{ label: "The First LHAASO Catalog of Gamma-Ray Sources (arXiv:2305.17030)", url: "https://arxiv.org/abs/2305.17030" }] },
     { label: "KM2A array area", value: "1.3 km², with 1,188 muon detectors", sources: [{ label: "The First LHAASO Catalog of Gamma-Ray Sources (arXiv:2305.17030)", url: "https://arxiv.org/abs/2305.17030" }] },

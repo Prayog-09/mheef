@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 49.099,
   lng: 8.438,
   founded: 1996,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "Galactic cosmic rays and the knee: results from the KASCADE experiment (arXiv:astro-ph/0509253)", url: "https://arxiv.org/abs/astro-ph/0509253" }] },
+  location: { represents: "KIT Campus North, Eggenstein-Leopoldshafen, near Karlsruhe", sources: [{ label: "OpenStreetMap: KIT-Campus Nord", url: "https://www.openstreetmap.org/node/3112467814" }] },
   status: 'historic',
-  overview: "KASCADE, on the campus of what is now the Karlsruhe Institute of Technology, measured cosmic-ray air showers in the energy range of the 'knee', where the cosmic-ray spectrum steepens. By recording several components of each shower at once, it showed that the knee is caused by the fading of the lightest nuclei.",
+  overview: "KASCADE, at Karlsruhe in Germany, began operating in 1996 with 252 detector stations on a 200 m × 200 m grid and a central hadron calorimeter. It measured cosmic-ray air showers in the energy range of the 'knee', where the cosmic-ray spectrum steepens, and by recording the electrons and muons of each shower it showed in 2005 that the knee comes from a drop in light nuclei, protons and helium, while heavier elements continue to higher energies.",
+  overviewSources: [{ label: "Galactic cosmic rays and the knee: results from the KASCADE experiment (arXiv:astro-ph/0509253)", url: "https://arxiv.org/abs/astro-ph/0509253" }, { label: "The cosmic-ray experiment KASCADE, Nucl. Instrum. Meth. A 513, 490 (2003)", url: "https://doi.org/10.1016/S0168-9002(03)02076-X" }, { label: "KASCADE Collaboration, Astropart. Phys. 24, 1 (2005)", url: "https://doi.org/10.1016/j.astropartphys.2005.04.001" }],
   specs: [
     { label: "Array", value: "252 detector stations on a 200 m × 200 m grid", sources: [{ label: "Galactic cosmic rays and the knee: results from the KASCADE experiment (arXiv:astro-ph/0509253)", url: "https://arxiv.org/abs/astro-ph/0509253" }, { label: "The cosmic-ray experiment KASCADE, Nucl. Instrum. Meth. A 513, 490 (2003)", url: "https://doi.org/10.1016/S0168-9002(03)02076-X" }] },
   ],

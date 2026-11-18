@@ -9,8 +9,10 @@ const facility: Facility = {
   lat: -16.353,
   lng: -68.131,
   founded: 1952,
+  location: { represents: "Mount Chacaltaya, near La Paz", sources: [{ label: "OpenStreetMap: Chacaltaya (peak)", url: "https://www.openstreetmap.org/node/582796953" }] },
   status: 'active',
-  overview: "The Chacaltaya laboratory stands at about 5,220 m in the Bolivian Andes near La Paz, the highest cosmic-ray laboratory in continuous operation. Photographic plates exposed on the mountain by César Lattes in 1947 confirmed the existence of the pion, the particle that carries the strong force between protons and neutrons. The laboratory was established there a few years later.",
+  overview: "The Chacaltaya laboratory stands at 5,220 m on Mount Chacaltaya in the Bolivian Andes, about an hour's drive from La Paz; CERN Courier described it in 2001 as the highest continuously operating cosmic-ray research laboratory in the world. Photographic emulsions exposed to cosmic rays at high altitude in 1947, including plates César Lattes took to Chacaltaya, revealed the pion; Cecil Powell received the 1950 Nobel Prize in Physics for the photographic method and his discoveries regarding mesons.",
+  overviewSources: [{ label: "CERN Courier: High energies and high altitudes (2001)", url: "https://cerncourier.com/a/high-energies-and-high-altitudes/" }, { label: "Lattes, Muirhead, Occhialini and Powell, Nature 159, 694 (1947)", url: "https://doi.org/10.1038/159694a0" }, { label: "Lattes, Occhialini and Powell, Nature 160, 453 (1947)", url: "https://doi.org/10.1038/160453a0" }, { label: "Nobel Prize in Physics 1950", url: "https://www.nobelprize.org/prizes/physics/1950/summary/" }],
   specs: [
     { label: "Altitude", value: "5,220 m", sources: [{ label: "CERN Courier: High energies and high altitudes", url: "https://cerncourier.com/a/high-energies-and-high-altitudes/" }] },
   ],

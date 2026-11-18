@@ -8,8 +8,10 @@ const facility: Facility = {
   lat: -35.208,
   lng: -69.314,
   founded: 2008,
+  foundedBasis: { meaning: "completed", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },
   status: 'active',
-  overview: "The Pierre Auger Observatory in Mendoza Province, Argentina, covers 3,000 km2 of the Pampa Amarilla with 1,660 water-Cherenkov surface detectors and 27 fluorescence telescopes — the world's largest cosmic-ray detector. It measures ultra-high-energy cosmic rays (UHECRs) above 10^18 eV, addressing the mystery of the origin, nature, and maximum energy of cosmic rays. The ongoing AugerPrime upgrade adds scintillators and radio antennas for improved composition sensitivity.",
+  overview: "The Pierre Auger Observatory near Malargüe in Mendoza Province, Argentina, spreads 1,660 water-Cherenkov surface detectors over about 3,000 km² of the Pampa Amarilla, overlooked by 27 fluorescence telescopes; in 2003 it became the largest detector in the world for ultra-high-energy cosmic rays. Proposed in 1992 by James Cronin and Alan Watson, it was inaugurated, complete, in 2008. In 2017 it reported a large-scale anisotropy in the arrival directions of cosmic rays above 8 EeV, pointing to an origin outside the Galaxy, and its AugerPrime upgrade adds scintillators and radio antennas to the surface stations.",
+  overviewSources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }, { label: "The Pierre Auger Cosmic Ray Observatory, Nucl. Instrum. Meth. A 798, 172 (2015) (arXiv:1502.01323)", url: "https://arxiv.org/abs/1502.01323" }, { label: "Pierre Auger Collaboration, Science 357, 1266 (2017)", url: "https://doi.org/10.1126/science.aan4338" }],
   specs: [
     { label: "Array area", value: "3,000 km²", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },
     { label: "Surface detectors", value: "1,660", sources: [{ label: "Pierre Auger Observatory: Timeline", url: "https://www.auger.org/observatory/timeline-observatory" }] },

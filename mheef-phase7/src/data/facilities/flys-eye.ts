@@ -9,8 +9,10 @@ const facility: Facility = {
   lat: 40.2,
   lng: -112.84,
   founded: 1981,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "CERN Courier: High energies and high altitudes (2001), “The Utah Fly’s Eye detector (1981-1993)”", url: "https://cerncourier.com/a/high-energies-and-high-altitudes/" }] },
   status: 'historic',
-  overview: "The Fly's Eye detectors in the Utah desert pioneered the fluorescence technique, watching the faint ultraviolet glow that cosmic-ray air showers leave in the night sky. In 1991 the original detector recorded the most energetic cosmic ray seen up to that time, the 'Oh-My-God particle'. Its successor, HiRes, made the first observation of the predicted suppression of the cosmic-ray spectrum at the highest energies.",
+  overview: "The Fly's Eye detector in Utah, which operated from 1981 to 1993, observed cosmic-ray air showers by the fluorescence light they produce in the atmosphere. On 15 October 1991 it recorded a cosmic ray with an energy of about 3 × 10²⁰ eV, far beyond the limit expected for particles travelling cosmological distances. Its successor, HiRes, observed showers in stereo from two sites and in 2008 published the first observation of the Greisen-Zatsepin-Kuzmin suppression at the highest energies.",
+  overviewSources: [{ label: "CERN Courier: High energies and high altitudes (2001)", url: "https://cerncourier.com/a/high-energies-and-high-altitudes/" }, { label: "Bird et al., Astrophys. J. 441, 144 (1995)", url: "https://doi.org/10.1086/175344" }, { label: "HiRes Collaboration, Phys. Rev. Lett. 100, 101101 (2008)", url: "https://doi.org/10.1103/PhysRevLett.100.101101" }],
   specs: [
   ],
   history: [

@@ -9,8 +9,10 @@ const facility: Facility = {
   lat: 35.787,
   lng: 138.476,
   founded: 1990,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "AGASA Collaboration, Phys. Rev. Lett. 81, 1163 (1998)", url: "https://doi.org/10.1103/PhysRevLett.81.1163" }] },
   status: 'historic',
-  overview: "AGASA, at Akeno in Yamanashi Prefecture, was for a decade the world's largest cosmic-ray detector: 111 scintillation detectors spread over about 100 square kilometres. It reported cosmic rays above the energy at which the spectrum was predicted to cut off, a puzzle that motivated the Pierre Auger Observatory and the Telescope Array.",
+  overview: "AGASA, the Akeno Giant Air Shower Array in Japan, spread 111 scintillation detectors over about 100 km² and collected data from February 1990. In 1998 it reported that the cosmic-ray energy spectrum extends beyond 10²⁰ eV without the cut-off predicted by Greisen, Zatsepin and Kuzmin; HiRes later observed that suppression.",
+  overviewSources: [{ label: "AGASA Collaboration, Phys. Rev. Lett. 81, 1163 (1998)", url: "https://doi.org/10.1103/PhysRevLett.81.1163" }, { label: "HiRes Collaboration, Phys. Rev. Lett. 100, 101101 (2008)", url: "https://doi.org/10.1103/PhysRevLett.100.101101" }],
   specs: [
     { label: "Array", value: "111 surface detectors over about 100 km²", sources: [{ label: "AGASA Collaboration, Phys. Rev. Lett. 81, 1163 (1998)", url: "https://doi.org/10.1103/PhysRevLett.81.1163" }] },
   ],

@@ -1,7 +1,7 @@
 // Checks that every link in the dataset still works (roadmap task 7A-1).
 //
-// Collects each URL from sources, key figures, photographs and further
-// reading, requests it with a generic user agent, retries once, and sorts
+// Collects each URL from sources (including those for overviews, founding
+// years and map points), key figures, photographs and further reading, requests it with a generic user agent, retries once, and sorts
 // the results:
 //   broken      the site answered that the page is gone (404, 410, other 4xx)
 //               or the domain no longer exists
@@ -51,6 +51,9 @@ function addSources(sources: SourceRef[] | undefined, where: string) {
 
 for (const f of facilities) {
   if (only && f.id !== only) continue;
+  addSources(f.overviewSources, `${f.id} › overview`);
+  addSources(f.foundedBasis?.sources, `${f.id} › founding year`);
+  addSources(f.location?.sources, `${f.id} › map point`);
   f.specs?.forEach((s) => addSources(s.sources, `${f.id} › key figure “${s.label}”`));
   f.images?.forEach((img) => {
     add(img.sourceUrl, `${f.id} › photo ${img.file}`);

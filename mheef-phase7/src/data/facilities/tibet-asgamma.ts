@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 30.102,
   lng: 90.522,
   founded: 1990,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "Tibet ASγ: Dawn of sub-PeV gamma-ray astronomy, PoS(ECRS)049", url: "https://pos.sissa.it/421/049" }] },
+  location: { represents: "Yangbajing, Damxung County, Tibet", sources: [{ label: "OpenStreetMap: Yangbajing (town)", url: "https://www.openstreetmap.org/relation/12338727" }] },
   status: 'active',
-  overview: "The Tibet air shower array at Yangbajing, 4,300 m above sea level, is a Chinese-Japanese experiment that has observed cosmic rays and gamma rays since 1990. Underground muon detectors added in 2014 let it separate gamma rays from the far more numerous cosmic rays, and with them it detected the first photons above 100 TeV from an astrophysical source.",
+  overview: "The Tibet ASγ experiment at Yangbajing in Tibet, China, 4,300 m above sea level, has run an air shower array since 1990; it now has about 600 scintillation detectors over 65,700 m². Underground water-Cherenkov muon detectors added in 2014 help it pick out gamma rays among cosmic-ray showers; with them it reported in 2019 the first photons above 100 TeV from an astrophysical source, the Crab Nebula, and in 2021 diffuse gamma rays of nearly PeV energy from the disc of the Milky Way.",
+  overviewSources: [{ label: "Tibet ASγ: Dawn of sub-PeV gamma-ray astronomy, PoS(ECRS)049", url: "https://pos.sissa.it/421/049" }, { label: "Tibet ASγ Collaboration, Phys. Rev. Lett. 123, 051101 (2019)", url: "https://doi.org/10.1103/PhysRevLett.123.051101" }, { label: "Tibet ASγ Collaboration, Phys. Rev. Lett. 126, 141101 (2021)", url: "https://doi.org/10.1103/PhysRevLett.126.141101" }],
   specs: [
     { label: "Altitude", value: "4,300 m", sources: [{ label: "Tibet ASγ: Dawn of sub-PeV gamma-ray astronomy, PoS(ECRS)049", url: "https://pos.sissa.it/421/049" }] },
     { label: "Array area", value: "65,700 m², with about 600 scintillation detectors", sources: [{ label: "Tibet ASγ: Dawn of sub-PeV gamma-ray astronomy, PoS(ECRS)049", url: "https://pos.sissa.it/421/049" }] },

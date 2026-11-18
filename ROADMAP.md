@@ -229,6 +229,11 @@ traceable, every link works, and specialists have started reviewing.
     old news articles (ANTARES, KM3NeT; replaced by the ANTARES
     collaboration's history page and KM3NeT's own press release) and an
     MSU Today article (FRIB 2014; replaced by Michigan Public's report).
+  - 2026-11-19: the checker did not collect the sources added by 7A-2
+    (overviewSources, foundedBasis, location) until batch 8; fixed, and a
+    full run then covered 529 links. Every one of those sources had been
+    opened and read when added; the only change found was DESY's About
+    page moving to /research_centre_desy/ (same text; link updated).
   - Not detectable automatically: frib.msu.edu answers 200 with an
     "additional security check" page, even in a normal browser. Its links
     count as working but may not be readable by visitors; prefer other
@@ -245,14 +250,20 @@ traceable, every link works, and specialists have started reviewing.
   sentence that cannot be sourced.
 - *Done when:* the validator reports 100 % for overviews, coordinates and
   founding years, and the About page no longer lists them as unsourced.
-- *In progress (started 2026-11-18): 49 of 70 overviews, 45 years, 39
+- *In progress (started 2026-11-18): 58 of 70 overviews, 52 years, 45
   locations* — CERN, Fermilab, SLAC,
   DESY, TRIUMF, Jefferson Lab; J-PARC, JINR, PSI, Frascati, Boulby,
   Berkeley Lab, Cornell; KEK, Brookhaven, GSI, FRIB, GANIL, VECC, RIKEN
   RIBF, IUAC; Cavendish, Los Alamos, IHEP, Savannah River, SSC, Gran
   Sasso, SNOLAB; Kamioka, SURF, Modane, Canfranc, CJPL, Baksan, Soudan;
   Kolar Gold Fields, SUPL, Yemilab, INO, Hyper-Kamiokande, Daya Bay, JUNO;
-  IceCube, KM3NeT, ANTARES, Baikal-GVD, IMB, Double Chooz, RENO.
+  IceCube, KM3NeT, ANTARES, Baikal-GVD, IMB, Double Chooz, RENO; Pierre
+  Auger, Telescope Array, AGASA, Fly's Eye, KASCADE, Chacaltaya, GRAPES-3,
+  LHAASO, Tibet ASγ. Years still unsourced here: Chacaltaya 1952 (a
+  search summary attributed "began operating 19 August 1952" to Rev. Bol.
+  Fís. 16 (2010), but that article does not say it) and GRAPES-3 2000.
+  No map source: Auger (array centre; the NIM paper gives no
+  coordinates), AGASA (Akeno not on OpenStreetMap), Fly's Eye.
   Years still unsourced in this group: KM3NeT 2015 (sources disagree on
   the first ARCA unit: December 2014 per PoS(NOW2016)054, December 2015
   per others) and Double Chooz 2011 (its 2012 paper gives no start date).
@@ -357,10 +368,17 @@ traceable, every link works, and specialists have started reviewing.
     became "an indication" (priority not established); RENO's plant named
     as in its paper (Yonggwang), with today's name Hanbit. RENO's status
     "active" should be checked (7A-4).
+  - Batch 8 corrections: Telescope Array's "largest in the Northern
+    Hemisphere" and AGASA's "for a decade the world's largest" removed
+    (no source); the nicknames "Amaterasu" and "Oh-My-God" dropped from
+    overviews (not in the cited papers); Tibet's "Chinese-Japanese" and
+    KASCADE's "campus of what is now KIT" removed; Chacaltaya's "highest
+    in continuous operation" attributed to CERN Courier (2001); AGASA's
+    note that later observatories found the suppression now cites HiRes.
+    GRAPES-3's marker moved 6.3 km onto Ooty's Cosmic Ray Laboratory.
   - ar5iv.labs.arxiv.org/html/<arXiv id> gives an arXiv paper as HTML,
     useful for checking a claim in a long paper (no PDF tools here).
-  - Next batches (21 left): Pierre Auger, Telescope Array, AGASA, Fly's Eye,
-    KASCADE, Chacaltaya, GRAPES-3, LHAASO, Tibet ASγ; H.E.S.S., MAGIC,
+  - Next batches (12 left): H.E.S.S., MAGIC,
     VERITAS, HAWC, MACE, CTA; LIGO, Virgo, KAGRA, GEO600, LIGO-India.
 
 **7A-3 Record how each source was checked (M)**
