@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 18.995,
   lng: -97.308,
   founded: 2015,
+  foundedBasis: { meaning: "completed", sources: [{ label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }] },
+  location: { represents: "The HAWC array on Sierra Negra", sources: [{ label: "OpenStreetMap: HAWC Gamma-Ray Observatory", url: "https://www.openstreetmap.org/way/1563711916" }] },
   status: 'active',
-  overview: "HAWC is an array of 300 water tanks at 4,100 m on the flank of the Sierra Negra volcano in Puebla, Mexico. Each tank detects the particles of air showers started by gamma rays and cosmic rays, day and night, giving a continuous view of a large part of the sky between about 100 GeV and 100 TeV.",
+  overview: "HAWC, the High-Altitude Water Cherenkov Gamma-Ray Observatory, is an array of 300 water tanks with 1,200 photomultiplier tubes covering about 22,000 m² at 4,100 m on Sierra Negra in Puebla, Mexico. The tanks detect the particles of air showers started by gamma rays and cosmic rays; the full array was completed in March 2015. In 2017 HAWC found extended gamma-ray emission around the nearby pulsars Geminga and PSR B0656+14, showing that their positrons diffuse too slowly to explain the positron excess seen at Earth.",
+  overviewSources: [{ label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }, { label: "The HAWC Gamma-Ray Observatory: Design, Calibration, and Operation (arXiv:1310.0074)", url: "https://arxiv.org/abs/1310.0074" }, { label: "HAWC Collaboration, Science 358, 911 (2017)", url: "https://doi.org/10.1126/science.aan4880" }, { label: "OpenStreetMap: Sierra Negra, Puebla", url: "https://www.openstreetmap.org/node/4001080127" }],
   specs: [
     { label: "Altitude", value: "4,100 m", sources: [{ label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }] },
     { label: "Water Cherenkov detectors", value: "300 tanks with 1,200 photomultiplier tubes", sources: [{ label: "The HAWC Gamma-Ray Observatory: Design, Calibration, and Operation (arXiv:1310.0074)", url: "https://arxiv.org/abs/1310.0074" }, { label: "HAWC Collaboration, Astrophys. J. 843, 39 (2017)", url: "https://doi.org/10.3847/1538-4357/aa7555" }] },

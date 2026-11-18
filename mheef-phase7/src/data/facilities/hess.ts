@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: -23.2714,
   lng: 16.5003,
   founded: 2002,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }] },
+  location: { represents: "The H.E.S.S. site in the Khomas Region, Namibia", sources: [{ label: "OpenStreetMap: High Energy Stereoscopic System", url: "https://www.openstreetmap.org/way/171900958" }] },
   status: 'active',
-  overview: "H.E.S.S. is an array of imaging atmospheric Cherenkov telescopes in the Khomas Highland of Namibia, near the Gamsberg mountain. It observes very-high-energy gamma rays by recording the faint flashes of light they cause in the atmosphere. Its name also honours Victor Hess, who received the 1936 Nobel Prize for discovering cosmic radiation. Its survey of the southern Milky Way revealed many new gamma-ray sources.",
+  overview: "H.E.S.S. (High Energy Stereoscopic System) is an array of imaging atmospheric Cherenkov telescopes in Namibia, near the Gamsberg mountain, at 1,800 m: four 12-m telescopes, the first of which began operating in summer 2002, and a 28-m telescope that became operational in 2012. It observes very-high-energy gamma rays through the faint flashes of light they cause in the atmosphere, and is named after Victor Hess, who received the 1936 Nobel Prize in Physics for discovering cosmic radiation. Its survey of the inner Galaxy found eight previously unknown sources of very-high-energy gamma rays, and in 2016 it reported evidence that protons are accelerated to petaelectronvolt energies in the Galactic Centre.",
+  overviewSources: [{ label: "H.E.S.S.: About", url: "https://www.mpi-hd.mpg.de/HESS/pages/about/" }, { label: "H.E.S.S.: The High Energy Stereoscopic System (arXiv:2405.11104)", url: "https://arxiv.org/abs/2405.11104" }, { label: "Nobel Prize in Physics 1936", url: "https://www.nobelprize.org/prizes/physics/1936/summary/" }, { label: "H.E.S.S. Collaboration, Science 307, 1938 (2005)", url: "https://doi.org/10.1126/science.1108643" }, { label: "H.E.S.S. Collaboration, Nature 531, 476 (2016)", url: "https://doi.org/10.1038/nature17147" }],
   specs: [
     { label: "Altitude", value: "1,800 m", sources: [{ label: "H.E.S.S.: The High Energy Stereoscopic System (arXiv:2405.11104)", url: "https://arxiv.org/abs/2405.11104" }] },
     { label: "Telescopes", value: "Four of 12 m and one of 28 m", sources: [{ label: "H.E.S.S.: The High Energy Stereoscopic System (arXiv:2405.11104)", url: "https://arxiv.org/abs/2405.11104" }] },

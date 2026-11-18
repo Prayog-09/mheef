@@ -8,8 +8,11 @@ const facility: Facility = {
   lat: 52.2469,
   lng: 9.8083,
   founded: 1995,
+  foundedBasis: { meaning: "construction-start", sources: [{ label: "GEO600: A brief history of GEO600", url: "https://www.geo600.org/23920/a-brief-history-of-geo600" }] },
+  location: { represents: "The GEO600 site at Ruthe, near Sarstedt", sources: [{ label: "OpenStreetMap: GEO600", url: "https://www.openstreetmap.org/way/37349940" }] },
   status: 'active',
-  overview: "GEO600 is a German-British gravitational-wave detector with 600-metre arms near Ruthe, about 20 km south of Hannover. Smaller than LIGO and Virgo, it has served as the test bed for techniques now used in all large detectors, including signal recycling, monolithic mirror suspensions and squeezed light.",
+  overview: "GEO600 is a British-German gravitational-wave detector with 600-metre arms in the lowlands near Hannover, proposed in 1994 as a smaller project after plans for a 3-km detector went unfunded. Its construction began in September 1995, and it took its first scientific data in 2002 together with the LIGO detectors. It uses techniques such as signal recycling, and in 2011 it became the first gravitational-wave observatory to operate with squeezed light, improving its sensitivity beyond the quantum shot-noise limit.",
+  overviewSources: [{ label: "GEO600: A brief history of GEO600", url: "https://www.geo600.org/23920/a-brief-history-of-geo600" }, { label: "LIGO Scientific Collaboration, Nature Physics 7, 962 (2011)", url: "https://doi.org/10.1038/nphys2083" }],
   specs: [
     { label: "Arm length", value: "600 m", sources: [{ label: "GEO600: A brief history of GEO600", url: "https://www.geo600.org/23920/a-brief-history-of-geo600" }] },
   ],

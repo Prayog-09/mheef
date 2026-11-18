@@ -116,13 +116,15 @@ const prose = 'mt-4 max-w-3xl space-y-4 text-sm leading-relaxed text-white/70';
         {
           !basicsDone && (
             <li>
-              <strong class="font-semibold text-white/85">Overviews, founding years and coordinates</strong>{' '}
-              are being sourced: so far {overviewsSourced} of {facilities.length} overviews,{' '}
-              {foundedSourced} founding years and {locationsSourced} sets of coordinates cite a
-              source. Where they do, the page says so and states what the year means (founded,
-              first operation, completed…) and what the map point marks; a cited position must lie
-              within 2 km of the point. Elsewhere, coordinates mark
-              the site in general, not a particular building or detector.
+              <strong class="font-semibold text-white/85">Founding years and coordinates</strong>{' '}
+              are not all sourced yet.{' '}
+              {overviewsSourced === facilities.length
+                ? `Every overview cites its sources; so far ${foundedSourced} of ${facilities.length} founding years and ${locationsSourced} sets of coordinates do.`
+                : `So far ${overviewsSourced} of ${facilities.length} overviews, ${foundedSourced} founding years and ${locationsSourced} sets of coordinates cite a source.`}{' '}
+              Where they do, the page says so and states what the year means (founded, first
+              operation, completed…) and what the map point marks; a cited position must lie within
+              2 km of the point. Elsewhere, a year shown as "Founded" has not been checked, and
+              coordinates mark the site in general, not a particular building or detector.
             </li>
           )
         }

@@ -250,8 +250,8 @@ traceable, every link works, and specialists have started reviewing.
   sentence that cannot be sourced.
 - *Done when:* the validator reports 100 % for overviews, coordinates and
   founding years, and the About page no longer lists them as unsourced.
-- *In progress (started 2026-11-18): 58 of 70 overviews, 52 years, 45
-  locations* — CERN, Fermilab, SLAC,
+- *Overviews done 2026-11-19 (70 of 70). Still open: 6 years, 16 map
+  points* (lists below). Done in batches — CERN, Fermilab, SLAC,
   DESY, TRIUMF, Jefferson Lab; J-PARC, JINR, PSI, Frascati, Boulby,
   Berkeley Lab, Cornell; KEK, Brookhaven, GSI, FRIB, GANIL, VECC, RIKEN
   RIBF, IUAC; Cavendish, Los Alamos, IHEP, Savannah River, SSC, Gran
@@ -376,10 +376,30 @@ traceable, every link works, and specialists have started reviewing.
     in continuous operation" attributed to CERN Courier (2001); AGASA's
     note that later observatories found the suppression now cites HiRes.
     GRAPES-3's marker moved 6.3 km onto Ooty's Cosmic Ray Laboratory.
+  - Final batch corrections: KAGRA's overview said it "joined O3b in
+    2020"; its 2020 run was with GEO600 after LIGO and Virgo had suspended.
+    LIGO's called Barry Barish a "LIGO founder"; now the Nobel citation's
+    wording. Virgo's said it joined LIGO in 2017; it first ran jointly in
+    2007 (Advanced Virgo joined in 2017). Removed for want of a source:
+    CTA's "world's largest and most sensitive", H.E.S.S.'s "Khomas
+    Highland" (now in the map note, from OpenStreetMap), KAGRA's "20 K"
+    and "first", VERITAS's "Fred Lawrence Whipple Observatory", GEO600's
+    "test bed for all large detectors", LIGO-India's "Aundha". CTA's year
+    changed from 2019 (nothing supports it) to "Founded 2025", the
+    CTAO ERIC; Virgo's 2007 kept as "First operation" (first scientific
+    observations). MACE's marker moved 1.5 km onto the telescope building.
+  - **Still open (finish before closing 7A-2):**
+    - Years without a source (6): Chacaltaya 1952, Double Chooz 2011,
+      GRAPES-3 2000, Kolar Gold Fields 1965 (a discovery year, wrongly
+      shown as "Founded"), KM3NeT 2015 (sources disagree), Soudan 1981.
+    - Map points without a source (16): AGASA, ANTARES, Baikal-GVD, Fly's
+      Eye, Hyper-K, IMB, INO, LIGO-India, KM3NeT, MAGIC, Pierre Auger,
+      Savannah River, SSC, VECC, VERITAS, Yemilab. Most need a paper or
+      site map that gives coordinates; MAGIC is 0.2 km from CTAO's LST-1
+      on OpenStreetMap but has no object of its own.
   - ar5iv.labs.arxiv.org/html/<arXiv id> gives an arXiv paper as HTML,
     useful for checking a claim in a long paper (no PDF tools here).
-  - Next batches (12 left): H.E.S.S., MAGIC,
-    VERITAS, HAWC, MACE, CTA; LIGO, Virgo, KAGRA, GEO600, LIGO-India.
+  - All 70 overviews are sourced (BINP was the twelfth in the last batch).
 
 **7A-3 Record how each source was checked (M)**
 - *Do:* add an optional `checked` field to `SourceRef`

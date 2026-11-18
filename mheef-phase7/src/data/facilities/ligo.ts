@@ -9,8 +9,11 @@ const facility: Facility = {
   lat: 46.455,
   lng: -119.408,
   founded: 2002,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "LIGO Laboratory: Timeline", url: "https://www.ligo.caltech.edu/page/timeline" }] },
+  location: { represents: "LIGO Hanford Observatory, Washington (the Livingston detector is 3,002 km away)", sources: [{ label: "OpenStreetMap: NSF LIGO Hanford", url: "https://www.openstreetmap.org/way/196935204" }] },
   status: 'active',
-  overview: "The Laser Interferometer Gravitational-wave Observatory (LIGO) consists of two identical 4-km L-shaped interferometers — one near Hanford, Washington, and one in Livingston, Louisiana — operated by Caltech and MIT. On 14 September 2015, Advanced LIGO made the first direct detection of gravitational waves from a binary black hole merger (GW150914), opening the era of gravitational-wave astronomy. The Nobel Prize in Physics 2017 was awarded to LIGO founders Rainer Weiss, Kip Thorne, and Barry Barish.",
+  overview: "The Laser Interferometer Gravitational-Wave Observatory (LIGO), operated by Caltech and MIT with support from the US National Science Foundation, has two detectors with 4-km arms, at Hanford, Washington, and Livingston, Louisiana, 3,002 km apart. The Initial LIGO interferometers first operated in coincidence in 2002. On 14 September 2015, during Advanced LIGO's first observing run, LIGO detected gravitational waves from the merger of two black holes, GW150914, the first direct observation of gravitational waves; Rainer Weiss, Barry Barish and Kip Thorne shared the 2017 Nobel Prize in Physics for decisive contributions to the LIGO detector and the observation of gravitational waves.",
+  overviewSources: [{ label: "LIGO Laboratory: Facts", url: "https://www.ligo.caltech.edu/page/facts" }, { label: "LIGO Laboratory: Timeline", url: "https://www.ligo.caltech.edu/page/timeline" }, { label: "Nobel Prize in Physics 2017", url: "https://www.nobelprize.org/prizes/physics/2017/summary/" }],
   specs: [
     { label: "Arm length", value: "4 km", sources: [{ label: "LIGO Laboratory: Facts", url: "https://www.ligo.caltech.edu/page/facts" }] },
     { label: "Distance between the two detectors", value: "3,002 km", sources: [{ label: "LIGO Laboratory: Facts", url: "https://www.ligo.caltech.edu/page/facts" }] },

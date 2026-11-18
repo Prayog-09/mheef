@@ -8,8 +8,11 @@ const facility: Facility = {
   lat: 43.631,
   lng: 10.504,
   founded: 2007,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "Virgo: History", url: "https://www.virgo-gw.eu/about/virgo-history/" }] },
+  location: { represents: "The Virgo interferometer at Cascina, near Pisa", sources: [{ label: "OpenStreetMap: Interferometro VIRGO (European Gravitational Observatory)", url: "https://www.openstreetmap.org/relation/3160577" }] },
   status: 'active',
-  overview: "The Virgo gravitational-wave detector is a 3-km L-shaped laser interferometer near Cascina, Pisa, operated by the European Gravitational Observatory (EGO) consortium. Joining the LIGO network in 2017, the addition of a third detector improved source sky localisation from ~1,000 deg2 to tens of deg2, enabling rapid electromagnetic follow-up of mergers. Advanced Virgo+ operates with frequency-dependent squeezing and improved mirror coatings.",
+  overview: "Virgo is a gravitational-wave detector with 3-km arms in the countryside near Pisa, Italy. Proposed in 1987 by Adalberto Giazotto and Alain Brillet and approved by France's CNRS and Italy's INFN in the early 1990s, it was built from 1997, inaugurated in 2003, and began scientific observations in 2007, the year an agreement was signed to operate Virgo and the LIGO detectors as a single machine; the European Gravitational Observatory (EGO) was founded in 2000. The upgraded Advanced Virgo joined LIGO in August 2017, and on 14 August detected the black hole merger GW170814, the first gravitational-wave observation by three detectors; three days later the network detected the neutron star merger GW170817.",
+  overviewSources: [{ label: "Virgo: History", url: "https://www.virgo-gw.eu/about/virgo-history/" }, { label: "Virgo: The detector", url: "https://www.virgo-gw.eu/science/detector/" }, { label: "LIGO and Virgo Collaborations, Phys. Rev. Lett. 119, 141101 (2017)", url: "https://doi.org/10.1103/PhysRevLett.119.141101" }, { label: "LIGO and Virgo Collaborations, Phys. Rev. Lett. 119, 161101 (2017)", url: "https://doi.org/10.1103/PhysRevLett.119.161101" }],
   specs: [
     { label: "Arm length", value: "3 km", sources: [{ label: "Virgo: The detector", url: "https://www.virgo-gw.eu/science/detector/" }] },
   ],
