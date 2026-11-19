@@ -355,7 +355,6 @@ export default function Globe() {
   const isFlyingRef = useRef(false);
   const ionReadyRef = useRef(false);
   // The pulsing ring drawn round the facility that is open in the panel.
-  const selectionRingRef = useRef<Entity | null>(null);
   const [failed, setFailed] = useState(false);
 
   const selectedFacilityId = useGlobeStore((s) => s.selectedFacilityId);
@@ -523,10 +522,6 @@ export default function Globe() {
     const facilityAt = (windowPosition: Cartesian2): Facility | undefined => {
       const picked = scene.pick(windowPosition);
       if (!picked || !(picked.id instanceof Entity)) return undefined;
-      // The ring sits over the selected marker, so a pick of it means that facility.
-      if (picked.id === selectionRingRef.current) {
-        return facilities.find((f) => f.id === selectedIdRef.current);
-      }
       return facilityByEntity.get(picked.id);
     };
 
@@ -782,7 +777,6 @@ export default function Globe() {
       window.removeEventListener('pointerup', onPointerUp);
       viewer.canvas.removeEventListener('wheel', markInteraction);
       markers.clear();
-      selectionRingRef.current = null;
       placeLabels.removeAll();
       placeDots.removeAll();
       viewerRef.current = null;
@@ -824,10 +818,9 @@ export default function Globe() {
     camera.flyTo({ destination, duration: 2.6, complete: done, cancel: done });
   }, [selectedFacilityId]);
 
-  // ── Highlight the selected facility: ring, and a larger name in its colour ──
+  // ── Highlight the selected facility: a larger name in its colour ──
+  // (The pulsing ring is drawn by the marker's own halo; see below.)
   useEffect(() => {
-    const ring = selectionRingRef.current;
-    const facility = facilities.find((f) => f.id === selectedFacilityId);
     for (const [id, marker] of markersRef.current) {
       const label = marker.core.label;
       if (!label) continue;
@@ -839,39 +832,15 @@ export default function Globe() {
       label.backgroundPadding = (selected ? SELECTED_LABEL_PADDING : FACILITY_LABEL_PADDING) as never;
       label.pixelOffset = new Cartesian2(0, selected ? -18 : -14) as never;
     }
-    // A new ring for each selection: it grows and fades continuously, like a
-    // sonar ping, in the facility's type colour. Created afresh at the
-    // facility each time: a single ring added hidden and moved later did
-    // not reliably appear.
-    const viewer = viewerRef.current;
-    if (!viewer) return;
-    if (ring) viewer.entities.remove(ring);
-    selectionRingRef.current = null;
-    if (!facility) return;
-    const color = TYPE_COLORS[facility.type];
-    const phase = () => (performance.now() % RING_PERIOD_MS) / RING_PERIOD_MS;
-    const scratch = new Color();
-    selectionRingRef.current = viewer.entities.add({
-      position: Cartesian3.fromDegrees(facility.lng, facility.lat),
-      point: {
-        pixelSize: new CallbackProperty(() => 14 + 30 * phase(), false),
-        color: color.withAlpha(0.02),
-        outlineColor: new CallbackProperty(
-          () => Color.clone(color, scratch).withAlpha(0.95 * (1 - phase()), scratch),
-          false
-        ),
-        outlineWidth: 2.5,
-        // Same anchoring as the facility dot. Without it the ring sat at sea
-        // level while the dot sat on the 3D terrain, so the two drifted
-        // apart on screen whenever the camera was tilted or zoomed in.
-        heightReference: HeightReference.CLAMP_TO_GROUND,
-        disableDepthTestDistance: MARKER_DEPTH_TEST_DISTANCE,
-      },
-    });
   }, [selectedFacilityId]);
 
-  // ── Filter highlight ──
+  // ── Marker styling: filter highlight, and the selection pulse ──
+  // The selected facility's own halo becomes the pulsing ring, growing and
+  // fading like a sonar ping in its type colour. Using the halo, rather than
+  // a separate entity, keeps the ring exactly on the dot: a separate ring
+  // was seen drifting off the dot over 3D terrain when zoomed in.
   useEffect(() => {
+    const phase = () => (performance.now() % RING_PERIOD_MS) / RING_PERIOD_MS;
     for (const facility of facilities) {
       const marker = markersRef.current.get(facility.id);
       if (!marker) continue;
@@ -885,11 +854,24 @@ export default function Globe() {
       core.point.color = (state === 'dim' ? MARKER_DIM_COLOR : color) as never;
       core.point.outlineWidth = (state === 'dim' ? 0 : 1.5) as never;
       core.point.pixelSize = (state === 'match' ? 11 : 9) as never;
-      halo.show = state !== 'dim';
-      halo.point.color = color.withAlpha(state === 'match' ? HALO_MATCH_ALPHA : HALO_ALPHA) as never;
-      halo.point.pixelSize = (state === 'match' ? 30 : 24) as never;
+      if (id === selectedFacilityId) {
+        const scratch = new Color();
+        halo.show = true;
+        halo.point.pixelSize = new CallbackProperty(() => 14 + 30 * phase(), false) as never;
+        halo.point.color = color.withAlpha(0.02) as never;
+        halo.point.outlineColor = new CallbackProperty(
+          () => Color.clone(color, scratch).withAlpha(0.95 * (1 - phase()), scratch),
+          false
+        ) as never;
+        halo.point.outlineWidth = 2.5 as never;
+      } else {
+        halo.show = state !== 'dim';
+        halo.point.color = color.withAlpha(state === 'match' ? HALO_MATCH_ALPHA : HALO_ALPHA) as never;
+        halo.point.pixelSize = (state === 'match' ? 30 : 24) as never;
+        halo.point.outlineWidth = 0 as never;
+      }
     }
-  }, [matchingIds]);
+  }, [matchingIds, selectedFacilityId]);
 
   return (
     <div className="absolute inset-0">
