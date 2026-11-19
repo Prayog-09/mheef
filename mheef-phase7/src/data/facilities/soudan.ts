@@ -9,6 +9,7 @@ const facility: Facility = {
   lat: 47.82,
   lng: -92.242,
   founded: 1981,
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "Shupe, Experiments at the Soudan Mine: Operating and Proposed, in The Second Workshop on Grand Unification (1981)", url: "https://doi.org/10.1007/978-1-4612-5990-9_4" }] },
   location: { represents: "The Soudan Mine, Soudan, Minnesota", sources: [{ label: "OpenStreetMap: Soudan Mine", url: "https://www.openstreetmap.org/way/722791010" }] },
   status: 'historic',
   overview: "The Soudan Underground Laboratory in northern Minnesota held the far detector of the MINOS experiment, which measured a neutrino beam sent 735 km from Fermilab; in 2006 MINOS reported the disappearance of muon neutrinos between the two sites, confirming neutrino oscillations with an accelerator beam. The laboratory also hosted the CDMS II dark matter experiment, whose final results in 2010 included two candidate events consistent with background.",

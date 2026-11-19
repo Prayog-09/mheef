@@ -9,6 +9,7 @@ const facility: Facility = {
   lat: 31.675,
   lng: -110.952,
   founded: 2007,
+  location: { represents: "The VERITAS array on the lower slopes of Mount Hopkins, 31°40′ N, 110°57′ W", sources: [{ label: "The Very Energetic Radiation Imaging Telescope Array System (VERITAS) (arXiv:2507.09813)", url: "https://arxiv.org/abs/2507.09813" }] },
   foundedBasis: { meaning: "completed", sources: [{ label: "The Very Energetic Radiation Imaging Telescope Array System (VERITAS) (arXiv:2507.09813)", url: "https://arxiv.org/abs/2507.09813" }] },
   status: 'active',
   overview: "VERITAS is an array of four 12-metre imaging atmospheric Cherenkov telescopes in southern Arizona that observes gamma rays from about 85 GeV to above 30 TeV. Its first telescope began operating in 2005 and the full array was completed in 2007. Its results include gamma rays from the starburst galaxy M82, linking intense star formation to the production of cosmic rays, and pulsed gamma rays above 100 GeV from the Crab pulsar.",

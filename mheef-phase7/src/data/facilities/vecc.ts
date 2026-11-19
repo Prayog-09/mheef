@@ -9,6 +9,7 @@ const facility: Facility = {
   lat: 22.5958,
   lng: 88.4144,
   founded: 1969,
+  location: { represents: "VECC's campus at Bidhannagar (Salt Lake), Kolkata", sources: [{ label: "VECC: Contact us (1/AF, Bidhannagar, Kolkata 700064)", url: "https://www.vecc.gov.in/contact-us" }, { label: "OpenStreetMap: Variable Energy Cyclotron Centre", url: "https://www.openstreetmap.org/node/12514799449" }, { label: "OpenStreetMap: AF Block, Sector I, Bidhannagar", url: "https://www.openstreetmap.org/way/192392121" }] },
   foundedBasis: { meaning: "construction-start", sources: [{ label: "VECC: About", url: "https://www.vecc.gov.in/about-us" }] },
   status: 'active',
   overview: "The Variable Energy Cyclotron Centre (VECC) in Kolkata grew from work that the Bhabha Atomic Research Centre began there in 1969, and became an independent R&D unit of India's Department of Atomic Energy in May 1990. Its K130 cyclotron was commissioned in 1977, delivering its first beam of alpha particles on 16 June that year, and its K500 superconducting cyclotron delivers heavy-ion beams for basic research. The centre's work covers experimental nuclear physics, radiation damage studies and isotope production, along with accelerator design and technology development.",

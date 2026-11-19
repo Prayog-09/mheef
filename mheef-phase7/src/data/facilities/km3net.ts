@@ -9,6 +9,8 @@ const facility: Facility = {
   lat: 36.27,
   lng: 16.1,
   founded: 2015,
+  location: { represents: "The KM3NeT-It site of ARCA, 36°16′ N, 16°06′ E", sources: [{ label: "KM3NeT: The KM3NeT-It site", url: "https://www.km3net.org/research/research-infrastructure/km3net-it-site/" }, { label: "Letter of intent for KM3NeT 2.0, J. Phys. G 43, 084001 (2016) (arXiv:1601.07459)", url: "https://arxiv.org/abs/1601.07459" }] },
+  foundedBasis: { meaning: "first-operation", sources: [{ label: "KM3NeT Collaboration: Results from the first ARCA and ORCA detector units (poster, 2018)", url: "https://zenodo.org/records/1300849/files/poster.pdf" }] },
   status: 'active',
   overview: "KM3NeT is a pair of neutrino telescopes being built on the floor of the Mediterranean Sea. ARCA, at 3,450 m depth about 80 km off Portopalo di Capo Passero in Sicily, will comprise 230 detection units and looks for high-energy neutrinos from the cosmos; ORCA, at 2,450 m about 40 km off Toulon, will comprise 115 more closely spaced units and studies neutrino oscillations. On 13 February 2023 the partly built ARCA detector recorded a neutrino of about 220 PeV, the most energetic ever observed.",
   overviewSources: [{ label: "KM3NeT press release: KM3NeT detects the highest energy neutrino ever observed (2025)", url: "https://www.km3net.org/km3net-detects-the-highest-energy-neutrino-ever-observed/" }, { label: "KM3NeT Collaboration, Nature 638, 376 (2025)", url: "https://doi.org/10.1038/s41586-024-08543-1" }, { label: "Letter of intent for KM3NeT 2.0, J. Phys. G 43, 084001 (2016)", url: "https://doi.org/10.1088/0954-3899/43/8/084001" }],

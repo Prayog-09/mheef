@@ -250,8 +250,9 @@ traceable, every link works, and specialists have started reviewing.
   sentence that cannot be sourced.
 - *Done when:* the validator reports 100 % for overviews, coordinates and
   founding years, and the About page no longer lists them as unsourced.
-- *Overviews done 2026-11-19 (70 of 70). Still open: 6 years, 16 map
-  points* (lists below). Done in batches — CERN, Fermilab, SLAC,
+- *Overviews done 2026-11-19 (70 of 70); 68 of 70 years and 64 of 70 map
+  points sourced. The rest need sources this agent could not reach* (list
+  below). Done in batches — CERN, Fermilab, SLAC,
   DESY, TRIUMF, Jefferson Lab; J-PARC, JINR, PSI, Frascati, Boulby,
   Berkeley Lab, Cornell; KEK, Brookhaven, GSI, FRIB, GANIL, VECC, RIKEN
   RIBF, IUAC; Cavendish, Los Alamos, IHEP, Savannah River, SSC, Gran
@@ -388,15 +389,37 @@ traceable, every link works, and specialists have started reviewing.
     changed from 2019 (nothing supports it) to "Founded 2025", the
     CTAO ERIC; Virgo's 2007 kept as "First operation" (first scientific
     observations). MACE's marker moved 1.5 km onto the telescope building.
-  - **Still open (finish before closing 7A-2):**
-    - Years without a source (6): Chacaltaya 1952, Double Chooz 2011,
-      GRAPES-3 2000, Kolar Gold Fields 1965 (a discovery year, wrongly
-      shown as "Founded"), KM3NeT 2015 (sources disagree), Soudan 1981.
-    - Map points without a source (16): AGASA, ANTARES, Baikal-GVD, Fly's
-      Eye, Hyper-K, IMB, INO, LIGO-India, KM3NeT, MAGIC, Pierre Auger,
-      Savannah River, SSC, VECC, VERITAS, Yemilab. Most need a paper or
-      site map that gives coordinates; MAGIC is 0.2 km from CTAO's LST-1
-      on OpenStreetMap but has no object of its own.
+  - 2026-11-19 follow-up closed 4 years and 10 map points:
+    - Years: Kolar Gold Fields 1965 → "First operation 1951" (Bhabha
+      sent Sreekantan down the Champion Reef mine in 1951; CERN Courier
+      obituary, 2020); Double Chooz 2011 (arXiv:1109.0074, "data-taking has
+      started in spring 2011"); Soudan 1981 (Shupe, 1981 workshop chapter,
+      "initial operation of a 30 ton dense calorimeter"); KM3NeT 2015
+      (KM3NeT poster, first ARCA unit December 2015; PoS(NOW2016)054 says
+      December 2014, apparently a slip).
+    - Map points from published coordinates: MAGIC, VERITAS, Baikal-GVD,
+      ANTARES, KM3NeT; Yemilab (the Handuk mine, 2.5 km from the lab
+      itself); IMB (Fairport Harbor); VECC (both candidate positions lie
+      within 2 km of the marker).
+    - Markers moved: Savannah River 6.8 km onto P Reactor (APS: "the
+      definitive experiment ... was conducted in early 1956 at P
+      Reactor"); LIGO-India 2.0 km onto the mapped project site at Aundha
+      (the LIGO-India science case calls it "LIGO-Aundha").
+  - **Still open (68 of 70 years, 64 of 70 map points):**
+    - Chacaltaya 1952: Symmetry's "O legado de César Lattes" reportedly
+      dates the CBPF-UMSA agreement to 1952, but the site blocks scripts
+      and the in-app browser (Cloudflare). Read it by hand, or find a UMSA
+      or CBPF page.
+    - GRAPES-3 2000: a review reportedly says "since 1 January 2000";
+      another paper uses data from 2001. Find the review and confirm.
+    - Map points: Pierre Auger (only Wikipedia gives array coordinates;
+      try the 2002 J. Phys. G site-survey paper), AGASA (ICRR gives Akeno
+      Observatory as 35°47′N 138°30′E, 2.2 km from the marker; the array
+      spreads over 100 km², so decide what the point should mark), Fly's
+      Eye (published 40.2°N 112.8°W is rounded to ±5 km), Hyper-K (a 2014
+      collaboration poster gives 36°21′09″N 137°18′50″E, 0.4 km from the
+      marker, but returned 403), INO (no published coordinates found),
+      SSC (former campus not mapped).
   - ar5iv.labs.arxiv.org/html/<arXiv id> gives an arXiv paper as HTML,
     useful for checking a claim in a long paper (no PDF tools here).
   - All 70 overviews are sourced (BINP was the twelfth in the last batch).

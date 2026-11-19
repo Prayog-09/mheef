@@ -8,6 +8,7 @@ const facility: Facility = {
   lat: 37.19,
   lng: 128.66,
   founded: 2022,
+  location: { represents: "The Handuk iron mine, through which Yemilab is reached", sources: [{ label: "Neutrino Telescope at Yemilab, Korea (arXiv:1903.05368)", url: "https://arxiv.org/abs/1903.05368" }] },
   foundedBasis: { meaning: "completed", sources: [{ label: "Park et al., Construction of Yemilab, Front. Phys. 12, 1323991 (2024)", url: "https://doi.org/10.3389/fphy.2024.1323991" }] },
   status: 'active',
   overview: "Yemilab is the deep underground laboratory of the Center for Underground Physics of Korea's Institute for Basic Science (IBS), about 1,000 m below Mount Yemi in Jeongseon, Gangwon Province, a mountain that encompasses the Handuk iron mine. Completed in September 2022, it takes over the facilities of the Yangyang Underground Laboratory and is built to search for extremely rare interactions such as those of dark matter and neutrinos, including the AMoRE-II search for neutrinoless double-beta decay.",

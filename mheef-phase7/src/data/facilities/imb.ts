@@ -9,6 +9,7 @@ const facility: Facility = {
   lat: 41.75,
   lng: -81.28,
   founded: 1982,
+  location: { represents: "Fairport Harbor, Ohio, where the Morton Salt mine lies", sources: [{ label: "APS Historic Site: Morton Salt Mine", url: "https://www.aps.org/funding-recognition/historic-sites/morton" }, { label: "OpenStreetMap: Fairport Harbor, Ohio", url: "https://www.openstreetmap.org/relation/181991" }] },
   foundedBasis: { meaning: "first-operation", sources: [{ label: "APS Historic Site: Morton Salt Mine", url: "https://www.aps.org/funding-recognition/historic-sites/morton" }] },
   status: 'historic',
   overview: "The IMB (Irvine-Michigan-Brookhaven) detector was an 8,000-ton water Cherenkov detector nearly 2,000 feet underground in the Fairport Harbor Morton Salt Mine in Ohio, operating from 1982 to 1991. Built to search for proton decay, it found none; on 23 February 1987 it recorded eight neutrino events from Supernova 1987A, as did Kamiokande in Japan, and its upgraded form, IMB-3, found fewer atmospheric muon neutrinos than expected.",

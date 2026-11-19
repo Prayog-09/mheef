@@ -9,6 +9,7 @@ const facility: Facility = {
   lat: 42.8,
   lng: 6.17,
   founded: 2006,
+  location: { represents: "The former detector site, 42°48′ N, 6°10′ E, 40 km off Toulon", sources: [{ label: "ANTARES Collaboration: About us", url: "https://antares.in2p3.fr/about-us/" }] },
   foundedBasis: { meaning: "first-operation", sources: [{ label: "ANTARES Collaboration: The ANTARES adventure (2022)", url: "https://antares.in2p3.fr/the-antares-adventure/" }] },
   status: 'historic',
   overview: "ANTARES was the first undersea neutrino telescope, anchored 2,475 m deep in the Mediterranean about 40 km offshore from Toulon. Its first detection line was deployed on 14 February 2006, and the twelve-line detector, carrying 885 optical modules, was completed in May 2008. It took data for 16 years, until 14 February 2022, by when the KM3NeT detectors had surpassed its sensitivity, and it was then dismantled.",

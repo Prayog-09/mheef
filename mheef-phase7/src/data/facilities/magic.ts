@@ -9,6 +9,7 @@ const facility: Facility = {
   lat: 28.762,
   lng: -17.89,
   founded: 2004,
+  location: { represents: "The MAGIC telescopes, 28°46′ N, 17°53′ W", sources: [{ label: "Highlights of the MAGIC Telescopes (arXiv:1110.4747)", url: "https://arxiv.org/abs/1110.4747" }] },
   foundedBasis: { meaning: "first-operation", sources: [{ label: "Highlights of the MAGIC Telescopes (arXiv:1110.4747)", url: "https://arxiv.org/abs/1110.4747" }] },
   status: 'active',
   overview: "MAGIC is a pair of 17-metre imaging atmospheric Cherenkov telescopes, 85 m apart, at the Roque de los Muchachos Observatory on La Palma in the Canary Islands, at 2,200 m. The first telescope began operating in 2004, and regular stereoscopic observations with both began in autumn 2009. MAGIC detected pulsed gamma rays above 25 GeV from the Crab pulsar, and in 2019 reported teraelectronvolt gamma rays from GRB 190114C, the first gamma-ray burst seen at such energies.",
