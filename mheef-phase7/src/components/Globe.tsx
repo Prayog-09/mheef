@@ -861,6 +861,10 @@ export default function Globe() {
           false
         ),
         outlineWidth: 2.5,
+        // Same anchoring as the facility dot. Without it the ring sat at sea
+        // level while the dot sat on the 3D terrain, so the two drifted
+        // apart on screen whenever the camera was tilted or zoomed in.
+        heightReference: HeightReference.CLAMP_TO_GROUND,
         disableDepthTestDistance: MARKER_DEPTH_TEST_DISTANCE,
       },
     });
